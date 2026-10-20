@@ -1,0 +1,43 @@
+
+\begin{corollary}[Every peer emits a fresh self descriptor quickly]
+\label{cor:c2successfulsourcecover}
+Let $\zeta_r$ be the first event at which peer $r$
+initiates a nonempty-cache exchange. Uniformly over
+all weakly connected states,
+\[
+ \mathbb E_x\zeta_r\le8n,\qquad
+ \Pr_x\{\zeta_r>16nk\}\le2^{-k}.
+\]
+Consequently
+\[
+ \Pr_x\!\left\{\max_r\zeta_r>
+ 16n\left\lceil\log_2(n/\varepsilon)\right\rceil
+ \right\}\le\varepsilon.
+\]
+This means every peer has sent its fresh self
+descriptor; it does not mean all old descriptor
+copies have disappeared or samples are uniform.
+\end{corollary}
+\begin{proof}
+If $C_r$ is nonempty, passive exchanges cannot
+empty it, because at least one valid fresh self
+identifier is received and protected. Until $r$
+initiates, it therefore stays nonempty.
+The next independent initiator clock of $r$
+has mean waiting time $n$ events and produces
+the desired exchange.
+
+If $C_r$ is empty, weak connectivity supplies
+some other cache containing $r$.
+Apply Theorem~\ref{thm:c2readycontact} to the cut
+$\{r\},V\setminus\{r\}$. Its first exchange has
+mean waiting time at most $7n$ and must arrive
+at $r$, since an empty-cache initiator is a
+no-op. It makes $C_r$ nonempty.
+The preceding argument then costs at most
+another $n$ events, giving $\mathbb E\zeta_r\le8n$.
+Markov's inequality and restart before $\zeta_r$
+give the $16n$ block tail. A union bound over
+the $n$ peers proves the source-cover statement.
+\end{proof}
+

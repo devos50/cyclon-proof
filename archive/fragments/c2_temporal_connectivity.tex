@@ -1,0 +1,133 @@
+\begin{lemma}[Young components equal interaction components]
+\label{lem:younginteractioncomponents}
+Initially mark every descriptor auxiliary old. Mark every fresh
+self descriptor young, propagate marks with copied descriptors,
+and mark a duplicate young if either input is young, independently
+of which input supplies its numerical minimum age.
+Let $G_t^Y$ be the undirected graph of young cache descriptors
+after $t$ activations, and let $J_t$ contain every undirected
+initiator--responder pair that has exchanged during those activations.
+Under the adopted protection and sent-victim rules, for every
+capacity and shuffle length, $G_t^Y$ and $J_t$ have exactly the
+same connected-component partition. In particular this partition
+can only coarsen.
+\end{lemma}
+\begin{proof}
+Consider an exchange $p\to q$. Its fresh self descriptor creates
+the young edge $pq$. A removed young selected-partner edge is
+therefore immediately replaced. A removed young extra edge $pr$
+is copied and protected at $q$, so it is replaced by the young
+path $p,q,r$. A removed young responder edge $qr$ was sent and
+is protected at $p$, so it is replaced by $q,p,r$.
+The apparent self-filtering exception $r=p$ cannot be a responder
+victim, since incoming fresh $p$ is protected. Young-OR duplicate
+merging cannot erase a young connection. Thus old young components
+remain connected. Conversely each new young edge is either the
+fresh edge $pq$, or comes from an old young edge at one endpoint
+and can only join the old components of $p$ and $q$.
+Consequently the young partition is updated precisely by joining
+those two components, which is also the update of the interaction
+partition. Both partitions are discrete initially. Induction proves
+the assertion. Numerical ages play no role in this argument.
+\end{proof}
+
+\begin{proposition}[Polynomial temporal connectivity for two-entry caches]
+\label{prop:c2temporalconnectivity}
+Let $c=\ell=2$ and $n\ge3$, with arbitrary finite initial ages.
+Let $\tau_Y$ be the first activation by which the graph of all
+exchanges observed since time zero is connected. For every $t\ge0$,
+\[
+ \Pr_x\{\tau_Y>t\}
+ \le (n-1)\exp\!\left(-\frac{\lfloor t/2\rfloor}{4n^2}\right),
+ \qquad
+ \mathbb E_x\tau_Y\le8n^2 H_{n-1},
+\]
+where $H_{n-1}=\sum_{j=1}^{n-1}j^{-1}$ is the harmonic number.
+Thus $8n^2\log((n-1)/\varepsilon)+2$ global activations
+suffice for temporal connectivity with probability at least
+$1-\varepsilon$. These statements also describe connectivity
+of the young-descriptor graph under the preceding marking.
+\end{proposition}
+\begin{proof}
+Condition on the complete history at a two-activation block
+boundary, and suppose there are $m\ge2$ current young components.
+The weakly connected cache overlay induces a connected quotient
+on these components. Choose $m-1$ descriptor edges whose quotient
+edges form a spanning tree. Since each cache has at most two
+entries, their tails include at least $(m-1)/2$ distinct peers.
+
+For any such tail $p$, choose a cached identity $r$ outside its
+young component. If some oldest cached identity is outside that
+component, an activation of $p$ chooses an outside partner with
+probability at least $1/2$ and merges components immediately.
+Otherwise $C_p=\{q,r\}$ with its oldest partner $q$ in its own
+component. An activation of $p$ sends the forced packet
+$\{p^0,r^A\}$. Protection forces
+$C_q=\{p^0,r^b\}$ for some $b\ge0$. If $q$ initiates the next
+activation, $r$ is oldest or tied, and it is chosen with
+probability at least $1/2$. This also merges components.
+If an earlier merge already occurred, the block has succeeded.
+Conditional on $p$ being the first initiator, success probability
+is therefore at least $1/(2n)$. Summing over the distinct tails,
+the probability that the two-activation block reduces the
+component count is at least $(m-1)/(4n^2)$.
+
+Write $D_k$ for the component count minus one after $2k$
+activations. Its monotonicity gives
+\[
+ \mathbb E[D_{k+1}\mid\mathcal F_{2k}]
+ \le\left(1-\frac1{4n^2}\right)D_k.
+\]
+Since $D_0=n-1$, iteration and Markov's inequality prove the
+tail bound. At each positive level $D_k=d$, the waiting time
+until a strict decrease is stochastically bounded by a geometric
+variable with success probability $d/(4n^2)$. Skipped levels only
+shorten the process. Summing these waiting-time bounds and
+converting blocks to activations proves the expectation bound.
+The high-probability statement follows from the displayed tail.
+\end{proof}
+
+For comparison, every \emph{fixed} nontrivial cut is crossed
+within the next two activations with conditional probability
+at least $1/(2n^2)$. The same two-event pair-forcing argument
+applies to any descriptor edge across that cut. A direct union
+bound consequently gives the alternative, weaker estimate
+\[
+ \Pr_x\{\tau_Y>t\}
+ \le(2^{n-1}-1)
+ \exp\!\left(-\frac{\lfloor t/2\rfloor}{2n^2}\right).
+\]
+
+These are bounds for ordinary random executions, rather than
+probabilities of one long prescribed execution. They establish
+temporal connectivity, \emph{not} a sampling mixing bound:
+connectivity does not determine the distribution of cache labels.
+Even complete descriptor refreshing is insufficient by itself.
+For example, begin on three peers at
+$C_0=\varnothing$, $C_1=C_2=\{0^0\}$ and mark all initial
+descriptors old. After one uniformly random permutation of the
+three initiators, every initial descriptor has been replaced by
+a young one, but observer $1$ has availability $7/12$ and its
+conditional sample probabilities for identities $0,2$ are
+$(3/7,4/7)$, rather than $(1/2,1/2)$.
+
+\paragraph{An exact three-peer recurrent-class benchmark.}
+The checker \texttt{verify\_c2\_recurrent\_mixing.py} enumerates
+the entire family reachable from $H(V,2)$ when $n=3$ and
+$c=\ell=2$. This family has exactly $75$ states and maximum
+age one, with no age truncation. Its transition probabilities
+are computed exactly, and integer matrix--vector powers give
+the worst conditional single-identifier sampling error over
+all initial states \emph{in this recurrent class}. At eight
+global activations this error is exactly
+\[
+ \frac{9483}{1420660}\approx0.00667507,
+\]
+and at $25$ activations it is exactly
+\[
+ \frac{18359438816999}{23769834206568612112}
+ \approx7.72384\times10^{-7}.
+\]
+This is an exact finite calculation for recurrent starts on
+three peers. It supplies neither an arbitrary-$n$ rate nor a
+bound from arbitrary initial descriptor ages.

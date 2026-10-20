@@ -1,0 +1,217 @@
+\begin{theorem}[A quadratic controlled witness for two-entry caches]
+\label{thm:c2quadraticwitness}
+For the adopted algorithm with $c=\ell=2$ and $n\ge3$, put
+\[
+ T_n=16n^2,\qquad \gamma_n=(4n)^{-T_n}.
+\]
+For any prescribed labelled canonical state $h=H(V,2)$,
+\[
+ \inf_x\widehat P_2^{T_n}(x,\{h\})\ge\gamma_n,
+ \qquad
+ \sup_x\|\widehat P_2^t(x,\cdot)-\pi\|_{\TV}
+ \le(1-\gamma_n)^{\lfloor t/T_n\rfloor},
+\]
+where the infimum permits every weakly connected initial
+state with arbitrary finite integer ages.
+Consequently
+\[
+ t_{\rm mix}(\varepsilon)
+ \le T_n\left\lceil\gamma_n^{-1}
+                  \log(1/\varepsilon)\right\rceil.
+\]
+The polynomial controlled-path length does not assert a
+polynomial mixing time: the probability of the prescribed
+path is exponentially small.
+\end{theorem}
+
+\begin{proof}
+Choose the largest label of the prescribed canonical order
+as the owner identity $a$. Write
+\[
+ I=\{v\ne a:a^0\in C_v\},\qquad k=|I|.
+\]
+We construct a universal zero-age anchor through at most
+$n-1$ strict increases of $k$. Temporary losses during a
+macro are permitted; every completed macro strictly
+increases its endpoint value.
+
+We first record two elementary services. If $a$ caches
+a nonholder target $z$, activate only $a$, retaining $z$
+as extra while its partner differs from $z$. At any holder
+responder require the full reply, which contains $a$ and,
+once learned, $z$. The self identity $a$ is filtered at
+its owner, so at most one usable new reply fits the
+mandatory vacancy. Thus $z$ survives, the owner's cache
+does not grow, first visits establish $z$ at responders,
+and repeats shrink the cache. Within $n+2$ events some
+nonholder, at latest $z$, receives fresh $a^0$.
+All previously zero holders are passive and protected.
+If all other $a$ copies were zero at the start, they
+remain zero throughout this owner-only service.
+
+Second, suppose $Q$ holds $a^0$ and the owner is frozen.
+Activate only $Q$, choosing its residual partner rather
+than $a$ in a tie, and send $a$ as extra. Stop before
+an exchange to a nonholder if one is encountered.
+At every internal holder contact the full reply refreshes
+the initiator's anchor to zero, and the passive anchor
+stays zero by minimum merging. After deleting the anchor,
+these are exactly capacity-one singleton exchanges.
+Every visited responder learns $Q$; a repeat returns
+$Q$ as self and clears the residual cache.
+Within $n$ events $C_Q=\{a^0\}$ or a nonholder is
+encountered. The owner's cache stays unchanged.
+
+If a positive-age copy $a^A$ exists at $p$, choose an
+actual oldest partner. If it is $a$, one exchange makes
+the owner cache the nonholder $p$; the first service gives
+a strict $k$ gain within another $n+2$ events.
+Otherwise $C_p=\{a^A,u^B\}$ and the request forces
+$C_u=\{p^0,a^b\}$. If $u$ was a zero holder, its full
+reply gives $p$ a zero and the gain is immediate.
+Otherwise $b>0$, so $u$'s next oldest partner is $a$.
+After $u\to a$, the owner caches the nonholder $u$,
+and the same service gives a gain. This costs at most
+$n+4$ events, and no earlier zero holder is lost.
+Repeat this rule whenever positive copies remain.
+If no $a$ descriptor exists anywhere, weak connectivity
+forces a nonempty owner cache; one owner activation
+creates a fresh zero. This also counts as a strict gain.
+
+It remains to give an $O(n)$ gain macro when all $a$
+descriptors are zero and $k<n-1$. If the owner is
+nonempty, inspect an actual oldest partner $Q$.
+A nonholder partner gives a gain immediately.
+For $Q\in I$, freeze the owner and perform the stopped
+residual clearing at $Q$. If it clears, exchange
+$a\to Q$. The sole reply $a^0$ is self-filtered,
+so the owner loses $Q$ and gains no usable entry.
+At $Q$, fresh $a^0$ and at most one extra fit capacity
+two. Thus all zeros survive, and the owner loses
+one cache entry. Repeat if necessary, at most twice.
+
+If instead the stopped clearing encounters a nonholder
+$x$, perform $Q\to x$ and then immediately $a\to Q$.
+The first event forces
+\[
+ C_x=\{Q^0,a^1\}.
+\]
+Although $Q$ may temporarily lose its zero, the second
+event restores it with protected fresh $a^0$.
+The owner's choice of $Q$ is still legal because
+its cache was frozen during the clearing.
+Every other old zero holder was passive and protected.
+Now $x\to a$ is forced, since $a^1$ is older than $Q^0$.
+This deletes the only new positive copy and makes the
+owner cache fresh $x^0$. All old $k$ zero copies are
+restored, and all $a$ copies are again zero.
+The cached-target owner service adds a zero within
+$n+2$ further events. There can have been at most one
+earlier owner-head clearing before this branch.
+A safe bound for either emptying the owner or gaining
+a zero in this phase is therefore $3n+6$ events.
+
+Suppose it ends with the owner empty and no gain.
+If a holder caches a nonholder, the four-exchange
+gadget of Lemma~\ref{lem:c2infection} gives a gain
+with all $a$ copies zero at its endpoint.
+Otherwise each holder cache is $a^0$ plus at most
+one residual identity from $I$. Weak connectivity,
+the empty owner, and the absence of any $a$ descriptor
+in the nonholder set
+$J=V\setminus(I\cup\{a\})$
+supply an incoming boundary descriptor from $J$ to $I$.
+
+Use the incoming-boundary distinction in
+Theorem~\ref{thm:thesisc2}, with one modification:
+normalize only its selected root $Q$ by the residual
+clearing service, rather than making its whole component
+a star. This costs at most $n$ events, keeps the outside
+boundary initiator frozen, and ends with
+$C_Q=\{a^0\}$. The residual weak-component partition
+is preserved. If $Q$'s component is nontrivial, its
+connectivity and $Q$'s empty residual cache imply
+that some other member $v$ still has
+$C_v=\{a^0,Q^B\}$ for a finite $B\ge0$.
+This is sufficient for Lemma~\ref{lem:c2infection};
+that lemma does not require $B=0$.
+
+For completeness, a boundary initiator $P\in J$ whose
+oldest partner lies in $J$ first sends the target
+$Q\in I$ as extra. That responder is forced to cache
+$P^0,Q$, so it can next contact $Q$.
+After the root reply $a^0$, it replaces $Q$ as a zero
+holder and has a residual edge to nonholder $P$.
+The four-exchange gadget therefore gains a zero.
+If $P$ instead contacts $Q$ directly, a singleton
+$P$ gains immediately. For $C_P=\{Q,X\}$ the exchange
+replaces zero holder $Q$ by $P$, which caches
+$a^0,X$. If $X\in J$, apply the infection gadget.
+If $Q$'s residual component was nontrivial, use the
+incoming neighbor $v$ of the now-nonholder $Q$
+and apply the same gadget.
+
+The only remaining branch has $Q$ as an isolated
+residual component and $X$ in another holder component.
+The exchange replaces isolated $Q$ by $P\to X$,
+strictly reducing the number of residual components.
+It preserves $k$, the empty owner, the all-zero
+property of every $a$ copy, and residual closure.
+Crucially, this branch costs only one event:
+the isolated $Q$ needed no residual clearing.
+At most $n-1$ such reductions precede a gain.
+The final gain attempt costs at most $n+6$ events,
+including root clearing, any preparatory outside
+exchange, and the four-event infection.
+Thus a safe bound for this incoming phase is $2n+6$.
+Together with the owner phase, each all-zero strict-gain
+macro costs at most $5n+12$.
+
+The positive-copy and all-zero macros all increase
+the same integer $k$. At most $n-1$ such gains produce
+a universal zero anchor, with conservative total
+budget
+\[
+ 1+(n-1)(5n+12).
+\]
+The extra initial event is harmless overcounting.
+
+Finally put $D=2n(n-1)$. The capacity-one theorem
+normalizes any residual component to a prescribed
+zero-age rooted star in at most $D$ events, and the
+sum of these budgets across a partition is also at
+most $D$. Proposition~\ref{prop:anchorcanonical}
+can therefore be implemented with at most
+\[
+ 2(D+1)+D+4(n-2)+D
+ \le 4D+4n+2=8n^2-4n+2
+\]
+events: empty the owner, normalize the residual
+components once, merge their roots by the four-event
+table, and normalize the connected remainder once.
+The root kept during merging stays singleton
+$\{a^0\}$ and unprocessed component roots are
+untouched, so no intermediate renormalization is
+needed. Choose the residual star root as the
+second-largest prescribed label. Together with
+empty $a$, the result is exactly the desired
+$H(V,2)$; no root-change step is needed.
+
+The entire controlled path has length at most
+\[
+ 1+(n-1)(5n+12)+(8n^2-4n+2)
+ =13n^2+3n-9<16n^2.
+\]
+Pad to $T_n$ by activating the canonical empty root.
+Every prescribed event has probability at least
+$1/(4n)$: the initiator costs $1/n$, an oldest tie
+at most a factor two, and a possible passive victim
+choice at most a factor two. For $c=\ell=2$ the
+request extra and complete reply are forced, and
+an active victim, when needed, is unique.
+Multiplying these probabilities gives the asserted
+common-atom bound. Lemma~\ref{lem:atom} proves the
+total-variation estimate, and
+$(1-\gamma)^m\le e^{-\gamma m}$ gives the mixing bound.
+\end{proof}
+

@@ -1,0 +1,1173 @@
+{
+  "date": "2026-10-20",
+  "files": [
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/main.tex",
+      "saved_as": "paper/main.tex",
+      "original_sha256": "20a0f5032ffcaba542f68d8f5be7f470742a235d9715e09a2268775b5ffdee9d",
+      "saved_sha256": "20a0f5032ffcaba542f68d8f5be7f470742a235d9715e09a2268775b5ffdee9d",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/verify.py",
+      "saved_as": "verification/verify.py",
+      "original_sha256": "15305387b6fac8aed6f7245072a098943a6d6d033c7f3bf3199d5a6665e65c24",
+      "saved_sha256": "15305387b6fac8aed6f7245072a098943a6d6d033c7f3bf3199d5a6665e65c24",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/verification.json",
+      "saved_as": "verification/records/retention-original.json",
+      "original_sha256": "503e5811f2ea3402625440a30d5fa5864f0406b0f56c53928c3f263310edf0b8",
+      "saved_sha256": "503e5811f2ea3402625440a30d5fa5864f0406b0f56c53928c3f263310edf0b8",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/cyclon3.py",
+      "saved_as": "verification/mandatory-removal/cyclon3.py",
+      "original_sha256": "463f79835e7d74c539f5350e2846842672b646467b0931decb4f48e6e00b45d8",
+      "saved_sha256": "463f79835e7d74c539f5350e2846842672b646467b0931decb4f48e6e00b45d8",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_c2_age_projection_obstruction.py",
+      "saved_as": "verification/mandatory-removal/verify_c2_age_projection_obstruction.py",
+      "original_sha256": "cefc89452dbbdc49b585e2f885dc98bb1a8bcd0337230497ed02ad21e97671c1",
+      "saved_sha256": "cefc89452dbbdc49b585e2f885dc98bb1a8bcd0337230497ed02ad21e97671c1",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_c2_ready_drift.py",
+      "saved_as": "verification/mandatory-removal/verify_c2_ready_drift.py",
+      "original_sha256": "5ec6fdbaf6fcb1b343e560945f0a06a6a29180f8843d4c19db48cd3faf6014ca",
+      "saved_sha256": "38e5811ec6c935c9992f87ca65bc869d07810f29cd4b81b20f4d234a5c6607a7",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_c2_recurrent_mixing.py",
+      "saved_as": "verification/mandatory-removal/verify_c2_recurrent_mixing.py",
+      "original_sha256": "c18cc8703233a651c573a45fd575a498ed7010cd892aa97b47e068e676503471",
+      "saved_sha256": "5294a6846fbc20c63bb3e2f23a47dedf02f95de0b4acb78dda206cc853d070f3",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_c2_refresh_counterexample.py",
+      "saved_as": "verification/mandatory-removal/verify_c2_refresh_counterexample.py",
+      "original_sha256": "d616e812b74e1735553f1cd5b94652451882b22a93bdd8ae78520a62d2bdbd30",
+      "saved_sha256": "f6818ce9d9f648d737ae7b53a04f4002662fe30c2ae0970a760115c640aa9fad",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_c2_three_peer_antisymmetric.py",
+      "saved_as": "verification/mandatory-removal/verify_c2_three_peer_antisymmetric.py",
+      "original_sha256": "a95d2cb5a135911816a9ab701ca5e21536972bc66292f66689df7ea9581119ca",
+      "saved_sha256": "a95d2cb5a135911816a9ab701ca5e21536972bc66292f66689df7ea9581119ca",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_capacity_one.py",
+      "saved_as": "verification/mandatory-removal/verify_capacity_one.py",
+      "original_sha256": "e5fd9b4bf18490f283a4195c946467c7c0c9862db2baac3775ede7167326945b",
+      "saved_sha256": "e5fd9b4bf18490f283a4195c946467c7c0c9862db2baac3775ede7167326945b",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_capacity_two_reset.py",
+      "saved_as": "verification/mandatory-removal/verify_capacity_two_reset.py",
+      "original_sha256": "fad68d84dcff1d564627de767298faf884f768048be7aebfa8936341e78ece4a",
+      "saved_sha256": "b94adaf70ef8592953179fb88e551bf822590245fed7bbff09a189c09a6065cc",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_large_shuffle_obstruction.py",
+      "saved_as": "verification/mandatory-removal/verify_large_shuffle_obstruction.py",
+      "original_sha256": "b4e6e0fc24fc8031527703a539897676ac849e998e33e106bfd5a54d3fe091b1",
+      "saved_sha256": "b4e6e0fc24fc8031527703a539897676ac849e998e33e106bfd5a54d3fe091b1",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_lineage_erasure.py",
+      "saved_as": "verification/mandatory-removal/verify_lineage_erasure.py",
+      "original_sha256": "249ee62c35659028b5d8a4b4d09a32a46451d95f543305d684b39ef8c171107b",
+      "saved_sha256": "3e8a597eb58f35dcb0883225cfb013e3efca21d3bc08ddbac2ab0ca07ff78e2b",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_reset.py",
+      "saved_as": "verification/mandatory-removal/verify_reset.py",
+      "original_sha256": "572897ae15bc6254eadaa09a2d9a8feb82f7ec06a63caa3187fee03f41c1a6c4",
+      "saved_sha256": "572897ae15bc6254eadaa09a2d9a8feb82f7ec06a63caa3187fee03f41c1a6c4",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_shuffle_two_reset.py",
+      "saved_as": "verification/mandatory-removal/verify_shuffle_two_reset.py",
+      "original_sha256": "9b44151b7b417b3c878fe6e09780bb8816ec93af5f6f2e51fdf9333e86ce7d63",
+      "saved_sha256": "74479a7966370c988e632cfcc8804d0c6955e78e105f0f561f0897ffa3756fe1",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_singleton_general.py",
+      "saved_as": "verification/mandatory-removal/verify_singleton_general.py",
+      "original_sha256": "592753f1423effd9bfc63b132349d3f66e2165c33c11af3424aa0c78746c6d4b",
+      "saved_sha256": "312992bc25c38db1dd61f05cab867edaf46929b788f5a5b6ac518d5f126ab50c",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_anchor.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_anchor.py",
+      "original_sha256": "a8f4326cf1221bbd0e0e92a98bea54feab3e43c3c5d33007a696cce0cf6a5f8d",
+      "saved_sha256": "d2beaf3aae74f491d9d1b15de7799a941fe70b5012e2944035f4f67d53bd7c9e",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_c2_quantitative.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_c2_quantitative.py",
+      "original_sha256": "bfc459403d278e92f2649ca6860a1106eef7c79fe41139a3e0871dfe9fe3cca1",
+      "saved_sha256": "bfc459403d278e92f2649ca6860a1106eef7c79fe41139a3e0871dfe9fe3cca1",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_c2_saturation.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_c2_saturation.py",
+      "original_sha256": "b4f8a5f43293c56bdb4cb55548de7cfd6bfe588eeb56995322ae1a6846462730",
+      "saved_sha256": "bd3a219dfa86ab3f248c149ffe597ce1d1d155a43c313640acef406697f1926b",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_cooperative_general.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_cooperative_general.py",
+      "original_sha256": "0bb135a4d48d944d8065d0ffd9b54784ee2304c47cd6ac5ef9e99baf5a841725",
+      "saved_sha256": "205372ea13a877f296de955961b6c744072666d162a80854fd4555251974b71e",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_cooperative_owner.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_cooperative_owner.py",
+      "original_sha256": "f580a29b0258509c55b1fa44db67159e4ee122fa30c1e0c9ddb1f0f18936ffc4",
+      "saved_sha256": "8da9f8fd4c5d6e77b1095142800bab322bcb1b849b8e3b74b7866a6765f63e8f",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_cooperative_vector.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_cooperative_vector.py",
+      "original_sha256": "4042f86bd7ce2c488e68976740fed2a3208a17545815ecfe3ede922891b0f44d",
+      "saved_sha256": "ff0df956ac8d17aff14ff0f2f092593d04771d5ec265d8f2df76e55a7a5e2aae",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_dense.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_dense.py",
+      "original_sha256": "8d717664450c71feb4d50299cb0458d898e7a1e190994675d3116b519ed7591f",
+      "saved_sha256": "83e8b77ae52f914de5132fe5d0eb2e310d7180abfe03774ad4d73210ad85c63d",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_dense_three_boundary.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_dense_three_boundary.py",
+      "original_sha256": "189121496f0ce46786646f96d279061afea860f3ca4446e4ac156ff99a3aa228",
+      "saved_sha256": "dece52d9b4ad519ad6a14fd09fbfa061027037824c9609224ac122806a2baa28",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_dense_three_owner.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_dense_three_owner.py",
+      "original_sha256": "2fce245300c5d91f96738b92f40b81fd6460d825e8cfa1c9d9e843be1d00b3dd",
+      "saved_sha256": "1bbf82dd763f50ef3ad0682be60f9a43c2f49d06bf0de7bba461a8e3e6bfbcdd",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_first_contact.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_first_contact.py",
+      "original_sha256": "bb2d9c29d539baa1c706155d9ba100963a522ae40a11c000926a32371c477cff",
+      "saved_sha256": "8c795d55cbca9407d5ba958eba4868e0a611de6004d7c065e01d2705d48dc1e4",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_first_contact_fast.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_first_contact_fast.py",
+      "original_sha256": "b6d32453171399e0cbe3b6cae4417f8095a34b10a9b34e008736aa713c4601c9",
+      "saved_sha256": "1bdc794643a4989e6b7b66b2a664d7e9229d4cb21267993f1199604cd34d2de4",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_general_local.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_general_local.py",
+      "original_sha256": "60d097ed86d990ae49e5292053717fe81f0a7894fedb93757ea6733f1d9311f8",
+      "saved_sha256": "30055120ad37cd55134ea5cf12ba0f0b353540ebba394acc24d16035299d7877",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_general_reset.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_general_reset.py",
+      "original_sha256": "1e35f53c417b087a1097f9dd079ba4fb978e7141c57f6abf3ecf6c09a0af46b6",
+      "saved_sha256": "3d6d8e453c405eb4db48eb501c9920a9874a0a276cfebfce65750bf4d608ef9b",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_general_two.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_general_two.py",
+      "original_sha256": "63efdf8ac7e6c6fe49006e2413a60e9c502ba03ca0f26d25efea94ac8713befa",
+      "saved_sha256": "4a1c2cb3e8039dceaea5c4fa172407928597388ca6b9138d9cc34651c55c3714",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_half_dense.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_half_dense.py",
+      "original_sha256": "a31870b32cb0d4bcca237fe5a31429f279adc3cfcb539345dcb60adb11e194e8",
+      "saved_sha256": "d2dd3694b4e1c3c68fa7fc71ab93416b26713f0913b41ddc0b5f0daca013b9de",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_holder_routing.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_holder_routing.py",
+      "original_sha256": "ac982d6602d17c7f9ae5fc6f2cb4b631588b0ee5608967e94c01d7adfb43a41d",
+      "saved_sha256": "445ec0dd0ece17814831b63142a81f57b5a878e617b20ab5ba3d3d4cc4a9ee6f",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_owner_cycle.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_owner_cycle.py",
+      "original_sha256": "ebbc363752a33b3698f6f3c8b9852fd2f8db25e665e8aa6ec81335362e1c2598",
+      "saved_sha256": "b0e8d11528bb2ea81449a3d8c191f349949a5d763f0bb62666f3f4016fe40c51",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_proper_owner.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_proper_owner.py",
+      "original_sha256": "b34d668bbead832860fe633bede681ec517710b5e34ce6f10d2a756a5cb1c7f5",
+      "saved_sha256": "4aeb10972031ece9c466169ebaea707949604557cefcfa335d2b0254a711957c",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_two_reset.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_two_reset.py",
+      "original_sha256": "66a2d53a848ee5034fb97795689affaf3bfd8926ba59418027cfbf4abfe8a072",
+      "saved_sha256": "007b4316d31d8c57855fe3a36ca37ebb25a28435f18b47d89d9f237d44d0ca99",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "docs/peer-sampling-convergence/mandatory-removal/verify_thesis_underfull_bootstrap.py",
+      "saved_as": "verification/mandatory-removal/verify_thesis_underfull_bootstrap.py",
+      "original_sha256": "50832f3e804a6d766b2c81fcdb7ef32e79f1bea6434c2faebe130c9482816064",
+      "saved_sha256": "66637822eda9ff55e4070f5ea29ff8f97238c15cd2bb85c51cd39d79ce1668a8",
+      "transform": "relocate usage commands in docstrings"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "audit_ell1_induction.py",
+      "saved_as": "archive/experiments/audit_ell1_induction.py",
+      "original_sha256": "a63441f25787334c8e7101f5f8614032df76599c86e947930afd45fcb2979686",
+      "saved_sha256": "a63441f25787334c8e7101f5f8614032df76599c86e947930afd45fcb2979686",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "c2_age_projection_obstruction.tex",
+      "saved_as": "archive/fragments/c2_age_projection_obstruction.tex",
+      "original_sha256": "87030b0b52725f3f701032859b5fe69b59f903c729c87803e49467673b620599",
+      "saved_sha256": "87030b0b52725f3f701032859b5fe69b59f903c729c87803e49467673b620599",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "c2_quadratic_witness.tex",
+      "saved_as": "archive/fragments/c2_quadratic_witness.tex",
+      "original_sha256": "e69527e5b56f4b90ec3782d215294c8ba5f39e989cb8fb408a234966bb56e62b",
+      "saved_sha256": "e69527e5b56f4b90ec3782d215294c8ba5f39e989cb8fb408a234966bb56e62b",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "c2_ready_cut.tex",
+      "saved_as": "archive/fragments/c2_ready_cut.tex",
+      "original_sha256": "dc1c211c0db58c1489b5ebc0604cb9441880a7e98439d3af41d4696d555b9f5d",
+      "saved_sha256": "dc1c211c0db58c1489b5ebc0604cb9441880a7e98439d3af41d4696d555b9f5d",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "c2_successful_source_cover.tex",
+      "saved_as": "archive/fragments/c2_successful_source_cover.tex",
+      "original_sha256": "db6c7e8490eb22462163db1deddf543ebabb1c8d623e2ce2d1273876215c69f6",
+      "saved_sha256": "db6c7e8490eb22462163db1deddf543ebabb1c8d623e2ce2d1273876215c69f6",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "c2_temporal_connectivity.tex",
+      "saved_as": "archive/fragments/c2_temporal_connectivity.tex",
+      "original_sha256": "388d0afea8b0d7c028264324cb64b5df9f0185acc983ad3f05695a6568e947ff",
+      "saved_sha256": "388d0afea8b0d7c028264324cb64b5df9f0185acc983ad3f05695a6568e947ff",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "c2_three_peer_antisymmetric_certificate.tex",
+      "saved_as": "archive/fragments/c2_three_peer_antisymmetric_certificate.tex",
+      "original_sha256": "7a1c0e9ed4666063512676e74576c335c243cbb0e489fbd35a086be13a5abb12",
+      "saved_sha256": "7a1c0e9ed4666063512676e74576c335c243cbb0e489fbd35a086be13a5abb12",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "check_cyclon3_reset.py",
+      "saved_as": "archive/experiments/check_cyclon3_reset.py",
+      "original_sha256": "572897ae15bc6254eadaa09a2d9a8feb82f7ec06a63caa3187fee03f41c1a6c4",
+      "saved_sha256": "572897ae15bc6254eadaa09a2d9a8feb82f7ec06a63caa3187fee03f41c1a6c4",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "check_cyclon_c2_reachability_growth.py",
+      "saved_as": "archive/experiments/check_cyclon_c2_reachability_growth.py",
+      "original_sha256": "236833f1bbfbfd5c9e98cbebd78a650ae2b7f28534c00098ffb09223cf111ed0",
+      "saved_sha256": "236833f1bbfbfd5c9e98cbebd78a650ae2b7f28534c00098ffb09223cf111ed0",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "check_cyclon_c2_source_zero_gain.py",
+      "saved_as": "archive/experiments/check_cyclon_c2_source_zero_gain.py",
+      "original_sha256": "9c441b40e34175b8fb2157ceae7bd938979ed2efcb2f022d2a8fce15f013643c",
+      "saved_sha256": "9c441b40e34175b8fb2157ceae7bd938979ed2efcb2f022d2a8fce15f013643c",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-all-large-shuffles-negative.md",
+      "saved_as": "archive/notes/cyclon-all-large-shuffles-negative.md",
+      "original_sha256": "453238e19a204be23bb61948f93b482d9495a2a814e3ed5220957b815845e3b7",
+      "saved_sha256": "453238e19a204be23bb61948f93b482d9495a2a814e3ed5220957b815845e3b7",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c1-mandatory-positive.md",
+      "saved_as": "archive/notes/cyclon-c1-mandatory-positive.md",
+      "original_sha256": "9723f5df6eaf50a3c08b80d59af3fe6a38f935169c36ec2457544b90cba94048",
+      "saved_sha256": "9723f5df6eaf50a3c08b80d59af3fe6a38f935169c36ec2457544b90cba94048",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c2-color-enumerate.py",
+      "saved_as": "archive/experiments/cyclon-c2-color-enumerate.py",
+      "original_sha256": "f14dc8a61d204f5d697c0a8ad817315859aa3ef13ac9df11844ff57a39b896ec",
+      "saved_sha256": "f14dc8a61d204f5d697c0a8ad817315859aa3ef13ac9df11844ff57a39b896ec",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c2-constructive-polynomial-anchor.md",
+      "saved_as": "archive/notes/cyclon-c2-constructive-polynomial-anchor.md",
+      "original_sha256": "a4e15f8e20f4457eb634665fac03b4463ef77b72f352d0c868db179e157475be",
+      "saved_sha256": "a4e15f8e20f4457eb634665fac03b4463ef77b72f352d0c868db179e157475be",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c2-explicit-polynomial-witness.md",
+      "saved_as": "archive/notes/cyclon-c2-explicit-polynomial-witness.md",
+      "original_sha256": "be50fcee4093e31563bf771c1f3ca1c1b8c085da8a894cf9b388ee4fb14ec544",
+      "saved_sha256": "be50fcee4093e31563bf771c1f3ca1c1b8c085da8a894cf9b388ee4fb14ec544",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c2-label-drift-obstructions.md",
+      "saved_as": "archive/notes/cyclon-c2-label-drift-obstructions.md",
+      "original_sha256": "ff055a7b0bff9e73f19f0f9ecdb73eab9650b1912cf0157514b0493a6861af30",
+      "saved_sha256": "ff055a7b0bff9e73f19f0f9ecdb73eab9650b1912cf0157514b0493a6861af30",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c2-montecarlo-summary.md",
+      "saved_as": "archive/notes/cyclon-c2-montecarlo-summary.md",
+      "original_sha256": "c9bd875df39d077df2de3269424ebf35d1af115a014f2777ccbe01698571bbb5",
+      "saved_sha256": "c9bd875df39d077df2de3269424ebf35d1af115a014f2777ccbe01698571bbb5",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c2-montecarlo.py",
+      "saved_as": "archive/experiments/cyclon-c2-montecarlo.py",
+      "original_sha256": "3a35578a684cb8cbb7736cbfca7ec37f980c952b4451917e2161afc3fe56cd2a",
+      "saved_sha256": "3a35578a684cb8cbb7736cbfca7ec37f980c952b4451917e2161afc3fe56cd2a",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c2-quadratic-accessibility-audit.md",
+      "saved_as": "archive/notes/cyclon-c2-quadratic-accessibility-audit.md",
+      "original_sha256": "26a14b156dab90ec5ee4da68696e740ee032e4c46889aaab2eb0fe37d06ddceb",
+      "saved_sha256": "26a14b156dab90ec5ee4da68696e740ee032e4c46889aaab2eb0fe37d06ddceb",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c2-quantitative-construction.md",
+      "saved_as": "archive/notes/cyclon-c2-quantitative-construction.md",
+      "original_sha256": "7402e7d82b33a83ffde692ddbcae30d8e1e30a2f0f376b36b64a8648dd966a98",
+      "saved_sha256": "7402e7d82b33a83ffde692ddbcae30d8e1e30a2f0f376b36b64a8648dd966a98",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-c2-uniform-age-audit.md",
+      "saved_as": "archive/notes/cyclon-c2-uniform-age-audit.md",
+      "original_sha256": "60f26acfca01fdfb4e281c37ec2d353824c187113733ed76dd9fa991da02b569",
+      "saved_sha256": "60f26acfca01fdfb4e281c37ec2d353824c187113733ed76dd9fa991da02b569",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-ell1-common-atom-induction.md",
+      "saved_as": "archive/notes/cyclon-ell1-common-atom-induction.md",
+      "original_sha256": "b5231b31d2add5932bf0c73ea47d2c0eb06d22637b53edc18365e758dbf7acab",
+      "saved_sha256": "b5231b31d2add5932bf0c73ea47d2c0eb06d22637b53edc18365e758dbf7acab",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-ell1-inductive-verify.py",
+      "saved_as": "archive/experiments/cyclon-ell1-inductive-verify.py",
+      "original_sha256": "3a174b48778e3678c3e31a80427237359cce8a6372853064e34c0617dda74f7b",
+      "saved_sha256": "3a174b48778e3678c3e31a80427237359cce8a6372853064e34c0617dda74f7b",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-ell2-connectivity.md",
+      "saved_as": "archive/notes/cyclon-ell2-connectivity.md",
+      "original_sha256": "d25c585ab451021a259405584f9dffbdb94ce35bad1a96519d79a2e9290429c0",
+      "saved_sha256": "d25c585ab451021a259405584f9dffbdb94ce35bad1a96519d79a2e9290429c0",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-ell2-general-f-potential-audit.md",
+      "saved_as": "archive/notes/cyclon-ell2-general-f-potential-audit.md",
+      "original_sha256": "6bf2c7021e44cda77f9d39bf79ffeb588b7e0927a367839215ac4bcaa02d7eb0",
+      "saved_sha256": "6bf2c7021e44cda77f9d39bf79ffeb588b7e0927a367839215ac4bcaa02d7eb0",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-ell3-conditional-nonconvergence.md",
+      "saved_as": "archive/notes/cyclon-ell3-conditional-nonconvergence.md",
+      "original_sha256": "54f8b0f93b96e788f8e3de31c85a8199230ca4c5d929bcd898acff6fc862cdfb",
+      "saved_sha256": "54f8b0f93b96e788f8e3de31c85a8199230ca4c5d929bcd898acff6fc862cdfb",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-general-lineage-erasure.md",
+      "saved_as": "archive/notes/cyclon-general-lineage-erasure.md",
+      "original_sha256": "5c97816d91e249a6238881ca17033efe1728a60d48a70b9b860a7a23cff73b95",
+      "saved_sha256": "5c97816d91e249a6238881ca17033efe1728a60d48a70b9b860a7a23cff73b95",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-general-two-constructive-stage-audit.md",
+      "saved_as": "archive/notes/cyclon-general-two-constructive-stage-audit.md",
+      "original_sha256": "b81e398f4a77384fca70e23f3ce26ad98412da0ffe6f8aafd2a33e028e61377e",
+      "saved_sha256": "b81e398f4a77384fca70e23f3ce26ad98412da0ffe6f8aafd2a33e028e61377e",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-mandatory-capacity-one-proof.md",
+      "saved_as": "archive/notes/cyclon-mandatory-capacity-one-proof.md",
+      "original_sha256": "960916e81d9defe7d98b0cbcc23c7f0352352a502b4570cf01eb5bf381d73f5f",
+      "saved_sha256": "960916e81d9defe7d98b0cbcc23c7f0352352a502b4570cf01eb5bf381d73f5f",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-maxcapacity-single-cache-compression.md",
+      "saved_as": "archive/notes/cyclon-maxcapacity-single-cache-compression.md",
+      "original_sha256": "71c603cd8b07ba84fb77caaea23c1eeed68a569a7fd55072add7947301c428e2",
+      "saved_sha256": "71c603cd8b07ba84fb77caaea23c1eeed68a569a7fd55072add7947301c428e2",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-dense-ell3-completion.md",
+      "saved_as": "archive/notes/cyclon-min-dense-ell3-completion.md",
+      "original_sha256": "44cb615f7ec3e4ca03c3238b4a51a98682ae9db47dc9578933e499b3637f73c5",
+      "saved_sha256": "44cb615f7ec3e4ca03c3238b4a51a98682ae9db47dc9578933e499b3637f73c5",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-dense-ell3-owner-callback.md",
+      "saved_as": "archive/notes/cyclon-min-dense-ell3-owner-callback.md",
+      "original_sha256": "f4ba2f30f64e559787e90333c4e7bfb5f68a57b184bd53f6d2bd4af4b08d5fa5",
+      "saved_sha256": "f4ba2f30f64e559787e90333c4e7bfb5f68a57b184bd53f6d2bd4af4b08d5fa5",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-dense-ell3-saturation-endgame.md",
+      "saved_as": "archive/notes/cyclon-min-dense-ell3-saturation-endgame.md",
+      "original_sha256": "2db5a99f931997b615878a399693f4c1cc719eb0ce0f463225146e7592089bf2",
+      "saved_sha256": "2db5a99f931997b615878a399693f4c1cc719eb0ce0f463225146e7592089bf2",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-dense-multitarget-owner-service.md",
+      "saved_as": "archive/notes/cyclon-min-dense-multitarget-owner-service.md",
+      "original_sha256": "4ff12f1072317a04d7702e130cc8503fd0979e5ec2b2ada7e162603b52d2e822",
+      "saved_sha256": "4ff12f1072317a04d7702e130cc8503fd0979e5ec2b2ada7e162603b52d2e822",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-ell3-common-positive-anchor-callback.md",
+      "saved_as": "archive/notes/cyclon-min-ell3-common-positive-anchor-callback.md",
+      "original_sha256": "c164e8c0c74a19f32f68481743a6bd37ef1528d927c482dd8f136ce6d35712c1",
+      "saved_sha256": "c164e8c0c74a19f32f68481743a6bd37ef1528d927c482dd8f136ce6d35712c1",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-ell3-conditional-cooperative-callback.md",
+      "saved_as": "archive/notes/cyclon-min-ell3-conditional-cooperative-callback.md",
+      "original_sha256": "30b587935abab888d62b8a294733fe8f4a67d8f44cbec492ab903defdf188e95",
+      "saved_sha256": "30b587935abab888d62b8a294733fe8f4a67d8f44cbec492ab903defdf188e95",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-ell3-first-contact.md",
+      "saved_as": "archive/notes/cyclon-min-ell3-first-contact.md",
+      "original_sha256": "4045dc81e1afe5d692b92ff7cf979880c7e86a37d1c69f0bb057320208435828",
+      "saved_sha256": "4045dc81e1afe5d692b92ff7cf979880c7e86a37d1c69f0bb057320208435828",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-first-contact.md",
+      "saved_as": "archive/notes/cyclon-min-first-contact.md",
+      "original_sha256": "c4d3f7c1e051b13cf42261d3558e54a3e28bbbc5a0c6893df2710c3ebedff62f",
+      "saved_sha256": "c4d3f7c1e051b13cf42261d3558e54a3e28bbbc5a0c6893df2710c3ebedff62f",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-general-ell2-outward.md",
+      "saved_as": "archive/notes/cyclon-min-general-ell2-outward.md",
+      "original_sha256": "ed51e0e02432b9a593776b8108aba86694f84d47af14dae99138bfa50d2d5dcb",
+      "saved_sha256": "ed51e0e02432b9a593776b8108aba86694f84d47af14dae99138bfa50d2d5dcb",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-half-dense-ell2-outward.md",
+      "saved_as": "archive/notes/cyclon-min-half-dense-ell2-outward.md",
+      "original_sha256": "1e3b93db1d445e0db4457cab5f3e4c77eb079fb096cc2f7bed09fc96f5f78546",
+      "saved_sha256": "1e3b93db1d445e0db4457cab5f3e4c77eb079fb096cc2f7bed09fc96f5f78546",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-high-capacity-common-class.md",
+      "saved_as": "archive/notes/cyclon-min-high-capacity-common-class.md",
+      "original_sha256": "83e3851bdd9661b4a88e5f9a6215eb0b562fac718fa9d5a5578075c20bd2a4a6",
+      "saved_sha256": "83e3851bdd9661b4a88e5f9a6215eb0b562fac718fa9d5a5578075c20bd2a4a6",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-polynomial-first-contact.md",
+      "saved_as": "archive/notes/cyclon-min-polynomial-first-contact.md",
+      "original_sha256": "406e1236d4cf30dffae228ad773f329c6eaea6b27861f4e2340b5dc27bad4445",
+      "saved_sha256": "406e1236d4cf30dffae228ad773f329c6eaea6b27861f4e2340b5dc27bad4445",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-proper-large-zero-source-exploration.md",
+      "saved_as": "archive/notes/cyclon-min-proper-large-zero-source-exploration.md",
+      "original_sha256": "d0cac3b48da6e41667124a888376984224dc29084646757353ce5768f563048e",
+      "saved_sha256": "d0cac3b48da6e41667124a888376984224dc29084646757353ce5768f563048e",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-shared-anchors-cooperative-callback.md",
+      "saved_as": "archive/notes/cyclon-min-shared-anchors-cooperative-callback.md",
+      "original_sha256": "2cc397c3d305b7971c87c0b11988441541bec39f1afda59e5380cc2d55d70554",
+      "saved_sha256": "2cc397c3d305b7971c87c0b11988441541bec39f1afda59e5380cc2d55d70554",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-universal-anchor-reduction.md",
+      "saved_as": "archive/notes/cyclon-min-universal-anchor-reduction.md",
+      "original_sha256": "1026024a452c90cca5f65b2fff80f7ecefd90ef8120f85963ae4ffc14f2d0114",
+      "saved_sha256": "1026024a452c90cca5f65b2fff80f7ecefd90ef8120f85963ae4ffc14f2d0114",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-universal-anyage-anchor.md",
+      "saved_as": "archive/notes/cyclon-min-universal-anyage-anchor.md",
+      "original_sha256": "b6465d28527f0ae55f725d0d061cce2559aec1f080bf59e7c809cf421cacb0ea",
+      "saved_sha256": "b6465d28527f0ae55f725d0d061cce2559aec1f080bf59e7c809cf421cacb0ea",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-zero-rich-empty-bootstrap.md",
+      "saved_as": "archive/notes/cyclon-min-zero-rich-empty-bootstrap.md",
+      "original_sha256": "08ad43643e2157c99e79f91cab8382f259594c16e8ff6f4668c30af9e0fc6934",
+      "saved_sha256": "08ad43643e2157c99e79f91cab8382f259594c16e8ff6f4668c30af9e0fc6934",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-min-zero-rich-proper-five-bootstrap.md",
+      "saved_as": "archive/notes/cyclon-min-zero-rich-proper-five-bootstrap.md",
+      "original_sha256": "1055247bd5f55c35cee6bb8e97771cd5dd2dc0bc778f07685b2258d2666728c8",
+      "saved_sha256": "1055247bd5f55c35cee6bb8e97771cd5dd2dc0bc778f07685b2258d2666728c8",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-minimum-old-counterexample.md",
+      "saved_as": "archive/notes/cyclon-minimum-old-counterexample.md",
+      "original_sha256": "6f342864a86414209d04aeed564178e55d862b44b48e4729d3150fcd8d38dcdc",
+      "saved_sha256": "6f342864a86414209d04aeed564178e55d862b44b48e4729d3150fcd8d38dcdc",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-minimum-old-counterexample.py",
+      "saved_as": "archive/experiments/cyclon-minimum-old-counterexample.py",
+      "original_sha256": "c70ebb210078cb21588dc0e38cfe3ab7c633ff37989c37b1129dd6c2134b6ae7",
+      "saved_sha256": "c70ebb210078cb21588dc0e38cfe3ab7c633ff37989c37b1129dd6c2134b6ae7",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-n3-positive-proof.md",
+      "saved_as": "archive/notes/cyclon-n3-positive-proof.md",
+      "original_sha256": "ad29d2e5b538bafb5d8c738d959010c3c47d0a1112dce2488f5bff3787fe98e0",
+      "saved_sha256": "ad29d2e5b538bafb5d8c738d959010c3c47d0a1112dce2488f5bff3787fe98e0",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-negative-uniform-marginal-audit.md",
+      "saved_as": "archive/notes/cyclon-negative-uniform-marginal-audit.md",
+      "original_sha256": "5efcda2b43afa0d57647d5500b961d5a25104a4183ad58c4582fb0c6a1054c3e",
+      "saved_sha256": "5efcda2b43afa0d57647d5500b961d5a25104a4183ad58c4582fb0c6a1054c3e",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-outward-young-age-sum-audit.md",
+      "saved_as": "archive/notes/cyclon-outward-young-age-sum-audit.md",
+      "original_sha256": "c452e8826d684398ff04c3aaa67dad5f8030298c0c50be38db1ca51a70153b23",
+      "saved_sha256": "c452e8826d684398ff04c3aaa67dad5f8030298c0c50be38db1ca51a70153b23",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-outward-young-age-uniformity.md",
+      "saved_as": "archive/notes/cyclon-outward-young-age-uniformity.md",
+      "original_sha256": "cc8fe60c1dd4c6ab55cdb7cd7d0734594475860f853ca0305cd0c02fb83ff46f",
+      "saved_sha256": "cc8fe60c1dd4c6ab55cdb7cd7d0734594475860f853ca0305cd0c02fb83ff46f",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-outward-young-sum-audit.md",
+      "saved_as": "archive/notes/cyclon-outward-young-sum-audit.md",
+      "original_sha256": "fb8269e4983b7eab77058a527dade11c9b1d55bb23bb8abf0e3a0826e6757ece",
+      "saved_sha256": "fb8269e4983b7eab77058a527dade11c9b1d55bb23bb8abf0e3a0826e6757ece",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-protected-min-c2-complete-saturation.md",
+      "saved_as": "archive/notes/cyclon-protected-min-c2-complete-saturation.md",
+      "original_sha256": "680490487d92833bf7f6c6d4aa575a03d4c6b5e8d15ff92ac15f59648ca79ffe",
+      "saved_sha256": "680490487d92833bf7f6c6d4aa575a03d4c6b5e8d15ff92ac15f59648ca79ffe",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-protected-min-dense-ell2-saturation.md",
+      "saved_as": "archive/notes/cyclon-protected-min-dense-ell2-saturation.md",
+      "original_sha256": "7aa0b81b4e24e5f1f851d1cc50960f745d06b16819f338379e1f253d812e74a6",
+      "saved_sha256": "7aa0b81b4e24e5f1f851d1cc50960f745d06b16819f338379e1f253d812e74a6",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon-young-components.md",
+      "saved_as": "archive/notes/cyclon-young-components.md",
+      "original_sha256": "4e0e1a6e69e6f7a03760b75ab9b9e692a2a042013614273126326a6cf864166f",
+      "saved_sha256": "4e0e1a6e69e6f7a03760b75ab9b9e692a2a042013614273126326a6cf864166f",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon3.py",
+      "saved_as": "archive/experiments/cyclon3.py",
+      "original_sha256": "463f79835e7d74c539f5350e2846842672b646467b0931decb4f48e6e00b45d8",
+      "saved_sha256": "463f79835e7d74c539f5350e2846842672b646467b0931decb4f48e6e00b45d8",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_c1.py",
+      "saved_as": "archive/experiments/cyclon_c1.py",
+      "original_sha256": "e18b2607e7416699097c3cf6c1fc8b63526855456cb2668d9814f57f8ce265ce",
+      "saved_sha256": "e18b2607e7416699097c3cf6c1fc8b63526855456cb2668d9814f57f8ce265ce",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_c1_proof.md",
+      "saved_as": "archive/notes/cyclon_c1_proof.md",
+      "original_sha256": "6ea74db38fc7a46ec5dc4af47a269b8b1bfc1a079dd03889fec99e51f1194edb",
+      "saved_sha256": "6ea74db38fc7a46ec5dc4af47a269b8b1bfc1a079dd03889fec99e51f1194edb",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_c2.py",
+      "saved_as": "archive/experiments/cyclon_c2.py",
+      "original_sha256": "f5b09eedf56612724c3d123ac62bb3444de40acdeb3c17a5497384bcb6bfd97b",
+      "saved_sha256": "f5b09eedf56612724c3d123ac62bb3444de40acdeb3c17a5497384bcb6bfd97b",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_c2_min_gadget_search.py",
+      "saved_as": "archive/experiments/cyclon_c2_min_gadget_search.py",
+      "original_sha256": "26f9026390d5c96a7b7decf1b07f32bc24b875e21d9a08e961fff100cc0254cc",
+      "saved_sha256": "26f9026390d5c96a7b7decf1b07f32bc24b875e21d9a08e961fff100cc0254cc",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_c2_n3_exact_local.py",
+      "saved_as": "archive/experiments/cyclon_c2_n3_exact_local.py",
+      "original_sha256": "209ce84ad9dea6cff822a20c038e1391a279f020e6e96f1cfce3f2ab5cb50e17",
+      "saved_sha256": "209ce84ad9dea6cff822a20c038e1391a279f020e6e96f1cfce3f2ab5cb50e17",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_c2_primitive.py",
+      "saved_as": "archive/experiments/cyclon_c2_primitive.py",
+      "original_sha256": "0f571bb543cbd664396f6e7d2e5b420d39e35856574fdc90d5316829a0199970",
+      "saved_sha256": "0f571bb543cbd664396f6e7d2e5b420d39e35856574fdc90d5316829a0199970",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_c2_rand.py",
+      "saved_as": "archive/experiments/cyclon_c2_rand.py",
+      "original_sha256": "1201e9c296499fe80e7373297728c31250fe5633fe1e58319f1fc075c054fb74",
+      "saved_sha256": "1201e9c296499fe80e7373297728c31250fe5633fe1e58319f1fc075c054fb74",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_c2_uniform_erasure_verify.py",
+      "saved_as": "archive/experiments/cyclon_c2_uniform_erasure_verify.py",
+      "original_sha256": "6236f268b8c8df5be5b0fc531679182ca825793c628fafd13b88cf13d4e07ffc",
+      "saved_sha256": "6236f268b8c8df5be5b0fc531679182ca825793c628fafd13b88cf13d4e07ffc",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_clear_sweep.py",
+      "saved_as": "archive/experiments/cyclon_clear_sweep.py",
+      "original_sha256": "6542da103553ba75da6796fed1a7c8f31af8d2b9187531de70905c2c76af8378",
+      "saved_sha256": "6542da103553ba75da6796fed1a7c8f31af8d2b9187531de70905c2c76af8378",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_color.py",
+      "saved_as": "archive/experiments/cyclon_color.py",
+      "original_sha256": "69b792ffa9c341dc1c65061a1aa3ad0b2b9395ded27eaa1275338cbfd81099f9",
+      "saved_sha256": "69b792ffa9c341dc1c65061a1aa3ad0b2b9395ded27eaa1275338cbfd81099f9",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_color_game.py",
+      "saved_as": "archive/experiments/cyclon_color_game.py",
+      "original_sha256": "7a7fa9199c4393d3d005c3b5670ae6603fee1607636904e24960722f1e6835d7",
+      "saved_sha256": "7a7fa9199c4393d3d005c3b5670ae6603fee1607636904e24960722f1e6835d7",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_color_game_monotone.py",
+      "saved_as": "archive/experiments/cyclon_color_game_monotone.py",
+      "original_sha256": "504ebe77320c439c81ccc897eeb23fcb79fee18ae031747a67a2c88e73b3cf6d",
+      "saved_sha256": "504ebe77320c439c81ccc897eeb23fcb79fee18ae031747a67a2c88e73b3cf6d",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_color_game_stats.py",
+      "saved_as": "archive/experiments/cyclon_color_game_stats.py",
+      "original_sha256": "81486264c5be801a2502e0a80a7aaae2134fef7b4ad7a12b0958773b63df7d1a",
+      "saved_sha256": "81486264c5be801a2502e0a80a7aaae2134fef7b4ad7a12b0958773b63df7d1a",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_disconnect.py",
+      "saved_as": "archive/experiments/cyclon_disconnect.py",
+      "original_sha256": "e83539784d6297f1105b3076ed70a2e540866af98b5af039c2407dcf40278f2a",
+      "saved_sha256": "e83539784d6297f1105b3076ed70a2e540866af98b5af039c2407dcf40278f2a",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_ell2_identity_scc.py",
+      "saved_as": "archive/experiments/cyclon_ell2_identity_scc.py",
+      "original_sha256": "e5b841816674b51d5991e0996691c463e99eec8155a41e052ab728fb4cde0a25",
+      "saved_sha256": "e5b841816674b51d5991e0996691c463e99eec8155a41e052ab728fb4cde0a25",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_ell2_terminal_structure.py",
+      "saved_as": "archive/experiments/cyclon_ell2_terminal_structure.py",
+      "original_sha256": "9c4a230d92a907940086c8acd1623adda297158562d6e48d9160682e69e64e33",
+      "saved_sha256": "9c4a230d92a907940086c8acd1623adda297158562d6e48d9160682e69e64e33",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_ell2_uniform_erasure_verify.py",
+      "saved_as": "archive/experiments/cyclon_ell2_uniform_erasure_verify.py",
+      "original_sha256": "77f5ab5049e07cc4295c67c1ec30e32495f56e319a4b7b40d735c9f0fd69f0ce",
+      "saved_sha256": "77f5ab5049e07cc4295c67c1ec30e32495f56e319a4b7b40d735c9f0fd69f0ce",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_frozen_owner_game.py",
+      "saved_as": "archive/experiments/cyclon_frozen_owner_game.py",
+      "original_sha256": "70b462ef6ef5af7da71b275840daa639feaf4c9904a4696bb5d0acf17e6249f0",
+      "saved_sha256": "70b462ef6ef5af7da71b275840daa639feaf4c9904a4696bb5d0acf17e6249f0",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_frozen_search.py",
+      "saved_as": "archive/experiments/cyclon_frozen_search.py",
+      "original_sha256": "0000e34b44266bbfce4bc711e5f2f221b77de432aa5f367c896c3b6db0ae0773",
+      "saved_sha256": "0000e34b44266bbfce4bc711e5f2f221b77de432aa5f367c896c3b6db0ae0773",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_frozen_twins.md",
+      "saved_as": "archive/notes/cyclon_frozen_twins.md",
+      "original_sha256": "774eed292803edca87f17d17e99fe17e1a3b106764cfae4679e65583a60aa29a",
+      "saved_sha256": "774eed292803edca87f17d17e99fe17e1a3b106764cfae4679e65583a60aa29a",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_general_erasure_verify.py",
+      "saved_as": "archive/experiments/cyclon_general_erasure_verify.py",
+      "original_sha256": "f40f760b01e4615d1337b01af021728faa2e2985970617790a869efd2f3afe1a",
+      "saved_sha256": "f40f760b01e4615d1337b01af021728faa2e2985970617790a869efd2f3afe1a",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_identity_scc.py",
+      "saved_as": "archive/experiments/cyclon_identity_scc.py",
+      "original_sha256": "0f04cb4dd37f202550efb98e974e7b3646c783fa7407578c1d9ddc043cfb416e",
+      "saved_sha256": "0f04cb4dd37f202550efb98e974e7b3646c783fa7407578c1d9ddc043cfb416e",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_p_only_abstract.py",
+      "saved_as": "archive/experiments/cyclon_p_only_abstract.py",
+      "original_sha256": "55fe7fc1a7ce85f5cdff7e56e576150ea14abfe8378e17bc28fd2046f5de34df",
+      "saved_sha256": "55fe7fc1a7ce85f5cdff7e56e576150ea14abfe8378e17bc28fd2046f5de34df",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_p_only_c2.py",
+      "saved_as": "archive/experiments/cyclon_p_only_c2.py",
+      "original_sha256": "a8af4a66d3c2f654de16b52e5fbb9b15397a8a7af5c12c7050d3d689d079acc7",
+      "saved_sha256": "a8af4a66d3c2f654de16b52e5fbb9b15397a8a7af5c12c7050d3d689d079acc7",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_periodic.py",
+      "saved_as": "archive/experiments/cyclon_periodic.py",
+      "original_sha256": "f078642067bf3de1751e31eb21b0bfb289a87788ba9bb88cb2e13e8dac3077a6",
+      "saved_sha256": "f078642067bf3de1751e31eb21b0bfb289a87788ba9bb88cb2e13e8dac3077a6",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_source_pair_probe.py",
+      "saved_as": "archive/experiments/cyclon_source_pair_probe.py",
+      "original_sha256": "1beb3bc5e54b631b725915be99ce69fdb335c259d156b52f5bd36e8197745e66",
+      "saved_sha256": "1beb3bc5e54b631b725915be99ce69fdb335c259d156b52f5bd36e8197745e66",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_source_pair_quotient.py",
+      "saved_as": "archive/experiments/cyclon_source_pair_quotient.py",
+      "original_sha256": "f8f72a47f142fe1d036c24ec480f8ca0d5b92bc7c1bd7430e7ada2b4a0b61c77",
+      "saved_sha256": "f8f72a47f142fe1d036c24ec480f8ca0d5b92bc7c1bd7430e7ada2b4a0b61c77",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_thesis_lex_check.py",
+      "saved_as": "archive/experiments/cyclon_thesis_lex_check.py",
+      "original_sha256": "5ddf4e5e7c0aa936816e97557a2e09d0d518a8992b2a75fff6fb85613b8f1fe4",
+      "saved_sha256": "5ddf4e5e7c0aa936816e97557a2e09d0d518a8992b2a75fff6fb85613b8f1fe4",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_verify_certificate.py",
+      "saved_as": "archive/experiments/cyclon_verify_certificate.py",
+      "original_sha256": "773bb4e1a6b2e9811e86f852257ea9f610c414fd9a7ef47e423a9009d51d631c",
+      "saved_sha256": "773bb4e1a6b2e9811e86f852257ea9f610c414fd9a7ef47e423a9009d51d631c",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_zero_best.json",
+      "saved_as": "archive/experiments/cyclon_zero_best.json",
+      "original_sha256": "2901c5769054d640a5ed564381329a4220de243b9f74a257337dc424c0ed8705",
+      "saved_sha256": "2901c5769054d640a5ed564381329a4220de243b9f74a257337dc424c0ed8705",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "cyclon_zero_certificate.py",
+      "saved_as": "archive/experiments/cyclon_zero_certificate.py",
+      "original_sha256": "0a7857e95a8a483e12f99f01f1f73551c1a46484b8c291c481d5891a82dfe869",
+      "saved_sha256": "0a7857e95a8a483e12f99f01f1f73551c1a46484b8c291c481d5891a82dfe869",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "mandatory1.py",
+      "saved_as": "archive/experiments/mandatory1.py",
+      "original_sha256": "84ccaac569ce19a2a9c3083aa0ae56902bfdae79d72e3a972f3903c63d890744",
+      "saved_sha256": "84ccaac569ce19a2a9c3083aa0ae56902bfdae79d72e3a972f3903c63d890744",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "search_cyclon_frontier.py",
+      "saved_as": "archive/experiments/search_cyclon_frontier.py",
+      "original_sha256": "816499fc21dad841cf01742b822648aa7e109c21151f95a7ad81c6c947ec1ffb",
+      "saved_sha256": "816499fc21dad841cf01742b822648aa7e109c21151f95a7ad81c6c947ec1ffb",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "search_cyclon_underfull_empty.py",
+      "saved_as": "archive/experiments/search_cyclon_underfull_empty.py",
+      "original_sha256": "d1e0dd9412704f4912d21795e5bc28823d8d89f45a0bf142d8fba3cd6a959e49",
+      "saved_sha256": "d1e0dd9412704f4912d21795e5bc28823d8d89f45a0bf142d8fba3cd6a959e49",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "union_game.py",
+      "saved_as": "archive/experiments/union_game.py",
+      "original_sha256": "0d34ea054f2409ccdf73239d0b8e3edda7ec23668bc927a551cc749594c63776",
+      "saved_sha256": "0d34ea054f2409ccdf73239d0b8e3edda7ec23668bc927a551cc749594c63776",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "verify_cyclon_all_large_shuffles_negative.py",
+      "saved_as": "archive/experiments/verify_cyclon_all_large_shuffles_negative.py",
+      "original_sha256": "4c4de69abfdd545bd4a075c6f3c832fac24deec6560407aa6afdc13d984fd1d3",
+      "saved_sha256": "4c4de69abfdd545bd4a075c6f3c832fac24deec6560407aa6afdc13d984fd1d3",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "verify_cyclon_ell3_negative.py",
+      "saved_as": "archive/experiments/verify_cyclon_ell3_negative.py",
+      "original_sha256": "4960ffb86fb3655b5bce1278878cc1cdf38ac71b9df6c405c78ee86e2e7f6518",
+      "saved_sha256": "4960ffb86fb3655b5bce1278878cc1cdf38ac71b9df6c405c78ee86e2e7f6518",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "verify_cyclon_general_lex_step.py",
+      "saved_as": "archive/experiments/verify_cyclon_general_lex_step.py",
+      "original_sha256": "cb8b3da02cf6c58382f922f5dabdc074d115231092708be97c7bf5106379712c",
+      "saved_sha256": "cb8b3da02cf6c58382f922f5dabdc074d115231092708be97c7bf5106379712c",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "verify_cyclon_holder_routing.py",
+      "saved_as": "archive/experiments/verify_cyclon_holder_routing.py",
+      "original_sha256": "fc710cb025e589aff04ae2d512198e027b0ad0e9e5668d374ad11b9f18907343",
+      "saved_sha256": "fc710cb025e589aff04ae2d512198e027b0ad0e9e5668d374ad11b9f18907343",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "verify_cyclon_min_first_contact_fast.py",
+      "saved_as": "archive/experiments/verify_cyclon_min_first_contact_fast.py",
+      "original_sha256": "879dee9e38cef54eb9fae7150cb03377d1cb5de5886352e9088c035b054fbfc9",
+      "saved_sha256": "879dee9e38cef54eb9fae7150cb03377d1cb5de5886352e9088c035b054fbfc9",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "verify_singleton_general.py",
+      "saved_as": "archive/experiments/verify_singleton_general.py",
+      "original_sha256": "592753f1423effd9bfc63b132349d3f66e2165c33c11af3424aa0c78746c6d4b",
+      "saved_sha256": "592753f1423effd9bfc63b132349d3f66e2165c33c11af3424aa0c78746c6d4b",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-research",
+      "original": "verify_thesis_anchor.py",
+      "saved_as": "archive/experiments/verify_thesis_anchor.py",
+      "original_sha256": "daf5c08a080baa4e4949e663c3a62595ea65ebe756d13df6a7794790a75bc95e",
+      "saved_sha256": "daf5c08a080baa4e4949e663c3a62595ea65ebe756d13df6a7794790a75bc95e",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "output/pdf/cyclon-convergence-intermediate.pdf",
+      "saved_as": "archive/pdf/cyclon-convergence-intermediate.pdf",
+      "original_sha256": "05566d083654d6b3edc18c11f9c3f5c9b4ae13ee4234712868540325b4e14237",
+      "saved_sha256": "05566d083654d6b3edc18c11f9c3f5c9b4ae13ee4234712868540325b4e14237",
+      "transform": "none"
+    },
+    {
+      "origin_group": "original-project",
+      "original": "output/pdf/cyclon-convergence-proof.pdf",
+      "saved_as": "archive/pdf/cyclon-convergence-proof.pdf",
+      "original_sha256": "37642f4af159cb64bf07baf751cfcea9a918ca1a0f0e9e7a0054d6027cf1101c",
+      "saved_sha256": "37642f4af159cb64bf07baf751cfcea9a918ca1a0f0e9e7a0054d6027cf1101c",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-build",
+      "original": "main.pdf",
+      "saved_as": "archive/pdf/cyclon-proof-build.pdf",
+      "original_sha256": "dcfbc2e7b497f124016892095cdd806bc0297242937605f9054251ac37584e31",
+      "saved_sha256": "dcfbc2e7b497f124016892095cdd806bc0297242937605f9054251ac37584e31",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-build",
+      "original": "main.log",
+      "saved_as": "archive/build-logs/cyclon-proof-build-main.log",
+      "original_sha256": "28309da55868dd6e5b2481db51559a3756bdeca0b0dffe0d46534b857e24f12a",
+      "saved_sha256": "28309da55868dd6e5b2481db51559a3756bdeca0b0dffe0d46534b857e24f12a",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-build",
+      "original": "build-output.txt",
+      "saved_as": "archive/build-logs/cyclon-proof-build-build-output.txt",
+      "original_sha256": "5ebad464e05d605184f4428e3c289ffd7535c73f1862329035d7a2e764e9b09e",
+      "saved_sha256": "5ebad464e05d605184f4428e3c289ffd7535c73f1862329035d7a2e764e9b09e",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-build",
+      "original": "main.pdf",
+      "saved_as": "archive/pdf/cyclon-unified-build.pdf",
+      "original_sha256": "37642f4af159cb64bf07baf751cfcea9a918ca1a0f0e9e7a0054d6027cf1101c",
+      "saved_sha256": "37642f4af159cb64bf07baf751cfcea9a918ca1a0f0e9e7a0054d6027cf1101c",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-build",
+      "original": "main.log",
+      "saved_as": "archive/build-logs/cyclon-unified-build-main.log",
+      "original_sha256": "98634671c0d5b4080cefc817d5e561aa7cf27db4ed5b410922d006e589f66185",
+      "saved_sha256": "98634671c0d5b4080cefc817d5e561aa7cf27db4ed5b410922d006e589f66185",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-build",
+      "original": "main.pdf",
+      "saved_as": "archive/pdf/cyclon-intermediate-build.pdf",
+      "original_sha256": "05566d083654d6b3edc18c11f9c3f5c9b4ae13ee4234712868540325b4e14237",
+      "saved_sha256": "05566d083654d6b3edc18c11f9c3f5c9b4ae13ee4234712868540325b4e14237",
+      "transform": "none"
+    },
+    {
+      "origin_group": "temporary-build",
+      "original": "main.log",
+      "saved_as": "archive/build-logs/cyclon-intermediate-build-main.log",
+      "original_sha256": "0952343a8f2544a1c490326d67b370290cabf03ba515c37412357031e0dfaecb",
+      "saved_sha256": "0952343a8f2544a1c490326d67b370290cabf03ba515c37412357031e0dfaecb",
+      "transform": "none"
+    }
+  ]
+}

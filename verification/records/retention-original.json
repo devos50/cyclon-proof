@@ -1,0 +1,171 @@
+{
+  "periodic_counterexample": {
+    "trace": [
+      [
+        3,
+        4,
+        2,
+        1
+      ],
+      [
+        2,
+        4,
+        1,
+        1
+      ],
+      [
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        3,
+        1,
+        2,
+        2
+      ],
+      [
+        3,
+        4,
+        2,
+        1
+      ]
+    ],
+    "exchange_triples": [
+      [
+        1,
+        3,
+        2
+      ],
+      [
+        2,
+        4,
+        1
+      ],
+      [
+        3,
+        1,
+        2
+      ],
+      [
+        4,
+        2,
+        1
+      ]
+    ],
+    "round_boundary_tv": "2/3"
+  },
+  "frozen_twins": {
+    "all_small_subset_choices_checked": 12,
+    "families": [
+      {
+        "n": 4,
+        "capacity": 2,
+        "singleton_tv": "1/3"
+      },
+      {
+        "n": 6,
+        "capacity": 2,
+        "singleton_tv": "3/5"
+      },
+      {
+        "n": 10,
+        "capacity": 3,
+        "singleton_tv": "2/3"
+      },
+      {
+        "n": 24,
+        "capacity": 20,
+        "singleton_tv": "3/23"
+      }
+    ]
+  },
+  "zero_age_absorption": {
+    "prefix_probability": "1/16777216",
+    "triples": [
+      [
+        2,
+        4,
+        1
+      ],
+      [
+        1,
+        4,
+        2
+      ],
+      [
+        3,
+        1,
+        2
+      ],
+      [
+        3,
+        1,
+        4
+      ],
+      [
+        4,
+        2,
+        1
+      ],
+      [
+        4,
+        2,
+        3
+      ]
+    ]
+  },
+  "mandatory_removal_availability": {
+    "cache_pairs_checked": 680
+  },
+  "capacity_one": [
+    {
+      "n": 2,
+      "connected_states": 1,
+      "communicating_class_sizes": [
+        1
+      ],
+      "hamiltonian_swap_words_checked": 0,
+      "marked_transitions_checked": 2
+    },
+    {
+      "n": 3,
+      "connected_states": 8,
+      "communicating_class_sizes": [
+        4,
+        4
+      ],
+      "hamiltonian_swap_words_checked": 0,
+      "marked_transitions_checked": 24
+    },
+    {
+      "n": 4,
+      "connected_states": 78,
+      "communicating_class_sizes": [
+        78
+      ],
+      "hamiltonian_swap_words_checked": 12,
+      "marked_transitions_checked": 312
+    },
+    {
+      "n": 5,
+      "connected_states": 944,
+      "communicating_class_sizes": [
+        944
+      ],
+      "hamiltonian_swap_words_checked": 72,
+      "marked_transitions_checked": 4720
+    },
+    {
+      "n": 6,
+      "connected_states": 13800,
+      "communicating_class_sizes": [
+        13800
+      ],
+      "hamiltonian_swap_words_checked": 480,
+      "marked_transitions_checked": 82800
+    }
+  ],
+  "status": "All exact finite checks passed."
+}

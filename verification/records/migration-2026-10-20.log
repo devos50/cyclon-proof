@@ -1,0 +1,215 @@
+
+RUN c2_quantitative: Quadratic controlled paths and availability gadgets
+PASS complete_paths (1008, 351100, (1154, (30, 10, 1000000, 11900)), {'positive_blocks': 727, 'source_gains': 7880, 'outward_gains': 658, 'direct_owner_gains': 6930, 'singleton': 2800, 'owner_outward_repairs': 950, 'nontrivial-root-component': 1780, 'outside-extra': 520, 'outside-oldest': 423, 'component-decrease': 10})
+PASS availability_functional_states (1728, {'already_full': 0, 'three_path': 1716, 'star': 12})
+PASS c2_quantitative (3.96s)
+
+RUN c2_ready: Exact ready-copy cases for ordinary cut-contact drift
+PASS endpoint cases 14260 ready deaths 394 ready creations 3800 generic reply transports 1880
+PASS c2_ready (0.13s)
+
+RUN c2_three_peer: Exact 487-state arbitrary-age three-peer sampling certificate
+Projection states: 487
+Large unequal-age lift checks: 974
+Exact minimum availability after four events: 5/9
+Exact eight-event antisymmetric contraction: 34447/69984
+Integer numerator / denominator: 1653456 / 3359232
+For epsilon=1e-06: arbitrary-age sufficient local horizon = 216
+Scope: n=3,c=ell=2; arbitrary connected initial ages; one returned ID only.
+PASS c2_three_peer (0.15s)
+
+RUN c2_refresh_obstructions: Exact obstructions to naive refresh/lineage arguments
+PASS exact permutation terminal paths 8 availability 7/12 conditional sample {0: Fraction(3, 7), 2: Fraction(4, 7)} all entries YOUNG and interaction graph connected in every outcome; reachable OLD-count expected drift 1/6
+PASS successful-source-cover conditioning event mass 2/3 availability 5/8 conditional sample {0: Fraction(3, 5), 2: Fraction(2, 5)}
+PASS c2_refresh_obstructions (0.03s)
+
+RUN c2_age_projection_obstruction: Exact four-peer obstruction to age-cap/rank projection
+Cap=0, K=1: same capped ages and ranks; exact query TV=1/32
+Cap=99, K=100: same capped ages and ranks; exact query TV=1/32
+Cap=999999, K=1000000: same capped ages and ranks; exact query TV=1/32
+PASS: specific cap-plus-rank projection fails; no general finite-projection impossibility is asserted.
+PASS c2_age_projection_obstruction (0.03s)
+
+RUN c2_recurrent_mixing: Exact three-peer recurrent-start benchmark; optional NumPy unused
+Enumerated recurrent class: 75 states; n=3, c=ell=2 only.
+All initial states below are RESTRICTED TO THIS RECURRENT CLASS.
+t= 0: worst conditional error=0.5; exact=1/2
+t= 1: worst conditional error=0.375; exact=3/8
+t= 2: worst conditional error=0.1875; exact=3/16
+t= 3: worst conditional error=0.105670103093; exact=41/388
+t= 4: worst conditional error=0.0632743362832; exact=143/2260
+t= 5: worst conditional error=0.0357461355529; exact=481/13456
+t= 8: worst conditional error=0.00667506651838; exact=9483/1420660
+t=10: worst conditional error=0.00227526247985; exact=115561/50790184
+t=12: worst conditional error=0.000801130371173; exact=1459411/1821689768
+t=20: worst conditional error=1.12409835182e-05; exact=34362582563/3056901783310632
+t=25: worst conditional error=7.72383966058e-07; exact=18359438816999/23769834206568612112
+t=30: worst conditional error=5.35791061597e-08; exact=9903217275284793/184833566386232541982024
+t=50: worst conditional error=1.25112391314e-12; exact=845485016780157508042190713/675780398646330018140731440079003296424
+Exact first threshold times over the inspected horizon: {'1/10': 4, '1/100': 8, '1/1000': 12, '1/1000000': 25}
+PASS c2_recurrent_mixing (0.04s)
+
+RUN capacity_one: Mandatory-removal capacity-one tree identities
+{
+  "status": "All exact checks passed.",
+  "capacity_one_mandatory": [
+    {
+      "n": 2,
+      "connected_identity_states": 3,
+      "rooted_tree_states": 2,
+      "marked_tree_transitions": 4,
+      "anchored_path_swaps": 0
+    },
+    {
+      "n": 3,
+      "connected_identity_states": 17,
+      "rooted_tree_states": 9,
+      "marked_tree_transitions": 27,
+      "anchored_path_swaps": 2
+    },
+    {
+      "n": 4,
+      "connected_identity_states": 142,
+      "rooted_tree_states": 64,
+      "marked_tree_transitions": 256,
+      "anchored_path_swaps": 12
+    },
+    {
+      "n": 5,
+      "connected_identity_states": 1569,
+      "rooted_tree_states": 625,
+      "marked_tree_transitions": 3125,
+      "anchored_path_swaps": 72
+    },
+    {
+      "n": 6,
+      "connected_identity_states": 21576,
+      "rooted_tree_states": 7776,
+      "marked_tree_transitions": 46656,
+      "anchored_path_swaps": 480
+    }
+  ]
+}
+PASS capacity_one (0.40s)
+
+RUN anchor: Protected MIN anchor simulation and component merging
+PASS 576 initializations actual_exchanges 1829148 residual_embedding_exchanges 1822679 four_event_merge_exchanges 5140 worst (42853, (10, 9, 6, 1000000))
+PASS anchor (21.03s)
+
+RUN c2_saturation: Exact two-entry saturation and four-exchange infection
+PASS exhaustive_states/witnesses/exchanges (52964, 118498, 737512) random_witnesses/outward_gadgets/exchanges (684, 684, 46582) aux_source/positive/empty_owner_k0/exchanges (775, 579, 864, 4077) branches {'singleton': 20096, 'outside-extra': 38640, 'outside-oldest': 38634, 'component-decrease': 2065, 'nontrivial-root-component': 19747}
+PASS c2_saturation (7.09s)
+
+RUN general_two: Arbitrary-capacity length-two outward gain
+PASS cases/exchanges/worst/migrations/resets/plateau (20136, 74801, 20, 9, 11, 2) branches {'direct_gain': 5004, 'underfull_finish': 6905, 'strict_zero_reset': 3106, 'old_migration': 16443, 'owner_finish': 8227, 'young_migration': 273}
+PASS general_two (6.75s)
+
+RUN two_reset: Protected MIN length-two age-gap reset
+Passed 6840 nonvacuous states; forced migrations 12508.
+OLD/OLD younger refreshes 12056; OLD/YOUNG refreshes 96752; tracked conversion stops 33222; callback conversion stops 14737.
+Maximum exchanges 188, case (20, 19, 9, 'close'); fixed-holder segment 13; routing block 13; callback block 20.
+PASS two_reset (11.58s)
+
+RUN general_local: Exhaustive local colored all-length reset cases
+3 2 2 localpairs 23 controlledmoves 23 progress {'F': 20, 'W': 3} seconds 0.0
+4 2 2 localpairs 77 controlledmoves 79 progress {'F': 72, 'W': 5, 'V': 2} seconds 0.001
+4 3 2 localpairs 183 controlledmoves 241 progress {'F': 222, 'W': 19} seconds 0.002
+4 3 3 localpairs 183 controlledmoves 183 progress {'F': 174, 'W': 9} seconds 0.001
+5 2 2 localpairs 183 controlledmoves 189 progress {'F': 176, 'W': 7, 'V': 6} seconds 0.001
+5 3 2 localpairs 875 controlledmoves 1431 progress {'F': 1358, 'W': 55, 'V': 18} seconds 0.01
+5 3 3 localpairs 875 controlledmoves 939 progress {'F': 911, 'W': 19, 'V': 9} seconds 0.008
+5 4 2 localpairs 1499 controlledmoves 2886 progress {'F': 2738, 'W': 148} seconds 0.02
+5 4 3 localpairs 1499 controlledmoves 2483 progress {'F': 2428, 'W': 55} seconds 0.019
+5 4 4 localpairs 1499 controlledmoves 1499 progress {'F': 1472, 'W': 27} seconds 0.013
+6 2 2 localpairs 359 controlledmoves 371 progress {'F': 350, 'W': 9, 'V': 12} seconds 0.003
+6 3 2 localpairs 2963 controlledmoves 5759 progress {'F': 5546, 'W': 117, 'V': 96} seconds 0.039
+6 3 3 localpairs 2963 controlledmoves 3371 progress {'F': 3290, 'W': 33, 'V': 48} seconds 0.027
+6 4 2 localpairs 8865 controlledmoves 23351 progress {'F': 22634, 'W': 609, 'V': 108} seconds 0.15
+6 4 3 localpairs 8865 controlledmoves 22903 progress {'F': 22606, 'W': 189, 'V': 108} seconds 0.16
+6 4 4 localpairs 8865 controlledmoves 9967 progress {'F': 9874, 'W': 65, 'V': 28} seconds 0.085
+6 5 2 localpairs 12563 controlledmoves 35707 progress {'F': 34574, 'W': 1133} seconds 0.227
+6 5 3 localpairs 12563 controlledmoves 44037 progress {'F': 43518, 'W': 519} seconds 0.301
+6 5 4 localpairs 12563 controlledmoves 22361 progress {'F': 22212, 'W': 149} seconds 0.18
+6 5 5 localpairs 12563 controlledmoves 12563 progress {'F': 12482, 'W': 81} seconds 0.116
+7 2 2 localpairs 623 controlledmoves 643 progress {'F': 612, 'W': 11, 'V': 20} seconds 0.005
+7 3 2 localpairs 7983 controlledmoves 17683 progress {'F': 17172, 'W': 211, 'V': 300} seconds 0.114
+7 3 3 localpairs 7983 controlledmoves 9383 progress {'F': 9182, 'W': 51, 'V': 150} seconds 0.073
+7 4 2 localpairs 38653 controlledmoves 130333 progress {'F': 127722, 'W': 1771, 'V': 840} seconds 0.814
+7 4 3 localpairs 38653 controlledmoves 141683 progress {'F': 140402, 'W': 471, 'V': 810} seconds 0.932
+7 4 4 localpairs 38653 controlledmoves 49403 progress {'F': 49042, 'W': 131, 'V': 230} seconds 0.402
+7 5 2 localpairs 85175 controlledmoves 338673 progress {'F': 332502, 'W': 5631, 'V': 540} seconds 2.041
+7 5 3 localpairs 85175 controlledmoves 565803 progress {'F': 562182, 'W': 2541, 'V': 1080} seconds 3.544
+7 5 4 localpairs 85175 controlledmoves 278153 progress {'F': 277202, 'W': 571, 'V': 380} seconds 2.037
+7 5 5 localpairs 85175 controlledmoves 100133 progress {'F': 99847, 'W': 211, 'V': 75} seconds 0.901
+7 6 2 localpairs 107223 controlledmoves 439293 progress {'F': 431087, 'W': 8206} seconds 2.676
+7 6 3 localpairs 107223 controlledmoves 825923 progress {'F': 820702, 'W': 5221} seconds 5.192
+7 6 4 localpairs 107223 controlledmoves 504263 progress {'F': 502792, 'W': 1471} seconds 3.676
+7 6 5 localpairs 107223 controlledmoves 188805 progress {'F': 188404, 'W': 401} seconds 1.691
+7 6 6 localpairs 107223 controlledmoves 107223 progress {'F': 106980, 'W': 243} seconds 1.063
+TOTAL 1099391 3887740 {'F': 3852487, 'W': 30393, 'V': 4860}
+LARGE_TRANSFER 190 maximum_young_transfer 19
+PASS general_local (26.57s)
+
+RUN general_reset: Numerical-age all-length reset controller
+Passed 11400 initial states; 373413 controlled exchanges.
+Strict young-count increases 352194; strict square-sum decreases 2598; strict weighted-old decreases 18621.
+Maximum exchanges 89, case (20, 18, 4, 3).
+PASS general_reset (25.73s)
+
+RUN first_contact: Frozen-boundary contact and minimum-copy reduction
+EXHAUSTIVE 28036 first_contacts 16002 minimum_raises 12034 events 35374 mincopy_blocks 15520
+RANDOM 1365 first_contacts 768 minimum_raises 597 events 2413 mincopy_blocks 597 maximum_events 16
+RESET_OR_HIT 455 events_to_first_contact 715
+PASS first_contact (0.79s)
+
+RUN first_contact_fast: Polynomial holder-only contact plus zeroification
+cases=9100 exchanges=32008 routed=4746 migrations=108 min_raises=1918 worst=(56, (15, 14, 14, 4, False))
+PASS first_contact_fast (1.03s)
+
+RUN half_dense: Earlier half-dense length-two outward-gain subcase
+PASS cases/exchanges/worst/migrations (10777, 36204, 20, 3) branches {'full_migration': 1203, 'direct_gain': 8413, 'underfull_holder': 10407, 'owner_double': 2364, 'underfull_migration': 6920}
+PASS half_dense (2.39s)
+
+RUN dense: Earlier dense length-two no-eviction and root subcase
+PASS exhaustive_no_eviction/root_contacts (43338, 468) random_outward/root_contacts/exchanges/max_prelude (1060, 1060, 3145, 27)
+PASS dense (0.50s)
+
+RUN holder_routing: High-anchor final routing stage for longer shuffles
+20475 54280 [33804, 1] (34, (15, 11, 3, 14, 0))
+PASS holder_routing (2.64s)
+
+RUN owner_cycle: Owner-only service obstruction and cooperative repair
+PASS: n4 cycle and three-step repair; n5 full-initial cycle; m3..30 full invariant/first and proper invariant/first branches (8120, 434, 8120, 434)
+PASS owner_cycle (4.52s)
+
+RUN cooperative_owner: Conditional shared-anchor owner service at length three
+PASS closed-residual cases/exchanges/residual/owner/longest (15120, 647065, 569366, 77699, 666) branches {'last_internal': 9011, 'terminal_target': 7911, 'terminal_other': 7209}
+PASS arbitrary-residual cases/exchanges/residual/owner/longest (15120, 186403, 130525, 55878, 666) branches {'empty_blocks': 13223, 'terminal_target': 3773, 'boundary_blocks': 27535, 'terminal_other': 11347}
+PASS cooperative_owner (26.79s)
+
+RUN cooperative_general: Conditional shared-zero-anchor owner service at every length
+PASS cases/exchanges/residual/owner/longest (660, 4774, 2474, 2300, 68) branches {'empty_blocks': 976, 'terminal_secondary': 313, 'boundary_blocks': 664, 'terminal_other': 347}
+PASS cooperative_general (0.17s)
+
+RUN cooperative_vector: Conditional common positive-age-vector full-shuffle callback
+PASS cases/exchanges/residual/owner/longest (540, 1421, 291, 1130, 10) branches {'empty_blocks': 316, 'terminal_secondary': 428, 'outside_blocks': 202, 'terminal_other': 112, 'low_inside_blocks': 72}
+PASS cooperative_vector (0.08s)
+
+RUN proper_owner: Conditional proper-shuffle callback with large zero caches
+PASS cases/exchanges/longest (1716, 7734, 11) branches {'internal_events': 6018, 'terminal_target': 640, 'terminal_other': 1076, 'protected_target_replacements': 1470}
+PASS proper_owner (0.46s)
+
+RUN underfull_bootstrap: Conditional proper-shuffle underfull-zero bootstrap
+PASS exhaustive local cases 33520 near-complete cases/exchanges (5720, 6300) branches {'owner_then_zero': 572, 'direct': 5140, 'owner_then_singleton': 8} and excluded full-shuffle failure
+PASS underfull_bootstrap (0.73s)
+
+RUN dense_three_owner: Dense length-three callback and near-complete-zero subcase
+PASS cases/exchanges/longest (18400, 117946, 39) branches {'direct_gain': 18306, 'internal_prep': 30950, 'sacrifice_restore': 27952, 'macro_events': 40510, 'two_target_branch': 94, 'two_target_events': 134}
+PASS proper near-complete cases/exchanges/longest (27200, 350417, 52) branches {'internal_prep': 120506, 'sacrifice_restore': 94201, 'macro_events': 108510, 'direct_gain': 27200}
+PASS dense_three_owner (45.43s)
+
+RUN dense_three_boundary: Five-peer length-three component-boundary gadget
+PASS exact n5c3 normalized boundary cases 144 branches {'zero_gain': 108, 'outward_edge': 27, 'component_decrease': 9}
+PASS dense_three_boundary (0.04s)
+
+26/26 checks passed in 189.06s.

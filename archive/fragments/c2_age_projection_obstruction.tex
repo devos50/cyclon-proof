@@ -1,0 +1,47 @@
+\begin{proposition}[Capped absolute ages and ranks are not sufficient]
+\label{prop:c2caprankobstruction}
+For $n=4,c=\ell=2$, no fixed absolute-age cap, even augmented
+with the complete current ordering and equalities of all
+descriptor ages, is an exact state projection sufficient to
+predict the future single-identifier query law from every
+allowed initial state.
+\end{proposition}
+\begin{proof}
+Fix a cap $B$ and an integer $K>B$. On four distinct peers
+$p,q,r,s$, compare the connected initial states
+\[
+ C_p=\{q^{K+4},r^K\},\qquad
+ C_q=\{p^0,s^{K+d}\},\qquad
+ C_r=C_s=\varnothing,
+ \qquad d\in\{1,2\}.
+\]
+Their identity sets, capped ages $a\mapsto\min(a,B)$, and
+global age ranks and equalities are identical. An activation
+of $p$ necessarily contacts $q$ and leaves
+\[
+ C_p'=\{r^{K+1},s^{K+d}\},\qquad
+ C_q'=\{p^0,r^{K+1}\}.
+\]
+If $p$ initiates again, its oldest choice is a fair tie when
+$d=1$, and is uniquely $s$ when $d=2$. Both possible
+responders are empty. Thus the resulting query at $p$ is
+uniform on $r,s$ for $d=1$, and returns $r$ for $d=2$.
+This initiator history has probability $1/16$.
+Every other two-event initiator history gives the same query
+law in the two cases: a first activation of $q$ deletes the
+only descriptor whose age depends on $d$; initial $r,s$
+activations do nothing; and after $p\to q$, a next
+activation of $q,r$, or $s$ does not change $p$'s query
+probabilities. Hence the full two-event query laws differ
+in total variation by $(1/16)(1/2)=1/32$.
+All queries are available here. Explicitly their probabilities
+on $(q,r,s)$ are $(9,16,7)/32$ and $(9,17,6)/32$.
+The exact checker
+\texttt{verify\_c2\_age\_projection\_obstruction.py}
+reproduces these laws by rational enumeration.
+\end{proof}
+
+This excludes the particular cap-plus-rank projection on
+arbitrary-age initial states. It does not exclude a richer
+finite abstraction that retains critical age differences,
+and does not prove that four-peer recurrent ages are unbounded.

@@ -1,0 +1,184 @@
+\begin{theorem}[Linear expected contact time across every cut]
+\label{thm:c2readycontact}
+Consider the adopted algorithm with $c=\ell=2$ under its
+independent uniform global initiator scheduler. Fix a
+nontrivial partition $V=S\sqcup G$, and suppose some
+cache in $S$ contains an identity $r\in G$.
+Let $\tau$ be the first exchange crossing this cut,
+in either direction. Then, uniformly over arbitrary
+finite initial ages and all cache contents,
+\[
+ \mathbb E_x\tau\le7n,\qquad
+ \Pr_x\{\tau>14nk\}\le2^{-k}\quad(k\ge0).
+\]
+No controller, frozen scheduling rule, or prescribed
+sequence of initiators is used.
+\end{theorem}
+
+\begin{proof}
+Until the first crossing, all events are internal to
+$S$ or internal to $G$. Let $N$ count the caches in
+$S$ containing identity $r$. It cannot decrease before
+$\tau$. Indeed, in any $S$-internal exchange the owner
+$r$ is not an endpoint. If both endpoints hold $r$,
+the request's extra and the complete reply protect it
+at both endpoints. If just one holds $r$, it is
+forwarded to and protected at the opposite endpoint,
+whether or not the original location survives.
+Events internal to $G$ do not change the $S$ caches.
+Thus $N\ge1$ throughout the pre-crossing trajectory.
+
+Call a copy \emph{ready} when its cache is full and
+has the form
+\[
+ C_q=\{r^A,s^B\},\qquad A\ge B.
+\]
+Let $R$ count such caches in $S$. Their initiators
+select $r$ with conditional probability at least
+$1/2$. Consequently, if $R>0$, the conditional
+probability $a$ of a crossing at the next global
+event satisfies
+\[
+ a\ge\frac{R}{2n}.
+\]
+
+We need two elementary facts about losses of readiness:
+a noncrossing event decreases $R$ by at most one,
+and its conditional probability $d$ of doing so obeys
+\[
+ d\le\frac{2R}{n}.
+\]
+Here is the complete charging argument. Only the
+initiator $p$ and responder $q$ can change.
+If $p$ is ready and does not cross, its other head
+$q$ must be tied with $r$. Its request contains
+fresh $p^0$ and $r$, so the responder ends with
+a full ready cache. At worst the initiator loses
+its ready status; even if the responder was already
+ready, the total loss is at most one.
+Charge all these events to the clocks of the
+$R$ ready initiators, of total probability $R/n$.
+
+It remains to inspect a ready responder
+$C_q=\{r^A,s^B\}$ when the initiator was not ready.
+If the request includes $r$, the responder ends
+with $\{p^0,r^C\}$ and stays ready.
+If it does not include $r$ and $p\ne s$, the
+complete reply contains two usable identifiers
+$r,s$. A singleton initiator receives both and
+is ready. A full initiator either discards its
+novel extra to receive both, or its extra is
+$s$, whose minimum-merged age is at most
+$B\le A$. Again readiness transfers to the
+initiator whenever it is lost at the responder.
+The sole remaining possibility is $p=s$:
+the reply entry $s$ is self-filtered, and the
+initiator's retained extra may be older than $r$.
+Thus a loss not already charged to a ready
+initiator requires activation of the ready
+responder's unique other cached identity $s$.
+Union-bounding these at most $R$ clocks costs
+at most another $R/n$. The same cases prove
+that the total loss is never larger than one.
+
+Use the nonnegative potential
+\[
+ \Psi(R)=n\bigl(2+5(4/5)^R\bigr)
+\]
+before a crossing, and set its value to zero after
+one. Put $q_*=4/5$. If $R>0$, readiness gains
+can only decrease this potential, a loss of one
+costs exactly $nq_*^{R-1}$, and a crossing removes
+$n(2+5q_*^R)$. Its conditional drift is therefore
+at most
+\[
+ \begin{split}
+ \mathbb E[\Delta\Psi\mid\text{present state}]
+ &\le-a n(2+5q_*^R)+d n q_*^{R-1}\\
+ &\le-\frac R2(2+5q_*^R)+2R q_*^{R-1}
+ =-R\le-1.
+ \end{split}
+\]
+
+If $R=0$, some $r$ holder still exists because
+$N\ge1$. Select any such holder mathematically
+for a hazard bound; this does not alter the
+scheduler. With probability at least $1/n$ it
+is the next initiator. A singleton holder
+contacts $r$ and crosses. A full nonready
+holder has its other entry strictly older
+than $r$ and selects that entry. If this
+crosses, we are done. Otherwise its request
+forces the responder to cache
+$\{p^0,r^C\}$ with $C\ge0$, creating a ready
+copy. Thus with probability at least $1/n$
+the potential falls from $7n$ to at most
+$6n$ (or zero); other events cannot increase
+it above its value at $R=0$. Consequently
+its conditional drift is again at most $-1$.
+
+For any integer $t\ge0$, summing this drift
+until $\tau\wedge t$ and using nonnegativity
+gives
+\[
+ \mathbb E_x(\tau\wedge t)
+ \le\Psi(R_0)\le7n.
+\]
+Monotone convergence proves
+$\mathbb E_x\tau\le7n$, with no assumption
+of finite expected contact time in advance.
+
+Markov's inequality gives
+$\Pr_x\{\tau>14n\}\le1/2$ uniformly.
+Before a crossing, $N\ge1$ still holds,
+so the same estimate applies at every
+$14n$-event block boundary.
+The Markov property proves the stated tail.
+\end{proof}
+
+\begin{corollary}[Ordinary temporal connectivity in quadratic time]
+\label{cor:c2readytemporal}
+Start from any weakly connected overlay. Let
+$\mathcal I_t$ be the undirected graph of pairs
+that have exchanged during the first $t$ events,
+and let $\tau_{\rm conn}$ be its connectivity time.
+Then
+\[
+ \mathbb E_x\tau_{\rm conn}\le7n(n-1),
+ \qquad
+ \Pr_x\{\mathcal I_t\text{ is disconnected}\}
+ \le(2^{n-1}-1)\,
+       2^{-\lfloor t/(14n)\rfloor}.
+\]
+Thus
+\[
+ \Pr_x\!\left\{
+ \tau_{\rm conn}>
+ 14n\left\lceil n-1+\log_2(1/\varepsilon)\right\rceil
+ \right\}\le\varepsilon.
+\]
+These are communication bounds; they do not
+assert uniform peer sampling at that time.
+\end{corollary}
+
+\begin{proof}
+For each fixed unordered nontrivial cut, initial
+weak connectivity supplies a descriptor across it.
+Orient the cut so its tail is in $S$ and its
+head $r$ is in $G$. The theorem bounds its
+first observed crossing. There are
+$2^{n-1}-1$ unordered nontrivial cuts; a union
+bound proves the tail.
+
+For the expectation, whenever the observed
+interaction graph is disconnected, select one
+of its components and keep its vertex set
+fixed until the next crossing of that cut.
+Conditional on the present overlay, the theorem
+bounds the expected wait by $7n$.
+This crossing merges observed components,
+and at most $n-1$ such phases are needed.
+Summing their conditional mean bounds gives
+the claimed expectation.
+\end{proof}
+

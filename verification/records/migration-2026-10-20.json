@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-20",
+  "suite": "full-curated-current-model",
+  "python": "3.9.6",
+  "checks": [
+    {
+      "name": "c2_quantitative",
+      "seconds": 3.96,
+      "status": "passed"
+    },
+    {
+      "name": "c2_ready",
+      "seconds": 0.13,
+      "status": "passed"
+    },
+    {
+      "name": "c2_three_peer",
+      "seconds": 0.15,
+      "status": "passed"
+    },
+    {
+      "name": "c2_refresh_obstructions",
+      "seconds": 0.03,
+      "status": "passed"
+    },
+    {
+      "name": "c2_age_projection_obstruction",
+      "seconds": 0.03,
+      "status": "passed"
+    },
+    {
+      "name": "c2_recurrent_mixing",
+      "seconds": 0.04,
+      "status": "passed"
+    },
+    {
+      "name": "capacity_one",
+      "seconds": 0.4,
+      "status": "passed"
+    },
+    {
+      "name": "anchor",
+      "seconds": 21.03,
+      "status": "passed"
+    },
+    {
+      "name": "c2_saturation",
+      "seconds": 7.09,
+      "status": "passed"
+    },
+    {
+      "name": "general_two",
+      "seconds": 6.75,
+      "status": "passed"
+    },
+    {
+      "name": "two_reset",
+      "seconds": 11.58,
+      "status": "passed"
+    },
+    {
+      "name": "general_local",
+      "seconds": 26.57,
+      "status": "passed"
+    },
+    {
+      "name": "general_reset",
+      "seconds": 25.73,
+      "status": "passed"
+    },
+    {
+      "name": "first_contact",
+      "seconds": 0.79,
+      "status": "passed"
+    },
+    {
+      "name": "first_contact_fast",
+      "seconds": 1.03,
+      "status": "passed"
+    },
+    {
+      "name": "half_dense",
+      "seconds": 2.39,
+      "status": "passed"
+    },
+    {
+      "name": "dense",
+      "seconds": 0.5,
+      "status": "passed"
+    },
+    {
+      "name": "holder_routing",
+      "seconds": 2.64,
+      "status": "passed"
+    },
+    {
+      "name": "owner_cycle",
+      "seconds": 4.52,
+      "status": "passed"
+    },
+    {
+      "name": "cooperative_owner",
+      "seconds": 26.79,
+      "status": "passed"
+    },
+    {
+      "name": "cooperative_general",
+      "seconds": 0.17,
+      "status": "passed"
+    },
+    {
+      "name": "cooperative_vector",
+      "seconds": 0.08,
+      "status": "passed"
+    },
+    {
+      "name": "proper_owner",
+      "seconds": 0.46,
+      "status": "passed"
+    },
+    {
+      "name": "underfull_bootstrap",
+      "seconds": 0.73,
+      "status": "passed"
+    },
+    {
+      "name": "dense_three_owner",
+      "seconds": 45.43,
+      "status": "passed"
+    },
+    {
+      "name": "dense_three_boundary",
+      "seconds": 0.04,
+      "status": "passed"
+    }
+  ],
+  "result": "26/26 passed",
+  "scope": "Portable computational reproduction, not an independent audit of every mathematical proof. Legacy variants and raw archived experiments were not run.",
+  "paper_sha256": "20a0f5032ffcaba542f68d8f5be7f470742a235d9715e09a2268775b5ffdee9d",
+  "log": "migration-2026-10-20.log"
+}

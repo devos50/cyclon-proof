@@ -1,0 +1,119 @@
+\begin{proposition}[A finite positivity projection on three peers]
+\label{prop:c2threepositivity}
+For $n=3$ and $c=\ell=2$, let $\mathcal P$ be the family in
+which every cache has at most one positive-age descriptor.
+Every peer's cache lies in this family after its first
+participation in an exchange, and this property is permanent.
+Consequently, from every weakly connected initial state with
+arbitrary finite ages,
+\[
+ \Pr_x\{X_m\notin\mathcal P\}\le3(2/3)^m.
+\]
+On $\mathcal P$, replacing every positive numerical age by one
+is an exact Markov projection, with $487$ weakly connected
+projected states.
+\end{proposition}
+\begin{proof}
+Write the three distinct peers as $p,q,r$, and consider
+$p\to q$. After mandatory removal of $q$, the initiator can
+retain only identity $r$: the reply contains only $p$ and $r$,
+and $p$ is self-filtered. Thus its resulting cache has at most
+one entry, regardless of the initial ages. The responder
+retains protected fresh $p^0$ and can have at most one other
+entry. Hence both updated caches have at most one positive
+entry. Untouched caches are unchanged, proving permanence.
+If each peer has initiated at least once, all three caches
+satisfy the property. The independent uniform initiators and
+a union bound give the displayed probability estimate.
+
+Within this family a positive descriptor is the uniquely
+oldest entry whenever a second entry is present; a singleton
+descriptor is also removed on initiation. Thus no previously
+positive active descriptor is ever forwarded as an extra.
+An extra had age zero and is sent at age one. Fresh entries
+have age zero; copies preserve positivity; and minimum merges
+have age zero exactly when at least one input has age zero.
+Partner ties occur exactly between two zero entries.
+Therefore transition probabilities of identities and
+zero/positive flags depend only on those flags, proving the
+projection assertion. Each peer has eight possible projected
+rows: the empty row, four singleton rows, and the three
+two-entry rows with at most one positive entry. Filtering
+the $8^3$ triples by weak connectivity yields $487$ states.
+\end{proof}
+
+\begin{proposition}[A certified ordinary sampling bound on three peers]
+\label{prop:c2threeordinarysample}
+For $n=3,c=\ell=2$, the conditional single-identifier sampling
+error is at most $\varepsilon$, for every weakly connected
+initial state with arbitrary finite ages and every observation
+time at least
+\[
+ \left\lceil\frac{\log(9/\varepsilon)}{\log(3/2)}\right\rceil
+ +8\left\lceil\log_2(3/\varepsilon)\right\rceil,
+ \qquad 0<\varepsilon<1.
+\]
+This bound concerns ordinary independent uniform activations,
+not a prescribed controlled execution. Its finite operator
+certificate applies specifically to three peers.
+\end{proposition}
+\begin{proof}
+Relabel the observer as $0$, and let $\sigma$ swap the other
+two labels. Let $P$ be the $487$-state positivity-projection
+kernel of Proposition~\ref{prop:c2threepositivity}.
+The standard-library checker
+\texttt{verify\_c2\_three\_peer\_antisymmetric.py}
+enumerates all its transitions exactly. Writing $A=6P$, an
+integer matrix, it verifies equivariance and the exact
+finite inequalities
+\[
+ \max_z\frac12\sum_w
+   \left|P^8(z,w)-P^8(\sigma z,w)\right|
+   =\frac{34447}{69984}<\frac12,
+ \qquad
+ \min_z(P^4\mathbf1_{\{|C_0|>0\}})(z)=\frac59.
+\]
+These are exhaustive integer calculations, without age
+truncation or floating-point inequalities: the maximum
+row-difference numerator is $1653456$ over denominator
+$2\cdot6^8=3359232$.
+
+For every $\sigma$-antisymmetric function $f$,
+equivariance gives
+\[
+ |P^8f(z)|
+ =\left|\frac12\sum_w
+       (P^8(z,w)-P^8(\sigma z,w))f(w)\right|
+ \le\frac12\|f\|_\infty.
+\]
+The kernel preserves antisymmetry, so iteration and
+supremum-norm contraction imply
+$\|P^sf\|_\infty\le2^{-\lfloor s/8\rfloor}\|f\|_\infty$.
+Choose $f(z)$ as the conditional-on-state output probability
+of identity $1$ minus that of identity $2$, including the
+value zero at an empty cache. This function is antisymmetric
+and bounded by one. Its expected value is the difference of
+the two unconditional query probabilities.
+The availability certificate also persists at all $s\ge4$,
+since a Markov kernel cannot decrease a function's minimum.
+
+After $m$ initial activations, write $b=3(2/3)^m<1$.
+On the event of entering $\mathcal P$, the remaining projected
+process obeys these bounds; its complement has probability
+at most $b$. Thus at time $m+s$, for $s\ge4$, the difference
+between unconditional query probabilities is at most
+$b+2^{-\lfloor s/8\rfloor}$, and availability is at least
+$(1-b)5/9$. For two target identities the conditional
+total-variation error is their unconditional probability
+difference divided by twice availability. It is therefore
+at most
+\[
+ \frac9{10}\,
+ \frac{b+2^{-\lfloor s/8\rfloor}}{1-b}.
+\]
+Taking $m=\lceil\log(9/\varepsilon)/\log(3/2)\rceil$ and
+$s=8\lceil\log_2(3/\varepsilon)\rceil$ makes both numerator
+terms at most $\varepsilon/3$. Since $\varepsilon<1$, the
+displayed error is at most $0.9\varepsilon<\varepsilon$.
+The same estimates apply at every later observation time.
+\end{proof}

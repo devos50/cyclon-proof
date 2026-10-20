@@ -1,0 +1,16 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+build/
+verification/runs/
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+# Historical PDF snapshots and build logs under archive/ are intentional records.
+paper/*.pdf
+paper/*.log
