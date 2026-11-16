@@ -102,6 +102,41 @@ def check_old_count_positive_drift():
     return drift
 
 
+def check_iid_two_event_refresh_counterexample():
+    """Actual iid scheduler, deterministic horizon, then condition on refreshing.
+
+    This is not the separate random-permutation experiment. Enumerate all
+    ordinary two-event paths before imposing the freshness event.
+    """
+    paths = [(Colored([{}, {0: 0}, {0: 0}], 2), Fraction(1), (), set())]
+    for _ in range(2):
+        paths = [
+            (out, weight * probability / 3, history + (initiator,),
+             edges | ({tuple(sorted(edge))} if edge else set()))
+            for state, weight, history, edges in paths
+            for initiator in range(3)
+            for out, probability, edge in fixed_initiator_outcomes(state, initiator)
+        ]
+    assert sum(weight for _, weight, _, _ in paths) == 1
+    fresh = [(state, weight, history, edges)
+             for state, weight, history, edges in paths if old_count(state) == 0]
+    assert {history for _, _, history, _ in fresh} == {(1, 2), (2, 1)}
+    assert all(edges == {(0, 1), (0, 2)} for _, _, _, edges in fresh)
+    event_mass = sum(weight for _, weight, _, _ in fresh)
+    availability_mass = sum(weight for state, weight, _, _ in fresh if state.x[1])
+    joint = {
+        peer: sum(weight / len(state.x[1]) for state, weight, _, _ in fresh
+                  if peer in state.x[1])
+        for peer in (0, 2)
+    }
+    assert event_mass == Fraction(2, 9)
+    assert availability_mass == Fraction(1, 9)
+    assert joint == {0: 0, 2: Fraction(1, 9)}
+    conditional = {peer: mass / availability_mass for peer, mass in joint.items()}
+    assert conditional == {0: 0, 2: 1}
+    return event_mass, availability_mass / event_mass, conditional
+
+
 def check_successful_source_cover_counterexample():
     """Condition on all three initiations actually emitting fresh selves."""
     start = [{}, {0: 0}, {0: 0}]
@@ -142,6 +177,7 @@ def main():
     drift = check_old_count_positive_drift()
     cover_mass, cover_availability, cover_sample = (
         check_successful_source_cover_counterexample())
+    iid_mass, iid_availability, iid_sample = check_iid_two_event_refresh_counterexample()
     print("PASS exact permutation terminal paths", paths,
           "availability", availability,
           "conditional sample", conditional,
@@ -150,6 +186,9 @@ def main():
     print("PASS successful-source-cover conditioning event mass", cover_mass,
           "availability", cover_availability,
           "conditional sample", cover_sample)
+    print("PASS iid two-event refreshing event mass", iid_mass,
+          "conditional availability", iid_availability,
+          "conditional sample", iid_sample, "TV error", Fraction(1, 2))
 
 
 if __name__ == "__main__":

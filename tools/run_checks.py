@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the curated CYCLON checks using only the Python standard library.
 
-Default: six focused checks for the adopted c=ell=2 model.
+Default: ten focused checks for the adopted c=ell=2 model.
 --full: every curated current-model checker, at its default coverage.
 Legacy model variants and archived exploratory searches are never implicit.
 """
@@ -38,6 +38,12 @@ CHECKS = (
           'Exact obstructions to naive refresh/lineage arguments', quick_args=()),
     Check('c2_age_projection_obstruction', 'verify_c2_age_projection_obstruction.py',
           'Exact four-peer obstruction to age-cap/rank projection', quick_args=()),
+    Check('finite_horizon_compression', 'verify_finite_horizon_age_compression.py',
+          'All-length finite-horizon gap-compression corroboration', quick_args=()),
+    Check('c2_frozen_owner_obstruction', 'verify_c2_frozen_owner_obstruction.py',
+          'Exact target-copy drift and frozen-pair accessibility obstructions', quick_args=()),
+    Check('antisymmetric_coupon_lower', 'verify_antisymmetric_coupon_lower.py',
+          'Exact witnesses for the all-length full-state coupon lower bound', quick_args=()),
     Check('c2_recurrent_mixing', 'verify_c2_recurrent_mixing.py',
           'Exact three-peer recurrent-start benchmark; optional NumPy unused'),
     Check('capacity_one', 'verify_capacity_one.py',
@@ -70,6 +76,8 @@ CHECKS = (
           'Conditional shared-anchor owner service at length three'),
     Check('cooperative_general', 'verify_thesis_cooperative_general.py',
           'Conditional shared-zero-anchor owner service at every length'),
+    Check('cooperative_bands', 'verify_thesis_cooperative_bands.py',
+          'Conditional full-shuffle callback with unit-width secondary age bands', quick_args=()),
     Check('cooperative_vector', 'verify_thesis_cooperative_vector.py',
           'Conditional common positive-age-vector full-shuffle callback'),
     Check('proper_owner', 'verify_thesis_proper_owner.py',
@@ -87,7 +95,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     selection = parser.add_mutually_exclusive_group()
     selection.add_argument('--full', action='store_true',
-                           help='run all 27 curated current-model checks at full default coverage')
+                           help='run all 31 curated current-model checks at full default coverage')
     selection.add_argument('--check', action='append', choices=[c.name for c in CHECKS],
                            help='run this named check at full coverage; may be repeated')
     parser.add_argument('--list', action='store_true', help='list all checks without executing them')

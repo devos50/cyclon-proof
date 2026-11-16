@@ -55,3 +55,11 @@ The archived 75-state three-peer script is superseded by its maintained counterp
 ## Other protocol conventions
 
 Early frozen states, periodic counterexamples, unprotected-victim failures, and duplicate-discard lineage results describe their own completions. Several are complete negative results for those variants; they do not automatically apply to the protected/MIN target. Preserve them, but read [MODEL.md](MODEL.md) before combining them with a positive argument.
+
+## Owner-frozen extinction route: new obstructions
+
+The [current research note](research/FROZEN-OWNER-EXTINCTION.md) separates first contact from extinction. Target-reference count can have positive drift even with a frozen owner and every target descriptor strictly oldest, including when the target has linearly many copies. Freezing both transposed owners can also make the symmetry set inaccessible from a connected state. These are exact obstructions to specific shortcuts, not lower bounds on ordinary extinction/mixing time or a rejection of adaptive coupling.
+
+## Shared anchors with unit-width ages
+
+The conditional full-shuffle callback is now proved for secondary ages in coordinate-wise pairs `{m_p,m_p+1}` (`lem:fullbandcallback`), with a three-macro bound. See [UNIT-WIDTH-CALLBACK.md](research/UNIT-WIDTH-CALLBACK.md). The hypotheses are still an accessibility gap: arbitrary states need not have the shared secondary identities, let alone the stated bands. Unrestricted shared-anchor ages and a generic zero-count gain remain open. The existing counting obstruction for the last missing zeros at `ell>=4` is unchanged.

@@ -108,3 +108,25 @@ For the separate general-convergence task, prioritize length three with capacity
 
 Lean formalization is deferred at the user's request. Do not begin it until the proof work is ready and the user returns to that task.
 
+
+## Arbitrary-population availability refinement (16 November 2026)
+
+`lem:c2constanttransientavailability` now gives `alpha_x,i(t) >= exp(-8)/8` for every `t>=8(n-1)` at `c=ell=2`, uniformly over arbitrary finite initial ages. This yields the linear-in-`n` conditioning factor `4 exp(8) (n-2)` in `cor:c2linearconditioningfactor`, an alternative to the earlier quadratic factor. Its numerical constant is pessimistic. The missing task remains contraction of label bias; this result is not a generic mixing proof.
+
+## Generic finite-horizon progress (16 November 2026)
+
+`prop:finitehorizonagecompression` now gives an exact all-size, all-length reduction: for horizon `T`, cap **successive global initial-age gaps**, anchored at zero, at `T+1`. Every initial state has a representative with maximum age `nc(T+1)` and exactly the same cache-identity trajectory law through `T`. The proof tracks provenance plus at most `T` increments, preserving comparisons and MIN ties. This is initial compression, not repeated truncation or a fixed Markov projection.
+
+`cor:finitehorizoncertification` consequently allows finite exact certificates covering all initial ages at fixed parameters and horizon. The state family is huge; no polynomial rate or generic contraction is established. The checker is `verification/mandatory-removal/verify_finite_horizon_age_compression.py`.
+
+A strengthened shortcut counterexample is now `prop:c2iidrefreshbias`: at deterministic time two under the actual iid scheduler, conditioning on complete refreshing and observer availability yields a deterministic, maximally biased two-label sample. The corresponding exact enumeration was added to the existing refreshing checker.
+
+These continuation results do not replace the existing arbitrary-network convergence theorems for lengths one and two. The open targets remain a useful polynomial sampling rate as membership grows, length-three convergence at fixed small caches outside the dense regime, and general higher-length convergence.
+
+`prop:finitehorizonfulltv` now permits exact bounded-initial-age checks of the **full-state antisymmetric** contraction coefficient, not just query errors. The injective age map is common across both compared starts. `cor:finiteantisymmetriccertificate` explains why such a uniform coefficient can be iterated without repeating compression. A practical certificate or symbolic polynomial bound for growing populations remains missing.
+
+The full-state finite-certificate route has a proved coupon-collector limitation (`prop:antisymmetriccouponlower`): no strict contraction before `n-1` events, and a fixed constant contraction factor requires `Omega(n log n)` events. A high-age in-star separates the full laws; this is not the same as a local-query lower bound. The [owner-frozen research note](research/FROZEN-OWNER-EXTINCTION.md) also rules out positive age-only copy potentials and unconditional frozen-pair accessibility as shortcuts.
+
+## Additional conditional callback progress
+
+`lem:fullbandcallback` now permits shared secondary ages to differ by one at full shuffle `ell=c>=3`; exact equality across holders is unnecessary. Three preparation/owner macros suffice, rather than the common-vector lemma's two. The [research note](research/UNIT-WIDTH-CALLBACK.md) includes the proof and two `n=6,c=3` regressions. Its checker passed 6600 seeded configurations. This is conditional progress only: obtaining shared identities and narrow age bands remains open, as does the higher-length last-zero endgame.

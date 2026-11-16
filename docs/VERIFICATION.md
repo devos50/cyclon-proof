@@ -97,3 +97,26 @@ Some archived temporary experiments do need path repair in their copied versions
 - `cyclon_c2_uniform_erasure_verify.py` dynamically loads the earlier lineage engine through the working-directory-relative path `docs/peer-sampling-convergence/mandatory-removal/verify_lineage_erasure.py`. This also needs attention when reproducing that historical experiment.
 
 The exploratory archive is kept verbatim, including historical paths. Those paths are not dependencies of the curated checks; running an archived experiment directly can require replacing them with paths resolved relative to `__file__`. Record such edits and keep exploratory programs outside `tools/run_checks.py --full`.
+
+## Constant transient availability proof (16 November 2026)
+
+`lem:c2constanttransientavailability` and `cor:c2linearconditioningfactor` are symbolic consequences of the existing arbitrary-population contact theorem, scheduler thinning, and protected passive reception. They are not finite certificates. The supporting readiness checker was rerun: `python3 -B verification/mandatory-removal/verify_c2_ready_drift.py` passed 14,260 endpoint cases. These finite checks corroborate the contact proof; they do not independently establish the arbitrary-`n` availability statement.
+
+## Finite-horizon compression checker
+
+`python3 -B verification/mandatory-removal/verify_finite_horizon_age_compression.py` (suite name `finite_horizon_compression`) checks 110,000 integer offset comparisons and 52,741 coupled legal branches from 48 initial configurations. It covers every `1<=ell<=c<=min(3,n-1)` for `2<=n<=5` at horizon two or three; its independent generic transition implementation is also checked against the existing four-peer kernel on the gap-obstruction states. These finite cases corroborate `prop:finitehorizonagecompression`; the arbitrary-size claim is supplied by the written provenance argument. No mixing inequality is certified by this script.
+
+The refreshed `verify_c2_refresh_counterexample.py` additionally enumerates all ordinary iid two-event paths for `prop:c2iidrefreshbias`, asserting refreshing mass `2/9`, conditional availability `1/2`, and deterministic conditional output. The proof also explicitly lists the only two refreshing histories; no simulation or schedule conditioning is hidden in the enumeration.
+
+The three-peer order-projection checker now also compares all 1,306 transition rows against an independent three-peer-specific implementation that does not call the shared `outcomes`/`Actual` kernel. This regression and the 3,918 numerical-lift corroborations pass. The symbolic projection argument, not the lift samples, establishes arbitrary-initial-age coverage.
+
+For `prop:finitehorizonfulltv`, the compression checker additionally constructs a common map on all source-age-plus-offset values, verifies that it is well-defined and injective, and checks full aged successors against that map across the enumerated branches. This strengthens the previous identity-only regression. The finite runs remain corroboration of a symbolic reduction, not a computed arbitrary-population contraction certificate.
+
+## Additional contraction-route checks
+
+- `verify_c2_frozen_owner_obstruction.py` checks 114 single-hub and 320 multi-hub next-event laws, including unchanged surviving target ages; a separate 60-branch check corroborates the frozen-pair invariant. These support the [symbolic research note](research/FROZEN-OWNER-EXTINCTION.md), not an extinction-time bound.
+- `verify_antisymmetric_coupon_lower.py` compares 95 exact star/transposed terminal-law pairs for `n=3..5`, every allowed capacity/length, and `T=0..4`. It checks equality of the separating-event probability with the coupon tail and the second-moment lower bound. The all-size claim is proved symbolically in `prop:antisymmetriccouponlower`.
+
+## Unit-width full-shuffle callback checks
+
+`python3 -B verification/mandatory-removal/verify_thesis_cooperative_bands.py` passed 6600 seeded exact controlled paths for `n=4..14`, every `3<=c=ell<=n-1`, including coordinate-specific lower ages up to `10^6`. The run contains 19145 legal exchanges, 2307 independently evaluated singleton-residual updates, and a longest path of 11 exchanges. Forty-four starts require three nonfinishing macros; two explicit `n=6,c=3` regressions also exercise the third-macro cases. The script checks exact owner-vector resets, all original zero copies, legal oldest choices, and the path bound. This is finite corroboration of the symbolic conditional lemma `lem:fullbandcallback`, not exhaustive all-state enumeration or generic convergence.

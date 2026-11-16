@@ -12,7 +12,7 @@
 \newcommand{\Law}{\mathcal L}
 \title{CYCLON convergence:\\proved cases and progress toward a general theorem}
 \author{Research working note}
-\date{20 October 2026}
+\date{16 November 2026}
 \begin{document}
 \maketitle
 
@@ -45,8 +45,11 @@ connectivity within $O(n^2+n\log(1/\varepsilon))$ global
 activations with high probability. On three peers, an exact
 positivity projection and integer contraction certificate give
 an $O(\log(1/\varepsilon))$ single-sample bound uniformly
-over all initial ages. An arbitrary-population polynomial
-sampling bound remains open.
+over all initial ages. A time-zero local-order refinement
+certifies error below $10^{-6}$ at every time at least $56$
+events. For arbitrary population size, new availability and
+finite-horizon age-compression lemmas sharpen the contraction
+framework, but a polynomial sampling bound remains open.
 A general two-entry theorem now covers every allowed
 cache capacity and population size. Its outward-spread
 argument combines a bounded count of young descriptors
@@ -4232,6 +4235,52 @@ this event has probability $2/3$, conditional availability is
 $5/8$, and the conditional sample probabilities are $(3/5,2/5)$.
 
 
+\begin{proposition}[Refreshing does not remove bias under iid scheduling]
+\label{prop:c2iidrefreshbias}
+Start the adopted $n=3,c=\ell=2$ protocol from
+$C_0=\varnothing$, $C_1=C_2=\{0^0\}$, with every initial
+descriptor marked old as in Lemma~\ref{lem:younginteractioncomponents}.
+Use the independent uniform initiator scheduler, and let $Y$ be
+the event that every resident descriptor is young after exactly
+two global events. Then
+\[
+ \Pr(Y)=\frac29,\qquad
+ \Pr\{|C_1(2)|\ge1\mid Y\}=\frac12,
+\]
+but
+\[
+ \Law(S_1^{(1)}(2)\mid Y,\ |C_1(2)|\ge1)=\delta_2.
+\]
+The conditional sampling error is therefore $1/2$, even though
+the interaction graph is connected on $Y$.
+\end{proposition}
+\begin{proof}
+The event $Y$ occurs exactly for the two initiator sequences
+$(1,2)$ and $(2,1)$, each of probability $1/9$. The first leaf
+contacts the empty root, becomes empty, and inserts its fresh
+self at the root. The other leaf must then initiate to remove
+the remaining old descriptor; it receives the first leaf's
+fresh identity. All choices in these two paths are forced.
+For sequence $(1,2)$ the terminal caches are
+\[
+ (\{1^0,2^0\},\ \varnothing,\ \{1^0\}),
+\]
+whereas sequence $(2,1)$ gives
+\[
+ (\{1^0,2^0\},\ \{2^0\},\ \varnothing).
+\]
+Every other two-event initiator sequence leaves an old descriptor.
+Both listed histories contact both edges of the root's star.
+Only the second makes observer $1$ available, and its sole
+cached identity is $2$, proving every assertion.
+\end{proof}
+
+This proposition conditions on refreshing as well as availability;
+it does not identify that law with the target conditioned on
+availability alone. It rules out using the refreshing event as
+an automatic certificate of uniform samples and does not contradict
+eventual convergence.
+
 \paragraph{An exact three-peer recurrent-class benchmark.}
 The checker \texttt{verify\_c2\_recurrent\_mixing.py} enumerates
 the entire family reachable from $H(V,2)$ when $n=3$ and
@@ -4298,6 +4347,72 @@ survives with probability at least $1-1/n$.
 The stated uniform bound follows.
 \end{proof}
 
+\begin{lemma}[Population-independent transient availability]
+\label{lem:c2constanttransientavailability}
+For the adopted $c=\ell=2$ protocol, every $n\ge3$, every
+weakly connected initial state with arbitrary finite ages,
+and every observer $i$, put $q=1-1/n$. For integers $h\ge1$
+and $t\ge h$,
+\[
+ \alpha_{x,i}(t)\ge
+ q^h\left(1-\frac{7(n-1)}h\right)_+.
+\]
+In particular,
+\[
+ \alpha_{x,i}(t)\ge \frac{e^{-8}}8
+ \qquad(t\ge8(n-1)).
+\]
+This is an availability bound, not a contraction or sampling
+uniformity claim.
+\end{lemma}
+\begin{proof}
+First suppose $C_i$ is empty. Its first nonempty time $\tau$
+is exactly the first exchange across the cut
+$\{i\},V\setminus\{i\}$: before that time its own activations
+are no-ops, and the first arriving request inserts a protected
+fresh self descriptor. Weak connectivity supplies an incoming
+reference to $i$. Thus Theorem~\ref{thm:c2readycontact} gives
+$\mathbb E_x\tau\le7n$.
+
+Construct the execution before $\tau$ by interleaving an
+independent uniform scheduler on $V\setminus\{i\}$ with
+independent Bernoulli choices indicating whether the next
+global initiator is outside $\{i\}$. The success probability
+is $q$. Let $K$ be the number of outside activations needed
+to make $C_i$ nonempty in the outside-only execution.
+The intervening activations of $i$ do not change the state.
+Consequently $\tau$ is a sum of $K$ independent geometric
+waiting times of mean $1/q$, independent of the outside-only
+execution. Tonelli's theorem, or conditioning on $K$, gives
+\[
+ \mathbb E_x K=q\,\mathbb E_x\tau\le7(n-1).
+\]
+This argument does not assume any changed scheduler in the
+target model; the outside-only execution is an auxiliary
+representation of its no-op thinning.
+
+Now condition the next $h$ ordinary global activations on
+none choosing $i$. This event has probability $q^h$.
+Conditional on it the initiators are independent and uniform
+on $V\setminus\{i\}$, with the protocol's other randomness
+unchanged. Markov's inequality gives
+$\Pr\{K\le h\}\ge(1-7(n-1)/h)_+$.
+Once $i$ becomes nonempty, it cannot empty without its own
+activation: a passive exchange always receives a protected
+fresh nonself identity. Therefore $C_i(h)$ is nonempty on
+the intersection of these two events. If $C_i$ is initially
+nonempty, the no-$i$ event alone suffices and gives the same
+lower bound.
+
+The estimate is uniform over the state at the start of the
+block. Conditioning on the state at time $t-h$ proves it
+for every $t\ge h$. Finally set $h=8(n-1)$ and use
+\[
+ (1-1/n)^{n-1}
+ =\left(1+\frac1{n-1}\right)^{-(n-1)}\ge e^{-1}.
+\]
+\end{proof}
+
 \begin{proposition}[Reduction to pairwise label bias]
 \label{prop:c2localcouplingtarget}
 Write $Q_{x,i,t}$ for the law of a single uniformly chosen
@@ -4350,6 +4465,31 @@ couple their cache identity sets at $i$; equality of all
 other caches or numerical ages is unnecessary.
 \end{proof}
 
+
+\begin{corollary}[Linear population factor in the bias reduction]
+\label{cor:c2linearconditioningfactor}
+Under the assumptions of Proposition~\ref{prop:c2localcouplingtarget},
+for every integer $t\ge8(n-1)$,
+\[
+ \left\|\Law_x(S_i^{(1)}(t)\mid |C_i(t)|\ge1)
+       -\Unif(V\setminus\{i\})\right\|_{\TV}
+ \le4e^8(n-2)\,\beta_{x,i}(t).
+\]
+Hence a uniform bound $\beta_{x,i}(t)\le K_n e^{-t/L_n}$
+would imply error at most $\varepsilon$ at every integer time
+\[
+ t\ge\max\!\left\{8(n-1),\,
+ L_n\log\!\frac{4e^8(n-2)K_n}{\varepsilon}\right\}.
+\]
+\end{corollary}
+\begin{proof}
+Substitute Lemma~\ref{lem:c2constanttransientavailability}
+into Proposition~\ref{prop:c2localcouplingtarget}.
+The coefficient is linear rather than quadratic in $n$,
+but its constant is large; the earlier $10n(n-2)$ factor
+can be retained whenever it is smaller. No decaying bound
+on $\beta$ has been established by this availability argument.
+\end{proof}
 
 \begin{lemma}[A coupling through a symmetry set]
 \label{lem:c2symmetrycoupling}
@@ -4669,6 +4809,287 @@ arbitrary-age initial states. It does not exclude a richer
 finite abstraction that retains critical age differences,
 and does not prove that four-peer recurrent ages are unbounded.
 
+
+\begin{proposition}[Exact finite-horizon compression of initial age gaps]
+\label{prop:finitehorizonagecompression}
+For every allowed $n,c,\ell$ and integer horizon $T\ge0$,
+let $0=a_0<a_1<\cdots<a_m$ be the distinct positive ages
+of an initial state together with zero, so $m\le nc$.
+Define $b_0=0$ and
+\[
+ b_j=b_{j-1}+\min\{a_j-a_{j-1},T+1\}.
+\]
+Replace every initial age $a_j$ by $b_j$, leaving all cache
+identities unchanged. The original and compressed processes
+can be coupled so that their entire cache-identity trajectories
+agree through event $T$. In particular, every age-blind query
+law, including unavailability, agrees at every $t\le T$.
+The compressed initial ages are at most $nc(T+1)$.
+This is a horizon-dependent initial-state reduction, not a
+fixed finite Markov projection or repeated truncation of ages.
+\end{proposition}
+\begin{proof}
+First, for any $j,k$ and integers $u,v\in[0,T]$, the comparison
+(including equality) between $a_j+u$ and $a_k+v$ is the same
+as between $b_j+u$ and $b_k+v$. To see this, assume $j>k$.
+If $a_j-a_k\le T$, every intervening consecutive gap is
+at most $T$, so none is changed and $b_j-b_k=a_j-a_k$.
+If $a_j-a_k>T$, either none is changed, or at least one
+compressed gap equals $T+1$; in either case $b_j-b_k>T$.
+Offsets differing by at most $T$ cannot reverse this strict
+comparison. The other order and equality cases follow.
+
+Represent every current descriptor age by a provenance pair
+$(j,u)$ with numerical value $a_j+u$. Initially $u=0$;
+a fresh self descriptor starts at $(0,0)$; copying preserves
+the pair; an active increment increases $u$ by one; and
+minimum merging retains a pair with the smaller value.
+At an equality choose either pair by a fixed coupled rule.
+Through event $T$, every offset lies in $[0,T]$, since a
+lineage increments at most once per global event.
+Use the same provenance pair in the compressed execution,
+with value $b_j+u$.
+
+Inductively, identities and provenance pairs agree before
+each activation. Use the same initiator. The comparison fact
+makes the oldest-identity sets identical, so couple their
+uniform choices identically. Extras, reply subsets, and
+eligible-victim subsets have identical identity-defined choice
+sets and probabilities, and can also be chosen identically.
+The comparison fact preserves every minimum merge, including
+its ties, so the provenance invariant persists. Empty-cache
+activations are no-ops in both processes. This proves the
+pathwise identity assertion. Couple any age-blind query choice
+identically. Finally each of at most $nc$ positive gaps is
+bounded by $T+1$, proving the stated age bound.
+\end{proof}
+
+\begin{corollary}[Finite certificates can cover all initial ages]
+\label{cor:finitehorizoncertification}
+Fix $n,c,\ell,T$ and an observer/query size. The set of query
+laws at time $T$ over all allowed initial states is exactly
+the set obtained by allowing only initial ages in
+$\{0,\ldots,nc(T+1)\}$. Thus any proposed rational finite-time
+query inequality can in principle be checked by finite exact
+enumeration, without an unproved age cutoff. If every allowed
+initial state has availability at least $\delta>0$ and
+conditional-query total-variation error at most $\varepsilon$
+at time $T$, both bounds also hold at every later time.
+\end{corollary}
+\begin{proof}
+The bounded-age family is a subset of the original one;
+conversely Proposition~\ref{prop:finitehorizonagecompression}
+maps every original state to a member of that family with
+the same identity graph and query law. All event probabilities
+are rational and every finite history has finitely many
+branches. Numerical ages in the compressed run are allowed
+to evolve normally, and stay at most $nc(T+1)+T$ through the
+horizon. No truncation is performed during enumeration.
+
+For the final assertion, let $q_z$ be the subprobability
+vector of available outputs after $T$ events from $z$,
+$\alpha_z$ its total mass, and $u$ the uniform target vector.
+The hypotheses are $\alpha_z\ge\delta$ and
+$\|q_z-\alpha_z u\|_1\le2\varepsilon\alpha_z$ for all $z$.
+Condition on the full state at time $s\ge0$ and average.
+The triangle inequality gives the same vector inequality
+for time $s+T$, and its availability is still at least
+$\delta$. Division by twice availability proves the claim.
+This preserves a certified error threshold; it does not
+multiply the error by another factor $\varepsilon$ per block.
+\end{proof}
+
+\begin{proposition}[Compression preserves finite-horizon full-state distances]
+\label{prop:finitehorizonfulltv}
+Fix allowed $n,c,\ell$ and an integer $T\ge0$, and write $P$
+for the adopted kernel on the weakly connected state space
+$\Omega$. Let $\Omega_M$ denote its states whose initial ages
+are at most $M$. For a fixed label transposition $\sigma$, define
+\[
+ D_\sigma(T)=\sup_{x\in\Omega}
+       \|P^T(x,\cdot)-P^T(\sigma x,\cdot)\|_{\TV}.
+\]
+Then
+\[
+ D_\sigma(T)=\max_{x\in\Omega_{nc(T+1)}}
+       \|P^T(x,\cdot)-P^T(\sigma x,\cdot)\|_{\TV}.
+\]
+More generally, the full two-start coefficient satisfies
+\[
+ \sup_{x,y\in\Omega}\|P^T(x,\cdot)-P^T(y,\cdot)\|_{\TV}
+ =\max_{x,y\in\Omega_{2nc(T+1)}}
+       \|P^T(x,\cdot)-P^T(y,\cdot)\|_{\TV}.
+\]
+All transitions in these finite optimizations are unrestricted;
+only the initial states are bounded.
+\end{proposition}
+\begin{proof}
+Use the global initial levels $a_j$ and their compressed values
+$b_j$ from Proposition~\ref{prop:finitehorizonagecompression}.
+On the finite set of possible numerical ages
+\[
+ U=\{a_j+u:0\le j\le m,\ 0\le u\le T\},
+\]
+define $\phi(a_j+u)=b_j+u$. The comparison lemma in that
+proof preserves both equality and strict order, even for
+provenance pairs from different histories. Thus $\phi$ is
+well-defined and injective on $U$. Apply it entrywise to
+full age-labelled states, leaving all identities unchanged.
+The resulting map $\Phi$ is injective on every state that
+can occur through event $T$ from the given initial levels.
+
+The pathwise coupling in that proposition shows that each
+compressed terminal law is exactly the pushforward of its
+original terminal law under this single map $\Phi$. A
+transposition preserves the global initial-age levels, and
+$\Phi$ commutes with relabelling. The two laws from $x$ and
+$\sigma x$ therefore have a common injective pushforward;
+their total-variation distance is unchanged. The compressed
+initial state belongs to $\Omega_{nc(T+1)}$. This proves
+the first supremum is at most its displayed finite maximum;
+the reverse inequality follows by inclusion.
+
+For arbitrary $x,y$, first take the union of their initial
+age levels, anchored at zero, and compress that common list.
+It has at most $2nc$ positive levels. The same argument
+provides one common injective map for both executions and
+preserves their full-state distance exactly, with compressed
+starts in $\Omega_{2nc(T+1)}$. Inclusion again proves equality.
+The maps may depend on the initial pair and on $T$; no common
+infinite-time conjugacy is asserted.
+\end{proof}
+
+\begin{corollary}[Finite certificates for antisymmetric block contraction]
+\label{cor:finiteantisymmetriccertificate}
+Let $T\ge1$. If the finite maximum defining $D_\sigma(T)$
+is at most $\rho<1$, then for every bounded function satisfying
+$f(\sigma x)=-f(x)$,
+\[
+ \|P^t f\|_\infty
+ \le \rho^{\lfloor t/T\rfloor}\|f\|_\infty.
+\]
+For the adopted $c=\ell=2$ protocol, if this bound holds with
+the same $\rho\in(0,1)$ for all transpositions fixing observer
+$i$, then
+\[
+ \beta_{x,i}(t)\le\rho^{\lfloor t/T\rfloor}.
+\]
+Consequently, for $0<\varepsilon<1$, the conditional
+single-sample error is at most $\varepsilon$ at every integer time
+\[
+ t\ge\max\!\left\{8(n-1),\,
+ T\left\lceil\frac{\log(4e^8(n-2)/\varepsilon)}{-\log\rho}
+ \right\rceil\right\}.
+\]
+\end{corollary}
+\begin{proof}
+Equivariance and antisymmetry give
+\[
+ P^Tf(x)=\frac12\sum_z
+   \bigl(P^T(x,z)-P^T(\sigma x,z)\bigr)f(z),
+\]
+whose absolute value is at most
+$D_\sigma(T)\|f\|_\infty$. The kernel preserves
+antisymmetry and is a supremum-norm contraction. Iteration
+of this uniform all-state bound, followed by any remaining
+events, proves the first claim without compressing again.
+For a target pair $a,b$, use the antisymmetric function
+equal to the statewise single-query probability of $a$
+minus that of $b$, and use Proposition~\ref{prop:c2localcouplingtarget}.
+Its supremum norm is at most one. Maximizing over the target
+pairs proves the bound on $\beta$; Corollary~\ref{cor:c2linearconditioningfactor}
+then gives the stated horizon.
+\end{proof}
+
+By global relabelling, the coefficients $D_\sigma(T)$ are
+equal for all transpositions, so a certificate for one fixed
+pair suffices. This is a finite-certification route, not an
+achieved polynomial contraction estimate. A useful arbitrary-$n$
+bound would still require polynomial $T_n$ and polynomial
+$(1-\rho_n)^{-1}$. A query-error threshold by itself cannot
+be multiplied blockwise; the certificate here concerns the
+full-state antisymmetric coefficient. Nor does antisymmetric
+contraction alone establish uniqueness in label-invariant
+parts of the state space.
+
+\begin{proposition}[A coupon-collector obstruction to short full-state blocks]
+\label{prop:antisymmetriccouponlower}
+For every allowed $n,c,\ell$, transposition $\sigma$, and
+integer $T\ge0$, let $D_\sigma(T)$ be the full-state
+coefficient of Proposition~\ref{prop:finitehorizonfulltv}.
+Then
+\[
+ D_\sigma(T)\ge
+ 1-\sum_{k=0}^{n-1}(-1)^k\binom{n-1}{k}
+                    \left(1-\frac{k}{n}\right)^T
+ \ge \frac{M_T}{1+M_T},
+ \qquad M_T=(n-1)(1-1/n)^T.
+\]
+In particular $D_\sigma(T)=1$ for $T<n-1$. To certify
+$D_\sigma(T)\le\rho$ for a fixed constant $0<\rho<1$,
+it is necessary that
+\[
+ T\ge
+ \frac{\log((n-1)(1-\rho)/\rho)}{-\log(1-1/n)}.
+\]
+Thus constant-factor full-state antisymmetric contraction
+requires $\Omega(n\log n)$ events as $n$ grows. This is
+not an $\Omega(n\log n)$ lower bound for a single local query.
+\end{proposition}
+\begin{proof}
+Write $\sigma=(a\ b)$, choose an integer $A>T$, and start
+from the in-star $C_a=\varnothing$ and $C_v=\{a^A\}$ for
+all $v\ne a$. This is allowed for every capacity and length.
+Before a leaf's first activation its identity is absent from
+all other caches: only its own fresh-self emission can first
+introduce it. Therefore it cannot be contacted before that
+activation, and its initial descriptor stays unchanged.
+At its first activation the singleton leaf contacts $a$,
+removes the selected partner, and sends no extra. Its old
+$a^A$ descriptor is deleted, not copied. Consequently an
+initial high-age $a$ descriptor survives exactly when some
+of the $n-1$ leaves has not yet initiated.
+
+In the transposed start every initial high-age descriptor
+has identity $b$, not $a$. Fresh descriptors have numerical
+age at most $T$ through the horizon, so the transposed process
+cannot contain any $a$ descriptor of age at least $A$ at
+that time. The event that some such high-age $a$ descriptor
+exists is therefore a separating event whose probability
+in the first process is the missing-leaf coupon probability.
+Inclusion--exclusion gives the first displayed lower bound.
+
+Let $Z$ count unactivated leaves. Its mean is $M_T$, and
+for distinct leaves the probability both are unactivated is
+$(1-2/n)^T\le(1-1/n)^{2T}$. Thus
+$\mathbb E Z^2\le M_T+M_T^2$. Cauchy--Schwarz gives
+$\Pr\{Z>0\}\ge(\mathbb E Z)^2/\mathbb E Z^2
+\ge M_T/(1+M_T)$. If $T<n-1$, covering all leaves is
+impossible and the first bound equals one. Finally
+$M_T/(1+M_T)\le\rho$ implies
+$M_T\le\rho/(1-\rho)$, yielding the necessary block length.
+The argument concerns the full overlay's high-age information,
+which a fixed observer need not retain in its query law.
+\end{proof}
+
+The checker \texttt{verify\_antisymmetric\_coupon\_lower.py}
+corroborates the separating event by exact terminal-law
+enumeration for $3\le n\le5$, every allowed $c,\ell$,
+and $0\le T\le4$. The symbolic argument, not these $95$
+finite cases, supplies the arbitrary-network lower bound.
+
+The checker \texttt{verify\_finite\_horizon\_age\_compression.py}
+corroborates the comparison argument with $110000$ exact
+offset comparisons and the coupling with $52741$ legal
+branches from $48$ starts, covering $2\le n\le5$,
+$1\le\ell\le c\le\min(3,n-1)$, and horizons two or three.
+These finite checks support the symbolic proof; they are not
+an exhaustive arbitrary-network mixing certificate. The
+finite family can be extremely large, and no polynomial
+enumeration cost, contraction estimate, or generic sampling
+rate follows. Unlike fixed absolute caps plus ranks, the
+construction retains all age differences relevant to the
+chosen horizon.
 
 \subsection{Zero-age normalization for arbitrary capacity at $\ell=2$}
 
@@ -5766,6 +6187,108 @@ before that contact, and their updates preserved
 every original zero and every identity-$a$ copy.
 \end{proof}
 
+\begin{lemma}[Full-shuffle callback with unit-width secondary age bands]
+\label{lem:fullbandcallback}
+Suppose $\ell=c\ge3$ and let $I=\{q\ne a:a^0\in C_q\}$.
+Let $P$ be a set of $c-2$ identities cached by the owner $a$.
+For each $p\in P$, fix an integer $m_p\ge0$. Suppose every
+$q\in I$ contains $a^0$ and every $p\in P$ at age in
+$\{m_p,m_p+1\}$, while the owner's $p$ age is at least $m_p$.
+A controlled path of at most $3(|I|+1)+1$ exchanges increases
+$Z_a$ by one, preserves every original zero throughout, and
+never decreases $N_a$. No density assumption is required.
+The shared-anchor hypotheses are conditions of this lemma,
+not a proved accessibility property of arbitrary states.
+\end{lemma}
+\begin{proof}
+The no-self rule gives $P\cap(I\cup\{a\})=\varnothing$.
+Put $M=\max_{p\in P}m_p$. Whenever an outside-$I$ owner
+head is oldest or tied, select it and finish: its protected
+fresh $a^0$ gains a zero and all other zero holders are
+untouched. Otherwise inspect an actual oldest $Q\in I$
+and freeze the owner during the following preparation.
+
+Each old zero holder has the $c-1$ reserved anchors
+$\{a\}\cup P$ and at most one residual entry. Stop preparing
+$Q$ if that entry is absent, is outside $I$, or has age
+below the maximum current secondary age at $Q$. Otherwise
+select its internal residual partner $R$ and execute the
+full shuffle, sending and returning all reserved anchors.
+This is an actual oldest choice; the zero anchor is no
+older than the secondary maximum. Both zero anchors stay
+zero. For each secondary coordinate, its endpoint ages
+$(u,v)$ become $\min(u+1,v)$ at both endpoints, which stays
+in $\{m_p,m_p+1\}$. Thus all anchor hypotheses persist.
+
+On residual identities this is exactly a capacity-one
+singleton exchange: the active residual is replaced by the
+responder's pre-exchange residual, filtering a returned self,
+and the responder's residual becomes fresh $Q^0$. Only $Q$
+initiates during preparation. A first visit establishes this
+pointer at the responder; a repeat returns it and empties
+$Q$'s residual cache. Hence preparation stops within $|I|$
+exchanges. The owner's inspected oldest choice is unchanged.
+
+Execute $a\to Q$. Its reply contains self-$a$, all of $P$,
+and at most one residual. There is at most one usable new
+identity at the owner, which fits the mandatory vacancy;
+no active resident is evicted. For every $p\in P$, the
+owner's incremented age is at least $m_p+1$, while the
+reply age is at most $m_p+1$. Minimum merging therefore
+resets the owner's secondary vector exactly to $Q$'s
+pre-exchange vector, which the passive $Q$ also retains.
+Fresh $a^0$ and all secondary anchors are protected.
+Outside holders are untouched. Call this preparation and
+owner exchange one macro.
+
+If a macro returns an $I$ residual of age $b$, it stopped
+below $Q$'s secondary maximum. The exact vector reset makes
+this also the owner's post-macro maximum $B$, so $b<B$.
+Moreover $B\in\{M,M+1\}$ and $b\le M$. A returned
+duplicate is minimum-merged and can only be younger.
+
+The owner has at most two heads outside $P$. If at most one
+is in $I$, one macro removes it, replaces it by an outside
+head, or leaves its replacement strictly younger than a
+secondary. An outside contact then finishes. If a returned
+$I$ head duplicates the other retained head, only one remains
+and is strictly younger than a secondary, also finishing.
+
+Suppose there are initially two $I$ heads. A new $I$ head
+from the first macro is strictly below a secondary and
+cannot be selected at the next macro; a second nonfinishing
+macro must select the other initial head. If the first
+macro returned no $I$ head, the second starts with at most
+one and finishes by the preceding argument. If the second
+returns no $I$ head, at most one remains and one further
+macro finishes. Otherwise, excluding the duplicate case,
+there are two returned heads. The second is below the
+current secondary maximum. The first has aged once and is
+at most $M+1$. A third macro is needed only when this first
+head is $M+1$ and the secondary maximum has fallen to $M$.
+The second returned head is then at most $M-1$. The third
+macro selects the first head, ages the second to at most
+$M$, and returns at most one new $I$ head strictly below
+the new secondary maximum, which is at least $M$.
+An outside partner can therefore be selected next.
+
+There are at most three macros of at most $|I|+1$ exchanges,
+and one final owner exchange. All preterminal endpoints
+are the owner or old zero holders; all old zeros are
+protected, and other identity-$a$ holders are untouched.
+The final responder gains its zero without losing an
+identity-$a$ copy elsewhere, proving the claims.
+\end{proof}
+
+The exact checker \texttt{verify\_thesis\_cooperative\_bands.py}
+corroborates this conditional argument on $6600$ seeded
+configurations, with $19145$ legal exchanges and $2307$
+independently compared residual updates. It also checks two
+explicit three-macro examples at $n=6,c=\ell=3$. These are
+finite corroborations, not exhaustive generic certificates.
+The hypothesis still implies $|I|\le n-c+1$, so it does not
+remove the shared-anchor endgame obstruction at $c\ge4$.
+
 For a concrete repair of the smallest owner-only
 cycle, use peers $0,1,2,3$, $c=\ell=3$, and
 \[
@@ -5800,10 +6323,11 @@ and strong connectivity. Lemma~\ref{lem:threecooperativecallback}
 supplies a cooperative callback at every shuffle
 length under shared zero anchors, and
 Lemma~\ref{lem:fullpositivecallback} allows a common
-positive age vector at full shuffle. Neither lemma
-proves that its shared-descriptor configuration is
-always accessible. Mixed ages and missing shared
-descriptors remain outside these conditional proofs.
+positive age vector at full shuffle. Lemma~\ref{lem:fullbandcallback}
+extends the latter to coordinatewise unit-width age bands.
+None of these lemmas proves that its shared-descriptor
+configuration is always accessible. More general mixed ages
+and missing shared descriptors remain outside these conditional proofs.
 Lemma~\ref{lem:largezerocallback} handles arbitrary
 mixed target ages for proper shuffles when every
 old zero holder has at least $\ell+1$ cache entries.

@@ -154,3 +154,40 @@ The paper preserves earlier investigations. Their parameter names do not make th
 4. A richer query-sufficient projection or direct coupling beyond the special three-peer case.
 
 Not claimed: heterogeneous capacities, churn/fault tolerance, the original periodic scheduler's convergence, uniform complete-overlay law, independent successive samples, generic polynomial mixing, or a Lean formalization. Lean work was explicitly deferred until the mathematical proofs are finalized.
+
+## Population-independent transient availability (16 November 2026)
+
+**PROVED (working symbolic argument).** `lem:c2constanttransientavailability` establishes, for the adopted `c=ell=2` protocol, every `n>=3`, arbitrary finite initial ages, and every observer,
+
+`alpha_x,i(t) >= exp(-8)/8` for every integer `t >= 8(n-1)`.
+
+The proof uses the existing `7n` expected singleton-cut contact bound, independent thinning of empty-observer no-ops, and a no-observer-activation event of constant probability. It does not assume that a cut crossing makes the sample uniform. `cor:c2linearconditioningfactor` consequently replaces the quadratic conditioning factor by the alternative linear factor `4 exp(8) (n-2)` after that burn-in. The constant is large; retain the earlier bound when smaller. Decay of pairwise label bias remains **OPEN**.
+
+## Generic finite-horizon age reduction
+
+| Status | Scope and claim | Source |
+|---|---|---|
+| PROVED | Every allowed `n,c,ell`, fixed integer horizon `T`: capping consecutive global initial-age gaps at `T+1`, anchored at zero, preserves the complete identity trajectory law through `T`; representative initial ages are at most `nc(T+1)`. | `prop:finitehorizonagecompression` |
+| PROVED | Fixed-parameter finite-time query laws over arbitrary initial ages equal those over the finite bounded-age family; exact exhaustive certification is possible in principle. No efficiency or contraction claim. | `cor:finitehorizoncertification` |
+
+This differs from the false fixed absolute-cap-plus-ranks projection: the retained gap data depend on the requested horizon. The [checker](../verification/mandatory-removal/verify_finite_horizon_age_compression.py) corroborates the symbolic proof, rather than proving arbitrary-size mixing by finite cases.
+
+## Refresh-conditioned bias under the actual iid scheduler (16 November 2026)
+
+**PROVED counterexample.** `prop:c2iidrefreshbias` uses the zero-age three-peer star at deterministic time two. Complete refreshing has probability `2/9` and gives a connected interaction graph. Conditional on refreshing and observer-1 availability, the output is identity 2 with probability one (TV error `1/2`). This is separate from the earlier random-permutation example. The extra freshness conditioning must not be confused with the target conditioned only on availability. It refutes a shortcut, not convergence.
+
+Uniform finite-horizon availability and conditional-error bounds, once certified for every initial state, persist at every later observation time by Markov conditioning and convexity. This does not imply multiplicative contraction across successive blocks.
+
+## Full-state finite-horizon certificates (16 November 2026)
+
+**PROVED reduction.** `prop:finitehorizonfulltv` strengthens age-gap compression: a common injective map on every reachable age `a_j+k`, `0<=k<=T`, preserves full-state TV exactly. For a fixed transposition, `sup_x TV(P^T(x),P^T(sigma x))` equals a finite maximum over weakly connected initial states with ages at most `nc(T+1)`. For arbitrary pairs of starts, use their combined initial levels and the bound `2nc(T+1)`. Transitions are never truncated.
+
+**CONDITIONAL contraction criterion.** `cor:finiteantisymmetriccertificate` shows that a verified full-state antisymmetric coefficient `rho<1` yields pairwise query bias at most `rho^floor(t/T)` for all initial ages. This is not true merely from a scalar query threshold. No new polynomial-in-`n` coefficient was obtained; such a rate still requires polynomial block length and inverse contraction gap. Antisymmetric contraction alone does not prove uniqueness in label-invariant parts of the state space.
+
+## Full-state contraction block lower bound
+
+`prop:antisymmetriccouponlower` proves for every allowed `n,c,ell` that the full-state transposition coefficient is at least the probability that `n-1` leaf coupons have not all appeared in `T` uniform activations. In particular the coefficient is exactly one when `T<n-1`, and fixed-constant contraction requires `Omega(n log n)` events. This constrains the full-state certificate route, not the local single-query mixing time; it does not rule out polynomial sampling rates.
+
+## Unit-width secondary-anchor callback (16 November 2026)
+
+**CONDITIONAL WORKING RESULT:** `lem:fullbandcallback` applies at every full shuffle `ell=c>=3`. If every old `a^0` holder shares `c-2` secondary identities, each at one of two adjacent coordinate-specific ages `{m_p,m_p+1}`, and the owner's corresponding ages are at least `m_p`, at most `3(|I|+1)+1` controlled exchanges gain a zero while preserving all old zeros. This broadens `lem:fullpositivecallback` beyond exactly common ages. The shared identities/bands are not proved universally accessible, and `|I|<=n-c+1` still prevents resolving the higher-length endgame. See [proof details](research/UNIT-WIDTH-CALLBACK.md) and [checker](../verification/mandatory-removal/verify_thesis_cooperative_bands.py).

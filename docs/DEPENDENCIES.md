@@ -260,3 +260,21 @@ For `ell=3`, all lower-length premises are available, but the small-cache zero-e
 ## Time-zero three-peer refinement (16 November 2026)
 
 `prop:c2threeorderprojection` uses the three-peer exchange geometry directly: the active cache has at most one identity and the passive cache contains fresh zero after every update. Within-row positive-age order therefore gives an exact projection without burn-in (1306 connected states). `prop:c2three56sample` combines that projection with exact integer query powers and positivity propagation, proving error below `10^-6` at every `t>=56`. It does not depend on numerical lift corroborations or imply an arbitrary-network rate. The prior 487-state general-epsilon certificate remains valid.
+
+## Constant transient availability (16 November 2026)
+
+`thm:c2readycontact` plus protected fresh-self reception and the independent uniform scheduler implies `lem:c2constanttransientavailability`: delete the empty observer's no-op activations, bound the outside-event first-fill mean by `7(n-1)`, then condition an `8(n-1)`-event block on no observer activation. Together with `prop:c2localcouplingtarget`, this gives `cor:c2linearconditioningfactor`. This branch does not depend on three-peer finite projections or provide label-bias contraction.
+
+## Generic finite-horizon reduction (16 November 2026)
+
+The all-length protocol uses ages only through increments, copies, oldest comparisons, fresh zero, and minimum merges. `prop:finitehorizonagecompression` uses bounded lineage offsets to preserve every relevant comparison after compressing initial gaps. It implies `cor:finitehorizoncertification` without needing the recurrence theorem or a mixing assumption. It does not yield a time-homogeneous projection, polynomial enumeration complexity, or the missing generic sampling bound.
+
+`prop:c2iidrefreshbias` is an independent two-event counterexample under the adopted iid scheduler. It only uses forced exchanges from a three-peer star and does not depend on convergence, finite projections, or the cut-contact theorem.
+
+`prop:finitehorizonagecompression` preserves equality and ordering of all source-age-plus-offset pairs, including across different histories. This gives the common injective reachable-age map in `prop:finitehorizonfulltv`. Equivariance then supplies `cor:finiteantisymmetriccertificate`; for `c=ell=2`, combine it with `cor:c2linearconditioningfactor` for a conditional sampling horizon. These are proved reductions, not an achieved generic contraction coefficient.
+
+`prop:antisymmetriccouponlower` uses only the adopted mandatory partner deletion, fresh-self-only identity introduction, bounded per-event age increments, and the iid scheduler. It supplies a full-state coefficient lower bound for all shuffle lengths, independent of the convergence theorems. It does not imply the same lower bound for the local query observable.
+
+## Unit-width secondary-anchor callback
+
+`lem:fullbandcallback` extends the mechanism of `lem:fullpositivecallback`: full-shuffle reserved anchors leave a singleton residual; coordinate updates `min(u+1,v)` preserve each unit-width band; the owner resets exactly to the responder vector; the two nonsecondary owner heads permit a three-macro termination argument. It needs no density assumption or probabilistic mixing theorem. The checker corroborates these deterministic legal paths. Shared-anchor accessibility and the larger-length endgame do not follow.

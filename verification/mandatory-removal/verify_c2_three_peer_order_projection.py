@@ -79,12 +79,53 @@ def check_lifts(states, indices, rows):
     return count
 
 
+def check_independent_three_peer_kernel(states, indices, rows):
+    """Compare every row with a direct three-peer-specific derivation.
+
+    This implementation does not call outcomes or Actual. For p->q, let r
+    be the remaining label. The new active row consists only of r, if
+    either old row held r. The new passive row has fresh p and possibly r.
+    Thus victim choices never arise here; only scheduler and oldest ties
+    are random. Integer weights are six times the transition probability.
+    """
+    for index, state in enumerate(states):
+        independently_derived = defaultdict(int)
+        for p in range(3):
+            active = dict(state[p])
+            if not active:
+                independently_derived[index] += 2
+                continue
+            maximum = max(active.values())
+            partners = [q for q, age in active.items() if age == maximum]
+            for q in partners:
+                r = 3 - p - q
+                passive = dict(state[q])
+                new_active, new_passive = {}, {p: 0}
+                if r in active:
+                    new_active[r] = active[r] + 1
+                if r in passive:
+                    new_active[r] = min(new_active.get(r, passive[r]), passive[r])
+                    new_passive[r] = passive[r]
+                if r in active:
+                    new_passive[r] = min(new_passive.get(r, active[r] + 1),
+                                         active[r] + 1)
+                successor = list(state)
+                successor[p] = tuple(sorted(new_active.items()))
+                successor[q] = tuple(sorted(new_passive.items()))
+                independently_derived[indices[project(tuple(successor))]] += (
+                    2 // len(partners))
+        assert dict(independently_derived) == rows[index]
+    return len(states)
+
+
 def certificate():
     states = projection_states()
     assert len(states) == 1306
     assert all(project(state) == state for state in states)
     print('Connected local-order states:', len(states))
     indices, rows = exact_rows(states)
+    print('Independent three-peer transition rows:',
+          check_independent_three_peer_kernel(states, indices, rows))
     permutation = [indices[relabel(state)] for state in states]
     for index, row in enumerate(rows):
         assert {permutation[j]: weight for j, weight in row.items()} == rows[permutation[index]]

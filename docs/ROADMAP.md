@@ -126,3 +126,21 @@ Lean formalization was discussed and explicitly deferred by the user until the m
 
 The arbitrary-network polynomial sampling bound and the arbitrary-shuffle convergence theorem remain open. No completion date is established.
 
+
+## Availability refinement (16 November 2026)
+
+The conditioning step now has an arbitrary-`n` constant availability bound: `exp(-8)/8` after `8(n-1)` events (`lem:c2constanttransientavailability`). Hence pairwise label-bias decay would incur only a linear population factor (`cor:c2linearconditioningfactor`). This sharpens a prerequisite but does not prove the needed decay. Continue prioritizing a genuine contraction or a rigorous obstruction, rather than treating communication or availability as sampling uniformity.
+
+## New finite-horizon tool (16 November 2026)
+
+For a fixed test horizon `T`, `prop:finitehorizonagecompression` removes arbitrary-age truncation uncertainty: initial global consecutive gaps capped at `T+1` give an exact identity-trajectory representative with maximum initial age `nc(T+1)`. All numerical ages then evolve normally. This permits rigorous finite certificates for richer abstractions or candidate couplings, while their state-space cost can be enormous. The missing generic step is still a quantitative label-bias contraction argument, not age boundedness alone.
+
+`prop:c2iidrefreshbias` now rules out a freshness-conditioning shortcut directly under the adopted iid scheduler at deterministic time two; no random-permutation scheduler is needed for this negative result.
+
+A further rigorous certificate route is available: `prop:finitehorizonfulltv` reduces the uniform full-state transposition coefficient at a chosen horizon to bounded initial ages. `cor:finiteantisymmetriccertificate` then converts a certified coefficient below one into iterated bias contraction. This finite family may be enormous; no efficient arbitrary-`n` enumeration or polynomial gap is asserted. Do not confuse a scalar query threshold (which only persists) with this operator contraction (which multiplies).
+
+A full-state transposition certificate cannot contract in fewer than `n-1` events and needs `Omega(n log n)` events for a fixed constant factor (`prop:antisymmetriccouponlower`). This is compatible with polynomial work, but reinforces the distinction between full-overlay and direct-query contraction. See also [owner-frozen extinction obstructions](research/FROZEN-OWNER-EXTINCTION.md) before choosing a count-based potential or freezing both swapped owners.
+
+## Conditional callback refinement (16 November 2026)
+
+The full-shuffle callback now covers shared secondary vectors with coordinate-wise unit-width bands, not only identical vectors (`lem:fullbandcallback`). The [conditional proof](research/UNIT-WIDTH-CALLBACK.md) uses at most three macros and includes a non-dense `n=6,c=3` example. A possible next step is establishing these bands or extending the callback to arbitrary shared-anchor ages. Neither is proved here; the shared-identity requirement and `|I|<=n-c+1` endgame limitation remain.
