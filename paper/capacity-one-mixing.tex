@@ -1,0 +1,458 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=26mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,lmodern,hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue}
+\newtheorem{theorem}{Theorem}
+\title{A polynomial mixing bound for capacity-one CYCLON}
+\author{Working proof for independent review}
+\date{16 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For the protected/MIN mandatory-removal CYCLON model at capacity and
+shuffle length one, we derive an explicit polynomial worst-case
+full-state mixing bound, including arbitrary finite initial ages and
+all weakly connected initial overlays. The bound counts global atomic
+events and is deliberately loose: $O(n^9\log(n/\varepsilon))$.
+It also bounds conditional one-ID sampling. The proof compares tree
+rotations with the matroid down-up walk and uses a killed-chain lift
+to handle initial directed cycles. This is an internally audited
+working proof, not formal verification or external peer review. It
+also gives an $\Omega(n^{3/2})$ full-state lower bound from stationary
+tree geometry, leaving a substantial gap. It establishes neither an
+optimal rate nor a polynomial bound for capacity at least two.
+\end{abstract}
+
+\section{Model and main result}
+There are $n\ge2$ fixed labelled peers. Each cache is empty or contains
+one descriptor for another peer, with a finite nonnegative integer age.
+The initial directed overlay is weakly connected. At each global event,
+an independent uniform peer $p$ initiates. An empty initiator does nothing.
+Otherwise its singleton descriptor for $q$ is incremented and removed;
+the request is the fresh descriptor $p^0$. The responder $q$ replies
+with its pre-event singleton descriptor, if any, without incrementing it.
+It then retains or inserts $p^0$, replacing its old descriptor as needed.
+The initiator stores the reply unless it is empty or a self descriptor.
+Received duplicates take minimum age. Thus the identity update is
+\[
+ f'(q)=p,\qquad f'(p)=
+ \begin{cases}\bot,& f(q)\in\{p,\bot\},\\f(q),&\text{otherwise},\end{cases}
+\]
+where the right-hand values are pre-event values and all other rows stay
+fixed. This is exactly the protected/MIN algorithm at $c=L=1$.
+All exchanges are reliable and atomic; there is no churn or message loss.
+A local query at deterministic time samples its unique cached identity,
+conditional on the cache being nonempty.
+
+\begin{theorem}
+For $n\ge3$, put
+\[
+ N=n^{n-1},\qquad G=3n^2(n-1)^2\lfloor n^2/4\rfloor.
+\]
+The unique stationary full-state law $\pi$ is uniform on the zero-age
+rooted labelled trees. For nonnegative integers $s,t$,
+\[
+ \sup_x\|P^{s+t}(x,\cdot)-\pi\|_{\rm TV}
+ \le\sqrt{Nn}\,e^{-s/(n^2G)}
+       +n(1-1/n)^s+\tfrac12\sqrt N\,e^{-t/G}.
+\]
+The supremum includes all weakly connected initial configurations and
+arbitrary finite integer ages. For $0<\varepsilon<1$, a sufficient
+mixing time is $s+t$, where
+\[
+ s=\left\lceil\max\left\{
+ n^2G\log(3\sqrt{Nn}/\varepsilon),\,
+ n\log(3n/\varepsilon)\right\}\right\rceil,
+ \quad
+ t=\left\lceil G\log(3\sqrt N/(2\varepsilon))\right\rceil.
+\]
+This is $O(n^9\log(n/\varepsilon))$ global events. Conditional one-ID
+error is at most $n/(n-1)$ times the full-state error whenever defined;
+thus substitute $\varepsilon(n-1)/n$ above for a desired sample error
+$\varepsilon$. For $n=2$, worst-case full-state distance is $2^{-t}$
+for integer $t\ge1$, and available one-ID samples are already uniform.
+\end{theorem}
+The remainder proves the theorem. Stationary uniqueness also follows
+from the uniform convergence bound, so no irreducibility claim about
+the entire age-labelled state space is needed.
+\section{A polynomial mixing bound at capacity one}
+Let $n\ge3$, $c=L=1$, with the adopted uniform-initiator kernel.
+Assume initially that the identity digraph is a rooted tree: exactly
+one row is empty and every pointer leads to that root. Initial ages
+are arbitrary finite nonnegative integers. The bound below does NOT
+cover initial directed cycles.
+Define
+\[
+ G=3n^2(n-1)^2\lfloor n^2/4\rfloor,\quad N=n^{n-1}.
+\]
+The bound, in global events, is
+\[
+ \sup_x\|P^{s+t}(x,\cdot)-\pi\|_{\rm TV}
+ \le n(1-1/n)^s+\tfrac12\sqrt N\,e^{-t/G}.
+ \tag{*}
+\]
+In particular, for $0<\varepsilon<1$, take
+\[
+ s=\left\lceil n\log(2n/\varepsilon)\right\rceil,
+ \qquad
+ t=\left\lceil G\log(\sqrt N/\varepsilon)\right\rceil.
+\]
+This is $O(n^7\log(n/\varepsilon))$, deliberately unoptimized.
+It is not an all-capacity polynomial bound, nor yet a polynomial
+bound for arbitrary weakly connected capacity-one initial states.
+
+\paragraph{Finite-class entrance.}
+Mark all initial descriptors old and all fresh self descriptors young.
+A singleton-cache activation deletes its selected partner descriptor;
+a nonself reply, if present, replaces it, while the responder replaces
+its singleton descriptor by the fresh initiator. Thus every old
+initiator descriptor disappears, and a responder's old descriptor is
+at most transferred, never duplicated. If $J$ old descriptors remain,
+the next initiator holds one with probability $J/n$, so
+$\mathbb E[J_{s+1}\mid X_s]\le(1-1/n)J_s$. Hence
+$\Pr(J_s>0)\le n(1-1/n)^s$. Every young descriptor always has age
+zero: an incremented initiator descriptor is immediately removed,
+and replies are not incremented.
+
+The rooted-tree identity class is closed under the rotations described
+below. Therefore old-marker extinction implies entry into its zero-age
+finite subclass. No claim is made here that the same conclusion holds
+from an initial directed cycle: an off-cycle child activation can
+insert a vertex into the cycle, so cycle length is not monotone.
+
+\paragraph{The tree chain.}
+Write a state as $(T,r)$, an undirected labelled spanning tree and its
+root. All edges point toward $r$. Initiating $p$ with parent $q$ and
+grandparent $u$ replaces $p\to q\to u$ by $q\to p\to u$.
+The inverse is initiation of $q$. If $q$ is the root, the operation
+merely moves the root to $p$, with the same inverse. Initiating the
+root does nothing. Thus the kernel restricted to $\mathcal T$ is
+symmetric, each off-diagonal edge has probability at least $1/n$,
+and each state has holding probability $1/n$. Its uniform law has
+$N=n^{n-1}$ states (Cayley's formula).
+
+\paragraph{Reference chain and external input.}
+Let $D$ be the uniform spanning-tree down-up chain on $K_n$: remove
+a uniformly chosen tree edge and insert a uniformly chosen edge
+reconnecting the resulting two components, including reinsertion
+of the removed edge. The graphic matroid has rank $n-1$.
+Theorem 1.1 and its matroid specialization in Anari, Liu, Oveis Gharan
+and Vinzant, \emph{Log-Concave Polynomials II},
+\texttt{https://arxiv.org/html/1811.01816v3}, give
+$\operatorname{gap}(D)\ge1/(n-1)$. The theorem's walk is exactly
+this deletion followed by conditional uniform completion.
+Define $Q((T,r),(T',r'))=D(T,T')/n$; roots are refreshed uniformly.
+Its stationary law is the same uniform law and its gap is at least
+$1/(n-1)$ (on root-independent functions it acts as $D$, and on
+root-mean-zero functions it acts as zero).
+
+\paragraph{Simulating a reference transition.}
+For a nontrivial tree exchange write $T'=T-uv+ab$, where deleting
+$uv$ gives components $A$ containing $u,a$ and $B$ containing $v,b$.
+Use any deterministic label convention for orientation. Perform:
+\begin{enumerate}
+\item Move the root from $r$ to $v$, using consecutive root-edge
+reversals along the unique tree path.
+\item Slide endpoint $u$ of the attachment edge $uv$ along the path
+inside $A$ to $a$. At each step the next vertex $w$ is a child of
+the current attachment $x$, whose parent is $v$. Initiating $w$
+replaces $xv$ by $wv$ and preserves the undirected edge $wx$.
+\item Move the root from $v$ to $a$ across the current attachment
+edge $av$.
+\item Slide endpoint $v$ along the path inside $B$ to $b$, now
+with root $a$, by the same operation.
+\item Move the root to $r'$ along the final tree.
+\end{enumerate}
+The length is at most
+$2(n-1)+(|A|-1)+(|B|-1)+1=3(n-1)$.
+Every intermediate unrooted tree is $T$, or $T-uv+xy$: it differs
+from $T$ by at most one basis exchange. For $T=T'$, just move the
+root along its tree path, which has the same properties.
+Chronologically erase loops from each path, making it simple;
+length and the one-exchange property are preserved. These paths
+also prove irreducibility.
+
+\paragraph{Polynomial weighted congestion.}
+Decompose each $Q$ transition into its elementary down-up choices,
+including deletion and reinsertion of the same edge. If deleting an
+edge yields a forest $F$ with component sizes $a,b$, the elementary
+transition weight, including the final root choice, is
+$1/[n(n-1)ab]$. For different-tree transitions the removed edge is
+unique. For same-tree transitions use the direct root-moving path
+for every such elementary choice. This splitting sums to exactly $Q$.
+
+Fix an oriented nontrivial tree-chain edge $z\to w$ and let $S$ be
+the unrooted tree at $z$. Any reference path through it keeps the
+same forest $F=T-e=T'-f$ throughout; in particular $S=F+g$ for some
+edge $g\in S$. For this $g$, the forest $F=S-g$ is determined.
+Write $a_g,b_g$ for its component sizes. There are at most
+$(a_gb_g)^2$ ordered choices of reconnecting edges $(e,f)$ for the
+endpoint trees, and at most $n^2$ choices of starting/finishing roots.
+Each elementary path has length at most $3(n-1)$, and after loop
+erasure traverses the fixed oriented edge at most once. Its stationary
+starting mass is $1/N$. Since $\pi(z)P(z,w)\ge1/(Nn)$, the congestion
+is at most
+\[
+ \begin{split}
+ A&\le Nn\sum_{g\in S}
+ n^2(a_gb_g)^2\frac{1}{Nn(n-1)a_gb_g}\,3(n-1)\\
+ &=3n^2\sum_{g\in S}a_gb_g
+ \le3n^2(n-1)\lfloor n^2/4\rfloor.
+ \end{split}
+\]
+This count includes $e=f$, so diagonal root-refresh transitions require
+no additional estimate. Paths of zero length contribute nothing.
+Cauchy--Schwarz along the paths, summed over the elementary transition
+decomposition, gives $\mathcal E_Q(f,f)\le A\mathcal E_P(f,f)$.
+Combining with $\operatorname{gap}(Q)\ge1/(n-1)$ gives
+$\operatorname{gap}(P)\ge1/G$.
+
+Because $P=I/n+(1-1/n)R$ for a Markov kernel $R$, every eigenvalue
+of $P$ is at least $-1+2/n$. Since $1/G\le2/n$, every nonconstant
+eigenvalue has absolute value at most $1-1/G$. The elementary
+finite reversible-chain $L^2$ bound now gives
+\[
+ \sup_{y\in\mathcal T}\|P^t(y,\cdot)-\pi\|_{\rm TV}
+ \le\tfrac12\sqrt{N-1}(1-1/G)^t
+ \le\tfrac12\sqrt N e^{-t/G}.
+\]
+Split at deterministic time $s$ according to whether all old
+markers have disappeared. The bad part costs at most its probability;
+the good part is a mixture of states in $\mathcal T$. This proves
+$(*)$ without a stopping-time conditioning issue.
+
+\paragraph{Sample consequence and scope.}
+At stationarity exactly one row is empty, so symmetry gives
+$a_1=(n-1)/n$. The sharp conditioning inequality yields one-ID
+conditional error at most $n/(n-1)$ times the full-state bound,
+whenever availability is positive. No corresponding polynomial
+bound for $c\ge2$ follows from this argument: the rooted-tree
+representation and its reversible uniform law are special to $c=1$.
+\section{Polynomial entrance from a directed cycle at capacity one}
+For $n\ge3$, assume the rooted-tree chain has Poincare gap at least $1/G$, with
+$N=n^{n-1}$ rooted labelled trees. Let $\mathcal U$ be the finite
+set of weakly connected outdegree-one identity configurations; these
+have one directed cycle and no empty row. Let $K$ denote the actual
+capacity-one identity transition matrix restricted to $\mathcal U$,
+killing the chain when an empty row first appears. Every nonkilling
+rotation has its inverse obtained by activating the former responder,
+so $K$ is symmetric and substochastic. Ages do not affect this identity
+kernel at capacity one.
+
+\paragraph{Lift.}
+Use pairs $(y,a)$ where $y=(T,r)$ is a rooted labelled tree and
+$a\in V$ is a mark. Define $\Phi(y,a)$ to be the rooted tree itself
+if $r=a$; otherwise add the pointer $r\to a$, producing an element
+of $\mathcal U$. A unicycle with cycle length $k$ has exactly $k$
+preimages, obtained by deleting any one of its directed cycle edges.
+A rooted tree has exactly one preimage, with its root as mark.
+In particular $|\mathcal U|\le Nn$.
+
+On each fixed-mark sector run the rooted-tree rotation chain $R$.
+The subset with root equal to the mark is the boundary; it occupies
+exactly $1/n$ of each sector. If $f$ is a real function on
+$\mathcal U$, extend it by zero to the boundary and pull it back
+by $\Phi$, obtaining $h(y,a)$.
+
+\paragraph{Every nonzero lifted energy has a legal image.}
+Suppose first that the lifted root $r\ne a$. Activating a nonroot
+$p$ whose parent $q$ is not $r$ gives precisely the same rotation
+after projection. If $q=r$, the tree root moves to $p$. In the
+projection the responder $r$ replies with $a$, so the actual update
+makes $r\to p$ and $p\to a$, exactly the new projection. When
+$p=a$, the self reply is discarded, and $p$ becomes empty, again
+exactly the projected boundary state. Activating $r$ in the lifted
+chain is a self-loop and contributes no energy.
+
+If $r=a$ is a boundary state, a root-preserving tree rotation stays
+in the boundary and contributes zero energy. A root move from $r$
+to its child $p$ projects to a reciprocal pair $r\leftrightarrow p$;
+activation of $r$ in that pair kills the cycle and returns to the
+original boundary state. Thus its image is the reverse of a legal
+killing edge. The comparison below uses undirected Dirichlet edges,
+so this reversed orientation is harmless.
+
+For each fixed actual edge with at least one transient endpoint,
+there are at most $n$ lifted edge preimages: take that transient
+endpoint, which has at most $n$ lifted representations; its projected
+next state determines at most one nonroot tree rotation. The
+initiator is unique because a nonroot tree rotation changes exactly
+its own and its parent's pointer; the opposite initiation cannot
+make the same ordered move in an acyclic rooted tree. Boundary
+edges have at most one boundary lift.
+
+\paragraph{Dirichlet comparison with counting measures.}
+Use unnormalized counting measures throughout; no stationary weights
+are needed for the killed chain. Its Dirichlet form is
+\[
+ \mathcal E_K(f)=\frac12\sum_{u,v\in\mathcal U}
+ K(u,v)(f(u)-f(v))^2
+ +\sum_{u\in\mathcal U}\left(1-\sum_vK(u,v)\right)f(u)^2.
+\]
+The preceding edge mapping and multiplicity bound give
+$\mathcal E_R(h)\le n\mathcal E_K(f)$, where $R$ is the disjoint
+union of fixed-mark tree chains. Within each sector, $h$ vanishes
+on a fraction $1/n$ of its states, so Cauchy--Schwarz yields
+\[
+ \sum_y h(y,a)^2-\frac1N\left(\sum_yh(y,a)\right)^2
+ \ge\frac1n\sum_yh(y,a)^2.
+\]
+The tree Poincare bound, summed over marks, gives
+\[
+ \mathcal E_R(h)\ge\frac{1}{nG}\sum_{y,a}h(y,a)^2
+ \ge\frac{1}{nG}\sum_{u\in\mathcal U}f(u)^2.
+\]
+Consequently
+\[
+ \mathcal E_K(f)\ge\frac{1}{n^2G}\sum_u f(u)^2.
+\]
+Thus the largest eigenvalue of $K$ is at most $1-1/(n^2G)$.
+Since $K$ is entrywise nonnegative, its spectral radius is its
+largest eigenvalue; symmetry then bounds its $\ell^2$ operator norm.
+If $\tau$ is the first empty-row time, Cauchy--Schwarz gives
+\[
+ \sup_x\Pr_x(\tau>s)
+ \le\sqrt{Nn}\exp[-s/(n^2G)].
+\]
+Initial rooted trees have $\tau=0$ and satisfy the same bound.
+
+\paragraph{Adding ages and mixing.}
+The initial-old-marker expectation bound
+$\Pr(J_s>0)\le n(1-1/n)^s$ is valid from both trees and unicycles;
+it never relied on cycle monotonicity. All young descriptors have
+age zero. Therefore at deterministic time $s$ the probability of
+being outside the zero-age rooted-tree class is at most
+\[
+ \sqrt{Nn}\,e^{-s/(n^2G)}+n(1-1/n)^s.
+\]
+After $t$ further events, the tree-chain spectral estimate gives
+\[
+ \sup_x\|P^{s+t}(x,\cdot)-\pi\|_{\rm TV}
+ \le\sqrt{Nn}\,e^{-s/(n^2G)}
+       +n(1-1/n)^s+\tfrac12\sqrt N\,e^{-t/G}.
+\]
+With the comparison value $G=3n^2(n-1)^2\lfloor n^2/4\rfloor$,
+this yields an explicit $O(n^9\log(n/\varepsilon))$ bound from
+arbitrary weakly connected finite-age capacity-one initial states.
+For example choose
+\[
+ s=\left\lceil\max\left\{
+ n^2G\log(3\sqrt{Nn}/\varepsilon),\,
+ n\log(3n/\varepsilon)\right\}\right\rceil,
+ \qquad
+ t=\left\lceil G\log(3\sqrt N/(2\varepsilon))\right\rceil.
+\]
+No assertion for capacity at least two follows from this lift.
+
+\paragraph{Two peers.}
+For $n=2,c=L=1$, an initial reciprocal pair enters the zero-age
+rooted-tree class in one event, with uniformly distributed root.
+From a one-edge state its initial descriptor survives only while
+its holder has never initiated, with probability $2^{-t}$. Once
+that descriptor disappears the two zero-age rooted states evolve
+by uniform root refresh. Directly, the worst-case full-state TV
+distance is $2^{-t}$ for integer $t\ge1$ (and is one at $t=0$).
+Conditional one-ID output is the sole other peer and is exactly
+uniform whenever it is available.
+
+\paragraph{Conditional-sample estimate.}
+Append sample extraction to a state law, using a failure symbol for an
+empty cache; this cannot increase total variation. For two laws with
+availability probabilities $p,q>0$ and conditional output laws $u,v$,
+\[
+ \|u-v\|_{\rm TV}\le\frac{\|\mu-\nu\|_{\rm TV}}{\max(p,q)}.
+\]
+Indeed, if $p\ge q$, overlap outside the available-output alphabet is
+at most $1-p$, while overlap within it is at most
+$p\sum_z\min(u_z,v_z)$. Subtracting total overlap from one proves the
+inequality; the other case is symmetric. Stationary availability is
+$(n-1)/n$ by uniform rooted-tree symmetry, and the conditional parent
+identity is uniform over other peers by relabelling symmetry. Applying
+the inequality proves the sample estimate. If full-state error is
+strictly below stationary availability, transient availability is
+positive automatically.
+
+\section{A depth-based capacity-one lower bound}
+Work in the zero-age rooted-tree class at $c=L=1$ with uniform
+stationary law. Fix a labelled vertex $v$ and let $D$ be its tree
+distance to the root. Put $m_n=\mathbb E_\pi D$ and
+$v_n=\operatorname{Var}_\pi D$.
+The ordinary spectral gap satisfies the exact variational bound
+\[
+ \operatorname{gap}(P)\le g_n:=\frac{m_n}{n v_n}.
+\]
+Indeed, if the current path from $v$ to the root has $D=k$ edges,
+exactly the $k$ nonroot vertices on this path decrease $D$ by one
+when they initiate. An off-path child of any path vertex increases
+$D$ by one when it initiates. All other initiations leave $D$
+unchanged. No move changes depth by more than one. If $B$ is the
+number of these off-path children, conditional drift is $(B-D)/n$.
+Stationarity implies $\mathbb E B=\mathbb E D$, whence
+\[
+ \mathcal E_P(D,D)=\tfrac12\mathbb E[(D_1-D_0)^2]
+ =\frac{\mathbb E(B+D)}{2n}=\frac{m_n}{n}.
+\]
+Apply the variational formula for the reversible spectral gap.
+
+For $0\le k\le n-1$, exact Cayley counting gives
+\[
+ \Pr_\pi(D=k)=\frac{(k+1)(n-1)_k}{n^{k+1}},
+ \qquad \Pr_\pi(D\ge k)=\frac{(n-1)_k}{n^k}.
+\]
+To count the first expression, choose the ordered $k$ distinct
+vertices after $v$ on the root path; there are $(n-1)_k$ choices.
+For each prescribed path, the number of spanning trees containing
+its $k$ edges is $(k+1)n^{n-k-2}$. To see this, contract the
+prescribed path to a component of size $k+1$ and leave all other
+vertices as singleton components. A tree on these components has
+$\prod_C |C|^{\deg(C)}$ choices of original edge endpoints.
+The weighted Pr\"ufer-code identity sums these weights to
+$(\prod_C|C|)(\sum_C|C|)^{m-2}$, where $m$ is the number of
+components, giving the stated count; the single-component case
+has exactly one completion. Divide by the $n^{n-1}$ rooted trees. The tail
+identity follows by telescoping, including $k=0$.
+Consequently
+\[
+ m_n=\sum_{k=1}^{n-1}\frac{(n-1)_k}{n^k},\qquad
+ \mathbb E D^2=\sum_{k=1}^{n-1}(2k-1)\frac{(n-1)_k}{n^k}.
+\]
+For fixed $x\ge0$, putting $k=\lfloor x\sqrt n\rfloor$ gives
+$\Pr(D\ge k)\to e^{-x^2/2}$, by taking logarithms of the product.
+The bound $\Pr(D\ge k)\le e^{-k(k+1)/(2n)}$ gives a summable
+Gaussian majorant for the scaled Riemann sums. Hence
+\[
+ m_n\sim\sqrt{\pi n/2},\qquad
+ v_n\sim(2-\pi/2)n,
+\]
+and
+\[
+ \operatorname{gap}(P)\le
+ \left(\frac{\sqrt{2\pi}}{4-\pi}+o(1)\right)n^{-3/2}.
+\]
+In particular the relaxation time is $\Omega(n^{3/2})$ global events.
+For $g_n<1$ and $0<\varepsilon<1/2$, the usual eigenfunction
+lower bound gives
+\[
+ t_{\rm mix}(\varepsilon)\ge
+ \frac{\log(1/(2\varepsilon))}{-\log(1-g_n)}.
+\]
+For completeness, choose a second-eigenvalue eigenfunction and a
+state where its absolute value is maximal. Its time-$t$ expectation
+differs from stationarity by $\lambda_2^t$ times that maximum, so
+TV distance is at least $\lambda_2^t/2$; and
+$\lambda_2\ge1-g_n$. This establishes a fixed-error full-state
+mixing lower bound $\Omega(n^{3/2})$. It does not establish a
+matching lower bound for a single conditional parent-identity query.
+
+\section{Verification and limitations}
+The companion standard-library checker
+\begin{center}\small\path{verification/verify_c1_polynomial_comparison.py}\end{center}
+enumerates rooted trees by Pr\"ufer codes and checks all elementary
+basis-exchange/root pairs through five peers, together with the lift
+edge mapping and its multiplicity. It checks legality, endpoints,
+length and the shared-forest invariant. These are finite corroborations,
+not replacements for the arbitrary-$n$ arguments above. The power nine
+is a coarse consequence of the comparison; no lower bound matching it
+is claimed. This result does not settle polynomial mixing when $c\ge2$.
+\end{document}
