@@ -1,18 +1,36 @@
 # Proof dependencies and reading routes
 
-Reconciled **20 October 2026**. Main source: [paper/main.tex](../paper/main.tex). Labels below are stable TeX search keys, not theorem numbers. Status and exact scopes are in [RESULTS.md](RESULTS.md).
+## General fixed-length working proof (16 November 2026)
+
+The manuscript now contains `thm:allparametersuniform`, a working proof for every
+`n>=2` and `1<=L<=c<=n-1` under the adopted iid protected/MIN mandatory-removal
+kernel, initially weak connectivity, and arbitrary finite nonnegative integer ages.
+It asserts a uniform common atom, unique full-state stationarity, uniform geometric
+convergence with implicit constants, positive stationary availability, and limiting
+conditional uniform ordered local samples. Two independent end-to-end internal audits of the theorem and actual
+manuscript text have passed. This is not
+external peer review, formal verification, or a polynomial/practical mixing bound.
+
+The new route uses `lem:partialcolorsource`, `lem:generalsourcecreation`, and
+`lem:generalsourceextension`. It bypasses the earlier general owner-service and
+outward-growth obligations rather than proving those particular controllers work.
+Historical conditional results and controller counterexamples below retain their
+original scopes; statements that general convergence remained open describe the
+previous checkpoint and are superseded by this working theorem.
+
+Reconciled **16 November 2026**. Main source: [paper/main.tex](../paper/main.tex). Labels below are stable TeX search keys, not theorem numbers. Status and exact scopes are in [RESULTS.md](RESULTS.md).
 
 All “proved” nodes refer to working-paper proofs, not peer review or formal verification. A finite checker ordinarily supports a proof; the three-peer 487-state contraction explicitly uses an exhaustive exact finite certificate as part of its proof.
 
 ## Fast reading routes
 
 - **Understand the protocol first:** `sec:target`, then `lem:receiveprotect` and `prop:thesisunion`.
-- **Strongest practical qualitative theorem:** `thm:thesisgeneraltwo` (`ell=2`, any allowed `c,n`), with the predecessor construction summarized below.
+- **General qualitative working theorem:** `thm:allparametersuniform` (all allowed `L,c,n`), with independent internal audits completed; see the source-route dependencies below.
 - **Explicit small-cache quantitative theorem:** `thm:c2explicitmix`, then `prop:c2availabilityquant` and `cor:c2samplemixquant`. It is a quadratic witness and exponential mixing bound.
 - **Actual random-execution progress:** `thm:c2readycontact`, `cor:c2readytemporal`, `cor:c2successfulsourcecover`.
 - **Current fast-mixing target:** `lem:c2transientavailability`, `prop:c2localcouplingtarget`, `lem:c2symmetrycoupling`.
 - **A completed small finite version of that target:** `prop:c2threepositivity` and `prop:c2threeordinarysample`; then `prop:c2caprankobstruction` for why simple age projections fail beyond it.
-- **Generic length-three/higher proof gap:** `thm:threefirstcontact`, `prop:threezeroanchor`, `prop:zeroexpansioncriterion`; read the conditional callbacks and their counting limit before trying to compose them.
+- **Historical owner-service proof route:** `thm:threefirstcontact`, `prop:threezeroanchor`, `prop:zeroexpansioncriterion`; read the conditional callbacks and their counting limit before trying to compose them.
 
 ## Shared logical infrastructure
 
@@ -303,7 +321,7 @@ This supersedes earlier continuation entries saying sparse length-three converge
 
 **CONDITIONAL, not arbitrary-length convergence.** `prop:shuffleinductionstructure` derives uniform cut contact and universal-anchor reduction at length L from lower-length common atoms and cut contact at L-1. `prop:shuffleinductionclosure` identifies two sufficient remaining obligations: boundary service through any subset of zero holders, with preterminal locality, persistent target and free terminal reply; and outward holder growth from an empty-owner zero-maximizing state. These obligations are established through length three, not for general L. `lem:generalownerterminalprefix` supplies an unconditional three-event restoration prefix at all L>=3, but its holder-terminal branch still needs boundary service to obtain a gain. `prop:longeroutwardcontrollercycle` gives a forced restricted-controller cycle for every allowed L>=4, so the length-three strict-potential proof cannot simply be reused. This is not a counterexample to the protocol.
 
-See [the parameterized framework](research/PARAMETERIZED-SHUFFLE-INDUCTION.md) and [general restoration prefix](research/GENERAL-OWNER-TERMINAL-RESTORATION.md). The priority is resolving the reusable boundary-service and outward-growth mechanisms, not adding isolated length-four cases. No polynomial rate or general-length convergence is claimed.
+See [the parameterized framework](research/PARAMETERIZED-SHUFFLE-INDUCTION.md) and [general restoration prefix](research/GENERAL-OWNER-TERMINAL-RESTORATION.md). This historical route isolated reusable boundary-service and outward-growth mechanisms. The new source route bypasses those obligations; this conditional framework itself does not assert their resolution or a polynomial rate.
 
 
 ## Arbitrary-length service and sampling alternatives: research-only continuation
@@ -315,7 +333,7 @@ The following independently reviewed **conditional research notes** are not new 
 - [Threshold-censored lower kernels](research/THRESHOLD-CENSORED-LOWER-KERNEL.md): the singleton-capacity threshold-clearing lemma is proved; higher-capacity searches are bounded diagnostics, including ten explicitly unresolved five-peer runs.
 - [Even-class symmetry sampling](research/EVEN-CLASS-SYMMETRY-SAMPLING.md): for n>=5, invariance of every recurrent class under even relabellings suffices for deterministic-time one-ID sampling, without unique full-state stationarity. The proof handles cyclic phases and availability. Class invariance, or the sufficient bound of fewer than n recurrent classes, remains unproved. Under the same unproved class-invariance hypothesis, availability is automatic for every b<=min(c,floor(n/2)); larger b only needs one available state in each class, since availability propagates through phases.
 
-These isolate possible reusable routes toward arbitrary lengths. The established unconditional convergence range is all capacities at lengths one through three, and all lengths at full capacity; general owner service, outward growth, and useful polynomial rates remain open.
+These isolate possible reusable routes toward arbitrary lengths. At that historical checkpoint the convergence range was all capacities at lengths one through three and all lengths at full capacity. The new general source theorem supersedes that range; the particular general owner-service/outward-growth controllers and useful polynomial rates remain unresolved.
 
 
 ### Shared positive-secondary internal reset
@@ -337,4 +355,24 @@ These isolate possible reusable routes toward arbitrary lengths. The established
 
 **Internally audited working theorem:** `thm:fullcapacityalllengths` proves uniform canonical common-atom accessibility, unique full-state stationarity/convergence, and conditional uniform sampling for every 1<=L<=n-1 at capacity c=n-1. The outer length / inner population induction stays within full-capacity kernels. Frozen-source erasure makes the complement closed; a no-eviction graph argument makes it connected; normalization and one source contact create a universal zero anchor. See [the full proof record](research/FULL-CAPACITY-ALL-LENGTHS-CANDIDATE.md).
 
-`cor:alllengthoverflow` couples any proper-capacity kernel with the full-capacity kernel until their first overflow. It gives uniform finite-horizon hitting of some full row, a geometric waiting tail for the next eviction, and infinitely many evictions almost surely, for every allowed length/capacity. Constants are implicit. This proves neither sampling uniformity nor unique stationarity at sparse capacities. It does not guarantee a full row at a prescribed observer. Every closed class nevertheless contains a full-row state, removing the additional availability hypothesis from the conditional even-class-symmetry sampling criterion. Class invariance itself remains open.
+`cor:alllengthoverflow` couples any proper-capacity kernel with the full-capacity kernel until their first overflow. It gives uniform finite-horizon hitting of some full row, a geometric waiting tail for the next eviction, and infinitely many evictions almost surely, for every allowed length/capacity. Constants are implicit. This proves neither sampling uniformity nor unique stationarity at sparse capacities. It does not guarantee a full row at a prescribed observer. Every closed class nevertheless contains a full-row state, removing the additional availability hypothesis from the conditional even-class-symmetry sampling criterion. The new common-atom working theorem supplies uniqueness and hence class invariance; the overflow coupling alone did not establish it.
+
+## General frozen-source dependency chain
+
+```text
+lem:generalcolor
+  -> lem:partialcolorsource (excluded-owner colored reset)
+lower-length common atoms + lower-length first contact
+  + lem:partialcolorsource -> lem:generalsourcecreation
+smaller-population common atoms + independent thm:fullcapacityalllengths
+  -> lem:generalsourceextension (join components, then universal zero)
+prop:shuffleinductionstructure (first contact and zero-anchor normalization)
+  + source creation/extension -> finite canonical accessibility
+thm:thesisgeneralreset + finite-family path selection + empty-root padding
+  -> thm:allparametersuniform -> lem:atom and conditional sampling
+```
+
+Outer induction is on shuffle length; inner induction is on population,
+covering every capacity. The full-capacity theorem is an independently proved
+input, not a consequence of the new sparse theorem. No general owner-service
+or outward-growth controller is assumed. Two independent end-to-end internal audits have passed.

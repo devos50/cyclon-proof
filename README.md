@@ -2,7 +2,7 @@
 
 Research working proofs, partial results, counterexamples, and exact finite verification for an explicitly specified CYCLON peer sampler. This is a standalone repository, separated from the simulator project on 20 October 2026.
 
-**The fully general convergence and useful mixing-time questions remain open.** “Proved” in the research notes means a written working argument under its stated assumptions, not an independently peer-reviewed or Lean-certified theorem. Finite checks and simulation are identified separately.
+**A working proof now covers every allowed fixed shuffle length, population, and cache capacity for the adopted kernel; two independent end-to-end internal audits of the new theorem have passed. Useful mixing-time bounds remain open.** “Proved” in the research notes means a written working argument under its stated assumptions, not an independently peer-reviewed or Lean-certified theorem. Finite checks and simulation are identified separately.
 
 ## Start here
 

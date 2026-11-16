@@ -1,5 +1,14 @@
 # Connected-source extension at arbitrary capacity
 
+**Status update, 16 November 2026:** The manuscript's new general source-route
+working theorem (`thm:allparametersuniform`) supplies source creation and
+complement joining through `lem:generalsourcecreation` and
+`lem:generalsourceextension`. Two independent end-to-end internal audits have passed.
+The construction below retains its original local/conditional scope. Its
+historical source-accessibility obligation is discharged by that new route,
+not by assuming the earlier restricted controllers work. This is not formal
+verification, external peer review, or a polynomial mixing bound.
+
 Working conditional construction, 16 November 2026. The convergence interface uses the
 model's finite nonnegative integer ages. This does not establish general
 sparse-capacity convergence. The protocol is unchanged: mandatory removal,

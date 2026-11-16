@@ -10,7 +10,7 @@
 \newcommand{\TV}{\mathrm{TV}}
 \newcommand{\Unif}{\operatorname{Unif}}
 \newcommand{\Law}{\mathcal L}
-\title{CYCLON convergence:\\proved cases and progress toward a general theorem}
+\title{CYCLON convergence for an explicit protected/MIN kernel}
 \author{Research working note}
 \date{16 November 2026}
 \begin{document}
@@ -19,7 +19,8 @@
 \begin{abstract}
 We specify the adopted CYCLON algorithm and assumptions first:
 mandatory partner removal, protection of received identities,
-minimum-age duplicate merging, and independent uniform activations.
+minimum-age duplicate merging, independent uniform activations, and
+an initially weakly connected overlay.
 For every fixed shuffle length, arbitrary network size and cache
 capacity, and arbitrary finite initial integer ages, we prove
 uniform access to a finite bounded-age family. A decreasing
@@ -54,9 +55,9 @@ A general two-entry theorem now covers every allowed
 cache capacity and population size. Its outward-spread
 argument combines a bounded count of young descriptors
 with a numerical-age argument excluding infinite plateaux.
-For fixed shuffle lengths at least four and proper capacities,
-a common-regime or sufficient classwise-symmetry argument
-is still needed for general conditional uniformity.
+For larger fixed shuffle lengths and proper capacities, the later
+frozen-owner partial-reset argument supplies a common regime and
+general conditional uniformity for this same explicit kernel.
 For two-entry shuffles we additionally prove uniform contact
 across every cut, accessibility of a state reachable from a
 prescribed root, and reduction of the common-atom problem to
@@ -75,8 +76,13 @@ and a numerical-age budget. A double induction now proves every
 shuffle length at full capacity $c=n-1$, using frozen-source
 erasure and normalization of its connected complement. Coupling
 then gives uniform full-row hitting and unavoidable recurring
-evictions at every proper capacity. Sparse-capacity convergence
-at higher lengths and polynomial mixing remain open.
+evictions at every proper capacity. Finally, a partial colored reset
+that excludes one initiator creates an incoming-free source at every
+capacity. A full-capacity core joins its complement components, and
+a two-exchange extension creates a universal zero anchor. This closes
+the double induction for every allowed population, capacity and shuffle
+length. These are internally audited working proofs, not external peer
+review or formal verification; polynomial mixing remains open.
 
 For every fixed shuffle length at least three, a specified
 uniform-victim completion admits full-cache, zero-age, strongly
@@ -86,7 +92,7 @@ this construction and preserves connectivity. With that explicit
 protection rule and a uniformly positive probability of singleton
 shuffles, we prove full convergence for every maximum shuffle
 length. This modified-protocol theorem is distinguished from
-the remaining fixed-length question.
+the fixed-length theorem established here.
 The negative construction concerns a different replacement
 completion and does not apply to the adopted protected algorithm.
 Age-dependent initial-lineage erasure and sharper two-entry
@@ -6396,7 +6402,7 @@ old zero holder has at least $\ell+1$ cache entries.
 This occupancy condition is also conditional: it
 does not cover arbitrary underfull states.
 
-\subsection{An exact sufficient route to the remaining general theorem}
+\subsection{An earlier sufficient route to a general theorem}
 
 The conditional callback lemmas should not be mistaken
 for the entire missing proof. The following statement
@@ -6414,8 +6420,9 @@ path to $y$ such that $Z_a(y)>Z_a(x)$.
 If this obligation is established at all these lengths,
 the full convergence and conditional uniform-sampling
 target follows for every fixed shuffle length.
-The obligation remains unproved over the full
-parameter range $\ell\ge3$.
+This earlier route did not discharge the obligation directly.
+Theorem~\ref{thm:allparametersuniform} below now implies it
+qualitatively by reaching a canonical atom rooted at $a$.
 \end{proposition}
 \begin{proof}
 We first record the inductive common-atom step.
@@ -7540,10 +7547,12 @@ four-exchange component merges, and root changes in
 Proposition~\ref{prop:threezeroanchor} then apply unchanged.
 \end{proof}
 
-\subsection{A parameterized induction interface, not an arbitrary-length proof}
+\subsection{An alternative parameterized induction interface}
 
-The next statements separate the reusable induction from its unsolved
-local obligations. In particular, no length-four convergence theorem is
+The next statements separate reusable induction from the local
+obligations of this earlier route. The source route in
+Theorem~\ref{thm:allparametersuniform} later bypasses those obligations.
+In particular, no length-four convergence theorem is
 inferred merely from the completed three-entry case.
 
 \begin{proposition}[Structural induction from lower shuffle lengths]
@@ -7966,6 +7975,241 @@ the full row occurs at a prescribed observer, or that the two
 kernels remain coupled after their first overflow.
 \end{proof}
 
+\subsection{A frozen-owner partial reset and the general source route}
+
+The next argument allows arbitrary old passive imports at the frozen
+owner. It does not try to bound that owner's row by its initial ages.
+It supplies an alternative to the boundary-service obligations above.
+
+\begin{lemma}[Partial colored reset with one excluded initiator]
+\label{lem:partialcolorsource}
+Fix $2\le L\le c\le n-1$ and a peer $q$. Color descriptors old or
+young as in Lemma~\ref{lem:generalcolor}, assume every descriptor of
+identity $q$ is old, and never initiate $q$. Suppose the old-oldest and
+mixed-merge color assumptions of that lemma remain valid throughout the
+following horizon. There is a controlled path erasing every $q$
+descriptor within $H$ events, where one conservative choice is
+\[
+ K=n(c+1)^c,\quad D=ncL^c,\quad
+ R=(nc+1)(nc^2+1),\quad
+ H=R\bigl((K+1)(D+1)+1\bigr).
+\]
+Other old descriptors need not be erased. In particular the frozen
+row $C_q$ is allowed to contain old descriptors throughout.
+\end{lemma}
+\begin{proof}
+Stop when $q$ has no copies. Otherwise choose $p\ne q$ with an old
+descriptor maximizing $f_p$ among such peers, and choose an actual
+old oldest responder $r$. Use exactly the extras, joint reply/victim
+choice, and active old-first victims of Lemma~\ref{lem:generalcolor}.
+Write $F=\sum_i f_i$ and $V=\sum_i f_i^2$.
+
+The proof that $F$ cannot decrease does not use maximality. If
+$F'=F$, that proof gives $p\in Y_r$ and $Y_p\subseteq Y_r$, hence
+$f_r\ge f_p+1$. There is no young loss at $p$, and the only young
+changes are $t$ responder victims transferred to new young locations
+at $p$. The responder victim exclusions protect $Y_p\cup\{p\}$,
+so $0\le t\le f_r-f_p-1$. Therefore
+\[
+ V'-V=2t(t-(f_r-f_p))\le0,
+\]
+with equality only for $t=0$. This calculation remains valid when
+$r=q$ has old entries: old arrivals do not change the young counts.
+On a consecutive plateau of both $F$ and $V$, every young identity
+set, and hence every $f_i$, is fixed.
+
+On such a plateau, any responder $r\ne q$ is entirely young before
+the event. Otherwise $f_r>f_p$ contradicts the maximal choice of $p$.
+More strongly, no outside old-holder can be a responder at all.
+Only a contact with $q$ can return old descriptors, and that reply
+cannot contain identity $q$.
+
+Call a tenure the persistence of one $q$ copy at an outside row,
+starting at the beginning of the plateau or at its insertion, and
+ending when it is lost or the plateau ends. Its row is never passively
+updated during the tenure, since it is an outside old-holder. Every
+non-$q$ contact initiated there removes an old head and receives only
+young descriptors. A contact with $q$ removes the $q$ copy itself.
+Consequently a tenure has at most $c$ initiations. A new $q$ copy
+can arise only as a request extra from an existing tenure, and its
+responder has strictly larger fixed $f$. Each initiation creates at
+most one such child tenure. Since an old-holder has $f\le c-1$,
+these genealogies have depth at most $c-1$, branching at most $c$,
+and at most $n-1$ roots. Their total number, and thus the number of
+contacts with $q$ on the plateau, is at most
+\[
+ (n-1)\sum_{j=0}^{c-1}c^j\le K.
+\]
+Fresh $q$ cannot appear, because $q$ never initiates; thus all its
+copies remain old and this accounts for every insertion.
+
+At every plateau event not contacting $q$, the responder is old-free,
+so the original strict descent of
+$W=\sum_i o_iL^{c-f_i}$ applies. Its range is $0\le W\le D$.
+At most $K$ contacts with $q$ interrupt this descent. Hence a plateau
+with surviving $q$ copies has at most $(K+1)(D+1)$ internal events.
+There are at most $R$ successive $(F,V)$ plateaus, because $F$ can
+only increase, and $V$ decreases while $F$ stays fixed. The stated
+$H$ also accounts for events moving between plateaus. Thus the
+controller must erase $q$ before exhausting the horizon.
+\end{proof}
+
+\begin{lemma}[Source creation from lower-length inputs]
+\label{lem:generalsourcecreation}
+Fix $L\ge4$ and suppose the smaller-length common-atom and
+length-$(L-1)$ first-contact hypotheses of
+Proposition~\ref{prop:shuffleinductionstructure} hold. From every
+weakly connected state with finite nonnegative integer ages, and
+for any specified peer $q$, a finite legal path with no initiation
+of $q$ reaches a state where $q$ has no incoming references and
+$C_q$ is nonempty.
+\end{lemma}
+\begin{proof}
+If $q$ is already absent, weak connectivity implies $C_q\ne\varnothing$.
+Otherwise its minimum stored age cannot decrease while $q$ does
+not initiate. Use the minimum-holder phase from the structural
+first-contact proof. At current minimum $k$, reserve $q$ in the
+minimum holders; their internal residual kernel has length $L-1$
+and capacity $c-1$. If a proposed residual oldest has age below
+$k$, contact $q$ instead; otherwise the residual step is an actual
+oldest step (ties are legal). A closed residual component is
+normalized using the smaller-length common atom. For an open
+component, apply the lower-length first-contact theorem on the
+ambient $V\setminus\{q\}$, with capacity $c-1$, length $L-1$,
+and the minimum-holder set as the active set. Assign auxiliary empty
+rows outside that set; the first-contact conclusion needs a cached
+cut edge, not global connectivity of the auxiliary state. Outside
+rows are not read before the first boundary event. At that event
+use the actual legal reply, whose $q$ copy, if any, is older than
+$k$, because the responder is outside the minimum-holder set.
+
+An internal contact preserves both minimum copies through
+$\min(k+1,k)=k$. A boundary contact sends $q$ at age $k+1$;
+a direct owner contact deletes it by mandatory removal. Either
+terminal removes a minimum copy and creates none. In at most
+$n-1$ such finite phases the minimum rises or $q$ disappears.
+Closed singleton residual components cause a direct owner contact. These
+steps never require a bound on the passive row of $q$.
+
+Let $H$ be the constant of Lemma~\ref{lem:partialcolorsource} and
+$B=(nc+1)H$. Repeat the preceding finite phases until $q$ disappears
+or its minimum exceeds $B$. Integer ages ensure that finitely many
+raises suffice. If copies remain, among the $nc+1$ intervals
+$(jH,(j+1)H]$, $0\le j\le nc$, one contains no current descriptor
+age, since at most $nc$ descriptors exist. Put $a=jH$ for this
+interval and color ages at most $a$ young, and those above $a+H$
+old. All $q$ copies are old; the row of $q$ may have either color.
+During the next $H$ events young ages are at most $a+t\le a+H$,
+and old ages remain greater than $a+H$. Thus mixed MIN merges
+keep young and every old-holder has an old actual oldest. The
+partial colored reset applies and erases $q$ without initiating it.
+
+If a last $q$ copy is lost, its final disappearance need not be a
+contact with $q$: an eligible eviction can also remove it. However
+$q$ has never initiated and its row cannot become empty passively:
+a passive exchange receives the protected fresh initiator. If it
+was initially empty and never contacted, weak connectivity would
+preclude absence of $q$ at the endpoint. Hence the resulting source
+row is nonempty in every case. All histories preserve weak connectivity.
+\end{proof}
+
+\begin{lemma}[Source complement joining and extension]
+\label{lem:generalsourceextension}
+Fix $L\ge4$. Assume the lower-length structural hypotheses above,
+and common atoms at length $L$ for smaller populations. A weakly
+connected state with an incoming-free peer $q$ and nonempty row
+has a finite legal path to a universal zero anchor.
+\end{lemma}
+\begin{proof}
+Set $S=C_q$ as an identity set and $W=V\setminus\{q\}$.
+Every weak component $A$ of $W$ meets $S$. Normalize each component
+while $q$ is frozen, ordering all vertices of $S\cap A$ above the
+other vertices. A singleton is already normalized. The effective
+component parameters are $\min(c,|A|-1)$ and $\min(L,|A|-1)$:
+either smaller length or smaller population supplies the theorem.
+The vertices of $S\cap A$ then reference only higher vertices of
+that set, while every vertex of $A\setminus S$ retains its
+component-maximum root in $S$ at age zero.
+
+The set $K_0=\{q\}\cup S$ is now a closed subsystem, weakly
+connected through $q$. Its effective capacity is $s=|S|$ and its
+length is $\min(L,s)$, so it has full capacity. Apply the already
+independent Theorem~\ref{thm:fullcapacityalllengths} to normalize
+$K_0$ with $q$ least in the order. Outside rows stay frozen, even
+if they have incoming references to $K_0$. At the endpoint $q$
+again has no incoming references and holds precisely $S$ at zero.
+The induced graph on $S$ is connected; frozen outside rows still
+point to their component roots in $S$. Thus $W$ is connected.
+If $K_0=V$, then $s=c=n-1$, so the full-capacity theorem remains
+an independent input, not a circular sparse induction.
+
+Normalize the connected $W$ with effective capacity $\min(c,n-2)$
+and length $\min(L,n-2)$, keeping $q$ frozen. Before doing so choose
+an oldest $u$ of $q$ and, if $s\ge2$, an oldest $v$ among the
+remaining entries, and put $u$ greatest and $v$ second greatest
+in the canonical order on $W$. For $s\ge2$, we have
+$C_u=\varnothing$ and $C_v=\{u^0\}$. The exchanges $q\to u$, $q\to v$ create a
+universal $u^0$: the first removes $u$ and receives no reply; the
+second is still oldest, receives $u^0$, and sends at most
+$\min(L,s-1)\le c-1$ identities, none equal to $u$. They fit beside
+$v$'s $u^0$, so that zero is not evicted. Every other nonowner in
+$W$ retains its canonical $u^0$. If $s=1$, the two exchanges
+$q\to u$, $u\to q$ instead leave $q=\{u^0\}$ and $u$ empty,
+with all other canonical zeros unchanged. This includes the
+singleton-complement case without a zero-capacity invocation.
+\end{proof}
+
+\begin{theorem}[General fixed-length convergence for the adopted kernel]
+\label{thm:allparametersuniform}
+For every $n\ge2$ and $1\le L\le c\le n-1$, the adopted
+protected/MIN mandatory-removal kernel on weakly connected states
+with arbitrary finite nonnegative integer ages has a uniform
+finite-horizon common atom at any prescribed labelled $H(V,c)$.
+Consequently it has a unique stationary full-state law and converges
+to it in total variation, uniformly at an implicit geometric rate.
+Every allowed sample size has positive stationary availability, and
+conditional ordered local samples are uniform in stationarity and
+converge to that law at deterministic observation times.
+No polynomial or practically useful mixing bound is asserted.
+\end{theorem}
+\begin{proof}
+Use outer induction on length, with the established lengths one,
+two and three as bases, carrying the first-contact conclusion along
+with the common-atom theorem. At length $L\ge4$, lower-length
+common atoms and $F_{L-1}$ supply $F_L$ and the universal-zero
+normalization $U_L$ by
+Proposition~\ref{prop:shuffleinductionstructure}. Induct internally
+on population $n\ge L+1$, for every capacity at that population.
+The smallest population is full capacity and is already covered by
+Theorem~\ref{thm:fullcapacityalllengths}.
+
+Lemma~\ref{lem:generalsourcecreation} gives a source from any state.
+Lemma~\ref{lem:generalsourceextension} uses only smaller-population
+or smaller-length component theorems and the independent
+full-capacity theorem to reach a universal zero. Then $U_L$
+reaches the same prescribed labelled canonical atom. In particular
+every closed communicating class reaches that atom. This reasoning
+uses finite legal paths; it does not infer a uniform duration from
+age-dependent minimum-holder phases.
+
+For uniformity, apply the independent finite-age reset of
+Theorem~\ref{thm:thesisgeneralreset} to a fixed finite set $\mathcal F$.
+The directed reachability graph on $\mathcal F$ has terminal strongly
+connected components. Each generates a closed communicating class:
+any reachable state admits another reset into $\mathcal F$, and
+terminality forces its return into that same component. Thus every
+reset state has a finite path to a closed class and then to the
+canonical atom. Choose one such path per reset state, pad them to
+a common length using the atom's empty-root no-op, and take the
+minimum of their finitely many positive probabilities. Composing
+with the reset gives uniform finite-horizon minorization.
+Lemma~\ref{lem:atom} gives full-state uniqueness and convergence.
+Relabeling invariance gives conditional uniform ordered samples;
+relabelled canonical atoms with the observer's row of size $c$
+give positive availability. This closes the population induction,
+and $F_L$ supplies the first-contact input for the next length.
+\end{proof}
+
 \begin{proposition}[The last zero at length three without density]
 \label{prop:nearcomplete3}
 Let $\ell=3$ and $4\le c\le n-1$, with no density restriction.
@@ -8185,10 +8429,11 @@ strictly drops. Such a segment is finite. This proves
 outward spread for every $c\ge3$, and completes full
 uniform sampling at $\ell=2$ for every allowed capacity
 and population size.
-The remaining fixed-length task is a common regime or
-sufficient classwise symmetry for $\ell\ge3$,
-together with availability and, for the
-embedded event chain, aperiodicity.
+The historical fixed-length gap was a common regime or
+sufficient classwise symmetry at larger lengths, together with
+availability and event-chain aperiodicity.
+Theorem~\ref{thm:allparametersuniform} now closes this gap for
+the adopted kernel, via a common atom with an empty-root no-op.
 The earlier disconnection counterexamples
 do not apply to this adopted target.
 For $\ell=2$, Theorem~\ref{thm:firstcontact} and
@@ -8224,12 +8469,14 @@ service and an outward-migration age argument. Finally,
 Theorem~\ref{thm:threegeneraluniform} covers every allowed
 capacity at length three, using a fixed-identity lexicographic
 potential for the sparse outward step.
-For arbitrary larger lengths, the corresponding callback
-and saturation construction remain missing.
+For arbitrary larger lengths, those particular callback
+and saturation constructions remain unproved; the source route
+now avoids needing them.
 Corollary~\ref{cor:densefourstructure} carries the
 first-contact and universal-anchor reduction to length
 four at $c\ge n-2$; it leaves universal-anchor accessibility
-as a separate obligation.
+as a separate obligation of that earlier route. The general source
+argument now supplies accessibility for every allowed capacity.
 The owner-only alternative is explicitly impossible
 in the family of Proposition~\ref{prop:owneronlyobstruction};
 the original all-peer scheduler can leave that
@@ -8254,7 +8501,30 @@ The present note does not establish a fixed-length convergence
 theorem for every connectivity-preserving CYCLON completion,
 nor an efficient or polylogarithmic mixing bound.
 
+The general theorem's new step is a partial colored reset excluding
+one owner: its row may receive arbitrarily old entries. On a plateau
+of the young-count and square-sum potentials, old target copies form
+a bounded genealogy at strictly increasing young-count levels. This
+replaces the invalid assumption that freezing a full sparse row bounds
+its numerical ages. The final minorization still uses the independent
+finite-age reset and finitely many selected paths, not a practical rate.
+
 \section{Finite verification}
+The new \texttt{verify\_partial\_color\_source\_reset.py} checks
+11,400 random initial colored states through $n=20$, every allowed
+capacity and length at least two, and ten reproducible seeds. Its
+371,507 exchanges are independently matched to the exact aged kernel;
+17,599 are frozen-owner contacts on constant-$F,V$ plateaus. It checks
+color/age separation, excluded initiation, target extinction and the
+plateau invariants. Its longest tested path has 98 exchanges. The new local F/V checker exhausts 1,796,305 colored cache pairs and
+7,310,428 controller completions through $n=7$, including 137,634
+frozen-owner exceptions to strict weighted-old descent. It also checks
+190 larger young-transfer configurations. The
+source-extension checker additionally covers 2,852 exact local paths
+and 1,407 core-closure/endpoint configurations. These finite checks
+corroborate the symbolic proof and are not arbitrary-parameter
+certificates or formal verification.
+
 The accompanying \texttt{verify.py} checks the periodic trace including
 ages, every possible initiating/subset choice in a small frozen-twin
 example, the zero-age absorption certificate, the frozen construction's connectivity, the availability

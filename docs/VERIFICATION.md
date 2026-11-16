@@ -180,7 +180,7 @@ The local frozen-target checker passes 10,560 exact events, divided evenly among
 
 Three independent end-to-end reviews accepted the full-capacity induction; final manuscript transcription audits checked both `thm:fullcapacityalllengths` and `cor:alllengthoverflow`. The complement checker compares 11,400 exact transitions with an independent reduced kernel, plus 840 universal-zero source contacts and 840 cross-component edge insertions. The overflow checker passes 4,368 finite runs / 26,019 coupled exchanges: 21,752 identical pre-overflow steps and 4,267 first-overflow events; 101 runs reached their finite observation limit without an overflow. Those censored runs are not violations of the symbolic tail theorem, and the tests do not estimate its implicit constants.
 
-The mathematical proof, not these finite counts, establishes the induction and uniform geometric overflow tail. Proper-capacity stationary uniqueness, sampling convergence without class symmetry, and polynomial mixing remain open.
+The mathematical proof, not these finite counts, establishes the induction and uniform geometric overflow tail. At that checkpoint proper-capacity uniqueness and sampling convergence were open. The new general-source working theorem addresses those qualitative questions; polynomial mixing remains open.
 
 Final validation for the full-capacity theorem increment: **49/49 curated
 checks passed in 267.19 seconds**. Repository checks passed with 472 local
@@ -195,3 +195,28 @@ model and scope.
 ## Transient age-blind uniformity obstruction
 
 `verify_age_blind_uniformity_transient.py` enumerates 17,942 exact packet outcomes for n=3..8 and every allowed shuffle length at c=n-1, then checks rational sample laws for every b. The symbolic proof in [the note](research/AGE-BLIND-UNIFORMITY-NOT-PRESERVED.md) establishes the unrestricted parameter statement. This is an obstruction to universal one-step uniformity preservation, not to eventual convergence. The new checker and repository/index checks were rerun for this increment; the existing full-suite result above is historical, not a newly rerun 50-check suite.
+
+## General-source theorem: audit boundary
+
+`thm:allparametersuniform` and its partial-colored reset, source-creation, and
+source-extension lemmas are a new working-proof package. Two independent end-to-end
+internal theorem/manuscript audits have passed. The integrated 52-check suite
+passed in 314.19 seconds, including the new trajectory and source-extension
+checks. This is a new run, not reuse of the historical suite above. The additional exhaustive old-responder local audit also passed: 1,796,305
+colored pairs and 7,310,428 controller completions through n=7, plus 190
+large-transfer cases. This brings the maintained registry to 53 checks.
+Local exact transition checks corroborate finite bookkeeping; the symbolic
+proof must establish the unbounded-age and arbitrary-parameter claims. No
+formal verification, external peer review, or useful mixing-rate certificate
+is claimed.
+
+
+The numerical partial-reset checker passed 11,400 starts and 371,507
+exact-kernel-matched exchanges, including 17,599 frozen-owner plateau contacts.
+Repository/index validation passed 482 local links, 151 labels and 65 maintained
+Python files; the generated index has 130 declarations and 55 headings. Two
+PDF-building TeX passes completed with no undefined references or LaTeX errors
+(101 pages), using a local format and a Latin Modern font wrapper because the
+container's default font-map configuration is incomplete. No source mathematics
+was changed for the font workaround. See
+[the source-route proof record](research/GENERAL-SOURCE-CONVERGENCE.md).

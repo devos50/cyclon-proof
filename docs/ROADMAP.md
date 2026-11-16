@@ -2,6 +2,18 @@
 
 This is a working research record, not a publication claim. The manuscript is [paper/main.tex](../paper/main.tex), and the fixed target is summarized in [MODEL.md](MODEL.md). Authorship, submission plans, and external review status are not set here.
 
+## Current general result (16 November 2026)
+
+The internally audited working theorem `thm:allparametersuniform` now covers
+every allowed fixed length, capacity, and population for the adopted kernel.
+See [the source-route record](research/GENERAL-SOURCE-CONVERGENCE.md).
+Two independent end-to-end internal audits have passed; external peer review,
+formal verification, and useful/polynomial mixing rates are not claimed.
+Earlier checkpoints below retain their historical controller hypotheses.
+Statements there that general qualitative convergence remained open are
+superseded by this result. Current priorities are external review, proof
+simplification, and useful sampling rates, not isolated length-four casework.
+
 ## Current boundaries
 
 All rows refer to the adopted protected, mandatory-removal, minimum-age model with independent uniform initiators.
@@ -19,7 +31,7 @@ All rows refer to the adopted protected, mandatory-removal, minimum-age model wi
 | $c=\ell=3$, every $n\ge4$ | Full convergence and conditional sampling; qualitative constants | thm:c3generaluniform |
 | $\ell=3$, every allowed $n,c$ | Full convergence and conditional sampling; implicit constants | thm:threegeneraluniform |
 | $c=n-1$, every allowed $\ell$ | Full convergence and conditional sampling | thm:fullcapacityalllengths |
-| Fixed $\ell\ge4$, $c<n-1$ | General sampling theorem open; full-row hitting and repeated evictions proved | cor:alllengthoverflow |
+| Every allowed fixed $\ell,c,n$ | Unique full-state stationarity, implicit uniform geometric convergence, positive availability, conditional uniform samples | thm:allparametersuniform |
 | Every fixed allowed $\ell\ge2$ | Finite-age recurrence, finitely many stationary regimes, continuous-time convergence to a possibly initial-dependent mixture, stationary age tails | thm:thesisgeneralreset, cor:thesisgeneralregimes |
 
 The paper retains older results for other conventions. Their scope must not be silently combined with the adopted model.
@@ -50,7 +62,7 @@ Two routes remain:
 1. A multistep or transport coupling that tolerates copying and collisions while contracting label bias.
 2. A polynomial hitting bound for $F_\sigma=\{z:\sigma z=z\}$. The proved symmetry-set coupling would then give contraction. For $n\ge4$, this set includes two target peers with identical external caches and no incoming references to either. Its polynomial hitting bound is not proved.
 
-Readiness and source coverage provide quantitative communication tools. The missing step is contraction of label bias.
+Readiness and source coverage provide quantitative communication tools. The missing quantitative step is a useful contraction rate for label bias.
 
 ### The completed three-peer case
 
@@ -79,7 +91,7 @@ Useful checkers:
 
 ## Current priority: parameterized arbitrary-length convergence
 
-The next convergence benchmark is $\ell=4$ with a fixed small capacity and arbitrary $n$. All allowed length-three capacities are now covered by `thm:threegeneraluniform`; the length-three callback and static-identity potential do not automatically extend to larger shuffle lengths.
+The earlier convergence benchmark was $\ell=4$ with a fixed small capacity and arbitrary $n$; the general source theorem now covers it. All allowed length-three capacities are now covered by `thm:threegeneraluniform`; the length-three callback and static-identity potential do not automatically extend to larger shuffle lengths.
 
 Nearly full caches are useful for testing proof mechanisms, but further extensions confined to that regime have lower practical priority.
 
@@ -126,7 +138,7 @@ Lean formalization was discussed and explicitly deferred by the user until the m
 - The earlier nearly full length-three theorem alone does not cover fixed small caches; the new general length-three theorem does, without a practical mixing bound.
 - Counterexamples for retention, unprotected victims, or periodic schedules do not refute the adopted model.
 
-The arbitrary-network polynomial sampling bound and the arbitrary-shuffle convergence theorem remain open. No completion date is established.
+The arbitrary-network polynomial sampling bound remains open; the arbitrary-shuffle convergence theorem now has an internally audited working proof. No completion date is established.
 
 
 ## Availability refinement (16 November 2026)
@@ -205,4 +217,4 @@ These isolate possible reusable routes toward arbitrary lengths. The established
 
 **Internally audited working theorem:** `thm:fullcapacityalllengths` proves uniform canonical common-atom accessibility, unique full-state stationarity/convergence, and conditional uniform sampling for every 1<=L<=n-1 at capacity c=n-1. The outer length / inner population induction stays within full-capacity kernels. Frozen-source erasure makes the complement closed; a no-eviction graph argument makes it connected; normalization and one source contact create a universal zero anchor. See [the full proof record](research/FULL-CAPACITY-ALL-LENGTHS-CANDIDATE.md).
 
-`cor:alllengthoverflow` couples any proper-capacity kernel with the full-capacity kernel until their first overflow. It gives uniform finite-horizon hitting of some full row, a geometric waiting tail for the next eviction, and infinitely many evictions almost surely, for every allowed length/capacity. Constants are implicit. This proves neither sampling uniformity nor unique stationarity at sparse capacities. It does not guarantee a full row at a prescribed observer. Every closed class nevertheless contains a full-row state, removing the additional availability hypothesis from the conditional even-class-symmetry sampling criterion. Class invariance itself remains open.
+`cor:alllengthoverflow` couples any proper-capacity kernel with the full-capacity kernel until their first overflow. It gives uniform finite-horizon hitting of some full row, a geometric waiting tail for the next eviction, and infinitely many evictions almost surely, for every allowed length/capacity. Constants are implicit. This proves neither sampling uniformity nor unique stationarity at sparse capacities. It does not guarantee a full row at a prescribed observer. Every closed class nevertheless contains a full-row state, removing the additional availability hypothesis from the conditional even-class-symmetry sampling criterion. The general common-atom theorem now supplies uniqueness and class invariance; the coupling alone did not.

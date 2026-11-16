@@ -1,5 +1,16 @@
 # Partial results, unintegrated arguments, and superseded routes
 
+**Historical checkpoint, superseded on 16 November 2026.** The general
+working theorem `thm:allparametersuniform` now proves qualitative convergence
+for every allowed fixed length, capacity, and population in the adopted kernel.
+References below to missing accessibility or open length-four-and-higher
+convergence describe earlier controller routes, not the current theorem.
+Their specific conditional hypotheses and controller obstructions retain their
+original scopes. See [the source-route record](research/GENERAL-SOURCE-CONVERGENCE.md).
+The new result has independent internal audits, not external peer review or
+formal verification; useful/polynomial mixing rates remain open.
+
+
 Use this guide before treating a recovered note as a current theorem. The [results registry](RESULTS.md) describes what the manuscript currently claims; the [archive catalog](ARCHIVE-INDEX.md) lists every saved artifact. A note may contain a valid conditional lemma while its proposed global conclusion remains open.
 
 ## Longer shuffles: substantial local tools, missing accessibility

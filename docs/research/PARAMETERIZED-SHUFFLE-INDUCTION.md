@@ -1,5 +1,14 @@
 # Parameterized induction interface for arbitrary shuffle length
 
+**Status update, 16 November 2026:** The manuscript's new general source-route
+working theorem (`thm:allparametersuniform`) supplies source creation and
+complement joining through `lem:generalsourcecreation` and
+`lem:generalsourceextension`. Two independent end-to-end internal audits have passed.
+The construction below retains its original local/conditional scope. Its
+historical source-accessibility obligation is discharged by that new route,
+not by assuming the earlier restricted controllers work. This is not formal
+verification, external peer review, or a polynomial mixing bound.
+
 Research framework for audit, 16 November 2026. This isolates obligations; it does not prove arbitrary-length convergence. Fix an integer L>=3, n>=L+1, and L<=c<=n-1. All statements refer to the unchanged protected/MIN mandatory-removal kernel with exact fixed buffer sizes.
 
 ## Induction package and structural consequences
