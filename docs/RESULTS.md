@@ -1,6 +1,6 @@
 # Results registry
 
-Last reconciled with [the paper source](../paper/main.tex): **20 October 2026**.
+Last reconciled with [the paper source](../paper/main.tex): **16 November 2026**.
 
 **Status convention.** “PROVED” means that the working paper contains a proof, including internal independent audits where recorded. These are research working proofs, not peer-reviewed results or Lean/formal-verification certificates. “COMPUTER-ASSISTED” identifies a proof whose finite step is an exhaustive exact calculation. Ordinary finite tests support proofs but do not establish arbitrary-network claims. “CONDITIONAL” means a proved implication or local lemma with additional hypotheses; those hypotheses have not been shown universally reachable. “OPEN” is not an achieved result.
 
@@ -32,6 +32,7 @@ These establish unique stationary full-state law, convergence including descript
 | PROVED | `c=ell=1`, every `n>=2` | `thm:mandatoryone` | Explicit stationary law: uniform labelled rooted spanning trees, all ages zero, arcs toward the empty root. |
 | PROVED | `c=ell=2`, every `n>=3` | `thm:thesisc2` | First arbitrary-population multi-entry theorem. The later quantitative proof also supplies a direct constructive common atom. |
 | PROVED | `ell=2`, every `n>=3`, `2<=c<=n-1` | `thm:thesisgeneraltwo` | Covers fixed small caches in arbitrarily large networks. No practical general-`c` mixing estimate is extracted. |
+| PROVED | `c=ell=3`, every `n>=4` | `thm:c3generaluniform` | Arbitrary-population full capacity-three convergence; qualitative constants only, no polynomial mixing bound. |
 | PROVED | `ell=3`, `max(3,n-2)<=c<=n-1` | `thm:dense3uniform` | Nearly full-cache regime. Useful structurally, but not the practical fixed-small-cache target. |
 
 Earlier special cases `thm:thesishalfdense` (`ell=2`, `n<=2c`) and `thm:thesisdense` (`ell=2`, `c>=n-2`) are retained proofs now subsumed by `thm:thesisgeneraltwo`.
@@ -191,3 +192,18 @@ Uniform finite-horizon availability and conditional-error bounds, once certified
 ## Unit-width secondary-anchor callback (16 November 2026)
 
 **CONDITIONAL WORKING RESULT:** `lem:fullbandcallback` applies at every full shuffle `ell=c>=3`. If every old `a^0` holder shares `c-2` secondary identities, each at one of two adjacent coordinate-specific ages `{m_p,m_p+1}`, and the owner's corresponding ages are at least `m_p`, at most `3(|I|+1)+1` controlled exchanges gain a zero while preserving all old zeros. This broadens `lem:fullpositivecallback` beyond exactly common ages. The shared identities/bands are not proved universally accessible, and `|I|<=n-c+1` still prevents resolving the higher-length endgame. See [proof details](research/UNIT-WIDTH-CALLBACK.md) and [checker](../verification/mandatory-removal/verify_thesis_cooperative_bands.py).
+
+## Worst-case full-state mixing lower bound (16 November 2026)
+
+**PROVED symbolic corollary.** `cor:fullstatemixingcouponlower` upgrades the high-age-star obstruction to distance from any fixed stationary probability law. For every event horizon `T`, worst-case full-state TV is at least the probability that one of `n-1` leaves has not initiated, hence at least `M_T/(1+M_T)` where `M_T=(n-1)(1-1/n)^T`. For the known unique `c=ell=2` stationary law this gives an `Omega(n log n)` full-state mixing lower bound at fixed error, with the displayed epsilon-dependent integer bound in the paper. The proof sends the initial star age to infinity after fixing `T`, removing the stationary age tail. It is not a single-query lower bound or a claim about one fixed start at every horizon.
+
+
+## Capacity-three learned-target boundary service (16 November 2026)
+
+**Symbolic working result, independently reviewed:** `lem:c3learnedcallback` gives finite owner boundary service through any specified subset of zero holders at exactly `c=ell=3`, without a shared-secondary or age-band assumption. `cor:c3zeroify` gives some nonholder gain when the owner caches a nonholder, and zeroification without decreasing endpoint holder count. This does not promise service to a prescribed nonholder or an age-uniform gadget duration. The proof is in [C3-LEARNED-TARGET-CALLBACK.md](research/C3-LEARNED-TARGET-CALLBACK.md); `verify_thesis_c3_learned_callback.py` corroborates exact finite transitions, not the unbounded-age argument. Full convergence additionally requires the separately audited outward-holder and extremal arguments.
+
+## Arbitrary-population full capacity-three theorem (16 November 2026)
+
+**Working proof integrated:** `thm:c3generaluniform` proves unique full-state stationarity, uniform geometric convergence, positive stationary availability, and limiting conditional uniform samples for **exactly `c=ell=3`, every `n>=4`**, with arbitrary finite nonnegative integer ages and initially underfull weakly connected caches under the adopted iid scheduler. The proof combines learned-target boundary service, zeroification, owner-directed emptying without circular outward closure, the new outward-gain gadgets and age potential, the incoming minimum-component contradiction, and the existing finite reset/common atom argument. Separate end-to-end and final-text audits are recorded in the research continuation. This is a mathematical working proof, not formal verification or external peer review.
+
+The constants are qualitative. Sparse capacities `4<=c<n-2` at length three, general higher lengths, and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.

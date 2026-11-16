@@ -16,7 +16,8 @@ All rows refer to the adopted protected, mandatory-removal, minimum-age model wi
 | $c=\ell=2$, arbitrary $n$ | All peers emit fresh selves in $O(n\log(n/\varepsilon))$ events with high probability | cor:c2successfulsourcecover |
 | $n=3,c=\ell=2$, arbitrary finite initial ages | Exact finite projection and certified $O(\log(1/\varepsilon))$ one-sample bound | prop:c2threepositivity, prop:c2threeordinarysample |
 | $\ell=3,c\ge n-2$ | Full convergence and conditional sampling | thm:dense3uniform |
-| $\ell=3,3\le c<n-2$ | General sampling theorem open | — |
+| $c=\ell=3$, every $n\ge4$ | Full convergence and conditional sampling; qualitative constants | thm:c3generaluniform |
+| $\ell=3,4\le c<n-2$ | General sampling theorem open | — |
 | Fixed $\ell\ge4$ | General sampling theorem open | — |
 | Every fixed allowed $\ell\ge2$ | Finite-age recurrence, finitely many stationary regimes, continuous-time convergence to a possibly initial-dependent mixture, stationary age tails | thm:thesisgeneralreset, cor:thesisgeneralregimes |
 
@@ -77,7 +78,7 @@ Useful checkers:
 
 ## Priority 2: longer shuffles with small caches
 
-The meaningful next convergence benchmark is $\ell=3$, $c=3$ or $c=4$, and arbitrary $n$. Capacity four offers a spare slot and may be the easier first target.
+The next convergence benchmark is $\ell=3$, $c=4$, and arbitrary $n$. The full $c=\ell=3$ case is now covered by `thm:c3generaluniform`; its two-residual-head argument does not automatically extend to larger caches.
 
 Nearly full caches are useful for testing proof mechanisms, but further extensions confined to that regime have lower practical priority.
 
@@ -144,3 +145,16 @@ A full-state transposition certificate cannot contract in fewer than `n-1` event
 ## Conditional callback refinement (16 November 2026)
 
 The full-shuffle callback now covers shared secondary vectors with coordinate-wise unit-width bands, not only identical vectors (`lem:fullbandcallback`). The [conditional proof](research/UNIT-WIDTH-CALLBACK.md) uses at most three macros and includes a non-dense `n=6,c=3` example. A possible next step is establishing these bands or extending the callback to arbitrary shared-anchor ages. Neither is proved here; the shared-identity requirement and `|I|<=n-c+1` endgame limitation remain.
+
+The high-age-star coupon argument also establishes `Omega(n log n)` worst-case full-state mixing at fixed error (`cor:fullstatemixingcouponlower`). Thus this barrier applies to any full-state proof, while a faster single-query rate remains logically possible. It does not supply a matching upper bound.
+
+
+## Capacity-three learned-target boundary service (16 November 2026)
+
+**Symbolic working result, independently reviewed:** `lem:c3learnedcallback` gives finite owner boundary service through any specified subset of zero holders at exactly `c=ell=3`, without a shared-secondary or age-band assumption. `cor:c3zeroify` gives some nonholder gain when the owner caches a nonholder, and zeroification without decreasing endpoint holder count. This does not promise service to a prescribed nonholder or an age-uniform gadget duration. The proof is in [C3-LEARNED-TARGET-CALLBACK.md](research/C3-LEARNED-TARGET-CALLBACK.md); `verify_thesis_c3_learned_callback.py` corroborates exact finite transitions, not the unbounded-age argument. Full convergence additionally requires the separately audited outward-holder and extremal arguments.
+
+## Arbitrary-population full capacity-three theorem (16 November 2026)
+
+**Working proof integrated:** `thm:c3generaluniform` proves unique full-state stationarity, uniform geometric convergence, positive stationary availability, and limiting conditional uniform samples for **exactly `c=ell=3`, every `n>=4`**, with arbitrary finite nonnegative integer ages and initially underfull weakly connected caches under the adopted iid scheduler. The proof combines learned-target boundary service, zeroification, owner-directed emptying without circular outward closure, the new outward-gain gadgets and age potential, the incoming minimum-component contradiction, and the existing finite reset/common atom argument. Separate end-to-end and final-text audits are recorded in the research continuation. This is a mathematical working proof, not formal verification or external peer review.
+
+The constants are qualitative. Sparse capacities `4<=c<n-2` at length three, general higher lengths, and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.

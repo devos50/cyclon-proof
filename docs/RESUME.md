@@ -18,7 +18,7 @@ The latest research priority is a **useful local sampling rate for a fixed small
 For the adopted mandatory-removal, received-protection, minimum-age protocol with independent uniform initiators:
 
 - Lengths one and two have full convergence and conditional sampling proofs for every allowed network size and common cache capacity.
-- Length three has a full proof for $c\ge n-2$. Smaller capacities at length three and the general higher-length theorem remain open.
+- Length three has full proofs for $c=3$ at every $n\ge4$ and for $c\ge n-2$. Sparse capacities $4\le c<n-2$ and the general higher-length theorem remain open.
 - Every fixed shuffle length has finite-age recurrence and finitely many possible stationary regimes. This alone does not settle sampling in the open cases.
 
 “Proved” here refers to the current draft arguments and stated certificates, rather than external publication or peer review.
@@ -104,7 +104,7 @@ Therefore refreshing and communication alone cannot close the sampling proof.
 
 Pursue a coupling or richer query-sufficient projection controlling **label bias**, with the three-peer integer certificate as a concrete model. Use readiness as a tool, rather than claiming the missing sampling bridge is complete.
 
-For the separate general-convergence task, prioritize length three with capacity three or four and arbitrary $n$. Conditional callbacks still need universal accessibility or a zero-count improvement argument.
+For the separate general-convergence task, prioritize length three with capacity four and arbitrary $n$. Capacity three is now covered by `thm:c3generaluniform`; larger sparse capacities still need a suitable accessibility argument.
 
 Lean formalization is deferred at the user's request. Do not begin it until the proof work is ready and the user returns to that task.
 
@@ -121,7 +121,7 @@ Lean formalization is deferred at the user's request. Do not begin it until the 
 
 A strengthened shortcut counterexample is now `prop:c2iidrefreshbias`: at deterministic time two under the actual iid scheduler, conditioning on complete refreshing and observer availability yields a deterministic, maximally biased two-label sample. The corresponding exact enumeration was added to the existing refreshing checker.
 
-These continuation results do not replace the existing arbitrary-network convergence theorems for lengths one and two. The open targets remain a useful polynomial sampling rate as membership grows, length-three convergence at fixed small caches outside the dense regime, and general higher-length convergence.
+These continuation results do not replace the existing arbitrary-network convergence theorems for lengths one and two. The open targets remain a useful polynomial sampling rate as membership grows, length-three convergence at sparse capacities at least four, and general higher-length convergence.
 
 `prop:finitehorizonfulltv` now permits exact bounded-initial-age checks of the **full-state antisymmetric** contraction coefficient, not just query errors. The injective age map is common across both compared starts. `cor:finiteantisymmetriccertificate` explains why such a uniform coefficient can be iterated without repeating compression. A practical certificate or symbolic polynomial bound for growing populations remains missing.
 
@@ -130,3 +130,16 @@ The full-state finite-certificate route has a proved coupon-collector limitation
 ## Additional conditional callback progress
 
 `lem:fullbandcallback` now permits shared secondary ages to differ by one at full shuffle `ell=c>=3`; exact equality across holders is unnecessary. Three preparation/owner macros suffice, rather than the common-vector lemma's two. The [research note](research/UNIT-WIDTH-CALLBACK.md) includes the proof and two `n=6,c=3` regressions. Its checker passed 6600 seeded configurations. This is conditional progress only: obtaining shared identities and narrow age bands remains open, as does the higher-length last-zero endgame.
+
+`cor:fullstatemixingcouponlower` now gives a genuine worst-case full-state mixing lower bound, not just a restriction on an antisymmetric proof strategy: at fixed error it is `Omega(n log n)`. This uses arbitrary finite initial ages in the worst-case supremum and does not transfer to age-blind local sampling.
+
+
+## Capacity-three learned-target boundary service (16 November 2026)
+
+**Symbolic working result, independently reviewed:** `lem:c3learnedcallback` gives finite owner boundary service through any specified subset of zero holders at exactly `c=ell=3`, without a shared-secondary or age-band assumption. `cor:c3zeroify` gives some nonholder gain when the owner caches a nonholder, and zeroification without decreasing endpoint holder count. This does not promise service to a prescribed nonholder or an age-uniform gadget duration. The proof is in [C3-LEARNED-TARGET-CALLBACK.md](research/C3-LEARNED-TARGET-CALLBACK.md); `verify_thesis_c3_learned_callback.py` corroborates exact finite transitions, not the unbounded-age argument. Full convergence additionally requires the separately audited outward-holder and extremal arguments.
+
+## Arbitrary-population full capacity-three theorem (16 November 2026)
+
+**Working proof integrated:** `thm:c3generaluniform` proves unique full-state stationarity, uniform geometric convergence, positive stationary availability, and limiting conditional uniform samples for **exactly `c=ell=3`, every `n>=4`**, with arbitrary finite nonnegative integer ages and initially underfull weakly connected caches under the adopted iid scheduler. The proof combines learned-target boundary service, zeroification, owner-directed emptying without circular outward closure, the new outward-gain gadgets and age potential, the incoming minimum-component contradiction, and the existing finite reset/common atom argument. Separate end-to-end and final-text audits are recorded in the research continuation. This is a mathematical working proof, not formal verification or external peer review.
+
+The constants are qualitative. Sparse capacities `4<=c<n-2` at length three, general higher lengths, and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.

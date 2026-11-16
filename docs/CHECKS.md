@@ -50,3 +50,14 @@ The arbitrary-network availability bound is a symbolic consequence of the existi
 - The latest manuscript completed two `pdflatex -draftmode` passes using a local format. The second pass had no undefined or multiply defined references or LaTeX errors. This validates source processing, not final PDF rendering; configured font embedding remains unavailable and no PDF build is claimed.
 
 The full-state TV compression and antisymmetric block criterion are symbolic reductions, not achieved polynomial contraction estimates. The coupon bound constrains full-state blocks, not local-query mixing. The new age-band callback is explicitly conditional on shared secondary descriptors and does not establish their reachability. The owner-frozen note proves obstructions to specific potentials/interventions, not slow mixing under the adopted scheduler.
+
+## Capacity-three continuation — 16 November 2026
+
+- Full maintained suite: **37/37 passed** (251.10 seconds in this cloud run).
+- Repository checks: 408 local links, 136 labels, 48 maintained Python files.
+- Manuscript index: 115 declarations, 53 headings.
+- `git diff --check`: passed.
+- Two TeX draft-mode passes: passed with no undefined or multiply-defined references and no LaTeX errors. Final PDF embedding remains unavailable because this environment lacks the configured font mapping; no new PDF is claimed.
+- Separate mathematical end-to-end and actual-final-text audits: see [the scoped record](research/C3-AUDIT.md). Finite checks do not replace the symbolic proof.
+
+The theorem is full `c=ell=3`, arbitrary `n>=4`, with qualitative uniform geometric constants. Sparse larger capacities and polynomial mixing are not claimed.

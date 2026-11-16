@@ -63,3 +63,14 @@ The [current research note](research/FROZEN-OWNER-EXTINCTION.md) separates first
 ## Shared anchors with unit-width ages
 
 The conditional full-shuffle callback is now proved for secondary ages in coordinate-wise pairs `{m_p,m_p+1}` (`lem:fullbandcallback`), with a three-macro bound. See [UNIT-WIDTH-CALLBACK.md](research/UNIT-WIDTH-CALLBACK.md). The hypotheses are still an accessibility gap: arbitrary states need not have the shared secondary identities, let alone the stated bands. Unrestricted shared-anchor ages and a generic zero-count gain remain open. The existing counting obstruction for the last missing zeros at `ell>=4` is unchanged.
+
+
+## Capacity-three learned-target boundary service (16 November 2026)
+
+**Symbolic working result, independently reviewed:** `lem:c3learnedcallback` gives finite owner boundary service through any specified subset of zero holders at exactly `c=ell=3`, without a shared-secondary or age-band assumption. `cor:c3zeroify` gives some nonholder gain when the owner caches a nonholder, and zeroification without decreasing endpoint holder count. This does not promise service to a prescribed nonholder or an age-uniform gadget duration. The proof is in [C3-LEARNED-TARGET-CALLBACK.md](research/C3-LEARNED-TARGET-CALLBACK.md); `verify_thesis_c3_learned_callback.py` corroborates exact finite transitions, not the unbounded-age argument. Full convergence additionally requires the separately audited outward-holder and extremal arguments.
+
+## Arbitrary-population full capacity-three theorem (16 November 2026)
+
+**Working proof integrated:** `thm:c3generaluniform` proves unique full-state stationarity, uniform geometric convergence, positive stationary availability, and limiting conditional uniform samples for **exactly `c=ell=3`, every `n>=4`**, with arbitrary finite nonnegative integer ages and initially underfull weakly connected caches under the adopted iid scheduler. The proof combines learned-target boundary service, zeroification, owner-directed emptying without circular outward closure, the new outward-gain gadgets and age potential, the incoming minimum-component contradiction, and the existing finite reset/common atom argument. Separate end-to-end and final-text audits are recorded in the research continuation. This is a mathematical working proof, not formal verification or external peer review.
+
+The constants are qualitative. Sparse capacities `4<=c<n-2` at length three, general higher lengths, and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.

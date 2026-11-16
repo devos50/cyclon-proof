@@ -120,3 +120,20 @@ For `prop:finitehorizonfulltv`, the compression checker additionally constructs 
 ## Unit-width full-shuffle callback checks
 
 `python3 -B verification/mandatory-removal/verify_thesis_cooperative_bands.py` passed 6600 seeded exact controlled paths for `n=4..14`, every `3<=c=ell<=n-1`, including coordinate-specific lower ages up to `10^6`. The run contains 19145 legal exchanges, 2307 independently evaluated singleton-residual updates, and a longest path of 11 exchanges. Forty-four starts require three nonfinishing macros; two explicit `n=6,c=3` regressions also exercise the third-macro cases. The script checks exact owner-vector resets, all original zero copies, legal oldest choices, and the path bound. This is finite corroboration of the symbolic conditional lemma `lem:fullbandcallback`, not exhaustive all-state enumeration or generic convergence.
+
+`cor:fullstatemixingcouponlower` is a symbolic extension of the coupon-star construction. Its additional step uses continuity of a probability measure on decreasing high-age events. The existing exact coupon checker corroborates the star event only; no simulation or finite stationary-age cutoff is used in the proof.
+
+## Learned-target continuation and exact coalescence obstruction (16 November 2026)
+
+The new learned-target checker covers 5,100 seeded capacity-three starts with arbitrary tested ages up to one million, genuine nonholders, arbitrary chosen subsets of zero holders, and targets that may themselves already hold a zero outside that subset. Its 5,918 exact controlled exchanges include 40 head-count increases charged to newly learned targets and 48 legal clearings. This is corroboration of the qualitative symbolic proof, not an exhaustive state-space or mixing certificate. The scalar one-head checker adds 2,400 starts and 5,684 exchanges.
+
+The [oldest-pointer counterexample](research/OLDEST-POINTER-CYCLE.md) is different: a finite exact affine-cycle certificate proves that owner-only oldest-first coalescence is false. Its checker compares all 144 exchanges in two periods against the adopted kernel and proves repetition by translation invariance. The callback proof uses high-age divergence followed by a separate clearing intervention, not the disproved coalescence claim.
+
+
+## Capacity-three learned-target boundary service (16 November 2026)
+
+**Symbolic working result, independently reviewed:** `lem:c3learnedcallback` gives finite owner boundary service through any specified subset of zero holders at exactly `c=ell=3`, without a shared-secondary or age-band assumption. `cor:c3zeroify` gives some nonholder gain when the owner caches a nonholder, and zeroification without decreasing endpoint holder count. This does not promise service to a prescribed nonholder or an age-uniform gadget duration. The proof is in [C3-LEARNED-TARGET-CALLBACK.md](research/C3-LEARNED-TARGET-CALLBACK.md); `verify_thesis_c3_learned_callback.py` corroborates exact finite transitions, not the unbounded-age argument. Full convergence additionally requires the separately audited outward-holder and extremal arguments.
+
+## Capacity-three arbitrary-population continuation checks
+
+The triangle checker passes 2,120 ordered-age identity cases, 9,273 varied full-shuffle cases, and 600 holder-restoration prefixes. The outward controller passes 5,100 starts and 11,970 exchanges, including 629 migration steps with exact global maximum-age potential assertions, 371 callback-based terminals, and 120 zero-holder transfer branches. An explicit MIN-lowered tie regression guards against replacing received-age inequalities by false equalities. The dimension-independent boundary checker passes 16,650 local configurations for `n=4..40`: 11,250 zero gains, 4,662 outward-edge alternatives, and 738 strict component decreases. These finite checks corroborate local identities only. The arbitrary-size theorem rests on its symbolic proof and separate dependency audits, not these counts.
