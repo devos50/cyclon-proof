@@ -165,6 +165,16 @@ The following independently reviewed **conditional research notes** are not new 
 - [All-younger owner service](research/ALL-YOUNGER-OWNER-SERVICE.md): under explicit pre/post residual-age hypotheses, a contact either makes the secondary target oldest or decreases owner head count. Owner-only passive-age stabilization does not extend to arbitrary cooperative preparation.
 - [Shared-zero-secondary service](research/SHARED-ZERO-SECONDARY-SERVICE.md): a closed zero-holder region sharing one zero-age secondary supports an exact lower-length reduction. Preparing zero secondary ages is impossible from strictly positive copies while that secondary's owner is frozen, so this is not a generic accessibility proof.
 - [Threshold-censored lower kernels](research/THRESHOLD-CENSORED-LOWER-KERNEL.md): the singleton-capacity threshold-clearing lemma is proved; higher-capacity searches are bounded diagnostics, including ten explicitly unresolved five-peer runs.
-- [Even-class symmetry sampling](research/EVEN-CLASS-SYMMETRY-SAMPLING.md): for n>=5, invariance of every recurrent class under even relabellings suffices for deterministic-time one-ID sampling, without unique full-state stationarity. The proof handles cyclic phases and availability. Class invariance, or the sufficient bound of fewer than n recurrent classes, remains unproved. Larger samples require additional per-phase availability.
+- [Even-class symmetry sampling](research/EVEN-CLASS-SYMMETRY-SAMPLING.md): for n>=5, invariance of every recurrent class under even relabellings suffices for deterministic-time one-ID sampling, without unique full-state stationarity. The proof handles cyclic phases and availability. Class invariance, or the sufficient bound of fewer than n recurrent classes, remains unproved. Under the same unproved class-invariance hypothesis, availability is automatic for every b<=min(c,floor(n/2)); larger b only needs one available state in each class, since availability propagates through phases.
 
 These isolate possible reusable routes toward arbitrary lengths. The established unconditional convergence range remains lengths one through three; general owner service, outward growth, and useful polynomial rates remain open.
+
+
+### Shared positive-secondary internal reset
+
+[The local positive-secondary reset](research/SHARED-POSITIVE-SECONDARY-RESET.md) supplies an all-length conditional construction that bounds internal ages while preserving a shared primary zero and arbitrary bounded secondary ages, with outside rows frozen. It uses the existing colored reset, not a lower-length convergence assumption. The probability claim is hitting a bounded internal-state set within a finite horizon, not fixed-time minorization or unrestricted-chain recurrence. Neither reaching this shared closed region nor serving the secondary target is proved.
+
+
+### Closed-class occupancy inheritance
+
+[Clipped-capacity inheritance](research/CLIPPED-CAPACITY-OCCUPANCY.md) shows that a closed class with maximum row size m<c has exactly the kernel of capacity m and length min(L,m). Canonical accessibility for that smaller kernel contradicts the bound via two legal growth events. With the currently established lengths one through three, every closed class at any L>=4 therefore attains some row of size at least four. Assuming the full lower-length induction package gives max occupancy at least L, and hence a full row when c=L. This is not full occupancy for every proper capacity, fixed-observer availability without symmetry, or arbitrary-length convergence.

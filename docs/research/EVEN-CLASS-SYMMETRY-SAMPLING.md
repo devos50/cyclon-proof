@@ -28,7 +28,9 @@ Full-state convergence need not hold: different classes can retain different sta
 
 ## General sample sizes
 
-For any `1 <= b <= c`, the same conditional-uniform conclusion holds if every cyclic subclass of every closed class contains a state with at least `b` entries at observer `i`. By symmetry, this positivity condition is independent of the observer. It is automatic for `b=1` by the bound above, but **is not established here for larger b**.
+For every `b <= min(c, floor(n/2))`, the same conditional-uniform conclusion holds with no additional availability hypothesis. In particular, this covers all allowed request sizes in the sparse-capacity range `c <= floor(n/2)`.
+
+For larger `b <= c`, the conclusion holds if every closed class contains at least one state having at least `b` entries at some peer. Symmetry and the occupancy-propagation argument below then establish positive availability at every observer in every cyclic phase. This extra large-`b` class-existence condition is **not established here**.
 
 The observation rule is important: choose an unordered `b`-subset uniformly from the cache, then order it uniformly. The conditional conclusion is uniform on all ordered distinct `b`-tuples.
 
@@ -58,7 +60,23 @@ A weakly connected directed overlay has at least `n-1` arcs. A nonempty row has 
 
 `alpha_r >= ceil((n-1)/c)/n`.
 
-For larger `b`, the stated phase-positivity hypothesis gives `alpha_r > 0`, since the stationary law of an irreducible positive recurrent countable chain assigns positive mass to every state. There are only finitely many classes and finitely many phases in each, so their positive `alpha_r` have a positive common minimum.
+### 3a. Automatic availability up to the sparse-capacity threshold
+
+For a closed class `C`, let `m` be the greatest cache size appearing at any peer in any state of `C`. This maximum exists and is attained, since sizes lie in the finite set `0,...,c`.
+
+If `m<c`, no legal transition from a state in `C` can have an eviction at either endpoint. An eviction is required only when the resident-plus-new set overflows, and the corresponding endpoint finishes with size exactly `c`; that would exceed `m` in a state that must remain in the closed class.
+
+Without evictions, the underlying undirected graph can only gain edges. The mandatory selected-partner removal does not lose an underlying edge: the responder receives and protects the initiator's fresh reverse descriptor. All other resident edges persist. Because states in `C` communicate, this monotone graph must be one fixed graph throughout `C`. Even-permutation invariance makes that graph invariant under `A_n`. This group is transitive on unordered pairs, so the graph is either empty or complete. Weak connectivity excludes the empty case.
+
+A complete underlying graph requires at least `n(n-1)/2` directed descriptors. Since every row has size at most `m`, this gives `m >= ceil((n-1)/2) = floor(n/2)`. Consequently, in all cases,
+
+`m >= min(c, floor(n/2))`.
+
+Thus every class contains an available state for every `b` up to that bound. Even relabelling gives such a state at each chosen observer `i`.
+
+Availability also propagates to each successive cyclic phase. From a state with `|C_i|>=b`, choose any initiator different from `i`. The cache at `i` is either unchanged, or is the passive responder cache. A passive merge never decreases its size: vacancies are filled first and any evictions are matched by new insertions. Therefore a positive-probability next-phase state also has `|C_i|>=b`. Repeating this argument covers every phase. This same argument proves the stated class-existence criterion for larger `b`.
+
+The stationary law of an irreducible positive recurrent countable chain assigns positive mass to every state, so phase availability is positive. There are only finitely many classes and finitely many phases in each, hence these positive availabilities have a positive common minimum. No explicit numerical bound for `b>1` is claimed.
 
 ### 4. Deterministic-time convergence of samples
 

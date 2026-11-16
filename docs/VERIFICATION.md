@@ -159,3 +159,13 @@ repository checks passed with 454 local links, 145 TeX labels, and 56
 maintained Python files. A separate end-to-end audit accepted all four
 research notes within their explicit hypotheses and search limits.
 The manuscript mathematical source was unchanged in this increment.
+
+
+## Shared positive-secondary reset and availability refinement
+
+The reserved-positive-anchor checker passes 2,025 cases / 6,505 exact full-kernel events, including unequal positive secondary ages, singleton residual systems, all colored-potential decreases, owner interleaving, final residual reset, and frozen outside rows. Two independent symbolic reviews checked the actual note, unpadded old-only simulation, gap bounds, and hitting-within-horizon probability scope.
+
+The even-class symmetry note now proves automatic availability for b<=min(c,floor(n/2)) under its unproved class-invariance hypothesis. If maximum row size m<c, no class transition can evict; the undirected graph is consequently monotone and constant, and even-permutation invariance forces it complete. Arc counting yields the stated occupancy bound. A non-observer initiation propagates availability to the next cyclic phase. This is a symbolic conditional argument, not a numerical finding or a proof of class invariance.
+
+
+The completed positive-reset suite passed **45/45 checks in 278.92 seconds**. The subsequently added clipped-capacity growth check separately passes all 2,002 cases, including m=1 and every tested allowed shuffle length. The current registry consequently has 46 checks; this record does not describe a single 46-check full-suite run. Actual-text review verified exact transition-law inheritance and the two-event witness. The manuscript source remains unchanged.
