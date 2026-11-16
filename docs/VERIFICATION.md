@@ -146,3 +146,16 @@ The arbitrary-capacity callback checker passes 6,000 starts (19,483 exchanges, m
 ## Parameterized induction validation
 
 The general restoration checker passes 12,012 prefixes / 36,036 exchanges for n=4..14 and all allowed lengths/capacities, including 840 safe-victim branches and 4,290 extra-request branches. It does not invoke an unproved general callback. The restricted-controller cycle checker passes 1,140 embeddings / 22,800 exchanges for n=5..22, checking exact two-event repetition, legal forced packets, weak connectivity and constant identity potential. The complete suite passes **42/42 checks** in 259.38 seconds. These tests corroborate finite local identities, not the conditional induction's open hypotheses. Separate end-to-end mathematical review checked the actual manuscript, lower-length dependencies, full-capacity incoming swap, locality/free-reply interface, finite-reset probability quantifiers, and cycle embedding.
+
+
+## Scoped positive-secondary research checks
+
+The all-younger checker tests 28,000 legal transitions: 9,212 meet its explicit postcondition and pass, while 18,788 are excluded rather than counted as successes. The shared-zero-secondary embedding checker compares 52,920 transitions against an independent lower-kernel implementation and checks 1,456 normalized owner-head deletions. Both are curated full-suite checks. The separate threshold-censored diagnostic is not a convergence certificate: it records boundary exits without clipping, finds bounded witnesses for the stated small families, and explicitly reports ten unresolved five-peer searches stopped by the 10,000-state budget. Its analytic singleton threshold lemma is independent of these finite search results.
+
+The phase-symmetry sampling reduction is symbolic, not numerically inferred. Its group-action, periodic-chain, availability, and entrance-mixture steps were independently audited. Neither finite regime count nor relabelling equivariance alone proves individual-class invariance.
+
+Final scoped validation: **44/44 curated checks passed in 260.41 seconds**;
+repository checks passed with 454 local links, 145 TeX labels, and 56
+maintained Python files. A separate end-to-end audit accepted all four
+research notes within their explicit hypotheses and search limits.
+The manuscript mathematical source was unchanged in this increment.
