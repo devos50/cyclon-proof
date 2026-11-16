@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,hyperref,lmodern}
+\title{A capacity-one fixed-query propagation lower bound}
+\author{Working research note}
+\date{16 November 2026}
+\begin{document}
+\maketitle
+\paragraph{Scope.} The adopted protocol is specified in
+\texttt{generic-proof.tex}. Time counts independent uniform global
+initiations. The query is conditioned on a nonempty cache. This result has
+passed independent internal mathematical review, not formal verification
+or external peer review.
+\section{A fixed-query propagation lower bound at capacity one}
+Consider $c=L=1$, $n\ge3$, and start with the directed zero-age cycle
+$C_i=\{(i+1\bmod n)^0\}$ on labels $0,\ldots,n-1$. Let $\nu_{i,t}$ be the
+one-identifier query law at observer $i$, conditional on a nonempty cache.
+For every real $R>0$,
+\[
+ \|\nu_{i,t}-\operatorname{Unif}([n]\setminus\{i\})\|_{\rm TV}
+ \ge\left[1-
+ \frac{n(1+1/n)^t}{(n-1)R}-\frac{2R}{n-1}\right]_+.
+\]
+Optimizing over $R$ gives the explicit bound
+\[
+ \|\nu_{i,t}-\operatorname{Unif}([n]\setminus\{i\})\|_{\rm TV}
+ \ge\left[1-\frac{\sqrt{8n}(1+1/n)^{t/2}}{n-1}\right]_+.
+\]
+Thus a time guaranteeing query error at most $\varepsilon$ uniformly
+over starts, for $0<\varepsilon<1$, must satisfy
+\[
+ t\ge\frac{\log\!\left((1-\varepsilon)^2(n-1)^2/(8n)\right)}
+ {\log(1+1/n)}
+ \quad\text{when the logarithm is positive}.
+\]
+For fixed $\varepsilon$ this is $n\log n-O_\varepsilon(n)$.
+In particular, for every fixed $0<\delta<1$, at
+$t_n=\lfloor(1-\delta)n\log n\rfloor$ this error tends to one. Hence for
+any fixed $0<\varepsilon<1$, a worst-start fixed-observer query mixing time
+has lower limit at least one after division by $n\log n$. This is a
+sample-level result, separate from the stronger known full-state depth
+lower bound, and no capacity-two extension is asserted.
+
+\paragraph{Metric-length drift.}
+Use circular distance $d(i,j)=\min(|i-j|,n-|i-j|)$, and define
+$W(x)=\sum_{i:C_i\ne\varnothing}d(i,f(i))$, where $f(i)$ is the sole cached
+identifier. Initially $W=n$. If a nonempty active peer $p$ contacts
+$q=f(p)$ and $r=f(q)$ exists with $r\ne p$, the capacity-one identity update
+is $f'(q)=p$, $f'(p)=r$. The change of $W$ is
+$d(p,r)-d(q,r)\le d(p,q)$ by the triangle inequality. If $q$ is empty,
+$W$ is unchanged. If $r=p$, the self-reply is removed and $W$ decreases by
+$d(p,q)$. Empty initiations are no-ops. Averaging over the uniform initiator
+therefore gives
+\[
+ \mathbb E[W(X_{t+1})\mid X_t]\le(1+1/n)W(X_t),
+ \qquad \mathbb EW(X_t)\le n(1+1/n)^t.
+\]
+
+\paragraph{From length to the conditional query.}
+The initial law and transition kernel are invariant under cyclic label
+rotations. Thus every observer has the same availability probability
+$a_t$ and the same expected distance, assigning zero distance to an empty
+row. Weak connectivity and capacity one imply that there are at least
+$n-1$ occupied rows: there must be at least $n-1$ underlying edges, and
+there is at most one descriptor per row. Consequently $a_t\ge(n-1)/n$.
+The conditional mean query distance at every observer is therefore
+\[
+ \mathbb E[d(i,\text{query})\mid C_i\ne\varnothing]
+ =\frac{\mathbb EW(X_t)}{n a_t}
+ \le\frac{n(1+1/n)^t}{n-1}.
+\]
+Markov's inequality gives conditional mass at least one minus this last
+quantity divided by $R$ to the radius-$R$ ball around $i$. The uniform peer
+law assigns that ball mass at most $2R/(n-1)$. Testing this event proves
+the finite bound. The ball cardinality bound holds for every real $R>0$:
+it is at most $2\lfloor R\rfloor\le2R$ below the diameter, and at most
+$n-1\le2R$ at or above it. Substituting
+$R=\sqrt{n(1+1/n)^t/2}$ proves the optimized bound. Rearrangement gives the
+necessary time, and at $t_n$ its subtracted term tends to zero.
+
+\end{document}
