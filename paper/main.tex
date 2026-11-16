@@ -54,7 +54,7 @@ A general two-entry theorem now covers every allowed
 cache capacity and population size. Its outward-spread
 argument combines a bounded count of young descriptors
 with a numerical-age argument excluding infinite plateaux.
-For fixed shuffle lengths at least three,
+For fixed shuffle lengths at least four,
 a common-regime or sufficient classwise-symmetry argument
 is still needed for general conditional uniformity.
 For two-entry shuffles we additionally prove uniform contact
@@ -67,11 +67,12 @@ contact across every cut and show that a
 universal zero-age anchor suffices for a common atom;
 combining cooperative callbacks and an extremal component
 argument now proves its accessibility and full uniform
-sampling for $c\ge n-2$. A learned-target callback and
-new outward-gain gadgets also give full convergence for
-$c=\ell=3$ at every population size. Sparse capacities
-$4\le c<n-2$ at length three, and arbitrary higher fixed
-lengths, remain open.
+sampling for $c\ge n-2$. Learned-target boundary service
+and new outward-gain arguments now extend full convergence
+to every allowed capacity at shuffle length three. The
+sparse proof uses a fixed-identity lexicographic potential
+and a numerical-age budget. Higher fixed lengths and
+polynomial mixing remain open.
 
 For every fixed shuffle length at least three, a specified
 uniform-victim completion admits full-cache, zero-age, strongly
@@ -5156,6 +5157,9 @@ For an identity $a$, write
  N_a(x)=|\{v\ne a:a\in\operatorname{ids}(C_v)\}|,
  \qquad Z_a(x)=|\{v\ne a:a^0\in C_v\}|.
 \]
+In the holder arguments below, a \emph{nonholder of $a$}
+means a peer $v\ne a$ whose cache lacks $a$; the owner
+$a$ itself is excluded from both holder and nonholder sets.
 
 \begin{proposition}[Refresh without reducing the endpoint holder count]
 \label{prop:zeroify}
@@ -6366,12 +6370,10 @@ Theorem~\ref{thm:threefirstcontact} does not yet supply
 the missing universal zero anchor. Contact with a
 zero holder refreshes a positive active copy while
 protecting old zeros. Contact with the owner can
-instead remove one holder. An unrestricted length-three
-callback that restores this holder count, gains a
-zero copy, and restores all old zeros has not been
-proved at arbitrary capacities. The dense result below
-transfers Proposition~\ref{prop:zeroify} to length
-three when $c\ge n-2$.
+instead remove one holder. Lemma~\ref{lem:threegeneralcallback}
+and Corollary~\ref{cor:threegeneralzeroify} below now supply
+the required holder recovery and zeroification at every
+capacity. The earlier dense result is retained separately.
 Proposition~\ref{prop:owneronlyobstruction} shows
 that retaining the target alone cannot justify an
 owner-only callback, even with full initial caches
@@ -6645,6 +6647,145 @@ arguments must also be established. The full proof record is
 controlled-path checks corroborate its local transitions,
 not its arbitrary-age existential argument.
 
+\begin{lemma}[Owner boundary service at every capacity for length three]
+\label{lem:threegeneralcallback}
+Let $\ell=3$ and $c\ge3$. Fix owner $a$, a subset $H$ of
+its zero holders, and a cached target $p\notin H\cup\{a\}$.
+A finite legal path ends with an owner contact outside $H$,
+preserving every existing holder of identity $a$ and every
+existing zero copy. No initial shared-target or age-band
+assumption is needed. No uniform numerical horizon is asserted.
+\end{lemma}
+\begin{proof}
+Until termination, let only $a$ initiate and prefer outside-$H$
+partners in oldest ties. Include $p$ in every request. At
+preterminal contacts require $a$ in replies; Lemma~\ref{lem:ownertargetretain} retains $p$
+at the owner, even before its responder knows $p$. Every
+visited responder learns $p$ and thereafter keeps it. Once
+$p$ is known, choose reply $\{a,p,C\}$ with one residual $C$
+if present. The owner then receives at most one novel identity,
+so its head count $k$ excluding $p$ cannot increase.
+If the responder has no residual, or has a residual already
+among the owner's retained heads, return that residual when
+present: $k$ decreases. Otherwise return a minimum-age residual.
+A first learning may increase $k$ by at most one.
+
+For $k\ge2$, send $p$ and another retained head $B$ as extras.
+Use a bounded-fair choice of $B$: assign new heads their arrival
+time, choose the retained head with oldest last-sent timestamp,
+and update that timestamp. Thus any head that stays cached and
+is never selected as partner is eventually sent. This is a
+controlled policy, not a fairness assertion about the scheduler.
+
+Suppose an owner-only tail never terminates, has no further
+learning, and has stable $k\ge2$. At every late event the
+responder's residual identities are disjoint from the retained
+owner heads, since otherwise the overlap-priority reply would
+decrease $k$. In particular $B$ is novel at the responder.
+An underfull responder grows by one; a full responder replaces
+its returned residual $C$ by $B$, the only eligible residual
+victim. Its other identities remain. These passive occupancies
+never decrease, so only finitely many growth events occur.
+Every subsequently selected responder is therefore full.
+
+Let $S$ be the identities selected infinitely often. Eventually
+all owner heads lie in $S$. Indeed, a head outside $S$ appearing
+after the last outside-$S$ selection would remain forever.
+The extra-selection policy sends it to some recurrent responder,
+which retains it until its next visit. That visit has an overlap
+and decreases $k$, a contradiction. After this finite prefix,
+consider the multiset of the $k$ owner-head ages and all residual
+ages at $S$. An update removes the selected root age, increments
+all retained root ages, moves the returned residual age to the
+root, and inserts a second copy of the chosen extra's incremented
+age at the responder. No new copy of the current minimum is
+created. Every root copy of that minimum disappears next step;
+every passive copy eventually moves to the root, because its
+source is recurrent and a minimum residual is returned. Thus
+all copies of each integer minimum vanish after finite time,
+and the multiset minimum tends to infinity.
+
+A residual at $S$ pointing outside $S$ keeps its fixed age until
+returned to the owner. Divergence forces its return, contradicting
+eventual owner-head containment in $S$. Hence on a sufficiently
+late tail $S$ is residually closed. All its members know $p$.
+The $p$ ages at $S$ and the owner have a finite bound $M$:
+each endpoint pair is updated to $\min(u+1,v)$, no greater than
+the old maximum. Freeze the owner once every $S$ residual has
+age at least $M$, before its next actual oldest head $Q\in S$.
+
+Let only $Q$ initiate, reserving $a,p$ and choosing an oldest
+residual partner. Require reply $a,p,Q$ when $Q$ is known,
+and otherwise $a,p$ plus a residual if present. Each first
+visit installs fresh $Q$. A repeat returns self-$Q$, reducing
+$Q$'s residual head count; first visits cannot increase that
+count. Initial unvisited residuals have age at least $M$,
+retained active residuals only increase, and $p$ stays at most
+$M$, so every chosen residual is an actual oldest choice.
+Residual closedness keeps all contacts in $S$. In finitely many
+first visits and head deletions the residual cache empties.
+The frozen owner's still-legal contact to $Q$ returns only
+$a,p$ and decreases $k$. All old zeros and all learned $p$
+entries remain protected.
+
+For a one-head owner phase, the cache is $\{p,Q\}$. If $p$
+is oldest, finish. Otherwise $Q$ is oldest. Owner requests
+contain only $a,p$, both duplicates at learned responders,
+so their residual graphs and numerical ages stay fixed.
+Return residuals in a fair cyclic rotation at each responder.
+On an infinite stable learned tail, every outgoing edge of an
+infinitely visited vertex is then traversed infinitely often.
+Its recurrent set $S$ is residually closed and all members know
+$p$; an empty residual would instead finish immediately.
+
+Freeze the owner and perform $Q$-only residual clearing as above,
+but stop when its residual cache empties or its maximum residual
+age is below its $p$ age. The same finite first-visit/repeat
+argument applies; every executed choice is an actual oldest
+residual. Contact $Q$ from the still-frozen owner. If a residual
+of age $b$ is returned, preparation stopped with $b<v$, where
+$v$ is the prepared $p$ age. The owner secondary becomes
+$w=\min(u+1,v)$. A further nonfinishing macro requires $b>w$,
+forcing $w=u+1$. Each continuing macro therefore strictly
+increases the owner secondary, bounded by the finite global
+$p$ maximum on $S\cup\{a\}$. Only finitely many are possible.
+
+These arguments provide finite prefixes and finite interventions,
+not positive-probability infinite schedules. Across restarts the
+learned set is monotone, including during clearing. All possible
+increases of $k$ are charged to first learnings, at most one per
+new learner. Therefore only finitely many clearing-induced head
+decreases can occur before a one-head completion or boundary
+contact. All preparation endpoints protect their $a^0$ copies;
+other existing holders are untouched. The final responder receives
+protected fresh $a^0$. Its final reply can be any legal subset;
+no earlier argument constrains that terminal choice. Every finite
+controlled choice has positive probability, proving the claim.
+\end{proof}
+
+\begin{corollary}[Zeroification at every capacity for length three]
+\label{cor:threegeneralzeroify}
+Let $\ell=3$ and $c\ge3$. A cached nonholder at owner $a$
+gives a finite path increasing $N_a$ while preserving all
+existing holders and zeros. Every state has a finite path
+making all identity-$a$ copies zero with endpoint holder count
+at least its initial value. In any closed class, if $k=\max Z_a$,
+then $N_a\le k$ throughout the class, and all holders at a
+zero-maximizing state are zero holders.
+\end{corollary}
+\begin{proof}
+Repeat the proof of Corollary~\ref{cor:c3zeroify}, replacing
+its callback by Lemma~\ref{lem:threegeneralcallback}. A terminal
+positive-holder reply is required to include $a$, allowing
+retention of the fixed nonholder target by
+Lemma~\ref{lem:ownertargetretain}. Each such contact increases
+$Z_a$, so some nonholder must be reached after finitely many
+stages. The holder-only first-contact construction of
+Theorem~\ref{thm:threefirstcontact} then zeroifies positive
+copies exactly as before. This corollary does not establish
+outward holder gain or full convergence at sparse $c\ge4$.
+\end{proof}
+
 \begin{lemma}[A full-shuffle triangle gains a holder]
 \label{lem:fullshuffletrianglegain}
 Let $\ell=c\ge2$, let $C_a=\varnothing$, and suppose $p$
@@ -6696,6 +6837,49 @@ identities already at $s$: $s$ retains $a^0$ and its full
 reply restores $a^0$ at $p$. Every original holder is now
 present, while $a$ still caches the untouched nonholder $r$.
 Corollary~\ref{cor:c3zeroify} gives strict holder gain.
+\end{proof}
+
+\begin{lemma}[Length-three empty-owner terminal gain at every capacity]
+\label{lem:threeownerterminalgain}
+Let $\ell=3$, $c\ge3$, and $C_a=\varnothing$. If a holder
+$p$ can select $a$ as oldest and also caches a nonholder,
+a finite legal path increases $N_a$ and preserves every
+initial holder at its endpoint.
+\end{lemma}
+\begin{proof}
+Capacity three is Lemma~\ref{lem:c3ownerterminalgain}.
+Suppose $c\ge4$. Choose an oldest non-$a$ residual $s$ at
+$p$, preferring a nonholder in a tie. In $p\to a$, send
+$s$ and, if a second extra is required, a residual $t$.
+If $s$ is a holder, choose the specified nonholder as $t$;
+otherwise any second residual suffices. The empty owner
+receives $p^0,s^{S+1}$ and optional $t^{T+1}$, with $S\ge T$.
+Thus $a\to s$ is legal. When $s$ is a holder, require $a$
+in its reply. The request installs and protects
+$a,p$ and optional $t$ at $s$; MIN may lower duplicate ages.
+
+The cache of $p$ has been frozen since its first exchange,
+so $p\to s$ is still legal. Send $t$ if present, and one
+additional residual $u$ if required by the fixed buffer size.
+Thus the request is fresh $p$ together with optional $t,u$.
+Only $u$ can be novel at $s$. Require $a,p$ in the reply.
+If $s$ is full and $u$ is novel, choose the third reply entry
+$x$ outside $\{a,p,t\}$ and evict it at $s$. Such an $x$
+exists because $c\ge4$ and cannot equal the novel $u$.
+Otherwise no eviction is needed at $s$. Its $a^0$ therefore
+survives. At active $p$, self-$p$ is filtered from the reply,
+leaving at most two usable identities; its preceding removals
+of $a$ and $s$ leave at least two vacancies. Hence $p$ regains
+$a^0$.
+
+If $s$ was a nonholder, this is already strict gain. If $s$
+was a holder, every original holder has been restored and
+$t$ is still an untouched nonholder. The owner retained $t$
+in $a\to s$: its reply contains self-$a$, leaving at most
+two usable identities beside the two retained residents in
+capacity at least four. The owner was frozen afterwards.
+Corollary~\ref{cor:threegeneralzeroify} now gives strict gain
+from this cached nonholder. No other initial holder is lost.
 \end{proof}
 
 \begin{lemma}[Outward holder gain at full capacity three]
@@ -6752,6 +6936,122 @@ selected at most $(M_s(0)-A+1)_+$ times. Finitely many
 identities cannot support infinitely many migrations.
 A terminal gadget or direct gain is reached in finite time;
 every prescribed finite choice has positive probability.
+\end{proof}
+
+\begin{lemma}[Outward holder gain for length three and capacity at least four]
+\label{lem:threesparseoutwardgain}
+Let $\ell=3$, $c\ge4$, and $C_a=\varnothing$. Suppose
+exactly $h$ peers hold identity $a$, all at age zero, and
+some holder caches a peer other than $a$ that lacks $a$.
+A finite legal path attains $N_a>h$.
+\end{lemma}
+\begin{proof}
+Call peers other than $a$ lacking $a$ nonholders. Maintain
+a current holder $p$ with a cached nonholder target $r$.
+Let $Z$ be the initial holders other than the initial current.
+Until termination, only the current initiates; all members of
+$Z$ remain passive zero holders, and the holder set is exactly
+$Z\cup\{p\}$. A migration changes $p$ and makes its previous
+initiator the new designated target. Define the fixed set
+$Y=V\setminus(Z\cup\{a\})$ and
+\[
+ F(x)=\sum_v|\operatorname{ids}(C_v)\cap Y|,\qquad
+ \Phi=(F,c-|C_p|).
+\]
+Thus $Y$ consists of the current and the nonholders. The
+lexicographic potential takes finitely many values. All counts
+below are identity counts, unaffected by numerical MIN merges.
+An owner contact terminates by
+Lemma~\ref{lem:threeownerterminalgain}.
+
+Consider a zero-holder partner $q\in Z$. Write $C,D$ for the
+pre-exchange current and responder identity sets, and $d=|C|$.
+Always require $a$ in the reply, preserving the passive zero
+and refreshing the current anchor.
+If $q$ knows both $p,r$, send $a,r$ and return $a,p,r$.
+All received identities are duplicates or self-filtered, so
+$F$ does not decrease and the current cache shrinks by one.
+If $q$ knows $p$ but not $r$, send $a,r$ and return $a,p$ plus
+a residual $D_0$ if required. A full responder can choose
+$D_0\notin C$ as its victim: its $c-2$ residents outside
+$\{a,p\}$ overlap $C$ in at most $d-3\le c-3$ identities.
+Any counted victim is copied to a new active location, while
+the counted target $r$ gains a new passive copy. At most one
+active novel identity arrives, so no active victim is needed.
+An underfull responder needs no victim. In either case $F$
+strictly increases.
+
+If $q$ does not know $p$, send $a,B$. For a full current,
+choose $B\ne r$, possible since $c\ge4$, leaving $r$ unsent.
+For an underfull current any second extra is allowed: after
+partner deletion two novel reply identities fit, so $r$ still
+cannot be evicted. If $B\in D$, \emph{require $B$ in the reply}
+beside $a$. Only fresh $p$ is novel passively. If a victim is
+needed, choose the third reply identity outside $C$; it exists
+because $|D\setminus C|\ge |D|-d+1\ge1$ for a full responder.
+That victim is copied to a new active location. Returned $B$
+is protected actively, and at most one other novel identity
+arrives. Fresh $p\in Y$ is an additional new passive entry,
+so $F$ strictly increases. Returning $B$ is essential here.
+
+If $B\notin D$, both $p,B$ are novel passively. With $e=|D|$,
+\[
+ |D\setminus C|\ge e-d+2\ge e-c+2,
+\]
+since $q,B\in C$ are absent from $D$. Choose all
+$(e+2-c)_+$ needed passive victims among these absent-current
+residents and include them with $a$ in the reply; at most two
+are needed. Every counted passive victim is copied into a new
+active location. The only possible active extra victim is $B$;
+if lost, it has just been copied into a new passive location.
+Fresh $p$ is an additional counted entry. Thus $F$ strictly
+increases, also for shorter underfull replies. In all these
+zero-holder cases the target remains cached and $\Phi$
+strictly increases.
+
+Now let $q$ be a nonholder. Include $a$ in the request. If
+the current is underfull, it can retain $a$: at most three
+novel replies and at least two vacancies require at most one
+victim, which can be the other sent extra $B$. If $B$ is
+returned it is a duplicate, so no victim is needed. A current
+of size two needs no extra $B$, since its sole retained anchor
+plus three replies fit in $c\ge4$. This gives direct gain.
+For a full current, if $q$ knows $p$, return $p$, leaving at
+most two usable identities and the same retention choice.
+If instead $q$ knows a current residual $x\notin\{a,q\}$,
+return $x$ and send a different residual $B\ne x$ with $a$;
+there are at least two residual choices. If $B$ is also
+returned there is no overflow; otherwise evict $B$, not $a$.
+This again gives gain.
+
+Consequently an unfinished migration need only occur from a
+full current to a responder lacking $p$ and disjoint from $C$.
+A reply shorter than three permits retention of $a$, so assume
+three novel reply identities. Active victims are exactly $a,B$.
+The responder receives three novel protected identities $p,a,B$;
+choose every necessary passive victim among its three replied
+residents. Each counted passive victim is copied to a new active
+location, and lost counted $B$ is newly copied passively. Fresh
+$p\in Y$ compensates the removed selected $q\in Y$, giving
+$F'\ge F$. The responder becomes current, with fresh predecessor
+$p^0$ as designated nonholder target. Its anchor age is exactly
+the old current age plus one. All of $Z$ stays zero. The old
+current was full, so $c-|C_p|=0$; the new vacancy count is
+nonnegative, and $\Phi$ cannot decrease even if $F'=F$.
+
+An infinite unfinished trajectory would eventually have constant
+$\Phi$, and hence no zero-holder contacts. Its tail consists
+only of migrations. Starting that tail with anchor age $A$,
+the current anchor has age $A+t$ after $t$ events. For every
+$s\ne a$, put $K_s(t)=M_s(t)-t$, where $M_s$ is its global
+maximum stored age, zero if absent. Each $K_s$ is nonincreasing;
+when $s$ is selected, its active copy is removed and not sent,
+its owner cannot return self-$s$, and all other copies have
+unchanged or reduced ages. Hence $K_s$ drops by at least one.
+Oldest legality requires $K_s(t)\ge A$ at a selection, allowing
+at most $(M_s(0)-A+1)_+$ selections of each identity. This
+contradicts an infinite tail. Thus a finite legal path reaches
+direct gain or the terminal gadget, with positive probability.
 \end{proof}
 
 \begin{theorem}[Uniform sampling at full capacity three]
@@ -6858,12 +7158,116 @@ an atom where any specified observer has three entries;
 Theorem~\ref{thm:stationary} gives conditional uniformity.
 \end{proof}
 
-\subsection{The complementary dense length-three theorem}
+\begin{theorem}[Uniform sampling for every three-entry shuffle]
+\label{thm:threegeneraluniform}
+For every $n\ge4$ and $3\le c\le n-1$, the adopted kernel
+with fixed shuffle length $\ell=3$ converges from every weakly
+connected initial state with arbitrary finite nonnegative integer
+ages to a unique stationary probability law $\pi$. There are
+finite $T(n,c)$ and $\gamma(n,c)>0$ such that
+\[
+ \inf_x\widehat P_3^{T(n,c)}(x,\{H(V,c)\})\ge\gamma(n,c),\qquad
+ \sup_x\|\widehat P_3^t(x,\cdot)-\pi\|_{\TV}
+ \le(1-\gamma(n,c))^{\lfloor t/T(n,c)\rfloor}.
+\]
+For every observer and $1\le b\le c$, stationary availability
+is positive and the limiting ordered sample conditional on
+availability is uniform over distinct nonself labels. No
+polynomial or practical mixing bound is asserted, and shuffle
+lengths at least four are not covered by this theorem.
+\end{theorem}
+\begin{proof}
+Capacity three is Theorem~\ref{thm:c3generaluniform}; assume
+$c\ge4$. In a closed communicating class fix identity $a$
+and maximize $Z_a=k$. Corollary~\ref{cor:threegeneralzeroify}
+gives $N_a\le k$ throughout the class, and all holders at a
+maximizer form a zero set $I$. Also $k\ge1$, since in the
+absence of any copy weak connectivity forces a nonempty owner
+cache, whose activation creates a zero.
 
-The dense argument below remains useful for capacities larger
-than three. Together with Theorem~\ref{thm:c3generaluniform},
-it covers $c=3$ and $c\ge n-2$, but not the remaining sparse
-capacities $4\le c<n-2$ at shuffle length three.
+No nonholder is directed-reachable from the owner. Otherwise
+take a simple path with internal vertices in $I$, retain its
+first head, and apply Lemma~\ref{lem:threegeneralcallback}
+with $H$ equal to $I$ minus the remaining path vertices.
+Before its terminal contact all those path rows are untouched.
+A nonholder contact gives forbidden holder gain. At a path
+vertex require the reply to contain $a$ and the next path head,
+adding an arbitrary third entry if needed. These two entries
+fit the fixed three-entry reply; the callback permits this
+choice at its final boundary event. The next head is received
+and protected at the owner. Repetition along strictly shorter
+suffixes reaches a nonholder, a contradiction. This explicitly
+uses a chosen partial reply, not an assumed full-cache reply.
+
+Let $R$ be the owner's directed reachable set, including $a$.
+Then $R\setminus\{a\}\subseteq I$ and every row in $R$
+contains only identities from $R$. Freeze the complement.
+For an actual oldest owner head $Q$, reserve $a^0$ and
+normalize its residual weak component with root $Q$. On a
+component of size $m$, the effective capacity and length are
+$\min(c-1,m-1)$ and $\min(2,m-1)$. The lower-length theorems
+and Lemma~\ref{lem:anchorreduction} apply, with singleton
+components requiring no action and empty residual no-ops
+omitted. The owner was frozen, so its contact to the prepared
+$C_Q=\{a^0\}$ is still legal. The sole self-$a$ reply removes
+one owner head without replacement. At the responder fresh
+$a$ and at most two extras fit, preserving its zero. Recompute
+residual components and repeat until the owner is empty.
+Every original zero is preserved. Thus an empty-owner maximizer
+exists without assuming global outward closure.
+
+At any such maximizer, Lemma~\ref{lem:threesparseoutwardgain}
+rules out a holder-to-nonholder edge. If
+$J=V\setminus(I\cup\{a\})$ were nonempty, weak connectivity
+would therefore supply an edge from $J$ to $I$: the owner is
+empty and no nonholder caches $a$. Freeze $I$ and $a$, and use
+Theorem~\ref{thm:threefirstcontact} to pause before the first
+outside-to-$I$ exchange $P\to Q$. No outside peer can have
+acquired $a$ before that crossing. Freeze the outside and
+normalize $Q$'s residual component with root $Q$, using the
+same effective lower-length parameters. This leaves the owner
+empty and $P$'s pending oldest choice unchanged.
+
+Now $C_Q=\{a^0\}$. Resume $P\to Q$. Its sole reply supplies
+$a^0$ to $P$, with space provided by mandatory partner removal.
+The request contains at most three identities, none equal to
+$a$, and fits beside $Q$'s old anchor in capacity $c\ge4$.
+Thus $Q$ keeps its zero and $P$ becomes an additional zero
+holder, contradicting maximality. Every closed class hence
+contains a universal zero anchor and reaches any prescribed
+labelled $H(V,c)$ by Proposition~\ref{prop:threezeroanchor}.
+
+To make the stochastic conclusion explicit, use the finite
+reset family $F$ and uniform reset horizon $B$ and probability
+$\delta$ from Theorem~\ref{thm:thesisgeneralreset}. In the
+finite directed reachability graph on $F$, each vertex reaches
+a terminal strongly connected component. Any state reachable
+from such a component returns to some member of $F$ along a
+finite positive path by reset; terminality puts that member
+in the same component. All states reachable from the component
+therefore communicate with it and form a closed class. Thus
+every reset state has a finite path to the prescribed atom.
+Choose one per reset state, pad to a common finite length $L$
+at the atom's empty-root self-loop, and let $\varepsilon>0$
+be the minimum probability of the padded paths. Then
+\[
+ \widehat P_3^{B+L}(x,\{H(V,c)\})\ge\delta\varepsilon
+ \quad\hbox{for every }x.
+\]
+Lemma~\ref{lem:atom} gives the stated uniform geometric bound.
+Relabelling gives positive stationary mass to an atom where
+any specified observer has a full cache, and
+Theorem~\ref{thm:stationary} gives conditional uniformity for
+all $b\le c$. The finite age-dependent accessibility paths
+have been made uniform only through the separate reset; no
+efficient bound on their lengths or probabilities is claimed.
+\end{proof}
+
+\subsection{The earlier dense length-three theorem}
+
+The dense argument below is retained as an earlier, independent
+structural proof. Its convergence conclusion is now subsumed
+by Theorem~\ref{thm:threegeneraluniform}.
 
 \begin{lemma}[Dense cooperative owner service at length three]
 \label{lem:dense3callback}
@@ -7383,8 +7787,10 @@ Zeroification, outward closure, and a minimum residual
 component argument supply a universal zero anchor.
 Theorem~\ref{thm:c3generaluniform} additionally covers full
 capacity three at every population size, by learned-target
-service and an outward-migration age argument. The remaining
-length-three range is $4\le c<n-2$.
+service and an outward-migration age argument. Finally,
+Theorem~\ref{thm:threegeneraluniform} covers every allowed
+capacity at length three, using a fixed-identity lexicographic
+potential for the sparse outward step.
 For arbitrary larger lengths, the corresponding callback
 and saturation construction remain missing.
 Corollary~\ref{cor:densefourstructure} carries the

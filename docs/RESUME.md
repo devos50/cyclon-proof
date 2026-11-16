@@ -18,7 +18,7 @@ The latest research priority is a **useful local sampling rate for a fixed small
 For the adopted mandatory-removal, received-protection, minimum-age protocol with independent uniform initiators:
 
 - Lengths one and two have full convergence and conditional sampling proofs for every allowed network size and common cache capacity.
-- Length three has full proofs for $c=3$ at every $n\ge4$ and for $c\ge n-2$. Sparse capacities $4\le c<n-2$ and the general higher-length theorem remain open.
+- Length three now has a full proof for every allowed population and capacity (`thm:threegeneraluniform`). Lengths four and above remain open.
 - Every fixed shuffle length has finite-age recurrence and finitely many possible stationary regimes. This alone does not settle sampling in the open cases.
 
 “Proved” here refers to the current draft arguments and stated certificates, rather than external publication or peer review.
@@ -104,7 +104,7 @@ Therefore refreshing and communication alone cannot close the sampling proof.
 
 Pursue a coupling or richer query-sufficient projection controlling **label bias**, with the three-peer integer certificate as a concrete model. Use readiness as a tool, rather than claiming the missing sampling bridge is complete.
 
-For the separate general-convergence task, prioritize length three with capacity four and arbitrary $n$. Capacity three is now covered by `thm:c3generaluniform`; larger sparse capacities still need a suitable accessibility argument.
+For the separate general-convergence task, prioritize length four with fixed small capacities and arbitrary $n$. All length-three capacities are now covered by `thm:threegeneraluniform`; no polynomial rate follows.
 
 Lean formalization is deferred at the user's request. Do not begin it until the proof work is ready and the user returns to that task.
 
@@ -121,7 +121,7 @@ Lean formalization is deferred at the user's request. Do not begin it until the 
 
 A strengthened shortcut counterexample is now `prop:c2iidrefreshbias`: at deterministic time two under the actual iid scheduler, conditioning on complete refreshing and observer availability yields a deterministic, maximally biased two-label sample. The corresponding exact enumeration was added to the existing refreshing checker.
 
-These continuation results do not replace the existing arbitrary-network convergence theorems for lengths one and two. The open targets remain a useful polynomial sampling rate as membership grows, length-three convergence at sparse capacities at least four, and general higher-length convergence.
+These continuation results do not replace the existing arbitrary-network convergence theorems for lengths one and two. The open targets remain a useful polynomial sampling rate as membership grows, length-four and general higher-length convergence.
 
 `prop:finitehorizonfulltv` now permits exact bounded-initial-age checks of the **full-state antisymmetric** contraction coefficient, not just query errors. The injective age map is common across both compared starts. `cor:finiteantisymmetriccertificate` explains why such a uniform coefficient can be iterated without repeating compression. A practical certificate or symbolic polynomial bound for growing populations remains missing.
 
@@ -142,4 +142,10 @@ The full-state finite-certificate route has a proved coupon-collector limitation
 
 **Working proof integrated:** `thm:c3generaluniform` proves unique full-state stationarity, uniform geometric convergence, positive stationary availability, and limiting conditional uniform samples for **exactly `c=ell=3`, every `n>=4`**, with arbitrary finite nonnegative integer ages and initially underfull weakly connected caches under the adopted iid scheduler. The proof combines learned-target boundary service, zeroification, owner-directed emptying without circular outward closure, the new outward-gain gadgets and age potential, the incoming minimum-component contradiction, and the existing finite reset/common atom argument. Separate end-to-end and final-text audits are recorded in the research continuation. This is a mathematical working proof, not formal verification or external peer review.
 
-The constants are qualitative. Sparse capacities `4<=c<n-2` at length three, general higher lengths, and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.
+At this earlier capacity-three stage, sparse larger capacities were still open; the subsequent all-capacity length-three theorem below supersedes that boundary. Higher lengths and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.
+
+## All capacities at shuffle length three (16 November 2026)
+
+**Working proof integrated:** `thm:threegeneraluniform` now covers every `n>=4` and `3<=c<=n-1` at fixed `ell=3`, with the adopted protected/MIN kernel, iid initiators, initially weak connectivity, and arbitrary finite integer ages. It proves unique full-state stationarity, uniform geometric convergence with implicit constants, positive stationary availability, and conditional uniform local sampling for every request size up to capacity. The arbitrary-capacity callback, empty-owner restoration, and fixed-identity lexicographic outward potential are linked to the lower-length residual normalization and finite-reset/common-atom argument. The [full assembly](research/LENGTH-THREE-GENERAL-CONVERGENCE.md) and [sparse outward proof](research/SPARSE-LENGTH-THREE-OUTWARD-GAIN.md) state the scope and necessary controlled reply choices.
+
+This supersedes earlier continuation entries saying sparse length-three convergence remained open. Lengths four and above and polynomial/practical mixing bounds remain open. These are internally audited mathematical working proofs, not formal verification or external peer review.

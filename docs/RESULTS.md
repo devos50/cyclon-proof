@@ -33,6 +33,7 @@ These establish unique stationary full-state law, convergence including descript
 | PROVED | `c=ell=2`, every `n>=3` | `thm:thesisc2` | First arbitrary-population multi-entry theorem. The later quantitative proof also supplies a direct constructive common atom. |
 | PROVED | `ell=2`, every `n>=3`, `2<=c<=n-1` | `thm:thesisgeneraltwo` | Covers fixed small caches in arbitrarily large networks. No practical general-`c` mixing estimate is extracted. |
 | PROVED | `c=ell=3`, every `n>=4` | `thm:c3generaluniform` | Arbitrary-population full capacity-three convergence; qualitative constants only, no polynomial mixing bound. |
+| PROVED | `ell=3`, every `n>=4`, `3<=c<=n-1` | `thm:threegeneraluniform` | Full arbitrary-capacity three-entry convergence; implicit constants, no polynomial bound. |
 | PROVED | `ell=3`, `max(3,n-2)<=c<=n-1` | `thm:dense3uniform` | Nearly full-cache regime. Useful structurally, but not the practical fixed-small-cache target. |
 
 Earlier special cases `thm:thesishalfdense` (`ell=2`, `n<=2c`) and `thm:thesisdense` (`ell=2`, `c>=n-2`) are retained proofs now subsumed by `thm:thesisgeneraltwo`.
@@ -150,7 +151,7 @@ The paper preserves earlier investigations. Their parameter names do not make th
 ## Open priorities and exclusions
 
 1. **Useful single-ID mixing for arbitrary `n` at `c=ell=2`.** Aim for uniform decay of pairwise label bias, not another rarer canonical word. The current universal sampling upper bound remains exponential.
-2. **Practical length-three convergence:** `ell=3` with fixed small capacity `c=3` or `c=4` and arbitrarily large `n`. Nearly full-cache length-three results do not settle this.
+2. **Length-four convergence:** fixed `ell=4`, starting with small capacities and arbitrarily large `n`. All allowed length-three capacities are now covered qualitatively by `thm:threegeneraluniform`.
 3. **Full arbitrary-length convergence** for the adopted fixed-length model, including the zero-count-improvement/endgame gap.
 4. A richer query-sufficient projection or direct coupling beyond the special three-peer case.
 
@@ -206,4 +207,10 @@ Uniform finite-horizon availability and conditional-error bounds, once certified
 
 **Working proof integrated:** `thm:c3generaluniform` proves unique full-state stationarity, uniform geometric convergence, positive stationary availability, and limiting conditional uniform samples for **exactly `c=ell=3`, every `n>=4`**, with arbitrary finite nonnegative integer ages and initially underfull weakly connected caches under the adopted iid scheduler. The proof combines learned-target boundary service, zeroification, owner-directed emptying without circular outward closure, the new outward-gain gadgets and age potential, the incoming minimum-component contradiction, and the existing finite reset/common atom argument. Separate end-to-end and final-text audits are recorded in the research continuation. This is a mathematical working proof, not formal verification or external peer review.
 
-The constants are qualitative. Sparse capacities `4<=c<n-2` at length three, general higher lengths, and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.
+At this earlier capacity-three stage, sparse larger capacities were still open; the subsequent all-capacity length-three theorem below supersedes that boundary. Higher lengths and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.
+
+## All capacities at shuffle length three (16 November 2026)
+
+**Working proof integrated:** `thm:threegeneraluniform` now covers every `n>=4` and `3<=c<=n-1` at fixed `ell=3`, with the adopted protected/MIN kernel, iid initiators, initially weak connectivity, and arbitrary finite integer ages. It proves unique full-state stationarity, uniform geometric convergence with implicit constants, positive stationary availability, and conditional uniform local sampling for every request size up to capacity. The arbitrary-capacity callback, empty-owner restoration, and fixed-identity lexicographic outward potential are linked to the lower-length residual normalization and finite-reset/common-atom argument. The [full assembly](research/LENGTH-THREE-GENERAL-CONVERGENCE.md) and [sparse outward proof](research/SPARSE-LENGTH-THREE-OUTWARD-GAIN.md) state the scope and necessary controlled reply choices.
+
+This supersedes earlier continuation entries saying sparse length-three convergence remained open. Lengths four and above and polynomial/practical mixing bounds remain open. These are internally audited mathematical working proofs, not formal verification or external peer review.

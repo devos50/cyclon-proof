@@ -61,3 +61,13 @@ The full-state TV compression and antisymmetric block criterion are symbolic red
 - Separate mathematical end-to-end and actual-final-text audits: see [the scoped record](research/C3-AUDIT.md). Finite checks do not replace the symbolic proof.
 
 The theorem is full `c=ell=3`, arbitrary `n>=4`, with qualitative uniform geometric constants. Sparse larger capacities and polynomial mixing are not claimed.
+
+## All-capacity length-three continuation — 16 November 2026
+
+- Full maintained suite: **40/40 passed** (255.61 seconds in this cloud run).
+- Manuscript index: 120 declarations, 53 headings; 141 stable labels.
+- Maintained Python files: 51; whitespace and repository checks passed.
+- Two TeX draft-mode passes passed without undefined/multiply-defined references or LaTeX errors. Final PDF embedding remains unavailable because of the environment font mapping; no new PDF is claimed.
+- Independent local, end-to-end, and actual-final-text mathematical reviews: see [the scope and correction record](research/LENGTH-THREE-AUDIT.md).
+
+The new working theorem is every allowed capacity at fixed `ell=3`. Higher shuffle lengths and polynomial/practical mixing remain open. Exact finite tests corroborate local identities and do not substitute for the symbolic proof.

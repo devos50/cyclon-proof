@@ -1,272 +1,272 @@
 {
   "source": "paper/main.tex",
-  "sha256": "a368ff47b51360be6dd4b808453965774c1cf0715cadebb416ffcf5c490664d8",
+  "sha256": "e67a6d290fae0cc2671d474143f1dd93444526ad8c5e3ade03dea45cdaccda99",
   "warning": "Extracted source declarations and references; not a proof audit or a claim-status registry.",
   "outline": [
     {
       "level": "section",
       "title": "Algorithm and assumptions for the proof target",
-      "line": 102
+      "line": 103
     },
     {
       "level": "subsection",
       "title": "System, initialization, and randomness",
-      "line": 112
+      "line": 113
     },
     {
       "level": "subsection",
       "title": "One activation and exchange",
-      "line": 141
+      "line": 142
     },
     {
       "level": "subsection",
       "title": "Convergence statement sought",
-      "line": 205
+      "line": 206
     },
     {
       "level": "section",
       "title": "Motivation and comparison with other conventions",
-      "line": 259
+      "line": 260
     },
     {
       "level": "section",
       "title": "A periodic counterexample under either convention",
-      "line": 299
+      "line": 300
     },
     {
       "level": "section",
       "title": "Frozen multi-entry states with random scheduling",
-      "line": 353
+      "line": 354
     },
     {
       "level": "section",
       "title": "An availability obstruction under mandatory removal",
-      "line": 481
+      "line": 482
     },
     {
       "level": "section",
       "title": "A positive capacity-one theorem",
-      "line": 509
+      "line": 510
     },
     {
       "level": "subsection",
       "title": "Precisely specified variant",
-      "line": 511
+      "line": 512
     },
     {
       "level": "subsection",
       "title": "Proof for \\texorpdfstring{$n\\ge4$}{n >= 4}",
-      "line": 552
+      "line": 553
     },
     {
       "level": "subsection",
       "title": "Small network sizes",
-      "line": 648
+      "line": 649
     },
     {
       "level": "section",
       "title": "A general symmetry reduction, not a mixing proof",
-      "line": 670
+      "line": 671
     },
     {
       "level": "section",
       "title": "Exact model for the mandatory-removal results",
-      "line": 704
+      "line": 705
     },
     {
       "level": "section",
       "title": "From full-state convergence to local uniformity",
-      "line": 749
+      "line": 750
     },
     {
       "level": "section",
       "title": "A general age-reset result for shuffle length one",
-      "line": 832
+      "line": 833
     },
     {
       "level": "subsection",
       "title": "Convergence without assuming a unique recurrent class",
-      "line": 904
+      "line": 905
     },
     {
       "level": "section",
       "title": "A complete mandatory-removal theorem at capacity one",
-      "line": 1013
+      "line": 1014
     },
     {
       "level": "section",
       "title": "A complete arbitrary-capacity theorem for singleton shuffles",
-      "line": 1126
+      "line": 1127
     },
     {
       "level": "subsection",
       "title": "Clearing blocks and separating one source",
-      "line": 1163
+      "line": 1164
     },
     {
       "level": "subsection",
       "title": "Extending the canonical remainder",
-      "line": 1219
+      "line": 1220
     },
     {
       "level": "subsection",
       "title": "Induction and the convergence bound",
-      "line": 1298
+      "line": 1299
     },
     {
       "level": "section",
       "title": "A complete multi-entry mandatory-removal theorem",
-      "line": 1365
+      "line": 1366
     },
     {
       "level": "subsection",
       "title": "Three-peer transition rules",
-      "line": 1392
+      "line": 1393
     },
     {
       "level": "subsection",
       "title": "Resetting arbitrary ages on a chain",
-      "line": 1411
+      "line": 1412
     },
     {
       "level": "subsection",
       "title": "Reaching the chain topology",
-      "line": 1464
+      "line": 1465
     },
     {
       "level": "subsection",
       "title": "A common zero-age state",
-      "line": 1539
+      "line": 1540
     },
     {
       "level": "section",
       "title": "Controlled progress for general shuffle lengths",
-      "line": 1585
+      "line": 1586
     },
     {
       "level": "section",
       "title": "Numerical age control and initial-lineage erasure",
-      "line": 1684
+      "line": 1685
     },
     {
       "level": "subsection",
       "title": "Maximal capacity and connectivity",
-      "line": 1879
+      "line": 1880
     },
     {
       "level": "section",
       "title": "Uniform age control for shuffle length two",
-      "line": 1937
+      "line": 1938
     },
     {
       "level": "section",
       "title": "A replacement-rule obstruction for every larger shuffle",
-      "line": 2242
+      "line": 2243
     },
     {
       "level": "section",
       "title": "An explicit protection rule and a proved extension",
-      "line": 2473
+      "line": 2474
     },
     {
       "level": "section",
       "title": "The adopted thesis convention: protection and minimum ages",
-      "line": 2567
+      "line": 2568
     },
     {
       "level": "subsection",
       "title": "A general finite-age reset for every shuffle length",
-      "line": 2775
+      "line": 2776
     },
     {
       "level": "subsection",
       "title": "A structural reduction for two-entry shuffles",
-      "line": 3014
+      "line": 3015
     },
     {
       "level": "subsection",
       "title": "Uniform contact across a frozen boundary",
-      "line": 3168
+      "line": 3169
     },
     {
       "level": "subsection",
       "title": "Full uniform sampling with two-entry caches",
-      "line": 3371
+      "line": 3372
     },
     {
       "level": "subsection",
       "title": "An explicit mixing bound for two-entry caches",
-      "line": 3640
+      "line": 3641
     },
     {
       "level": "subsection",
       "title": "Ordinary random exchanges and a small exact benchmark",
-      "line": 3959
+      "line": 3960
     },
     {
       "level": "subsection",
       "title": "A direct target for faster single-sample mixing",
-      "line": 4308
+      "line": 4309
     },
     {
       "level": "subsection",
       "title": "A proved antisymmetric contraction on three peers",
-      "line": 4546
+      "line": 4547
     },
     {
       "level": "subsection",
       "title": "Zero-age normalization for arbitrary capacity at $\\ell=2$",
-      "line": 5150
+      "line": 5151
     },
     {
       "level": "subsection",
       "title": "Owner service and a larger range of cache capacities",
-      "line": 5222
+      "line": 5226
     },
     {
       "level": "subsection",
       "title": "A structural simplification for nearly full caches",
-      "line": 5436
+      "line": 5440
     },
     {
       "level": "subsection",
       "title": "Removing the capacity restriction at shuffle length two",
-      "line": 5539
+      "line": 5543
     },
     {
       "level": "subsection",
       "title": "Three-entry shuffles: first contact and a conditional common atom",
-      "line": 5774
+      "line": 5778
     },
     {
       "level": "subsection",
       "title": "An exact sufficient route to the remaining general theorem",
-      "line": 6393
+      "line": 6395
     },
     {
       "level": "subsection",
       "title": "Full capacity three: learning, outward gain, and convergence",
-      "line": 6480
+      "line": 6482
     },
     {
       "level": "subsection",
-      "title": "The complementary dense length-three theorem",
-      "line": 6861
+      "title": "The earlier dense length-three theorem",
+      "line": 7266
     },
     {
       "level": "subsection",
       "title": "Two further endpoint combinations at arbitrary lengths",
-      "line": 7168
+      "line": 7572
     },
     {
       "level": "section",
       "title": "Established results and remaining problem",
-      "line": 7253
+      "line": 7657
     },
     {
       "level": "section",
       "title": "Finite verification",
-      "line": 7418
+      "line": 7824
     }
   ],
   "statements": [
@@ -274,7 +274,7 @@
       "kind": "theorem",
       "title": "Failure with fixed periodic phases",
       "label": "thm:periodic",
-      "line": 311,
+      "line": 312,
       "section": "A periodic counterexample under either convention",
       "subsection": "",
       "references": [
@@ -285,7 +285,7 @@
       "kind": "theorem",
       "title": "Strongly connected frozen states",
       "label": "thm:twins",
-      "line": 359,
+      "line": 360,
       "section": "Frozen multi-entry states with random scheduling",
       "subsection": "",
       "references": [
@@ -296,7 +296,7 @@
       "kind": "proposition",
       "title": "A frozen state reachable from zero ages",
       "label": "prop:zero",
-      "line": 433,
+      "line": 434,
       "section": "Frozen multi-entry states with random scheduling",
       "subsection": "",
       "references": [
@@ -307,7 +307,7 @@
       "kind": "proposition",
       "title": "Persistent failure of full-capacity requests",
       "label": "prop:availability",
-      "line": 486,
+      "line": 487,
       "section": "An availability obstruction under mandatory removal",
       "subsection": "",
       "references": []
@@ -316,7 +316,7 @@
       "kind": "theorem",
       "title": "Convergence of the capacity-one retention variant",
       "label": "thm:positive",
-      "line": 531,
+      "line": 532,
       "section": "A positive capacity-one theorem",
       "subsection": "Precisely specified variant",
       "references": []
@@ -325,7 +325,7 @@
       "kind": "lemma",
       "title": "Inverse moves and connectivity",
       "label": "lem:inverse",
-      "line": 554,
+      "line": 555,
       "section": "A positive capacity-one theorem",
       "subsection": "Proof for \\texorpdfstring{$n\\ge4$}{n >= 4}",
       "references": []
@@ -334,7 +334,7 @@
       "kind": "lemma",
       "title": "Insertion into a cycle",
       "label": "lem:insert",
-      "line": 569,
+      "line": 570,
       "section": "A positive capacity-one theorem",
       "subsection": "Proof for \\texorpdfstring{$n\\ge4$}{n >= 4}",
       "references": []
@@ -343,7 +343,7 @@
       "kind": "lemma",
       "title": "Adjacent swap",
       "label": "lem:swap",
-      "line": 583,
+      "line": 584,
       "section": "A positive capacity-one theorem",
       "subsection": "Proof for \\texorpdfstring{$n\\ge4$}{n >= 4}",
       "references": []
@@ -352,7 +352,7 @@
       "kind": "lemma",
       "title": "Diameter",
       "label": "lem:diameter",
-      "line": 605,
+      "line": 606,
       "section": "A positive capacity-one theorem",
       "subsection": "Proof for \\texorpdfstring{$n\\ge4$}{n >= 4}",
       "references": [
@@ -366,7 +366,7 @@
       "kind": "lemma",
       "title": "Symmetrized reference process",
       "label": "lem:symmetry",
-      "line": 672,
+      "line": 673,
       "section": "A general symmetry reduction, not a mixing proof",
       "subsection": "",
       "references": [
@@ -377,7 +377,7 @@
       "kind": "lemma",
       "title": "A common atom gives convergence, including ages",
       "label": "lem:atom",
-      "line": 757,
+      "line": 758,
       "section": "From full-state convergence to local uniformity",
       "subsection": "",
       "references": []
@@ -386,7 +386,7 @@
       "kind": "theorem",
       "title": "Stationary symmetry and availability",
       "label": "thm:stationary",
-      "line": 784,
+      "line": 785,
       "section": "From full-state convergence to local uniformity",
       "subsection": "",
       "references": [
@@ -397,7 +397,7 @@
       "kind": "theorem",
       "title": "Finite-set regeneration for $\\ell=1$",
       "label": "thm:agereset",
-      "line": 835,
+      "line": 836,
       "section": "A general age-reset result for shuffle length one",
       "subsection": "",
       "references": [
@@ -409,7 +409,7 @@
       "kind": "lemma",
       "title": "A finite reset family with self-loops",
       "label": "lem:finiteclasses",
-      "line": 906,
+      "line": 907,
       "section": "A general age-reset result for shuffle length one",
       "subsection": "Convergence without assuming a unique recurrent class",
       "references": [
@@ -420,7 +420,7 @@
       "kind": "theorem",
       "title": "Arbitrary-capacity convergence for singleton shuffles",
       "label": "thm:elloneconvergence",
-      "line": 983,
+      "line": 984,
       "section": "A general age-reset result for shuffle length one",
       "subsection": "Convergence without assuming a unique recurrent class",
       "references": [
@@ -434,7 +434,7 @@
       "kind": "theorem",
       "title": "Every network size, capacity one",
       "label": "thm:mandatoryone",
-      "line": 1016,
+      "line": 1017,
       "section": "A complete mandatory-removal theorem at capacity one",
       "subsection": "",
       "references": [
@@ -447,7 +447,7 @@
       "kind": "theorem",
       "title": "Arbitrary population and cache capacity, $\\ell=1$",
       "label": "thm:generalone",
-      "line": 1135,
+      "line": 1136,
       "section": "A complete arbitrary-capacity theorem for singleton shuffles",
       "subsection": "",
       "references": [
@@ -460,7 +460,7 @@
       "kind": "lemma",
       "title": "An unknown source with a connected remainder",
       "label": "lem:source",
-      "line": 1175,
+      "line": 1176,
       "section": "A complete arbitrary-capacity theorem for singleton shuffles",
       "subsection": "Clearing blocks and separating one source",
       "references": []
@@ -469,7 +469,7 @@
       "kind": "lemma",
       "title": "Setting the cache of an unknown source",
       "label": "lem:extend",
-      "line": 1221,
+      "line": 1222,
       "section": "A complete arbitrary-capacity theorem for singleton shuffles",
       "subsection": "Extending the canonical remainder",
       "references": [
@@ -485,7 +485,7 @@
       "kind": "proposition",
       "title": "A robustness consequence",
       "label": "prop:domination",
-      "line": 1338,
+      "line": 1339,
       "section": "A complete arbitrary-capacity theorem for singleton shuffles",
       "subsection": "Induction and the convergence bound",
       "references": [
@@ -498,7 +498,7 @@
       "kind": "theorem",
       "title": "Three peers with two cache entries",
       "label": "thm:three",
-      "line": 1368,
+      "line": 1369,
       "section": "A complete multi-entry mandatory-removal theorem",
       "subsection": "",
       "references": [
@@ -509,7 +509,7 @@
       "kind": "lemma",
       "title": "Chain age reset",
       "label": "lem:chainreset",
-      "line": 1424,
+      "line": 1425,
       "section": "A complete multi-entry mandatory-removal theorem",
       "subsection": "Resetting arbitrary ages on a chain",
       "references": []
@@ -518,7 +518,7 @@
       "kind": "lemma",
       "title": "Identity reduction compatible with oldest-first choices",
       "label": "lem:chainreach",
-      "line": 1466,
+      "line": 1467,
       "section": "A complete multi-entry mandatory-removal theorem",
       "subsection": "Reaching the chain topology",
       "references": []
@@ -527,7 +527,7 @@
       "kind": "lemma",
       "title": "Relabelling the zero-age roles by legal exchanges",
       "label": "lem:roles",
-      "line": 1541,
+      "line": 1542,
       "section": "A complete multi-entry mandatory-removal theorem",
       "subsection": "A common zero-age state",
       "references": [
@@ -544,7 +544,7 @@
       "kind": "lemma",
       "title": "A controlled fresh-count inequality",
       "label": "lem:fresh",
-      "line": 1599,
+      "line": 1600,
       "section": "Controlled progress for general shuffle lengths",
       "subsection": "",
       "references": [
@@ -555,7 +555,7 @@
       "kind": "lemma",
       "title": "Eviction under consecutive activations",
       "label": "lem:forcing",
-      "line": 1687,
+      "line": 1688,
       "section": "Numerical age control and initial-lineage erasure",
       "subsection": "",
       "references": [
@@ -566,7 +566,7 @@
       "kind": "lemma",
       "title": "Protecting one resident descriptor",
       "label": "lem:protect",
-      "line": 1724,
+      "line": 1725,
       "section": "Numerical age control and initial-lineage erasure",
       "subsection": "",
       "references": []
@@ -575,7 +575,7 @@
       "kind": "lemma",
       "title": "Following a target through forced replacements",
       "label": "lem:tracking",
-      "line": 1752,
+      "line": 1753,
       "section": "Numerical age control and initial-lineage erasure",
       "subsection": "",
       "references": [
@@ -587,7 +587,7 @@
       "kind": "theorem",
       "title": "Accessibility of initial-lineage erasure, all parameters",
       "label": "thm:lineages",
-      "line": 1795,
+      "line": 1796,
       "section": "Numerical age control and initial-lineage erasure",
       "subsection": "",
       "references": [
@@ -601,7 +601,7 @@
       "kind": "proposition",
       "title": "Monotone connectivity at maximal capacity",
       "label": "prop:maxcapacity",
-      "line": 1881,
+      "line": 1882,
       "section": "Numerical age control and initial-lineage erasure",
       "subsection": "Maximal capacity and connectivity",
       "references": [
@@ -614,7 +614,7 @@
       "kind": "lemma",
       "title": "Two-entry exchanges preserve weak connectivity",
       "label": "lem:twoconnect",
-      "line": 1940,
+      "line": 1941,
       "section": "Uniform age control for shuffle length two",
       "subsection": "",
       "references": [
@@ -625,7 +625,7 @@
       "kind": "lemma",
       "title": "Uniform routing at shuffle length two",
       "label": "lem:tworouting",
-      "line": 1974,
+      "line": 1975,
       "section": "Uniform age control for shuffle length two",
       "subsection": "",
       "references": []
@@ -634,7 +634,7 @@
       "kind": "theorem",
       "title": "A uniform finite-age reset for every capacity, $\\ell=2$",
       "label": "thm:tworeset",
-      "line": 2045,
+      "line": 2046,
       "section": "Uniform age control for shuffle length two",
       "subsection": "",
       "references": [
@@ -648,7 +648,7 @@
       "kind": "corollary",
       "title": "Uniform age tails and stationary moments",
       "label": "cor:twotails",
-      "line": 2116,
+      "line": 2117,
       "section": "Uniform age control for shuffle length two",
       "subsection": "",
       "references": [
@@ -659,7 +659,7 @@
       "kind": "proposition",
       "title": "Stationary regimes and continuous-time convergence",
       "label": "prop:tworegimes",
-      "line": 2155,
+      "line": 2156,
       "section": "Uniform age control for shuffle length two",
       "subsection": "",
       "references": [
@@ -671,7 +671,7 @@
       "kind": "corollary",
       "title": "Almost-sure topology completion at maximal capacity",
       "label": "cor:twocomplete",
-      "line": 2188,
+      "line": 2189,
       "section": "Uniform age control for shuffle length two",
       "subsection": "",
       "references": [
@@ -685,7 +685,7 @@
       "kind": "theorem",
       "title": "Failure of conditional uniformity for $\\ell\\ge3$",
       "label": "thm:largerobstruction",
-      "line": 2252,
+      "line": 2253,
       "section": "A replacement-rule obstruction for every larger shuffle",
       "subsection": "",
       "references": [
@@ -696,7 +696,7 @@
       "kind": "corollary",
       "title": "The obstruction also starts from strong connectivity",
       "label": "cor:strongobstruction",
-      "line": 2377,
+      "line": 2378,
       "section": "A replacement-rule obstruction for every larger shuffle",
       "subsection": "",
       "references": [
@@ -709,7 +709,7 @@
       "kind": "lemma",
       "title": "Protection is feasible and preserves connectivity",
       "label": "lem:receiveprotect",
-      "line": 2490,
+      "line": 2491,
       "section": "An explicit protection rule and a proved extension",
       "subsection": "",
       "references": [
@@ -721,7 +721,7 @@
       "kind": "theorem",
       "title": "A protected sampler with occasional singleton shuffles",
       "label": "thm:protectedmixture",
-      "line": 2535,
+      "line": 2536,
       "section": "An explicit protection rule and a proved extension",
       "subsection": "",
       "references": [
@@ -737,7 +737,7 @@
       "kind": "proposition",
       "title": "Lossless exchange of identity knowledge",
       "label": "prop:thesisunion",
-      "line": 2594,
+      "line": 2595,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "",
       "references": [
@@ -749,7 +749,7 @@
       "kind": "theorem",
       "title": "Singleton convergence survives minimum-age merging",
       "label": "thm:thesisone",
-      "line": 2617,
+      "line": 2618,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "",
       "references": [
@@ -764,7 +764,7 @@
       "kind": "theorem",
       "title": "Two-entry finite-age reset with minimum-age merging",
       "label": "thm:thesistwo",
-      "line": 2657,
+      "line": 2658,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "",
       "references": [
@@ -779,7 +779,7 @@
       "kind": "lemma",
       "title": "A decreasing color potential for every $\\ell\\ge2$",
       "label": "lem:generalcolor",
-      "line": 2783,
+      "line": 2784,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A general finite-age reset for every shuffle length",
       "references": []
@@ -788,7 +788,7 @@
       "kind": "theorem",
       "title": "Uniform finite-age reset for every fixed shuffle length",
       "label": "thm:thesisgeneralreset",
-      "line": 2920,
+      "line": 2921,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A general finite-age reset for every shuffle length",
       "references": [
@@ -801,7 +801,7 @@
       "kind": "corollary",
       "title": "General stationary regimes and exponential age tails",
       "label": "cor:thesisgeneralregimes",
-      "line": 2977,
+      "line": 2978,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A general finite-age reset for every shuffle length",
       "references": [
@@ -814,7 +814,7 @@
       "kind": "lemma",
       "title": "Removing a universal anchor from controlled paths",
       "label": "lem:anchorreduction",
-      "line": 3022,
+      "line": 3023,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A structural reduction for two-entry shuffles",
       "references": []
@@ -823,7 +823,7 @@
       "kind": "proposition",
       "title": "A universal anchor suffices when $\\ell=2$",
       "label": "prop:anchorcanonical",
-      "line": 3057,
+      "line": 3058,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A structural reduction for two-entry shuffles",
       "references": [
@@ -836,7 +836,7 @@
       "kind": "proposition",
       "title": "A universal identity need not start fresh",
       "label": "prop:anyanchor",
-      "line": 3125,
+      "line": 3126,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A structural reduction for two-entry shuffles",
       "references": [
@@ -847,7 +847,7 @@
       "kind": "theorem",
       "title": "A uniform first-contact bound for $\\ell=2$",
       "label": "thm:firstcontact",
-      "line": 3170,
+      "line": 3171,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Uniform contact across a frozen boundary",
       "references": [
@@ -860,7 +860,7 @@
       "kind": "corollary",
       "title": "Every cut is crossed repeatedly",
       "label": "cor:repeatedcontact",
-      "line": 3279,
+      "line": 3280,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Uniform contact across a frozen boundary",
       "references": [
@@ -871,7 +871,7 @@
       "kind": "proposition",
       "title": "A prescribed peer can reach the whole overlay",
       "label": "prop:rootreachability",
-      "line": 3296,
+      "line": 3297,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Uniform contact across a frozen boundary",
       "references": [
@@ -882,7 +882,7 @@
       "kind": "corollary",
       "title": "A precise remaining accessibility criterion",
       "label": "cor:anchorcriterion",
-      "line": 3338,
+      "line": 3339,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Uniform contact across a frozen boundary",
       "references": [
@@ -899,7 +899,7 @@
       "kind": "lemma",
       "title": "Source-only gain of a fresh copy",
       "label": "lem:c2sourcegain",
-      "line": 3381,
+      "line": 3382,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full uniform sampling with two-entry caches",
       "references": []
@@ -908,7 +908,7 @@
       "kind": "lemma",
       "title": "Extremal fresh-copy states",
       "label": "lem:c2extremal",
-      "line": 3417,
+      "line": 3418,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full uniform sampling with two-entry caches",
       "references": [
@@ -920,7 +920,7 @@
       "kind": "lemma",
       "title": "Four-exchange fresh-copy gain",
       "label": "lem:c2infection",
-      "line": 3468,
+      "line": 3469,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full uniform sampling with two-entry caches",
       "references": []
@@ -929,7 +929,7 @@
       "kind": "theorem",
       "title": "Full uniform sampling for $c=\\ell=2$",
       "label": "thm:thesisc2",
-      "line": 3501,
+      "line": 3502,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full uniform sampling with two-entry caches",
       "references": [
@@ -947,7 +947,7 @@
       "kind": "corollary",
       "title": "Uniform identity caches conditional on size",
       "label": "cor:c2caches",
-      "line": 3620,
+      "line": 3621,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full uniform sampling with two-entry caches",
       "references": [
@@ -958,7 +958,7 @@
       "kind": "theorem",
       "title": "Explicit mixing from a quadratic controlled witness",
       "label": "thm:c2explicitmix",
-      "line": 3648,
+      "line": 3649,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "An explicit mixing bound for two-entry caches",
       "references": [
@@ -972,7 +972,7 @@
       "kind": "proposition",
       "title": "Polynomial availability bounds",
       "label": "prop:c2availabilityquant",
-      "line": 3867,
+      "line": 3868,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "An explicit mixing bound for two-entry caches",
       "references": []
@@ -981,7 +981,7 @@
       "kind": "corollary",
       "title": "Explicit conditional single-sample mixing",
       "label": "cor:c2samplemixquant",
-      "line": 3907,
+      "line": 3908,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "An explicit mixing bound for two-entry caches",
       "references": [
@@ -992,7 +992,7 @@
       "kind": "proposition",
       "title": "A baseline lower bound for one returned identifier",
       "label": "prop:c2samplelower",
-      "line": 3931,
+      "line": 3932,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "An explicit mixing bound for two-entry caches",
       "references": []
@@ -1001,7 +1001,7 @@
       "kind": "lemma",
       "title": "Young components equal interaction components",
       "label": "lem:younginteractioncomponents",
-      "line": 3961,
+      "line": 3962,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Ordinary random exchanges and a small exact benchmark",
       "references": []
@@ -1010,7 +1010,7 @@
       "kind": "theorem",
       "title": "Linear expected contact time across every cut",
       "label": "thm:c2readycontact",
-      "line": 3994,
+      "line": 3995,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Ordinary random exchanges and a small exact benchmark",
       "references": []
@@ -1019,7 +1019,7 @@
       "kind": "corollary",
       "title": "Ordinary temporal connectivity in quadratic time",
       "label": "cor:c2readytemporal",
-      "line": 4132,
+      "line": 4133,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Ordinary random exchanges and a small exact benchmark",
       "references": []
@@ -1028,7 +1028,7 @@
       "kind": "corollary",
       "title": "Every peer emits a fresh self descriptor quickly",
       "label": "cor:c2successfulsourcecover",
-      "line": 4180,
+      "line": 4181,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Ordinary random exchanges and a small exact benchmark",
       "references": [
@@ -1039,7 +1039,7 @@
       "kind": "proposition",
       "title": "Refreshing does not remove bias under iid scheduling",
       "label": "prop:c2iidrefreshbias",
-      "line": 4241,
+      "line": 4242,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Ordinary random exchanges and a small exact benchmark",
       "references": [
@@ -1050,7 +1050,7 @@
       "kind": "lemma",
       "title": "Finite-time availability without a common atom",
       "label": "lem:c2transientavailability",
-      "line": 4315,
+      "line": 4316,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A direct target for faster single-sample mixing",
       "references": []
@@ -1059,7 +1059,7 @@
       "kind": "lemma",
       "title": "Population-independent transient availability",
       "label": "lem:c2constanttransientavailability",
-      "line": 4353,
+      "line": 4354,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A direct target for faster single-sample mixing",
       "references": [
@@ -1070,7 +1070,7 @@
       "kind": "proposition",
       "title": "Reduction to pairwise label bias",
       "label": "prop:c2localcouplingtarget",
-      "line": 4419,
+      "line": 4420,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A direct target for faster single-sample mixing",
       "references": [
@@ -1081,7 +1081,7 @@
       "kind": "corollary",
       "title": "Linear population factor in the bias reduction",
       "label": "cor:c2linearconditioningfactor",
-      "line": 4472,
+      "line": 4473,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A direct target for faster single-sample mixing",
       "references": [
@@ -1093,7 +1093,7 @@
       "kind": "lemma",
       "title": "A coupling through a symmetry set",
       "label": "lem:c2symmetrycoupling",
-      "line": 4497,
+      "line": 4498,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A direct target for faster single-sample mixing",
       "references": [
@@ -1104,7 +1104,7 @@
       "kind": "proposition",
       "title": "A finite positivity projection on three peers",
       "label": "prop:c2threepositivity",
-      "line": 4555,
+      "line": 4556,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": []
@@ -1113,7 +1113,7 @@
       "kind": "proposition",
       "title": "A certified ordinary sampling bound on three peers",
       "label": "prop:c2threeordinarysample",
-      "line": 4599,
+      "line": 4600,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": [
@@ -1124,7 +1124,7 @@
       "kind": "proposition",
       "title": "An exact time-zero local-order projection on three peers",
       "label": "prop:c2threeorderprojection",
-      "line": 4676,
+      "line": 4677,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": []
@@ -1133,7 +1133,7 @@
       "kind": "proposition",
       "title": "A sharper certified three-peer sampling horizon",
       "label": "prop:c2three56sample",
-      "line": 4714,
+      "line": 4715,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": [
@@ -1144,7 +1144,7 @@
       "kind": "proposition",
       "title": "Capped absolute ages and ranks are not sufficient",
       "label": "prop:c2caprankobstruction",
-      "line": 4767,
+      "line": 4768,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": []
@@ -1153,7 +1153,7 @@
       "kind": "proposition",
       "title": "Exact finite-horizon compression of initial age gaps",
       "label": "prop:finitehorizonagecompression",
-      "line": 4816,
+      "line": 4817,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": []
@@ -1162,7 +1162,7 @@
       "kind": "corollary",
       "title": "Finite certificates can cover all initial ages",
       "label": "cor:finitehorizoncertification",
-      "line": 4870,
+      "line": 4871,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": [
@@ -1173,7 +1173,7 @@
       "kind": "proposition",
       "title": "Compression preserves finite-horizon full-state distances",
       "label": "prop:finitehorizonfulltv",
-      "line": 4905,
+      "line": 4906,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": [
@@ -1184,7 +1184,7 @@
       "kind": "corollary",
       "title": "Finite certificates for antisymmetric block contraction",
       "label": "cor:finiteantisymmetriccertificate",
-      "line": 4965,
+      "line": 4966,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": [
@@ -1196,7 +1196,7 @@
       "kind": "proposition",
       "title": "A coupon-collector obstruction to short full-state blocks",
       "label": "prop:antisymmetriccouponlower",
-      "line": 5018,
+      "line": 5019,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": [
@@ -1207,7 +1207,7 @@
       "kind": "corollary",
       "title": "Worst-case full-state mixing needs coupon-cover time",
       "label": "cor:fullstatemixingcouponlower",
-      "line": 5078,
+      "line": 5079,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A proved antisymmetric contraction on three peers",
       "references": [
@@ -1218,7 +1218,7 @@
       "kind": "proposition",
       "title": "Refresh without reducing the endpoint holder count",
       "label": "prop:zeroify",
-      "line": 5160,
+      "line": 5164,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Zero-age normalization for arbitrary capacity at $\\ell=2$",
       "references": [
@@ -1229,7 +1229,7 @@
       "kind": "corollary",
       "title": "Maximum zero count also bounds all holders",
       "label": "cor:maxholders",
-      "line": 5204,
+      "line": 5208,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Zero-age normalization for arbitrary capacity at $\\ell=2$",
       "references": [
@@ -1240,7 +1240,7 @@
       "kind": "lemma",
       "title": "Owner service and empty-owner extremal states",
       "label": "lem:generalownerservice",
-      "line": 5224,
+      "line": 5228,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Owner service and a larger range of cache capacities",
       "references": [
@@ -1253,7 +1253,7 @@
       "kind": "lemma",
       "title": "Outward holder gain when $n\\le2c$",
       "label": "lem:halfdensegain",
-      "line": 5276,
+      "line": 5280,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Owner service and a larger range of cache capacities",
       "references": [
@@ -1264,7 +1264,7 @@
       "kind": "theorem",
       "title": "Full uniform sampling at $\\ell=2$, $n\\le2c$",
       "label": "thm:thesishalfdense",
-      "line": 5378,
+      "line": 5382,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Owner service and a larger range of cache capacities",
       "references": [
@@ -1281,7 +1281,7 @@
       "kind": "lemma",
       "title": "No initiator-extra eviction at nearly full capacity",
       "label": "lem:densenoevict",
-      "line": 5438,
+      "line": 5442,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A structural simplification for nearly full caches",
       "references": []
@@ -1290,7 +1290,7 @@
       "kind": "theorem",
       "title": "Full uniform sampling at $\\ell=2$, $c\\ge n-2$",
       "label": "thm:thesisdense",
-      "line": 5455,
+      "line": 5459,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "A structural simplification for nearly full caches",
       "references": [
@@ -1306,7 +1306,7 @@
       "kind": "lemma",
       "title": "Outward holder gain for every capacity $c\\ge3$",
       "label": "lem:generaloutwardgain",
-      "line": 5541,
+      "line": 5545,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Removing the capacity restriction at shuffle length two",
       "references": [
@@ -1317,7 +1317,7 @@
       "kind": "theorem",
       "title": "Full uniform sampling for every two-entry shuffle",
       "label": "thm:thesisgeneraltwo",
-      "line": 5666,
+      "line": 5670,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Removing the capacity restriction at shuffle length two",
       "references": [
@@ -1332,7 +1332,7 @@
       "kind": "corollary",
       "title": "Implicit mixing bounds and their quantitative limitation",
       "label": "cor:twoimplicitmixing",
-      "line": 5715,
+      "line": 5719,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Removing the capacity restriction at shuffle length two",
       "references": [
@@ -1345,7 +1345,7 @@
       "kind": "theorem",
       "title": "Uniform first contact for three-entry shuffles",
       "label": "thm:threefirstcontact",
-      "line": 5781,
+      "line": 5785,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Three-entry shuffles: first contact and a conditional common atom",
       "references": [
@@ -1358,7 +1358,7 @@
       "kind": "proposition",
       "title": "A universal zero anchor suffices at length three",
       "label": "prop:threezeroanchor",
-      "line": 5919,
+      "line": 5923,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Three-entry shuffles: first contact and a conditional common atom",
       "references": [
@@ -1372,7 +1372,7 @@
       "kind": "lemma",
       "title": "A designated owner target can be retained",
       "label": "lem:ownertargetretain",
-      "line": 5971,
+      "line": 5975,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Three-entry shuffles: first contact and a conditional common atom",
       "references": []
@@ -1381,7 +1381,7 @@
       "kind": "lemma",
       "title": "Owner service when zero-holder caches have spare reply choices",
       "label": "lem:largezerocallback",
-      "line": 6004,
+      "line": 6008,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Three-entry shuffles: first contact and a conditional common atom",
       "references": [
@@ -1393,7 +1393,7 @@
       "kind": "proposition",
       "title": "An owner-only callback obstruction at every length",
       "label": "prop:owneronlyobstruction",
-      "line": 6056,
+      "line": 6060,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Three-entry shuffles: first contact and a conditional common atom",
       "references": []
@@ -1402,7 +1402,7 @@
       "kind": "lemma",
       "title": "A cooperative callback with shared zero anchors",
       "label": "lem:threecooperativecallback",
-      "line": 6107,
+      "line": 6111,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Three-entry shuffles: first contact and a conditional common atom",
       "references": []
@@ -1411,7 +1411,7 @@
       "kind": "lemma",
       "title": "A cooperative callback with common ages at full shuffle",
       "label": "lem:fullpositivecallback",
-      "line": 6184,
+      "line": 6188,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Three-entry shuffles: first contact and a conditional common atom",
       "references": []
@@ -1420,16 +1420,17 @@
       "kind": "lemma",
       "title": "Full-shuffle callback with unit-width secondary age bands",
       "label": "lem:fullbandcallback",
-      "line": 6246,
+      "line": 6250,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Three-entry shuffles: first contact and a conditional common atom",
       "references": [
+        "cor:threegeneralzeroify",
         "lem:fullbandcallback",
         "lem:fullpositivecallback",
         "lem:largezerocallback",
         "lem:threecooperativecallback",
+        "lem:threegeneralcallback",
         "prop:owneronlyobstruction",
-        "prop:zeroify",
         "thm:threefirstcontact"
       ]
     },
@@ -1437,7 +1438,7 @@
       "kind": "proposition",
       "title": "Induction from zero-count improvement",
       "label": "prop:zeroexpansioncriterion",
-      "line": 6399,
+      "line": 6401,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "An exact sufficient route to the remaining general theorem",
       "references": [
@@ -1452,7 +1453,7 @@
       "kind": "lemma",
       "title": "Learned-target owner boundary service at capacity three",
       "label": "lem:c3learnedcallback",
-      "line": 6485,
+      "line": 6487,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": []
@@ -1461,7 +1462,7 @@
       "kind": "corollary",
       "title": "Capacity-three zeroification and nonholder recovery",
       "label": "cor:c3zeroify",
-      "line": 6601,
+      "line": 6603,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1471,9 +1472,34 @@
     },
     {
       "kind": "lemma",
+      "title": "Owner boundary service at every capacity for length three",
+      "label": "lem:threegeneralcallback",
+      "line": 6650,
+      "section": "The adopted thesis convention: protection and minimum ages",
+      "subsection": "Full capacity three: learning, outward gain, and convergence",
+      "references": [
+        "lem:ownertargetretain"
+      ]
+    },
+    {
+      "kind": "corollary",
+      "title": "Zeroification at every capacity for length three",
+      "label": "cor:threegeneralzeroify",
+      "line": 6766,
+      "section": "The adopted thesis convention: protection and minimum ages",
+      "subsection": "Full capacity three: learning, outward gain, and convergence",
+      "references": [
+        "cor:c3zeroify",
+        "lem:ownertargetretain",
+        "lem:threegeneralcallback",
+        "thm:threefirstcontact"
+      ]
+    },
+    {
+      "kind": "lemma",
       "title": "A full-shuffle triangle gains a holder",
       "label": "lem:fullshuffletrianglegain",
-      "line": 6648,
+      "line": 6789,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": []
@@ -1482,7 +1508,7 @@
       "kind": "lemma",
       "title": "Capacity-three empty-owner terminal gain",
       "label": "lem:c3ownerterminalgain",
-      "line": 6676,
+      "line": 6817,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1492,9 +1518,21 @@
     },
     {
       "kind": "lemma",
+      "title": "Length-three empty-owner terminal gain at every capacity",
+      "label": "lem:threeownerterminalgain",
+      "line": 6842,
+      "section": "The adopted thesis convention: protection and minimum ages",
+      "subsection": "Full capacity three: learning, outward gain, and convergence",
+      "references": [
+        "cor:threegeneralzeroify",
+        "lem:c3ownerterminalgain"
+      ]
+    },
+    {
+      "kind": "lemma",
       "title": "Outward holder gain at full capacity three",
       "label": "lem:c3outwardgain",
-      "line": 6701,
+      "line": 6885,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1502,10 +1540,21 @@
       ]
     },
     {
+      "kind": "lemma",
+      "title": "Outward holder gain for length three and capacity at least four",
+      "label": "lem:threesparseoutwardgain",
+      "line": 6941,
+      "section": "The adopted thesis convention: protection and minimum ages",
+      "subsection": "Full capacity three: learning, outward gain, and convergence",
+      "references": [
+        "lem:threeownerterminalgain"
+      ]
+    },
+    {
       "kind": "theorem",
       "title": "Uniform sampling at full capacity three",
       "label": "thm:c3generaluniform",
-      "line": 6757,
+      "line": 7057,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1515,19 +1564,39 @@
         "lem:c3learnedcallback",
         "lem:c3outwardgain",
         "prop:threezeroanchor",
-        "thm:c3generaluniform",
         "thm:stationary",
         "thm:thesisgeneralreset",
         "thm:threefirstcontact"
       ]
     },
     {
+      "kind": "theorem",
+      "title": "Uniform sampling for every three-entry shuffle",
+      "label": "thm:threegeneraluniform",
+      "line": 7161,
+      "section": "The adopted thesis convention: protection and minimum ages",
+      "subsection": "Full capacity three: learning, outward gain, and convergence",
+      "references": [
+        "cor:threegeneralzeroify",
+        "lem:anchorreduction",
+        "lem:atom",
+        "lem:threegeneralcallback",
+        "lem:threesparseoutwardgain",
+        "prop:threezeroanchor",
+        "thm:c3generaluniform",
+        "thm:stationary",
+        "thm:thesisgeneralreset",
+        "thm:threefirstcontact",
+        "thm:threegeneraluniform"
+      ]
+    },
+    {
       "kind": "lemma",
       "title": "Dense cooperative owner service at length three",
       "label": "lem:dense3callback",
-      "line": 6868,
+      "line": 7272,
       "section": "The adopted thesis convention: protection and minimum ages",
-      "subsection": "The complementary dense length-three theorem",
+      "subsection": "The earlier dense length-three theorem",
       "references": [
         "lem:densenoevict"
       ]
@@ -1536,9 +1605,9 @@
       "kind": "corollary",
       "title": "Dense length-three zeroification",
       "label": "cor:dense3zeroify",
-      "line": 6972,
+      "line": 7376,
       "section": "The adopted thesis convention: protection and minimum ages",
-      "subsection": "The complementary dense length-three theorem",
+      "subsection": "The earlier dense length-three theorem",
       "references": [
         "cor:maxholders",
         "lem:dense3callback",
@@ -1549,9 +1618,9 @@
       "kind": "theorem",
       "title": "Uniform sampling for dense three-entry shuffles",
       "label": "thm:dense3uniform",
-      "line": 6999,
+      "line": 7403,
       "section": "The adopted thesis convention: protection and minimum ages",
-      "subsection": "The complementary dense length-three theorem",
+      "subsection": "The earlier dense length-three theorem",
       "references": [
         "lem:atom",
         "lem:dense3callback",
@@ -1564,9 +1633,9 @@
       "kind": "corollary",
       "title": "The next induction step at dense length four",
       "label": "cor:densefourstructure",
-      "line": 7093,
+      "line": 7497,
       "section": "The adopted thesis convention: protection and minimum ages",
-      "subsection": "The complementary dense length-three theorem",
+      "subsection": "The earlier dense length-three theorem",
       "references": [
         "prop:threezeroanchor",
         "thm:dense3uniform",
@@ -1577,9 +1646,9 @@
       "kind": "proposition",
       "title": "The last zero at length three without density",
       "label": "prop:nearcomplete3",
-      "line": 7132,
+      "line": 7536,
       "section": "The adopted thesis convention: protection and minimum ages",
-      "subsection": "The complementary dense length-three theorem",
+      "subsection": "The earlier dense length-three theorem",
       "references": [
         "lem:dense3callback",
         "lem:ownertargetretain"
@@ -1589,7 +1658,7 @@
       "kind": "lemma",
       "title": "An underfull zero responder can retain its anchor",
       "label": "lem:underfullzeroreply",
-      "line": 7170,
+      "line": 7574,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Two further endpoint combinations at arbitrary lengths",
       "references": []
@@ -1598,7 +1667,7 @@
       "kind": "lemma",
       "title": "A three-exchange fresh-copy gain at every longer length",
       "label": "lem:emptytargetthree",
-      "line": 7207,
+      "line": 7611,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Two further endpoint combinations at arbitrary lengths",
       "references": [
@@ -1653,6 +1722,7 @@
         "thm:thesistwo",
         "thm:three",
         "thm:threefirstcontact",
+        "thm:threegeneraluniform",
         "thm:twins",
         "thm:tworeset"
       ]

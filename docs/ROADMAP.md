@@ -17,7 +17,7 @@ All rows refer to the adopted protected, mandatory-removal, minimum-age model wi
 | $n=3,c=\ell=2$, arbitrary finite initial ages | Exact finite projection and certified $O(\log(1/\varepsilon))$ one-sample bound | prop:c2threepositivity, prop:c2threeordinarysample |
 | $\ell=3,c\ge n-2$ | Full convergence and conditional sampling | thm:dense3uniform |
 | $c=\ell=3$, every $n\ge4$ | Full convergence and conditional sampling; qualitative constants | thm:c3generaluniform |
-| $\ell=3,4\le c<n-2$ | General sampling theorem open | — |
+| $\ell=3$, every allowed $n,c$ | Full convergence and conditional sampling; implicit constants | thm:threegeneraluniform |
 | Fixed $\ell\ge4$ | General sampling theorem open | — |
 | Every fixed allowed $\ell\ge2$ | Finite-age recurrence, finitely many stationary regimes, continuous-time convergence to a possibly initial-dependent mixture, stationary age tails | thm:thesisgeneralreset, cor:thesisgeneralregimes |
 
@@ -78,7 +78,7 @@ Useful checkers:
 
 ## Priority 2: longer shuffles with small caches
 
-The next convergence benchmark is $\ell=3$, $c=4$, and arbitrary $n$. The full $c=\ell=3$ case is now covered by `thm:c3generaluniform`; its two-residual-head argument does not automatically extend to larger caches.
+The next convergence benchmark is $\ell=4$ with a fixed small capacity and arbitrary $n$. All allowed length-three capacities are now covered by `thm:threegeneraluniform`; the length-three callback and static-identity potential do not automatically extend to larger shuffle lengths.
 
 Nearly full caches are useful for testing proof mechanisms, but further extensions confined to that regime have lower practical priority.
 
@@ -122,7 +122,7 @@ Lean formalization was discussed and explicitly deferred by the user until the m
 - Owner-only service can fail for longer full shuffles. Those restricted cycles do not refute the all-peer random protocol.
 - Polynomial controlled-path length does not establish polynomial expected mixing time.
 - Failure of the cap-plus-rank projection does not rule out every finite abstraction or prove unbounded recurrent ages.
-- The nearly full length-three theorem does not cover fixed small caches as $n$ grows.
+- The earlier nearly full length-three theorem alone does not cover fixed small caches; the new general length-three theorem does, without a practical mixing bound.
 - Counterexamples for retention, unprotected victims, or periodic schedules do not refute the adopted model.
 
 The arbitrary-network polynomial sampling bound and the arbitrary-shuffle convergence theorem remain open. No completion date is established.
@@ -157,4 +157,10 @@ The high-age-star coupon argument also establishes `Omega(n log n)` worst-case f
 
 **Working proof integrated:** `thm:c3generaluniform` proves unique full-state stationarity, uniform geometric convergence, positive stationary availability, and limiting conditional uniform samples for **exactly `c=ell=3`, every `n>=4`**, with arbitrary finite nonnegative integer ages and initially underfull weakly connected caches under the adopted iid scheduler. The proof combines learned-target boundary service, zeroification, owner-directed emptying without circular outward closure, the new outward-gain gadgets and age potential, the incoming minimum-component contradiction, and the existing finite reset/common atom argument. Separate end-to-end and final-text audits are recorded in the research continuation. This is a mathematical working proof, not formal verification or external peer review.
 
-The constants are qualitative. Sparse capacities `4<=c<n-2` at length three, general higher lengths, and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.
+At this earlier capacity-three stage, sparse larger capacities were still open; the subsequent all-capacity length-three theorem below supersedes that boundary. Higher lengths and polynomial mixing remain open. Earlier continuation entries describing capacity-three outward gain as open are superseded by this theorem. The [assembled proof](research/C3-GENERAL-CONVERGENCE.md), [outward argument](research/C3-OUTWARD-HOLDER-GAIN.md), and [terminal gadgets](research/FULL-SHUFFLE-TRIANGLE-GAIN.md) record the dependency chain and corrected MIN-age inequalities.
+
+## All capacities at shuffle length three (16 November 2026)
+
+**Working proof integrated:** `thm:threegeneraluniform` now covers every `n>=4` and `3<=c<=n-1` at fixed `ell=3`, with the adopted protected/MIN kernel, iid initiators, initially weak connectivity, and arbitrary finite integer ages. It proves unique full-state stationarity, uniform geometric convergence with implicit constants, positive stationary availability, and conditional uniform local sampling for every request size up to capacity. The arbitrary-capacity callback, empty-owner restoration, and fixed-identity lexicographic outward potential are linked to the lower-length residual normalization and finite-reset/common-atom argument. The [full assembly](research/LENGTH-THREE-GENERAL-CONVERGENCE.md) and [sparse outward proof](research/SPARSE-LENGTH-THREE-OUTWARD-GAIN.md) state the scope and necessary controlled reply choices.
+
+This supersedes earlier continuation entries saying sparse length-three convergence remained open. Lengths four and above and polynomial/practical mixing bounds remain open. These are internally audited mathematical working proofs, not formal verification or external peer review.
