@@ -1,0 +1,294 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\usepackage{lmodern}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\TV}{\mathrm{TV}}
+\title{An explicit recursive mixing bound for the adopted CYCLON kernel}
+\author{Working research note}
+\date{16 November 2026}
+\begin{document}
+\maketitle
+\paragraph{Scope and status.}
+This is a quantitative companion to \texttt{generic-proof.tex}, not a
+replacement for its algorithm specification and elementary controller proofs.
+The protocol is exactly the iid uniform-global-initiator, mandatory partner
+removal, received-identity protection, minimum-age duplicate merge kernel.
+Membership is fixed; $1\le l\le c\le n-1$; initial numerical ages are finite
+nonnegative integers; the initial underlying undirected graph is connected.
+Empty and underfull caches are permitted. Time counts individual global events.
+The new recurrence and its strengthened counts have passed independent internal
+adversarial review, conditional on the explicitly identified existing lemmas.
+This is not formal verification or external peer review.
+
+\paragraph{Important limitation.}
+The resulting bound is explicit but extremely pessimistic. It is not a
+polynomial bound, not an estimate of typical simulation behaviour, and not a
+claim of near-optimal mixing. Its main improvement over the general qualitative
+proof is to replace unspecified finite-family path maxima by computable
+recurrences uniform over all initial ages. A useful rate remains open here.
+
+\section{Inputs and notation}
+Let $A(n,c,l)$ bound a controlled path to any prescribed labelled canonical
+zero-age state $H(V,c)$, from every allowed initial state. A controller specifies
+legal outcomes of the original kernel, not a changed algorithm. Define
+$A(1,0,0)=0$. The root of $H$ has an empty cache and hence admits a no-op.
+Let $F(n,c,l,s)$ bound first contact across a frozen cut whose active side has
+$s$ vertices and caches at least one outside identity. Global connectivity is
+not required for this cut statement.
+
+The inputs from \texttt{generic-proof.tex} are:
+\begin{itemize}
+\item Length-one canonical controllers: \texttt{thm:generalone} and
+\texttt{thm:mandatoryone}.
+\item Length-two cut controller: \texttt{thm:firstcontact}.
+\item Colored controllers: \texttt{lem:generalcolor} and
+\texttt{lem:partialcolorsource}.
+\item Reserved-anchor simulation: \texttt{lem:anchorreduction}.
+\item Four-event merging gadget: \texttt{prop:anchorcanonical}.
+\end{itemize}
+We quantify their combinations below.
+No implicit higher-length common-atom constants are used as inputs.
+
+For $l=1$, set
+\[
+ A(n,1,1)=2n(n-1).
+\]
+For $c\ge2$, define $b_1=0$,
+\[
+ b_m=2m(m+c-1)+2b_{m-1},\qquad
+ A(n,c,1)=n(n+c-1)+b_n.
+\]
+These are the explicit length-one controller horizons in the companion proof.
+For $l=2$, the existing cut theorem gives
+\[
+ d=s(s+c),\quad j=(sc+1)(2s+c),\quad F(n,c,2,s)=d(j+1)+j.
+\]
+At length one we may use $F(n,c,1,s)=s+c$. Indeed, repeatedly initiate a
+peer $p$ caching an outside identity. Until crossing, this identity cannot be
+evicted: there are no extras. Each internal responder learns and retains $p$;
+a repeat responder can reply with $p$, shrinking $C_p$. There are at most
+$s-1$ first internal responders and at most $c$ shrinking replies before the
+outside identity must be contacted.
+
+\paragraph{Optional stronger base.}
+The full manuscript \texttt{main.tex}, Theorem \texttt{thm:c2explicitmix}, proves
+$A(n,2,2)=16n^2$ and minorization $(4n)^{-16n^2}$. This theorem's proof is not
+contained in the extracted generic companion. One may either import this
+explicitly identified extra input, or use the recurrences below also for
+$c=l=2$. Both versions are valid; numerical illustrations below state which
+version they use.
+
+\section{Uniform source creation}
+For $l\ge2$, put
+\begin{align*}
+ M(n,c,l)&=\max_{1\le m<n}
+ A\bigl(m,\min(c-1,m-1),\min(l-1,m-1)\bigr),\\
+ E(n,c,l)&=1+\max\left\{M(n,c,l),
+ \max_{1\le s<n-1}F(n-1,c-1,l-1,s)\right\}.
+\end{align*}
+All non-singleton arguments are allowed parameters. The active-side maximum
+is over nonempty proper subsets of the reduced ambient population.
+For $l\ge3$, the structural cut construction then gives
+\[
+ F(n,c,l,s)=sE(n,c,l)\bigl((sc+1)c+1\bigr)+(sc+1)c.
+\]
+This is the existing minimum-holder raising and young-count routing proof;
+its only inputs have strictly smaller shuffle length.
+
+Define integer tenure bounds
+\[
+ t_0=1,\qquad t_j=1+j t_{j-1}\quad(1\le j\le c-1),\qquad
+ K=(n-1)t_{c-1}.
+\]
+Thus $t_j=j!\sum_{i=0}^{j}1/i!$. Put
+\begin{align*}
+ D&=ncl^c,& R&=(nc+1)(nc^2+1),\\
+ H&=R\bigl((K+1)(D+1)+1\bigr),& B&=(nc+1)H,\\
+ S(n,c,l)&=(B+1)(n-1)E(n,c,l)+H.
+\end{align*}
+\begin{lemma}
+For any specified $q$, a controlled path of at most $S(n,c,l)$ events,
+never initiating $q$, makes $q$ incoming-free with $C_q\ne\varnothing$.
+This holds for every $l\ge2$ and uniformly over all initial numerical ages.
+\end{lemma}
+\begin{proof}
+Freeze $q$. At the current minimum stored $q$-age $k$, reserve $q$ in
+requests and replies between minimum holders. The internal residual kernel
+has capacity $c-1$ and length $l-1$. If a proposed residual oldest is younger
+than $k$, contacting $q$ already removes a minimum copy. Otherwise use the
+lower-length cut controller on an open residual component, or the
+lower-length canonical controller on a closed component followed by its
+root's owner contact. The cost of one phase is at most $E$.
+Internal contacts preserve both minimum copies through $\min(k+1,k)=k$.
+A terminal boundary or owner contact loses a minimum copy and creates none.
+At most $n-1$ phases clear a level. Since no fresh $q$ is generated, its
+minimum cannot decrease. After at most $B+1$ integer levels, either $q$ is
+absent or every surviving copy has age greater than $B$.
+
+Choose an empty one of the $nc+1$ age intervals $(jH,(j+1)H]$.
+Mark ages below the interval young and those above it old. During $H$
+events all young ages remain below all old ages. All $q$ copies are old.
+The existing partial colored controller therefore applies without any
+bound on the passive row of $q$.
+
+Here is the sharpened count in that controller. On a joint plateau of
+$F=\sum f_i$ and $V=\sum f_i^2$, every outside responder is old-free,
+and the fixed young count strictly increases along a newly transmitted
+$q$ copy. A tenure at a row with $f$ young entries has at most $c-f-1$
+child-producing activations: $q$ occupies one old slot and each non-$q$
+activation deletes a distinct old head, receiving only young entries.
+The row cannot be passively updated during the tenure. This remains true
+if the last such activation evicts $q$. Its descendants therefore number
+at most $t_{c-f-1}$ including itself. There are at most $n-1$ initial
+roots, giving $K$ tenures and hence at most $K$ owner contacts per plateau.
+Between these contacts the original potential
+$W=\sum_i o_i l^{c-f_i}$ strictly decreases and lies between $0$ and $D$.
+At most $R$ plateaus occur. This proves the stated $H$ bound.
+
+Erasing the final $q$ reference does not require its last loss to be an
+owner contact. A passive row cannot become empty; if $q$ was initially
+empty and never contacted, connectivity prevents disappearance of all
+incoming references. Thus the final source row is nonempty.
+\end{proof}
+
+\section{Normalization recurrences}
+For nonnegative integer $N$, let $Q(N;d,e)$ be the maximum of
+\[
+ \sum_{m\in\mathcal P}A\bigl(m,\min(d,m-1),\min(e,m-1)\bigr)
+\]
+over integer partitions $\mathcal P$ of $N$. Singleton terms are zero.
+Let $Q_{\rm proper}$ restrict to partitions with at least two parts.
+These are finite maxima over component sizes, not numerical states.
+
+A universal zero anchor can be normalized in
+\[
+ U(n,c,l)=(c+3)M(n,c,l)+Q(n-1;c-1,l-1)+c+4(n-2)+1
+\]
+events. To see this, empty its owner using at most $c$ lower component
+normalizations and $c$ contacts. Normalize initial residual components at
+cost $Q$. Merge their roots with the four-event gadget at most $n-2$ times.
+The same singleton root can be reused, so no intermediate normalization
+is charged. One final residual normalization gives a canonical state.
+Two further residual normalizations and one contact allow any prescribed
+root and order. These account for the three extra $M$ terms.
+
+Write $J(n,l)=A(n,n-1,l)$ for full capacity, retaining the length-one base.
+For $l\ge2$, put
+\[
+ m=\left\lceil\frac{n-2}{l-1}\right\rceil,
+\]
+\[
+ J(n,l)=(m+1)S(n,n-1,l)+m
+       +J(n-1,\min(l,n-2))+1+U(n,n-1,l).
+\]
+At full capacity there are no evictions, and no underlying undirected edge
+can disappear. Create a source $q$. If its complement has $k>1$ components,
+$q$ caches a representative of every component. Its request to an oldest
+$u$ can include representatives of $\min(l-1,k-1)$ other components,
+creating that many complementary edges at the responder. There are enough
+extra slots because $|C_q|\ge k$. Recreate a source and repeat; the new
+edges cannot disappear. After at most $m$ merges and $m+1$ source creations,
+the complement is connected. Normalize it with root $r$ different from
+the frozen oldest $u$ of $q$. One contact $q\to u$ receiving $r^0$ creates
+a universal zero anchor, since no eviction can remove $u$'s $r^0$. Apply $U$.
+The case $n=2$ was already length one.
+
+For proper capacity $2\le l\le c<n-1$, define
+\begin{align*}
+ A(n,c,l)={}&S(n,c,l)+Q_{\rm proper}(n-1;c,l)\\
+ &+\max_{1\le s\le c}J(s+1,\min(l,s))
+ +A(n-1,c,l)+2+U(n,c,l).
+\end{align*}
+This counts the source-extension proof directly. Normalize disconnected
+complement components with source-neighbor labels highest. Normalize the
+closed core consisting of $q$ and its cache using the independent
+full-capacity bound. Normalize the now-connected complement, make the two
+source contacts giving a universal zero, and apply $U$. If the complement
+was already connected, the initial component and core steps can be skipped;
+the bound still holds. Every part in $Q_{\rm proper}$ has size at most $n-2$.
+
+\paragraph{Well-foundedness.}
+First establish all smaller lengths. At a new length establish all $J(n,l)$
+by population induction; its source and anchor inputs have smaller length,
+and its remaining input has smaller population and full capacity. Then
+establish proper-capacity $A(n,c,l)$ by population induction. There is no
+same-parameter circularity. Optionally replacing the $c=l=2$ cases with the
+stronger explicit manuscript base only shortens these controllers.
+
+\section{Probability and sample bounds}
+\begin{theorem}
+Put
+\[
+ Z=nc\binom{c-1}{l-1}\binom cl
+ \begin{cases}
+ 1,&c=n-1,\\
+ \displaystyle\binom{l-1}{\lfloor(l-1)/2\rfloor}
+ \binom l{\lfloor l/2\rfloor},&c<n-1.
+ \end{cases}
+\]
+Let $T=A(n,c,l)$ and $\gamma=Z^{-T}$. For every prescribed labelled
+canonical atom $h$, uniformly over all allowed initial states,
+\[
+ P^T(x,\{h\})\ge\gamma,\qquad
+ \sup_x\|P^t(x,\cdot)-\pi\|_{\TV}
+ \le(1-\gamma)^{\lfloor t/T\rfloor}.
+\]
+Consequently for $0<\varepsilon<1$,
+\[
+ t_{\rm mix}(\varepsilon)
+ \le T\left\lceil\frac{\log(1/\varepsilon)}{-\log(1-\gamma)}\right\rceil
+ \le T\left\lceil\gamma^{-1}\log(1/\varepsilon)\right\rceil.
+\]
+\end{theorem}
+\begin{proof}
+Each prescribed event has conditional probability at least $p=Z^{-1}$.
+The initiator contributes $1/n$ and oldest tie at least $1/c$. Request and
+reply subset counts are at most $\binom{c-1}{l-1}$ and $\binom cl$:
+when a row is shorter than its packet all choices are forced; otherwise
+the relevant binomial is increasing in the row size. The active eligible
+victim set has size at most $l-1$, and the passive one at most $l$.
+Any fixed-cardinality subset count is bounded by the central binomial at
+that maximal size. At full capacity no eviction occurs, so both victim
+factors are one. This also implies the older bound $Z\le nc16^c$.
+The controllers
+are adaptive legal witnesses; multiplying conditional bounds is valid.
+Pad their endpoint using its empty-root no-op, whose probability $1/n$
+is at least $p$. The resulting common-atom minorization gives the stated
+Doeblin contraction, uniqueness and stationarity on the full numerical state
+space, exactly as in the companion's common-atom lemma.
+\end{proof}
+At $l=1$, the proper-capacity formula gives $Z=nc^2$; at $c=1$ it gives
+$Z=n$. At $c=l=2$ with $n>3$, $Z=4n$, recovering the sharper known
+minorization when that extra horizon base is imported. At full shuffle
+and full capacity all packets are forced, giving $Z=nc$. Other specialized
+estimates can likewise be retained rather than replaced by a worse bound.
+
+For an ordered local $b$-sample, let $a_b=\pi(|C_i|\ge b)>0$.
+Stationary relabeling symmetry makes the sample conditional on availability
+uniform, and conditioning yields
+\[
+ \|\mathcal L_x(S_i^{(b)}(t)\mid |C_i(t)|\ge b)
+       -\operatorname{Unif}((V\setminus\{i\})_b)\|_{\TV}
+ \le \frac{(1-\gamma)^{\lfloor t/T\rfloor}}{a_b}.
+\]
+The conditional law is considered when its conditioning event has positive
+probability; the bound guarantees this once the full-state error is below
+$a_b$. A relabelled full-cache canonical atom gives $a_b\ge\gamma$.
+For one identifier the stronger elementary bound
+$a_1\ge\lceil(n-1)/c\rceil/n$ follows from connectivity, capacity and
+stationary label symmetry. At full capacity the eventual monotone undirected
+graph is complete, giving $a_1\ge(n-1)/n$.
+
+\paragraph{Scale of the bound.}
+With the stronger two-entry base, $(n,c,l)=(4,3,3)$ gives
+\[T=54{,}446{,}588{,}124\]
+even after the sharpened tenure and component counts.
+The mixing bound then exponentiates $T$ through $\gamma^{-1}$.
+This is a rigorous general upper bound but not a useful practical rate.
+The gap from the existing $\Omega(n\log n)$ worst-case full-state lower
+bound remains enormous. An improved probabilistic contraction argument,
+rather than forcing one exact path, is needed to close it. Full-state,
+conditional local-sample, and cross-time independence claims remain distinct.
+\end{document}
