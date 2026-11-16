@@ -8,7 +8,7 @@ Before continuing, read `docs/RESUME.md`, `docs/MODEL.md`, and the relevant entr
 
 - A written working proof, a conditional reduction, an exact finite certificate, a simulation, and a conjecture are different kinds of evidence. Record the distinction.
 - Preserve the exact algorithm, scheduler, integer-age, connectivity, and observation assumptions with each result. Historical variants in the manuscript and archive do not automatically apply to the adopted protected/MIN algorithm.
-- The general fixed-shuffle-length convergence theorem and arbitrary-network polynomial sampling bound are not complete. Never infer sampling uniformity or rapid mixing merely from temporal connectivity, fresh-source coverage, or lineage erasure.
+- An internally audited working proof of general fixed-shuffle-length convergence is now written for the adopted protected/MIN kernel with iid uniform initiators, weakly connected fixed-membership starts, and finite nonnegative integer ages. It is not formally verified or externally peer reviewed; an arbitrary-network polynomial sampling bound remains open. Never infer sampling uniformity or rapid mixing merely from temporal connectivity, fresh-source coverage, or lineage erasure.
 - An explicit exponentially pessimistic bound exists for two-entry caches; it is not a polynomial expected mixing bound.
 - Lean formalization is deferred at the user's request. Do not start it without new authorization.
 - There is no background or scheduled research task. Continue proof work when requested.
