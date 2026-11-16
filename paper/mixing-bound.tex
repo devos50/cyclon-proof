@@ -228,18 +228,19 @@ Put
  \binom l{\lfloor l/2\rfloor},&c<n-1.
  \end{cases}
 \]
-Let $T=A(n,c,l)$ and $\gamma=Z^{-T}$. For every prescribed labelled
+Let $T=A(n,c,l)$, $\gamma=Z^{-T}$, and
+$\alpha=(n)_c\gamma$, where $(n)_c=n!/(n-c)!$. For every prescribed labelled
 canonical atom $h$, uniformly over all allowed initial states,
 \[
  P^T(x,\{h\})\ge\gamma,\qquad
  \sup_x\|P^t(x,\cdot)-\pi\|_{\TV}
- \le(1-\gamma)^{\lfloor t/T\rfloor}.
+ \le(1-\alpha)^{\lfloor t/T\rfloor}.
 \]
 Consequently for $0<\varepsilon<1$,
 \[
  t_{\rm mix}(\varepsilon)
- \le T\left\lceil\frac{\log(1/\varepsilon)}{-\log(1-\gamma)}\right\rceil
- \le T\left\lceil\gamma^{-1}\log(1/\varepsilon)\right\rceil.
+ \le T\left\lceil\frac{\log(1/\varepsilon)}{-\log(1-\alpha)}\right\rceil
+ \le T\left\lceil\alpha^{-1}\log(1/\varepsilon)\right\rceil.
 \]
 \end{theorem}
 \begin{proof}
@@ -255,9 +256,17 @@ factors are one. This also implies the older bound $Z\le nc16^c$.
 The controllers
 are adaptive legal witnesses; multiplying conditional bounds is valid.
 Pad their endpoint using its empty-root no-op, whose probability $1/n$
-is at least $p$. The resulting common-atom minorization gives the stated
-Doeblin contraction, uniqueness and stationarity on the full numerical state
-space, exactly as in the companion's common-atom lemma.
+is at least $p$. This bound holds simultaneously for every distinct labelled canonical state.
+In $H(V,c)$, the top $c$ vertices have distinct row sizes $0,\ldots,c-1$;
+the other $n-c$ source vertices have identical full rows and no incoming
+references. Its stabilizer therefore has size $(n-c)!$, so its relabelling
+orbit has $(n)_c$ distinct states. Summing their individual bounds gives
+\[
+ P^T(x,\cdot)\ge\alpha\operatorname{Unif}(\operatorname{Orb}H).
+\]
+Here $T\ge n$, $Z\ge n$ and $(n)_c\le n^c$ with $c<n$, so
+$0<\alpha<1$. This minorization gives the stated Doeblin
+contraction, uniqueness and stationarity on the full numerical state space.
 \end{proof}
 At $l=1$, the proper-capacity formula gives $Z=nc^2$; at $c=1$ it gives
 $Z=n$. At $c=l=2$ with $n>3$, $Z=4n$, recovering the sharper known
@@ -271,24 +280,147 @@ uniform, and conditioning yields
 \[
  \|\mathcal L_x(S_i^{(b)}(t)\mid |C_i(t)|\ge b)
        -\operatorname{Unif}((V\setminus\{i\})_b)\|_{\TV}
- \le \frac{(1-\gamma)^{\lfloor t/T\rfloor}}{a_b}.
+ \le \frac{(1-\alpha)^{\lfloor t/T\rfloor}}{a_b}.
 \]
 The conditional law is considered when its conditioning event has positive
 probability; the bound guarantees this once the full-state error is below
-$a_b$. A relabelled full-cache canonical atom gives $a_b\ge\gamma$.
+$a_b$. Exactly $n-b$ vertices of a canonical state have cache size at least $b$.
+The uniform-orbit minorization therefore gives $a_b\ge\alpha(n-b)/n$.
+It also gives this lower bound for actual availability at every $t\ge T$,
+by applying the minorization to the final $T$ events.
 For one identifier the stronger elementary bound
 $a_1\ge\lceil(n-1)/c\rceil/n$ follows from connectivity, capacity and
 stationary label symmetry. At full capacity the eventual monotone undirected
-graph is complete, giving $a_1\ge(n-1)/n$.
+graph is complete, giving $a_1\ge(n-1)/n$. These connectivity-based bounds
+refer to stationary availability, not an arbitrary transient fixed observer.
+For the full-shuffle full-capacity case $l=c=n-1$, there is a stronger
+all-request-size bound $a_b\ge(n-b)/n$, proved below.
+
+\subsection*{Hole-DAG availability at full capacity and full shuffle}
+Assume $l=c=n-1$, and define $D_p=V\setminus(C_p\cup\{p\})$ as an
+identity set. If $p\to q$ is the actual contact, the full-packet, no-eviction
+rule gives exactly
+\[
+ D_q'=D_p\cap D_q,\qquad D_p'=(D_p\cap D_q)\cup\{q\}.
+\]
+All other rows are unchanged. If the directed hole graph is acyclic before
+this update, it stays acyclic. Its only new arc can be $p\to q$.
+A new simple cycle would contain $p\to q\to r\to\cdots\to p$,
+where the new $q\to r$ also belonged to the old row $D_p$.
+Replacing its first two edges by the old $p\to r$ would give an old cycle.
+There is no new two-cycle because $p\notin D_q'$. This is a contradiction.
+
+The canonical state's hole graph is acyclic. Closure of this property and
+convergence from that state show that the stationary law is supported on
+hole DAGs. In a forward topological order $v_1,\ldots,v_n$, peer $v_j$ has
+at most $n-j$ holes, so $|C_{v_j}|\ge j-1$. At least $n-b$ rows are
+therefore available for request size $b$. Stationary relabelling symmetry
+gives
+\[
+ a_b\ge\frac{n-b}{n}\qquad(1\le b\le n-1).
+\]
+The aggregate statement is deterministic on hole DAGs, but the fixed-observer
+bound uses stationarity (or an exchangeable law). It is not asserted for
+arbitrary initial labels at finite time. Thus any valid full-state bound
+$d(t)$ gives conditional sample error at most $nd(t)/(n-b)$ in this case.
+This improves conditioning, not the full-state mixing rate. The all-$n$
+proof and a finite exact checker are recorded in
+\texttt{docs/research/FULL-SHUFFLE-HOLE-DAG.md}.
 
 \paragraph{Scale of the bound.}
 With the stronger two-entry base, $(n,c,l)=(4,3,3)$ gives
 \[T=54{,}446{,}588{,}124\]
 even after the sharpened tenure and component counts.
-The mixing bound then exponentiates $T$ through $\gamma^{-1}$.
+The mixing bound then exponentiates $T$ through $\alpha^{-1}$.
 This is a rigorous general upper bound but not a useful practical rate.
 The gap from the existing $\Omega(n\log n)$ worst-case full-state lower
 bound remains enormous. An improved probabilistic contraction argument,
 rather than forcing one exact path, is needed to close it. Full-state,
 conditional local-sample, and cross-time independence claims remain distinct.
+\section{Sharp first-contact scale for a special capacity-two anchor}
+\label{sec:c2-anchor-sharp}
+This section concerns a first-contact time, not a mixing time. Assume
+$n\ge3$ and $c=L=2$. Fix a peer $q$ whose cache is empty and suppose that
+every other cache contains $q^0$. The possible remaining descriptor in
+each such cache may have arbitrary nonnegative age. Let $\tau$ count global
+events up to and including the first contact with $q$, and put $m=n-1$.
+Define
+\[
+ b_n=n B(1/2,n-1)+\frac{n}{n-1},
+\]
+where $B$ is the beta integral. Then every such initial state satisfies
+\[
+ \mathbb E\tau\le b_n\le n\sqrt{\frac{\pi}{n-2}}+\frac{n}{n-1}.
+\]
+Moreover, if the outside residual descriptors initially form one directed
+$m$-cycle, all with positive age, then for $n\ge4$
+\[
+ b_n-\frac{b_n^2}{n-3}\le\mathbb E\tau\le b_n.
+\]
+Consequently the supremum of $\mathbb E\tau$ over this anchored family is
+$\sqrt{\pi n}+O(1)$ as $n\to\infty$.
+
+\paragraph{Ready-count comparison.}
+Until $\tau$, $q$ stays empty and its descriptor stays at age zero in all
+other rows. Call a row ready when its residual descriptor is absent or has
+age zero, and let $R$ be the number of ready outside rows. For an internal
+contact $p\to r$, the responder becomes $\{q^0,p^0\}$; the initiator inherits
+the responder's old residual descriptor, except that a self-reply is
+removed. Thus $R$ never decreases. A nonready initiation raises $R$ by at
+least one, and a ready initiation contacts $q$ with probability at least
+$1/2$. The probabilities of growth and killing are therefore at least
+$(m-R)/n$ and $R/(2n)$, respectively, and these events are disjoint.
+
+Compare with a chain on $\{0,\ldots,m,\dagger\}$ which, from $r$, moves to
+$r+1$ with probability $(m-r)/n$, is killed with probability $r/(2n)$, and
+otherwise stays put. The absorbing state $\dagger$ is ordered above $m$.
+Its kernel is stochastically increasing: for $r<s$, every nonabsorbing
+output from $r$ is at most $s$, and its killing probability is smaller.
+The actual ready-count kernel dominates this kernel, since both its
+probability of reaching at least $r+1$ and its killing probability are
+larger. Starting the comparison at zero therefore stochastically delays
+killing. Write $T$ for its killing time.
+
+\paragraph{Exact comparison mean.}
+Poissonize global events at independent rate one. Realize the comparison
+by $m$ independent rate-$1/n$ clocks and one inert clock for $q$. A vertex's
+first tick makes it ready; each later tick kills with probability $1/2$.
+Its probability of not killing by continuous time $u$ is
+$2e^{-u/(2n)}-e^{-u/n}$. Independence gives survival
+$(2e^{-u/(2n)}-e^{-u/n})^m$. Expected Poissonized time equals expected event
+count, because the independent inter-event intervals have mean one. Hence
+\[
+ \mathbb ET=2n\int_0^1 y^{m-1}(2-y)^m\,dy
+ =2n\int_0^1(1-v^2)^{m-1}(1+v)\,dv
+ =nB(1/2,m)+\frac nm=b_n.
+\]
+The elementary inequality $(1-v^2)^{m-1}\le e^{-(m-1)v^2}$ gives the stated
+upper bound. The identity
+\[B(1/2,m)=\sqrt\pi\,\Gamma(m)/\Gamma(m+1/2)\]
+and Stirling's formula give
+$b_n=\sqrt{\pi n}+O(1)$.
+
+\paragraph{Sharpness.}
+Start the outside residuals in the positive-age directed $m$-cycle.
+Before contact with $q$, residual identities obey capacity-one rotations:
+$p\to r\to s$ becomes $r\to p\to s$, with a self-reply removed if $s=p$.
+The unique directed cycle decreases in length by at most one per event.
+An empty residual can first appear only when a two-cycle is canceled.
+Starting at length $m$, this cannot happen in the first $m-2=n-3$ events.
+Throughout those events all ready residuals are nonempty, so their contact
+probability is exactly $1/2$; a nonready initiation raises $R$ exactly by
+one, and a surviving ready initiation preserves $R$. Thus the killed
+ready-count process has exactly the comparison law through $h=n-3$ events.
+The comparison's monotonicity bounds its expected remaining lifetime from
+any transient state by $b_n$. For $n\ge4$, Markov's inequality therefore
+implies
+\[
+ \mathbb E(T-h)_+\le\Pr(T>h)b_n\le b_n^2/h.
+\]
+Equality of survival through $h$ now yields
+$\mathbb E\tau\ge\mathbb E\min(T,h)\ge b_n-b_n^2/(n-3)$.
+The last subtraction is $O(1)$, proving the claim. Nothing in this argument
+asserts a general-cut contact bound, a mixing bound, or an extension to
+capacity three.
+
 \end{document}

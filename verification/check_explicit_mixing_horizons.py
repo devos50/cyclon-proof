@@ -102,7 +102,7 @@ def self_test(limit=12):
                 for l in range(1,c+1):
                     value=A(n,c,l)
                     assert isinstance(value,int) and value>0
-                    assert value>=1
+                    assert value>=n
                     z=event_denominator(n,c,l)
                     assert 1<=z<=n*c*16**c
                     if l==c==n-1: assert z==n*c
@@ -137,9 +137,24 @@ def self_test(limit=12):
                     want=max(sum(A(m,min(c,m-1),min(l,m-1)) for m in p)
                              for p in partitions(total) if not proper or len(p)>1)
                     assert partition_sum(total,c,l,proper)==want
+    # Enumerate distinct canonical orbit and fixed-observer availability.
+    from itertools import permutations
+    for n in range(2,7):
+        for c in range(1,n):
+            orbit=set()
+            for order in permutations(range(n)):
+                rows=[None]*n
+                for i,p in enumerate(order):
+                    rows[p]=tuple(sorted(order[max(i+1,n-c):]))
+                orbit.add(tuple(rows))
+            expected=factorial(n)//factorial(n-c)
+            assert len(orbit)==expected
+            for b in range(1,c+1):
+                available=sum(len(state[0])>=b for state in orbit)
+                assert n*available==(n-b)*len(orbit)
     assert A(4,3,3)==54446588124
     print(f"PASS: {totals} allowed parameter cases (safe/strong C2 bases), "
-          "tenure recurrence c<=20, merge counts, partition DP, regression value.")
+          "tenure recurrence c<=20, merge counts, partition DP, canonical orbits n<=6, regression value.")
 
 if __name__=='__main__':
     self_test()
