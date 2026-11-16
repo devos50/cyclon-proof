@@ -6653,8 +6653,11 @@ Let $\ell=3$ and $c\ge3$. Fix owner $a$, a subset $H$ of
 its zero holders, and a cached target $p\notin H\cup\{a\}$.
 A finite legal path ends with an owner contact outside $H$,
 preserving every existing holder of identity $a$ and every
-existing zero copy. No initial shared-target or age-band
-assumption is needed. No uniform numerical horizon is asserted.
+existing zero copy. All preterminal exchanges are internal to
+$H\cup\{a\}$, and $p$ stays cached at the owner before the
+final contact. Its terminal reply may be chosen freely subject
+to the model. No initial shared-target or age-band assumption
+is needed. No uniform numerical horizon is asserted.
 \end{lemma}
 \begin{proof}
 Until termination, let only $a$ initiate and prefer outside-$H$
@@ -7531,6 +7534,251 @@ length-three theorem on every residual component, with the
 effective parameters just checked. Owner emptying, the
 four-exchange component merges, and root changes in
 Proposition~\ref{prop:threezeroanchor} then apply unchanged.
+\end{proof}
+
+\subsection{A parameterized induction interface, not an arbitrary-length proof}
+
+The next statements separate the reusable induction from its unsolved
+local obligations. In particular, no length-four convergence theorem is
+inferred merely from the completed three-entry case.
+
+\begin{proposition}[Structural induction from lower shuffle lengths]
+\label{prop:shuffleinductionstructure}
+Fix $L\ge3$. Assume uniform canonical common-atom minorization
+at every smaller length $1\le j<L$, for every allowed population
+and capacity, and assume the uniform holder-only frozen-cut
+first-contact conclusion at length $L-1$. Then at length $L$,
+for every $n\ge L+1$ and $L\le c\le n-1$:
+\begin{enumerate}
+\item the holder-only first-contact conclusion of
+Theorem~\ref{thm:threefirstcontact} holds with a finite horizon
+and positive probability bound independent of initial ages;
+\item a universal zero anchor has a finite legal path to any
+prescribed labelled canonical atom $H(V,c)$.
+\end{enumerate}
+These are structural conclusions, not convergence from arbitrary
+states at length $L$.
+\end{proposition}
+\begin{proof}
+Repeat the minimum-age-holder construction of
+Theorem~\ref{thm:threefirstcontact}. Reserving target $r$ at
+its minimum-age holders gives the exact length-$L-1$,
+capacity-$(c-1)$ residual kernel. A residual oldest choice
+is legal unless its maximum age is below the reserved anchor;
+in that case contact with owner $r$ already succeeds.
+Open residual cuts use the assumed lower first-contact result
+on $n-1$ identities. Closed components of size $m\ge2$ have
+\[
+ d_m=\min(c-1,m-1),\qquad e_m=\min(L-1,m-1)<L.
+\]
+The assumed common atom at length $e_m$ applies, including
+clipped singleton and two-entry cases; a one-vertex component
+contacts the anchor owner immediately. Thus a finite maximum
+$E$ of the lower first-contact and component-atom horizons,
+plus one event, removes a minimum copy or contacts the cut.
+At most $s$ phases raise the outside minimum by one.
+
+Put $R_s=(sc+1)c$ and raise that minimum $R_s+1$ times.
+The final old-anchor/young-count routing proof transfers
+without a new induction assumption: Lemma~\ref{lem:generalcolor}
+is valid at every length, and reserving the old anchor plus
+a required young difference needs only two extra slots,
+available for $L\ge3$. Its reply bound is
+$|D_q|+|Q\cap U|\le\min(L,|Q|)$. The same bounded pair
+$(sc-F,c-1-M)$ decreases at each nonterminal step, so this
+last stage takes at most $R_s$ events. In particular one may
+use
+\[
+ T_L=sE(R_s+1)+R_s,\qquad
+ \eta_L=(nc\,16^c)^{-T_L}.
+\]
+Only target holders initiate along the controlled path;
+existing responder copies are returned and protected. Before
+any cut crossing, arbitrary internal events preserve some
+outside target copy, so the uniform block bound also gives
+the same geometric first-crossing tail as before. These
+constants are finite, not claimed polynomial or practical.
+
+For a universal zero anchor $a$, reserve it and normalize
+residual components with the displayed effective parameters.
+Freeze the owner while normalizing its inspected oldest head
+$Q$ to a root with $C_Q=\{a^0\}$. The owner then deletes that
+head without replacement. Fresh $a$ and at most $L-1$ extras
+fit at $Q$ because $c\ge L$. Repetition empties the owner.
+The four-exchange component merges and root changes of
+Proposition~\ref{prop:threezeroanchor} use caches of size at
+most two, so are unchanged. A final residual normalization
+produces the prescribed labelled atom. Shorter kernels were
+used only through exact reserved-anchor simulations, not
+through shorter original shuffles.
+\end{proof}
+
+\begin{lemma}[Uniform empty-owner restoration prefix]
+\label{lem:generalownerterminalprefix}
+For every $L\ge3$ and $c\ge L$, suppose $C_a=\varnothing$
+and a holder $p$ caches $a$ as an oldest entry and also caches
+a nonholder. A three-exchange legal path either strictly
+increases $N_a$, or restores every original holder and leaves
+the owner caching an untouched nonholder. Thus a separate
+owner-nonholder service lemma would complete gain in the
+second case; such service is not asserted here for general $L$.
+\end{lemma}
+\begin{proof}
+Let $d=|C_p|$ and select an oldest non-$a$ residual $s$,
+preferring a nonholder in a tie. In $p\to a$, choose its
+$e=\min(L-1,d-1)$ extras to include $s$ and, when $s$ is a
+holder, a designated nonholder $r$. This is feasible since
+$L\ge3$ and then $a,s,r$ are distinct. Let $E$ be the other
+sent residuals, so $|E|=e-1\le L-2$.
+The owner receives fresh $p$ and $s,E$ with their ages increased
+once. Thus $s$ is oldest both there and at frozen $p$.
+Execute $a\to s$. Its exact request is $\{a,p\}\cup E$,
+because its cache has at most $L$ entries. If $s$ is a holder,
+require $a$ in its reply and retain $r$ at the owner by
+Lemma~\ref{lem:ownertargetretain}.
+
+Execute the still-legal $p\to s$, including all of $E$ among
+its $f=\min(L-1,d-2)$ extras. If $d\le L$, then $f=|E|$.
+Otherwise $f=|E|+1$ and the only additional extra is some $u$;
+in particular $c\ge L+1$. The responder already knows $p,E$,
+so only optional $u$ can be novel. Require $a,p$ in the reply.
+If $s$ is full and $u$ is novel, the installed set
+$\{a,p\}\cup E$ has $L$ entries, so there is an old $x$
+outside it. Require $x$ in the reply as well and evict it.
+It is absent from the incoming request since $u$ was novel;
+the three required reply entries fit $L\ge3$. Otherwise no
+passive eviction is needed. Hence $s$ keeps $a^0$, and $p$
+receives and protects $a^0$, even if other active residents
+are evicted. All other holders are untouched. If $s$ was a
+nonholder this is strict gain. Otherwise all original holders
+are restored and the frozen owner still caches untouched
+nonholder $r$. This proves the alternative at every length,
+including $c=L$, where no additional $u$ exists.
+\end{proof}
+
+\begin{proposition}[Two local obligations close the next shuffle length]
+\label{prop:shuffleinductionclosure}
+Assume the hypotheses of Proposition~\ref{prop:shuffleinductionstructure}
+at a fixed $L\ge3$. The following two additional obligations,
+if proved for every allowed population and capacity at this
+length, imply uniform common-atom minorization, full-state
+convergence, positive stationary availability, and conditional
+uniform sampling at length $L$.
+\begin{description}
+\item[$\mathrm B_L$ (owner boundary service).]
+For every owner $a$, subset $H$ of its zero holders, and cached
+$p\notin H\cup\{a\}$, there is a finite legal path to an owner
+contact outside $H$, preserving every existing holder and zero
+copy. Every preterminal exchange is internal to $H\cup\{a\}$,
+so all rows outside that set are frozen. The designated $p$
+remains owner-cached before the terminal
+contact. When the terminal partner differs from $p$, it may be
+sent as an extra. The terminal reply may be any prescribed legal
+subset, in particular one containing $a$ and a designated next
+path head when present. Legal terminal victims may be chosen
+accordingly. When the terminal partner is not $p$, a holder
+reply containing $a$ retains $p$ by
+Lemma~\ref{lem:ownertargetretain} if sent, or automatically if
+unsent.
+\item[$\mathrm O_L$ (empty-owner outward gain).]
+When $C_a=\varnothing$, all $h$ holders are zero, and a holder
+caches a nonholder, a finite legal path attains $N_a>h$.
+\end{description}
+Neither obligation is asserted here for arbitrary $L\ge4$.
+Their local durations need not be uniform in the initial ages.
+\end{proposition}
+\begin{proof}
+First $\mathrm B_L$ gives nonholder recovery. Retain a fixed
+cached nonholder and use $H$ equal to the current full zero set.
+Every completed boundary service increases $Z_a$ and preserves
+all old holders. If no new holder was gained, the target is
+still a nonholder and a terminal holder reply containing $a$
+retains it. A strictly increasing zero count cannot exclude
+this fixed target forever. Thus finitely many stages gain a
+holder and a zero. Holder-only first contact from
+Proposition~\ref{prop:shuffleinductionstructure} then zeroifies
+positive copies: a zero-holder contact refreshes the active
+copy; an owner contact loses one positive copy but gives the
+owner a cached nonholder, and recovery restores the count
+while increasing zeros. All old zeros survive.
+
+In a closed class, $k=\max Z_a$ therefore bounds $N_a$ everywhere,
+and all holders at a maximizer are zero. Also $k\ge1$ by weak
+connectivity and an owner activation if no copy exists. Owner-
+directed path routing uses $\mathrm B_L$ with $H$ excluding the
+untouched path suffix, and terminal replies containing $a$ and
+its successor. It rules out a reachable nonholder. The owner's
+reachable region is consequently closed and consists of owner
+plus zero holders. Lower-length residual normalization empties
+the owner exactly as in the structural proposition, without
+using global outward closure. Now $\mathrm O_L$ forbids every
+holder-to-nonholder edge at every empty-owner maximizer.
+
+If nonholders remain, weak connectivity gives an incoming edge
+to the zero set $I$. Pause a first outside contact $P\to Q$
+using the derived first-contact result; normalize $Q$'s closed
+residual component with root $Q$ while $P$ is frozen. The pending
+oldest choice is unchanged and $C_Q=\{a^0\}$. For $c\ge L+1$,
+its old anchor and the at-most-$L$ request fit, while the reply
+creates a zero at $P$, a contradiction.
+
+For $c=L$, choose an empty-owner maximizer minimizing the number
+of residual weak components. An underfull $P$ again gives a gain.
+Otherwise its cache is $\{Q,R_1,\ldots,R_{L-1}\}$, and the endpoint
+identity sets are
+\[
+ C_P'=\{a,R_1,\ldots,R_{L-1}\},\qquad
+ C_Q'=\{P,R_1,\ldots,R_{L-1}\}.
+\]
+The new $a$ at $P$ is zero; the zero set swaps $Q$ for $P$, and
+the owner remains empty. Each $R_j$ lies in old $I\setminus\{Q\}$,
+otherwise $P$ has a forbidden outward edge. If $Q$'s normalized
+component was nontrivial, another old holder still points to
+now-nonholder $Q$, another contradiction. Hence it was a singleton.
+Removing it and attaching $P$ to the $R_j$ in remaining components
+strictly decreases the component count. Thus there are no
+nonholders, at any capacity.
+
+Every closed class reaches a universal zero anchor and then
+the prescribed atom by the structural proposition. The independent
+uniform finite-age reset, finite reset-family reachability/SCC
+argument, and positive empty-root padding give uniform minorization
+exactly as in Theorem~\ref{thm:threegeneraluniform}. The minimum
+path probability is taken after padding. Lemma~\ref{lem:atom}
+and label symmetry finish the conditional implication. This
+identifies the missing induction hypotheses; it does not prove them.
+\end{proof}
+
+\begin{proposition}[The unchanged three-entry outward controller can cycle]
+\label{prop:longeroutwardcontrollercycle}
+For every $c\ge L\ge4$, with $n\ge c+1$, there are weakly
+connected outward-gain starting states in which activating only
+the designated current holder has a forced two-event cycle.
+The length-three static-count/cache-size potential is constant
+on that restricted cycle. This is not a counterexample to the
+full protocol or its convergence.
+\end{proposition}
+\begin{proof}
+Use distinct $a,p,r,q,s$ and
+\[
+ C_a=\varnothing,\quad C_p=\{a^0,r^0,q^1\},\quad
+ C_q=\{a^0,p^0,r^0,s^1\},\quad
+ C_s=\{a^0,p^0,r^0,q^1\},\quad C_r=\{p^0\}.
+\]
+Any remaining peers have singleton caches pointing to $r$.
+These rows fit every $c\ge L\ge4$ and are weakly connected;
+the added peers ensure the allowed population when $c>4$.
+Current $p$ alternates its unique oldest choices $q,s$.
+Its request is forced to be $\{p^0,a^1,r^1\}$, and each
+four-entry responder must return its entire cache at $L\ge4$.
+Passive MIN merges change nothing. Active self filtering
+refreshes $a,r$ to zero and replaces its partner by the other
+head at age one. There are no victims or alternative subset
+choices. Thus the whole state returns after two events.
+For $Z=\{q,s\}$, the fixed identity count is $6+(n-5)$ and
+current size is three throughout. Other initiators can escape
+this restricted schedule; no infinite prescribed schedule is
+assigned positive probability.
 \end{proof}
 
 \begin{proposition}[The last zero at length three without density]

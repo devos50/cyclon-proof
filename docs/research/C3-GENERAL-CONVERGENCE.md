@@ -96,3 +96,7 @@ Choose one finite path from each of the finitely many `f` to the atom. Pad their
 Label equivariance gives symmetry of the unique stationary law. Relabelled canonical atoms provide every observer a full cache with positive stationary probability. Thus every local request size up to three has positive stationary availability and a uniform ordered conditional sample. Total-variation convergence of the full chain and a positive limiting denominator imply the same conditional sampling limit from each initial state.
 
 The proof is qualitative. Its age-dependent accessibility gadgets are combined with the separate uniform finite-age reset; they are not themselves claimed to have an age-uniform duration. This assembly supplies finite constants, not polynomial or practical bounds.
+
+## Subsequent scope update
+
+The later [general length-three proof](LENGTH-THREE-GENERAL-CONVERGENCE.md) extends the convergence conclusion to every allowed capacity at `ell=3`. This note retains the earlier capacity-three argument and its original audit scope; references here to sparse length-three convergence remaining open describe that earlier stage. Higher shuffle lengths and polynomial mixing remain open.

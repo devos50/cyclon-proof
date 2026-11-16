@@ -62,3 +62,7 @@ Consequently the existing holder-only length-three first-contact theorem combine
 The boundary-service formulation also permits owner-directed routing through zero holders: for a chosen directed path, put only the off-path zero holders in `H`, retain the first path head as `p`, and stop at the first path vertex contacted or a peer outside the zero-holder set. At a path vertex its full reply supplies the untouched next head, shortening the path. This is why `H` was allowed to be a subset rather than silently applying an all-zero-holder lemma to a target already in that set.
 
 These results do **not** settle sparse capacity-three convergence. The dense proof separately used no-active-eviction to rule out an outward edge from a zero holder to a nonholder. In the sparse model a boundary exchange can transfer the sole identity-`a` copy from the active holder to the responder instead of increasing its count. A general outward-gain or replacement extremal argument remains necessary.
+
+## Subsequent scope update
+
+The later [general length-three proof](LENGTH-THREE-GENERAL-CONVERGENCE.md) extends the convergence conclusion to every allowed capacity at `ell=3`. This note retains the earlier capacity-three argument and its original audit scope; references here to sparse length-three convergence remaining open describe that earlier stage. Higher shuffle lengths and polynomial mixing remain open.

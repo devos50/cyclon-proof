@@ -75,3 +75,7 @@ The controller therefore reaches a finite terminal gadget or direct gain. Each p
 ## Remaining integration obligations
 
 This note alone does not assert the complete arbitrary-size convergence theorem. Its learned-target input, zeroification, existence of an empty-owner extremal state, and the incoming-boundary minimum-component argument must be linked and audited separately. Exact finite regression tests corroborate local merges but are not the proof of the unbounded-age argument.
+
+## Subsequent scope update
+
+The later [general length-three proof](LENGTH-THREE-GENERAL-CONVERGENCE.md) extends the convergence conclusion to every allowed capacity at `ell=3`. This note retains the earlier capacity-three argument and its original audit scope; references here to sparse length-three convergence remaining open describe that earlier stage. Higher shuffle lengths and polynomial mixing remain open.

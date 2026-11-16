@@ -1,6 +1,6 @@
 {
   "source": "paper/main.tex",
-  "sha256": "e67a6d290fae0cc2671d474143f1dd93444526ad8c5e3ade03dea45cdaccda99",
+  "sha256": "d2488203089a11e5e2c55329da50a35344e01bfb2cec614b5f8af3f66cadc8bb",
   "warning": "Extracted source declarations and references; not a proof audit or a claim-status registry.",
   "outline": [
     {
@@ -251,22 +251,27 @@
     {
       "level": "subsection",
       "title": "The earlier dense length-three theorem",
-      "line": 7266
+      "line": 7269
+    },
+    {
+      "level": "subsection",
+      "title": "A parameterized induction interface, not an arbitrary-length proof",
+      "line": 7539
     },
     {
       "level": "subsection",
       "title": "Two further endpoint combinations at arbitrary lengths",
-      "line": 7572
+      "line": 7820
     },
     {
       "level": "section",
       "title": "Established results and remaining problem",
-      "line": 7657
+      "line": 7905
     },
     {
       "level": "section",
       "title": "Finite verification",
-      "line": 7824
+      "line": 8072
     }
   ],
   "statements": [
@@ -1485,7 +1490,7 @@
       "kind": "corollary",
       "title": "Zeroification at every capacity for length three",
       "label": "cor:threegeneralzeroify",
-      "line": 6766,
+      "line": 6769,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1499,7 +1504,7 @@
       "kind": "lemma",
       "title": "A full-shuffle triangle gains a holder",
       "label": "lem:fullshuffletrianglegain",
-      "line": 6789,
+      "line": 6792,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": []
@@ -1508,7 +1513,7 @@
       "kind": "lemma",
       "title": "Capacity-three empty-owner terminal gain",
       "label": "lem:c3ownerterminalgain",
-      "line": 6817,
+      "line": 6820,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1520,7 +1525,7 @@
       "kind": "lemma",
       "title": "Length-three empty-owner terminal gain at every capacity",
       "label": "lem:threeownerterminalgain",
-      "line": 6842,
+      "line": 6845,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1532,7 +1537,7 @@
       "kind": "lemma",
       "title": "Outward holder gain at full capacity three",
       "label": "lem:c3outwardgain",
-      "line": 6885,
+      "line": 6888,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1543,7 +1548,7 @@
       "kind": "lemma",
       "title": "Outward holder gain for length three and capacity at least four",
       "label": "lem:threesparseoutwardgain",
-      "line": 6941,
+      "line": 6944,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1554,7 +1559,7 @@
       "kind": "theorem",
       "title": "Uniform sampling at full capacity three",
       "label": "thm:c3generaluniform",
-      "line": 7057,
+      "line": 7060,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1573,7 +1578,7 @@
       "kind": "theorem",
       "title": "Uniform sampling for every three-entry shuffle",
       "label": "thm:threegeneraluniform",
-      "line": 7161,
+      "line": 7164,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Full capacity three: learning, outward gain, and convergence",
       "references": [
@@ -1594,7 +1599,7 @@
       "kind": "lemma",
       "title": "Dense cooperative owner service at length three",
       "label": "lem:dense3callback",
-      "line": 7272,
+      "line": 7275,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "The earlier dense length-three theorem",
       "references": [
@@ -1605,7 +1610,7 @@
       "kind": "corollary",
       "title": "Dense length-three zeroification",
       "label": "cor:dense3zeroify",
-      "line": 7376,
+      "line": 7379,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "The earlier dense length-three theorem",
       "references": [
@@ -1618,7 +1623,7 @@
       "kind": "theorem",
       "title": "Uniform sampling for dense three-entry shuffles",
       "label": "thm:dense3uniform",
-      "line": 7403,
+      "line": 7406,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "The earlier dense length-three theorem",
       "references": [
@@ -1633,7 +1638,7 @@
       "kind": "corollary",
       "title": "The next induction step at dense length four",
       "label": "cor:densefourstructure",
-      "line": 7497,
+      "line": 7500,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "The earlier dense length-three theorem",
       "references": [
@@ -1644,11 +1649,58 @@
     },
     {
       "kind": "proposition",
+      "title": "Structural induction from lower shuffle lengths",
+      "label": "prop:shuffleinductionstructure",
+      "line": 7545,
+      "section": "The adopted thesis convention: protection and minimum ages",
+      "subsection": "A parameterized induction interface, not an arbitrary-length proof",
+      "references": [
+        "lem:generalcolor",
+        "prop:threezeroanchor",
+        "thm:threefirstcontact"
+      ]
+    },
+    {
+      "kind": "lemma",
+      "title": "Uniform empty-owner restoration prefix",
+      "label": "lem:generalownerterminalprefix",
+      "line": 7616,
+      "section": "The adopted thesis convention: protection and minimum ages",
+      "subsection": "A parameterized induction interface, not an arbitrary-length proof",
+      "references": [
+        "lem:ownertargetretain"
+      ]
+    },
+    {
+      "kind": "proposition",
+      "title": "Two local obligations close the next shuffle length",
+      "label": "prop:shuffleinductionclosure",
+      "line": 7659,
+      "section": "The adopted thesis convention: protection and minimum ages",
+      "subsection": "A parameterized induction interface, not an arbitrary-length proof",
+      "references": [
+        "lem:atom",
+        "lem:ownertargetretain",
+        "prop:shuffleinductionstructure",
+        "thm:threegeneraluniform"
+      ]
+    },
+    {
+      "kind": "proposition",
+      "title": "The unchanged three-entry outward controller can cycle",
+      "label": "prop:longeroutwardcontrollercycle",
+      "line": 7752,
+      "section": "The adopted thesis convention: protection and minimum ages",
+      "subsection": "A parameterized induction interface, not an arbitrary-length proof",
+      "references": []
+    },
+    {
+      "kind": "proposition",
       "title": "The last zero at length three without density",
       "label": "prop:nearcomplete3",
-      "line": 7536,
+      "line": 7784,
       "section": "The adopted thesis convention: protection and minimum ages",
-      "subsection": "The earlier dense length-three theorem",
+      "subsection": "A parameterized induction interface, not an arbitrary-length proof",
       "references": [
         "lem:dense3callback",
         "lem:ownertargetretain"
@@ -1658,7 +1710,7 @@
       "kind": "lemma",
       "title": "An underfull zero responder can retain its anchor",
       "label": "lem:underfullzeroreply",
-      "line": 7574,
+      "line": 7822,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Two further endpoint combinations at arbitrary lengths",
       "references": []
@@ -1667,7 +1719,7 @@
       "kind": "lemma",
       "title": "A three-exchange fresh-copy gain at every longer length",
       "label": "lem:emptytargetthree",
-      "line": 7611,
+      "line": 7859,
       "section": "The adopted thesis convention: protection and minimum ages",
       "subsection": "Two further endpoint combinations at arbitrary lengths",
       "references": [

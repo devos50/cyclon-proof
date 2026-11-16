@@ -11,7 +11,7 @@ All described work is saved. This handoff does not imply an active background ru
 3. Use [paper/main.tex](../paper/main.tex) as the single mathematical source, including all proofs and bibliography.
 4. Find results by stable TeX labels, because numbering and source lines may change.
 
-The latest research priority is a **useful local sampling rate for a fixed small cache with arbitrarily large membership**, starting with $c=\ell=2$ and one returned identifier. Further nearly full cache results have lower practical priority.
+The latest research priority is a **parameterized proof for arbitrary shuffle lengths**, rather than repeating separate length-by-length arguments. The conditional induction now isolates owner boundary service and outward holder growth as the remaining obligations. Length four is a diagnostic case, not the final target. Useful sampling rates remain open and secondary.
 
 ## Completed draft scope
 
@@ -149,3 +149,10 @@ At this earlier capacity-three stage, sparse larger capacities were still open; 
 **Working proof integrated:** `thm:threegeneraluniform` now covers every `n>=4` and `3<=c<=n-1` at fixed `ell=3`, with the adopted protected/MIN kernel, iid initiators, initially weak connectivity, and arbitrary finite integer ages. It proves unique full-state stationarity, uniform geometric convergence with implicit constants, positive stationary availability, and conditional uniform local sampling for every request size up to capacity. The arbitrary-capacity callback, empty-owner restoration, and fixed-identity lexicographic outward potential are linked to the lower-length residual normalization and finite-reset/common-atom argument. The [full assembly](research/LENGTH-THREE-GENERAL-CONVERGENCE.md) and [sparse outward proof](research/SPARSE-LENGTH-THREE-OUTWARD-GAIN.md) state the scope and necessary controlled reply choices.
 
 This supersedes earlier continuation entries saying sparse length-three convergence remained open. Lengths four and above and polynomial/practical mixing bounds remain open. These are internally audited mathematical working proofs, not formal verification or external peer review.
+
+
+## Parameterized shuffle induction (16 November 2026)
+
+**CONDITIONAL, not arbitrary-length convergence.** `prop:shuffleinductionstructure` derives uniform cut contact and universal-anchor reduction at length L from lower-length common atoms and cut contact at L-1. `prop:shuffleinductionclosure` identifies two sufficient remaining obligations: boundary service through any subset of zero holders, with preterminal locality, persistent target and free terminal reply; and outward holder growth from an empty-owner zero-maximizing state. These obligations are established through length three, not for general L. `lem:generalownerterminalprefix` supplies an unconditional three-event restoration prefix at all L>=3, but its holder-terminal branch still needs boundary service to obtain a gain. `prop:longeroutwardcontrollercycle` gives a forced restricted-controller cycle for every allowed L>=4, so the length-three strict-potential proof cannot simply be reused. This is not a counterexample to the protocol.
+
+See [the parameterized framework](research/PARAMETERIZED-SHUFFLE-INDUCTION.md) and [general restoration prefix](research/GENERAL-OWNER-TERMINAL-RESTORATION.md). The priority is resolving the reusable boundary-service and outward-growth mechanisms, not adding isolated length-four cases. No polynomial rate or general-length convergence is claimed.

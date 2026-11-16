@@ -27,3 +27,7 @@ A finite reset family does not by itself supply a self-loop at each reset state.
 ## Corroborating checks
 
 The complete maintained suite passed **37/37** checks. New checks include the exact affine-cycle certificate, 5,100 learned-boundary starts, 5,100 outward-controller starts with exact maximum-age assertions, full-shuffle triangle/restoration cases, and 16,650 dimension-independent local boundary configurations. These finite checks are supporting regression evidence; they are not the arbitrary-population proof.
+
+## Subsequent scope update
+
+The later [general length-three proof](LENGTH-THREE-GENERAL-CONVERGENCE.md) extends the convergence conclusion to every allowed capacity at `ell=3`. This note retains the earlier capacity-three argument and its original audit scope; references here to sparse length-three convergence remaining open describe that earlier stage. Higher shuffle lengths and polynomial mixing remain open.
