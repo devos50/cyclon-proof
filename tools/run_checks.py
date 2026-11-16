@@ -25,6 +25,8 @@ class Check:
 
 
 CHECKS = (
+    Check('age_blind_uniformity', 'verify_age_blind_uniformity_transient.py',
+          'Exact transient obstruction to one-step query-only uniformity preservation'),
     Check('c2_quantitative', 'verify_thesis_c2_quantitative.py',
           'Quadratic controlled paths and availability gadgets',
           quick_args=('--max-n', '10', '--seeds', '3', '--availability-n', '5')),

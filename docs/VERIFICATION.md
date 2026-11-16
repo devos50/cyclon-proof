@@ -190,3 +190,8 @@ passes completed with no undefined references or LaTeX errors. No new
 rendered PDF is claimed. Three independent end-to-end proof reviews and
 two final manuscript transcription reviews passed within the stated
 model and scope.
+
+
+## Transient age-blind uniformity obstruction
+
+`verify_age_blind_uniformity_transient.py` enumerates 17,942 exact packet outcomes for n=3..8 and every allowed shuffle length at c=n-1, then checks rational sample laws for every b. The symbolic proof in [the note](research/AGE-BLIND-UNIFORMITY-NOT-PRESERVED.md) establishes the unrestricted parameter statement. This is an obstruction to universal one-step uniformity preservation, not to eventual convergence. The new checker and repository/index checks were rerun for this increment; the existing full-suite result above is historical, not a newly rerun 50-check suite.
