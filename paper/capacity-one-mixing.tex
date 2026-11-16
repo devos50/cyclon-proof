@@ -14,7 +14,7 @@ For the protected/MIN mandatory-removal CYCLON model at capacity and
 shuffle length one, we derive an explicit polynomial worst-case
 full-state mixing bound, including arbitrary finite initial ages and
 all weakly connected initial overlays. The bound counts global atomic
-events and is deliberately loose: $O(n^9\log(n/\varepsilon))$.
+events and is deliberately loose: $O(n^5\log(n/\varepsilon))$.
 It also bounds conditional one-ID sampling. The proof compares tree
 rotations with the matroid down-up walk and uses a killed-chain lift
 to handle initial directed cycles. This is an internally audited
@@ -48,13 +48,13 @@ conditional on the cache being nonempty.
 \begin{theorem}
 For $n\ge3$, put
 \[
- N=n^{n-1},\qquad G=3n^2(n-1)^2\lfloor n^2/4\rfloor.
+ N=n^{n-1},\quad H=n(n-1)^2/2,\quad G=3n^2(n-1)\min\{(n-1)\lfloor n^2/4\rfloor,\,2n-1\}.
 \]
 The unique stationary full-state law $\pi$ is uniform on the zero-age
 rooted labelled trees. For nonnegative integers $s,t$,
 \[
  \sup_x\|P^{s+t}(x,\cdot)-\pi\|_{\rm TV}
- \le\sqrt{Nn}\,e^{-s/(n^2G)}
+ \le\sqrt{Nn}\,e^{-s/H}
        +n(1-1/n)^s+\tfrac12\sqrt N\,e^{-t/G}.
 \]
 The supremum includes all weakly connected initial configurations and
@@ -62,12 +62,12 @@ arbitrary finite integer ages. For $0<\varepsilon<1$, a sufficient
 mixing time is $s+t$, where
 \[
  s=\left\lceil\max\left\{
- n^2G\log(3\sqrt{Nn}/\varepsilon),\,
+ H\log(3\sqrt{Nn}/\varepsilon),\,
  n\log(3n/\varepsilon)\right\}\right\rceil,
  \quad
  t=\left\lceil G\log(3\sqrt N/(2\varepsilon))\right\rceil.
 \]
-This is $O(n^9\log(n/\varepsilon))$ global events. Conditional one-ID
+This is $O(n^5\log(n/\varepsilon))$ global events. Conditional one-ID
 error is at most $n/(n-1)$ times the full-state error whenever defined;
 thus substitute $\varepsilon(n-1)/n$ above for a desired sample error
 $\varepsilon$. For $n=2$, worst-case full-state distance is $2^{-t}$
@@ -84,7 +84,7 @@ are arbitrary finite nonnegative integers. The bound below does NOT
 cover initial directed cycles.
 Define
 \[
- G=3n^2(n-1)^2\lfloor n^2/4\rfloor,\quad N=n^{n-1}.
+ G=3n^2(n-1)\min\{(n-1)\lfloor n^2/4\rfloor,\,2n-1\},\quad N=n^{n-1}.
 \]
 The bound, in global events, is
 \[
@@ -98,7 +98,7 @@ In particular, for $0<\varepsilon<1$, take
  \qquad
  t=\left\lceil G\log(\sqrt N/\varepsilon)\right\rceil.
 \]
-This is $O(n^7\log(n/\varepsilon))$, deliberately unoptimized.
+This is $O(n^5\log(n/\varepsilon))$, deliberately unoptimized.
 It is not an all-capacity polynomial bound, nor yet a polynomial
 bound for arbitrary weakly connected capacity-one initial states.
 
@@ -205,8 +205,79 @@ This count includes $e=f$, so diagonal root-refresh transitions require
 no additional estimate. Paths of zero length contribute nothing.
 Cauchy--Schwarz along the paths, summed over the elementary transition
 decomposition, gives $\mathcal E_Q(f,f)\le A\mathcal E_P(f,f)$.
-Combining with $\operatorname{gap}(Q)\ge1/(n-1)$ gives
-$\operatorname{gap}(P)\ge1/G$.
+Combining with $\operatorname{gap}(Q)\ge1/(n-1)$ first gives
+the denominator $3n^2(n-1)^2\lfloor n^2/4\rfloor$. The following
+root-aware refinement improves it to the stated $G$.
+
+\paragraph{Shared counting conventions.}
+For a forest $F$ with two components of sizes $a,b$, each elementary
+down-up move has weight $1/[n(n-1)ab]$, including the final root choice.
+There are at most $n^2$ endpoint root pairs. A canonical path has length
+at most $3(n-1)$ and stationary starting mass $1/N$.
+The target edge capacity is at least $1/(Nn)$. Consequently, a class
+with at most $M$ ordered reconnecting-edge pairs contributes at most
+\[
+ (Nn)\frac{1}{N}\frac{n^2 M}{n(n-1)ab}\,3(n-1)
+ =\frac{3n^2 M}{ab}
+\]
+to congestion. Paths are chronologically loop-erased, so a fixed
+oriented edge is used at most once. Erasure only removes transitions;
+it cannot introduce a new stage or destroy a restriction valid for
+all original occurrences of a retained transition. Summing categories
+may overcount and is therefore safe.
+
+\paragraph{Shape-changing target transition.}
+Fix an oriented tree rotation $z\to w$ whose underlying trees differ.
+It can occur only in one of the two attachment-slide stages, never in
+a root-moving stage. During either slide, the unchanged endpoint of
+the moving attachment is the current root $r$. Thus any shape-changing
+target transition whose grandparent is not its root is unused.
+The common forest is uniquely $F=S_z\cap S_w$. Let $C$ be its
+component containing the two sliding endpoints, of size $a$, and let
+the component containing the root have size $b$.
+\begin{itemize}
+\item In the first slide stage, the original removed edge is $\{u,r\}$
+with $u\in C$, so there are at most $a$ choices for that edge.
+The final reconnecting edge has at most $ab$ choices. Therefore
+$M\le a^2b$, and this stage contributes at most $3n^2a$.
+\item In the second slide stage, the final inserted edge has one
+endpoint equal to $r$ and its other endpoint in $C$, so it has at
+most $a$ choices. The original reconnecting edge has at most $ab$
+choices. Again $M\le a^2b$ and the contribution is at most $3n^2a$.
+\end{itemize}
+The total shape-changing load is at most $6n^2a\le6n^2(n-1)$.
+This count does not assume that every listed edge pair's path uses
+the target transition; including additional pairs only increases it.
+
+\paragraph{Root-reversal target transition.}
+Now fix a transition with the same underlying tree $S$ and adjacent
+roots $x,y$. There are three possible path stages.
+\begin{enumerate}
+\item During the initial root move the starting unrooted tree is
+$T=S$. For each removed edge $e\in S$, its cut sizes $a,b$ allow
+at most $ab$ final reconnecting edges. Thus $M\le ab$, yielding
+at most $3n^2$ for each removed edge and $3n^2(n-1)$ in total.
+Direct root-only paths for $e=f$ are included in this initial-stage
+count; their actual lengths are smaller than the bound used here.
+\item During the final root move the finishing unrooted tree is
+$T'=S$. Sum over its final inserted edge $f\in S$. For each such
+edge the original reconnecting edge has at most $ab$ choices, giving
+another bound $3n^2(n-1)$.
+\item During the central crossing the old attachment endpoint is
+$v=x$ and the new endpoint is $a_{\rm path}=y$. Hence
+$F=S-\{x,y\}$ is fixed. Write $a,b$ for the sizes of the components
+containing $y,x$, respectively. The original removed edge has form
+$\{u,x\}$ with $u$ in the first component, giving at most $a$
+choices; the final inserted edge has form $\{y,b_{\rm path}\}$
+with $b_{\rm path}$ in the second, giving at most $b$ choices.
+Thus $M\le ab$, and this stage contributes at most $3n^2$.
+\end{enumerate}
+The total root-reversal load is at most
+$6n^2(n-1)+3n^2=3n^2(2n-1)$, which also bounds the shape-changing
+load. Multiply by the reference inverse gap $n-1$, and take the
+minimum with the original bound, to obtain the stated $G$. All subsequent
+negative-spectrum, killed-lift, age-extinction and conditional-sampling
+arguments remain valid with this replacement.
 
 Because $P=I/n+(1-1/n)R$ for a Markov kernel $R$, every eigenvalue
 of $P$ is at least $-1+2/n$. Since $1/G\le2/n$, every nonconstant
@@ -230,8 +301,8 @@ whenever availability is positive. No corresponding polynomial
 bound for $c\ge2$ follows from this argument: the rooted-tree
 representation and its reversible uniform law are special to $c=1$.
 \section{Polynomial entrance from a directed cycle at capacity one}
-For $n\ge3$, assume the rooted-tree chain has Poincare gap at least $1/G$, with
-$N=n^{n-1}$ rooted labelled trees. Let $\mathcal U$ be the finite
+For $n\ge3$, let $N=n^{n-1}$ be the number of rooted labelled trees.
+The entrance estimate below does not depend on their mixing gap. Let $\mathcal U$ be the finite
 set of weakly connected outdegree-one identity configurations; these
 have one directed cycle and no empty row. Let $K$ denote the actual
 capacity-one identity transition matrix restricted to $\mathcal U$,
@@ -249,73 +320,76 @@ preimages, obtained by deleting any one of its directed cycle edges.
 A rooted tree has exactly one preimage, with its root as mark.
 In particular $|\mathcal U|\le Nn$.
 
-On each fixed-mark sector run the rooted-tree rotation chain $R$.
-The subset with root equal to the mark is the boundary; it occupies
-exactly $1/n$ of each sector. If $f$ is a real function on
-$\mathcal U$, extend it by zero to the boundary and pull it back
-by $\Phi$, obtaining $h(y,a)$.
-
-\paragraph{Every nonzero lifted energy has a legal image.}
-Suppose first that the lifted root $r\ne a$. Activating a nonroot
-$p$ whose parent $q$ is not $r$ gives precisely the same rotation
-after projection. If $q=r$, the tree root moves to $p$. In the
-projection the responder $r$ replies with $a$, so the actual update
-makes $r\to p$ and $p\to a$, exactly the new projection. When
-$p=a$, the self reply is discarded, and $p$ becomes empty, again
-exactly the projected boundary state. Activating $r$ in the lifted
-chain is a self-loop and contributes no energy.
-
-If $r=a$ is a boundary state, a root-preserving tree rotation stays
-in the boundary and contributes zero energy. A root move from $r$
-to its child $p$ projects to a reciprocal pair $r\leftrightarrow p$;
-activation of $r$ in that pair kills the cycle and returns to the
-original boundary state. Thus its image is the reverse of a legal
-killing edge. The comparison below uses undirected Dirichlet edges,
-so this reversed orientation is harmless.
-
-For each fixed actual edge with at least one transient endpoint,
-there are at most $n$ lifted edge preimages: take that transient
-endpoint, which has at most $n$ lifted representations; its projected
-next state determines at most one nonroot tree rotation. The
-initiator is unique because a nonroot tree rotation changes exactly
-its own and its parent's pointer; the opposite initiation cannot
-make the same ordered move in an acyclic rooted tree. Boundary
-edges have at most one boundary lift.
-
-\paragraph{Dirichlet comparison with counting measures.}
-Use unnormalized counting measures throughout; no stationary weights
-are needed for the killed chain. Its Dirichlet form is
+Use unnormalized counting measures throughout. The killed Dirichlet form is
 \[
  \mathcal E_K(f)=\frac12\sum_{u,v\in\mathcal U}
  K(u,v)(f(u)-f(v))^2
  +\sum_{u\in\mathcal U}\left(1-\sum_vK(u,v)\right)f(u)^2.
 \]
-The preceding edge mapping and multiplicity bound give
-$\mathcal E_R(h)\le n\mathcal E_K(f)$, where $R$ is the disjoint
-union of fixed-mark tree chains. Within each sector, $h$ vanishes
-on a fraction $1/n$ of its states, so Cauchy--Schwarz yields
+Put $H=n(n-1)^2/2$.
+
+\paragraph{Root-only lifted walk.}
+For each fixed unrooted labelled tree $T$ and mark $a$, retain only
+root-reversal transitions of the lifted tree chain. Each neighbor
+of the current root becomes the new root with probability $1/n$;
+all other probability is assigned to a self-loop. Thus the fixed
+$(T,a)$ block is a symmetric nearest-neighbor walk on $T$. Its
+boundary is the single root value $r=a$.
+For $f$ on transient unicycles, extend $f$ by zero on rooted trees
+and put $h(T,r,a)=f(\Phi(T,r,a))$.
+
+\paragraph{Unique projected edge.}
+A nonboundary lifted root reversal from root $q$ to its child $p$
+projects to the actual activation $p\to q$: the added pointer
+$q\to a$ is the reply and the new pointers are $q\to p,p\to a$.
+If $p=a$, the self reply is discarded and this is absorption into
+a rooted tree. Conversely, for an actual transient transition
+initiated by $p$ with responder $q$, such a lifted edge can exist
+only with lifted source root $q$ and mark equal to the old pointer
+$q$'s target. These are forced. If $q$ is not on the cycle, deleting
+its pointer does not yield a rooted tree and there is no preimage;
+if $q$ is on the cycle, the preimage is unique.
+A boundary root reversal from root $a$ to its child $p$ projects
+to the reciprocal cycle $a\leftrightarrow p$; activation of $a$
+in that cycle returns to the original boundary state. Thus it is
+the reverse of the unique killing edge, with the same probability
+$1/n$. Reversing orientation does not produce a second undirected
+lifted edge. Every contributing root-only lifted edge therefore maps
+injectively to an actual transient or killing edge, preserving weight.
+
+\paragraph{Dirichlet estimate with counting measures.}
+Let $\mathcal E_{\rm root}$ be the sum of raw Dirichlet forms over
+all fixed $(T,a)$ blocks. The injective edge mapping gives
 \[
- \sum_y h(y,a)^2-\frac1N\left(\sum_yh(y,a)\right)^2
- \ge\frac1n\sum_yh(y,a)^2.
+ \mathcal E_{\rm root}(h)\le\mathcal E_K(f).
 \]
-The tree Poincare bound, summed over marks, gives
+For fixed $T,a$, $h(T,a,a)=0$. Along the path from any root $r$
+to $a$, Cauchy--Schwarz yields
 \[
- \mathcal E_R(h)\ge\frac{1}{nG}\sum_{y,a}h(y,a)^2
- \ge\frac{1}{nG}\sum_{u\in\mathcal U}f(u)^2.
+ h(T,r,a)^2\le(n-1)\sum_{e\in\operatorname{path}_T(r,a)}(\Delta_eh)^2.
 \]
-Consequently
+Summing over $r$, any edge occurs in at most $n-1$ such paths, so
 \[
- \mathcal E_K(f)\ge\frac{1}{n^2G}\sum_u f(u)^2.
+ \sum_r h(T,r,a)^2
+ \le(n-1)^2\sum_{e\in T}(\Delta_eh)^2
+ =n(n-1)^2\mathcal E_{\rm root}^{T,a}(h).
 \]
-Thus the largest eigenvalue of $K$ is at most $1-1/(n^2G)$.
-Since $K$ is entrywise nonnegative, its spectral radius is its
-largest eigenvalue; symmetry then bounds its $\ell^2$ operator norm.
-If $\tau$ is the first empty-row time, Cauchy--Schwarz gives
+Summing over $T,a$ and using the lift multiplicity $k(u)\ge2$
+for every transient unicycle $u$ gives
 \[
- \sup_x\Pr_x(\tau>s)
- \le\sqrt{Nn}\exp[-s/(n^2G)].
+ \mathcal E_K(f)\ge\mathcal E_{\rm root}(h)
+ \ge\frac1{2H}\sum_{T,r,a}h(T,r,a)^2
+ =\frac1{2H}\sum_u k(u)f(u)^2
+ \ge\frac1H\sum_u f(u)^2.
 \]
-Initial rooted trees have $\tau=0$ and satisfy the same bound.
+Thus the largest eigenvalue of symmetric substochastic $K$ is at
+most $1-1/H$. Perron--Frobenius bounds its spectral radius by the
+same number, and $|\mathcal U|\le Nn$ gives the stated survival
+bound by Cauchy--Schwarz:
+\[
+ \sup_x\Pr_x(\tau>s)\le\sqrt{Nn}\,e^{-s/H}.
+\]
+This uses the factor two from the minimum cycle length, rather than discarding it.
 
 \paragraph{Adding ages and mixing.}
 The initial-old-marker expectation bound
@@ -324,21 +398,20 @@ it never relied on cycle monotonicity. All young descriptors have
 age zero. Therefore at deterministic time $s$ the probability of
 being outside the zero-age rooted-tree class is at most
 \[
- \sqrt{Nn}\,e^{-s/(n^2G)}+n(1-1/n)^s.
+ \sqrt{Nn}\,e^{-s/H}+n(1-1/n)^s.
 \]
 After $t$ further events, the tree-chain spectral estimate gives
 \[
  \sup_x\|P^{s+t}(x,\cdot)-\pi\|_{\rm TV}
- \le\sqrt{Nn}\,e^{-s/(n^2G)}
+ \le\sqrt{Nn}\,e^{-s/H}
        +n(1-1/n)^s+\tfrac12\sqrt N\,e^{-t/G}.
 \]
-With the comparison value $G=3n^2(n-1)^2\lfloor n^2/4\rfloor$,
-this yields an explicit $O(n^9\log(n/\varepsilon))$ bound from
-arbitrary weakly connected finite-age capacity-one initial states.
+The refined constants give a bound of $O(n^5\log(n/\varepsilon))$
+for every weakly connected capacity-one initial state with finite ages.
 For example choose
 \[
  s=\left\lceil\max\left\{
- n^2G\log(3\sqrt{Nn}/\varepsilon),\,
+ H\log(3\sqrt{Nn}/\varepsilon),\,
  n\log(3n/\varepsilon)\right\}\right\rceil,
  \qquad
  t=\left\lceil G\log(3\sqrt N/(2\varepsilon))\right\rceil.

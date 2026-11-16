@@ -65,6 +65,17 @@ def simulate(p,e,f,rf):
  assert len(hist)-1<=3*(len(p)-1)
  assert edges(p)==F|{tuple(sorted((a,b)))} and p.index(-1)==rf
  assert all(F <= edges(z) and len(edges(z)-T)<=1 and len(T-edges(z))<=1 for z in hist)
+ for z,w in zip(hist,hist[1:]):
+  Ez,Ew=edges(z),edges(w)
+  if Ez!=Ew:
+   assert Ez & Ew == F
+   removed=next(iter(Ez-Ew));added=next(iter(Ew-Ez))
+   fixed_endpoint=next(iter(set(removed)&set(added)))
+   assert fixed_endpoint==z.index(-1)==w.index(-1)
+   # First slide pins original attachment to root; second pins final.
+   assert fixed_endpoint in e or fixed_endpoint in (a,b)
+  elif Ez != T and Ez != edges(p):
+   assert Ez-{tuple(sorted((z.index(-1),w.index(-1))))}==F
  return hist
 
 parser=argparse.ArgumentParser();parser.add_argument("--max-n",type=int,default=5);args=parser.parse_args()
@@ -155,3 +166,26 @@ for n in range(2, args.max_n + 1):
         probability = Fraction((k + 1) * prod(range(n - k, n)), n ** (k + 1))
         assert count == len(states) * probability
     print(n, 'depth counts', hist, 'energy identity', squared_changes, '=', 2 * total_depth, flush=True)
+
+# Root-reversal-only lift: every contributing undirected image has one preimage.
+for n in range(2, args.max_n + 1):
+    mult = Counter()
+    steps = 0
+    for t in rooted_trees(n):
+        r = t.index(-1)
+        for mark in range(n):
+            u = project(t, mark)
+            for child in range(n):
+                if t[child] != r:
+                    continue
+                nt = act(t, child)
+                v = project(nt, mark)
+                assert edges(nt) == edges(t)
+                if -1 not in u:
+                    assert act(u, child) == v
+                else:
+                    assert act(v, r) == u
+                mult[tuple(sorted((u, v)))] += 1
+                steps += 1
+    assert all(count == 2 for count in mult.values())
+    print(n, 'root-only lift steps', steps, 'unique undirected images', len(mult), flush=True)
