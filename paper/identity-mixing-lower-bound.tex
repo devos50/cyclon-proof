@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,hyperref,lmodern}
+\title{A zero-age, identity-only lower bound for CYCLON mixing}
+\author{Working research note}
+\date{16 November 2026}
+\begin{document}
+\maketitle
+\paragraph{Scope.} The protocol and stationary law are those of
+\texttt{generic-proof.tex}: fixed membership, independent uniform global
+initiators, mandatory partner removal, protected incoming identities, and
+minimum-age duplicate merging. Empty and underfull caches are allowed.
+This companion lower bound has passed independent internal mathematical
+review, not formal verification or external peer review.
+\section{An identity-only coupon lower bound for every capacity and shuffle length}
+Let $n\ge2$, $1\le L\le c\le n-1$, and let $\pi$ be the stationary law
+from the generic convergence theorem. Write $\pi_{\rm id}$ for its projection
+onto cache identities, forgetting ages. If $d_{\rm id}(t)$ denotes worst-case
+variation distance of that projection at global event $t$, then
+\[
+ d_{\rm id}(t)\ge
+ \left[1-\frac{2c+4}{(n-1)(1-1/n)^t}\right]_+.
+\]
+In particular, whenever the logarithm is positive, reaching error at most
+$0<\varepsilon<1$ requires
+\[
+ t\ge
+ \frac{\log\!\left((n-1)(1-\varepsilon)/(2c+4)\right)}
+ {-\log(1-1/n)}.
+\]
+This is $\Omega(n\log(n/c))$ when $c=o(n)$, at fixed error, and
+$\Omega(n\log n)$ for fixed capacity. It also lower-bounds full-state
+mixing. Unlike an age-survival argument, the witness uses only age-zero
+initial descriptors and tests only cache identities. It is not a lower
+bound for one fixed peer's single sampled identifier.
+
+\paragraph{Proof.}
+Fix $q$. Initially its cache is empty and every $p\ne q$ has singleton cache
+$\{q^0\}$. This is an admissible weakly connected state for every allowed
+$c,L$. Before the first initiation by $p\ne q$, the identifier $p$ cannot
+appear in any other cache: it is absent initially, copying cannot create
+it, and its first possible introduction is the fresh self-descriptor in
+$p$'s own request. Consequently no other peer can contact $p$ before this
+first initiation, so its singleton cache remains unchanged.
+
+Let $U_t$ count outside peers that have never initiated by time $t$, and
+let $I_q(t)$ count caches containing $q$. Then $I_q(t)\ge U_t$ pathwise.
+Independent uniform initiators give
+\[
+ \mu_t:=\mathbb EU_t=(n-1)(1-1/n)^t,
+ \qquad \operatorname{Var}(U_t)\le\mu_t.
+\]
+The variance bound follows because distinct non-initiation indicators have
+nonpositive covariance:
+$(1-2/n)^t\le(1-1/n)^{2t}$ (with the time-zero case read separately).
+Stationary label exchangeability and total capacity give
+$\mathbb E_\pi I_q=\mathbb E_\pi(\sum_j I_j)/n\le c$.
+Chebyshev's inequality therefore yields
+$\Pr(I_q(t)\ge\mu_t/2)\ge1-4/\mu_t$, whereas Markov's inequality gives
+$\pi(I_q\ge\mu_t/2)\le2c/\mu_t$. Subtracting probabilities of this
+identity-measurable event proves the displayed bound and its rearrangement.
+
+\end{document}
