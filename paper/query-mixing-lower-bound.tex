@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,hyperref,lmodern}
+\title{A conditional sample-level lower bound for CYCLON}
+\author{Working research note}
+\date{16 November 2026}
+\begin{document}
+\maketitle
+\paragraph{Scope.}
+Use exactly the adopted protocol in \texttt{generic-proof.tex}, with fixed
+membership, independent uniform global initiators, and allowed empty and
+underfull caches. Let $n\ge2$, $1\le L\le c\le n-1$, and $1\le b\le c$.
+At a fixed observer $i$, draw $b$ distinct identities uniformly without
+replacement from its cache, conditional on $A_b(t)=\{|C_i(t)|\ge b\}$.
+The comparison law is uniform on the $M=\binom{n-1}{b}$ possible unordered
+subsets, as in the stationary sampling theorem. The result also applies
+to ordered sampling by testing the underlying unordered set.
+
+\paragraph{Lower bound.}
+For each fixed observer there is an admissible, connected, age-zero initial
+state for which $A_b(t)$ has positive probability at every finite time and
+\[
+ \left\|\mathcal L(\text{sample at }t\mid A_b(t))
+              -\operatorname{Unif}\!\binom{[n]\setminus\{i\}}b\right\|_{\rm TV}
+ \ge\left[(1-1/n)^t-\frac1M\right]_+.
+\]
+Consequently, any time guaranteeing conditional query error at most
+$0<\varepsilon<1$ uniformly over allowed starts must satisfy
+\[
+ t\ge\frac{\log(1/(\varepsilon+1/M))}{-\log(1-1/n)}
+ \quad\hbox{whenever }\varepsilon+1/M<1.
+\]
+Time counts individual global events, not rounds.
+
+\paragraph{Proof.}
+Choose a $b$-set $S\subseteq[n]\setminus\{i\}$ and $q\in S$. Set
+$C_i=\{s^0:s\in S\}$, $C_q=\varnothing$, and
+$C_j=\{q^0\}$ for all other peers $j$. Every row has size at most $c$ and
+the underlying graph is connected through $q$. Initially the identifier
+$i$ occurs in no cache. Copying cannot introduce an absent identity, and
+only $i$'s own fresh-self emission can first introduce $i$. Therefore no
+peer can contact $i$ before its first initiation.
+
+The probability that $i$ has never initiated by global event $t$ is
+$a_t=(1-1/n)^t$. On this event its cache is still exactly $S$, the query is
+available, and its unordered output is $S$. In particular
+$\Pr(A_b(t))\ge a_t>0$, and
+\[
+ \Pr(\text{sample}=S\mid A_b(t))
+ \ge\frac{a_t}{\Pr(A_b(t))}\ge a_t.
+\]
+The uniform comparison assigns probability $1/M$ to $S$. Testing this event
+proves the claim; rearranging gives the time bound. No replacement of
+conditional by unconditional query probabilities is used.
+
+\paragraph{Interpretation and limitations.}
+For fixed positive error and $M\to\infty$, this proves an $\Omega(n)$
+obstruction. At finer accuracy $\varepsilon=O(1/M)$ it instead gives
+$n\log M-O(n)$ events. In particular, for fixed $b$ and
+$\varepsilon=O(n^{-b})$, the lower bound is asymptotic to $bn\log n$;
+for a single identifier, accuracy $O(1/n)$ requires $\Omega(n\log n)$.
+This is not an $\Omega(n\log n)$ fixed-error query lower bound.
+When $b=n-1$, $M=1$ and the bound is zero, correctly reflecting that the
+available query must return the entire peer set. The argument is separate
+from the stronger global identity-state coupon lower bound and from the
+capacity-one full-state depth lower bound.
+\end{document}
