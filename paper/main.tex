@@ -54,7 +54,7 @@ A general two-entry theorem now covers every allowed
 cache capacity and population size. Its outward-spread
 argument combines a bounded count of young descriptors
 with a numerical-age argument excluding infinite plateaux.
-For fixed shuffle lengths at least four,
+For fixed shuffle lengths at least four and proper capacities,
 a common-regime or sufficient classwise-symmetry argument
 is still needed for general conditional uniformity.
 For two-entry shuffles we additionally prove uniform contact
@@ -71,8 +71,12 @@ sampling for $c\ge n-2$. Learned-target boundary service
 and new outward-gain arguments now extend full convergence
 to every allowed capacity at shuffle length three. The
 sparse proof uses a fixed-identity lexicographic potential
-and a numerical-age budget. Higher fixed lengths and
-polynomial mixing remain open.
+and a numerical-age budget. A double induction now proves every
+shuffle length at full capacity $c=n-1$, using frozen-source
+erasure and normalization of its connected complement. Coupling
+then gives uniform full-row hitting and unavoidable recurring
+evictions at every proper capacity. Sparse-capacity convergence
+at higher lengths and polynomial mixing remain open.
 
 For every fixed shuffle length at least three, a specified
 uniform-victim completion admits full-cache, zero-age, strongly
@@ -7779,6 +7783,187 @@ For $Z=\{q,s\}$, the fixed identity count is $6+(n-5)$ and
 current size is three throughout. Other initiators can escape
 this restricted schedule; no infinite prescribed schedule is
 assigned positive probability.
+\end{proof}
+
+\begin{theorem}[Every shuffle length at full cache capacity]
+\label{thm:fullcapacityalllengths}
+For every $n\ge2$, let $c=n-1$ and $1\le\ell\le n-1$.
+The adopted mandatory-removal, protected-MIN protocol with iid
+uniform global initiators has a uniform finite-horizon common atom
+$H(V,n-1)$ over all weakly connected finite-integer-age starts.
+It has a unique stationary full-state law and converges to it.
+Every allowed request size has positive stationary availability,
+and its deterministic-time conditional local sample converges to
+uniform ordered sampling without replacement.
+The finite minorization constants are implicit; no polynomial
+mixing bound is asserted. This theorem does not cover $c<n-1$.
+\end{theorem}
+
+\begin{proof}
+Induct first on $L=\ell$, starting from the established lengths
+one through three, and within a new length $L\ge4$ on
+$n=L+1,L+2,\ldots$. The outer hypothesis is only the full-capacity common-atom
+theorem at every smaller length and every allowed population.
+The inner hypothesis is the full-capacity common-atom theorem at length $L$
+for smaller populations. No sparse-capacity theorem at an
+unproved length is assumed.
+
+The first-contact and universal-zero-anchor constructions in
+Proposition~\ref{prop:shuffleinductionstructure} remain inside
+this family. Reserving an anchor leaves capacity $n-2$ on
+$n-1$ identities; a residual component of size $s$ has effective
+capacity $s-1$ and length $\min(L-1,s-1)<L$.
+Thus all component atoms use only the outer hypothesis.
+The open-cut part uses the previously established full-capacity
+$F_{L-1}$. Starting with the length-three contact theorem, construct
+$F_L$ and $U_L$ before the population induction for length $L$.
+If needed, a connected auxiliary cut completion is obtained by
+filling one frozen outside row with all other reduced identities;
+no preboundary exchange uses that row. There is no $F_L/C_L$
+circularity.
+
+Fix a closed communicating class $\mathcal C$.
+At capacity $n-1$ no merge ever evicts: there are only $n-1$
+possible nonself identities. The underlying undirected graph
+therefore only gains edges. Mandatory partner removal preserves
+its edge through the fresh reverse descriptor at the responder.
+Communication within $\mathcal C$ makes this one fixed connected
+graph $G$ throughout the class.
+
+\emph{A finite frozen-source erasure.}
+Choose a peer $q$ and a state attaining its maximum row size
+$m_q$ over $\mathcal C$, and freeze $q$. If $m_q<n-1$, a novel
+passive insertion would exceed that maximum, so its identities
+cannot change. If $m_q=n-1$, its row already contains all possible
+identities. In either case its numerical ages can only decrease
+by MIN. Let $M$ bound its ages in this initial state.
+
+Let $R$ be the old-lineage elimination horizon from the general
+colored-reset proof, for example
+\[
+ R=(nc+1)(nc^2+1)(ncL^c+1),\qquad B=M+(nc+1)R.
+\]
+At any later state, one of the $nc+1$ intervals
+$(M+jR,M+(j+1)R]$, $0\le j\le nc$, is empty of stored ages.
+Color ages at most its lower endpoint young and those above
+its upper endpoint old. The unpadded reset path initiates only
+old-holding peers and eliminates all old descriptors within $R$
+events. Peer $q$ stays young, since its row remains bounded by
+$M$, and never initiates. This gives a $q$-frozen reset to ages
+at most the same fixed $B$.
+
+While $q$ is frozen, the global minimum stored $q$ age cannot
+decrease: no fresh $q$ is generated. If copies remain, let their
+minimum be $k$, and let $S$ be its holders. The minimum-holder
+phase in the structural first-contact argument applies with
+$q$ reserved. Internal $S$ contacts preserve both $k$ copies by
+$\min(k+1,k)=k$. An open residual cut is reached using $F_{L-1}$;
+a closed residual component is normalized using the outer
+common-atom hypothesis. If a proposed residual oldest is younger
+than $k$, contact $q$ directly instead; ties permit the residual
+step. A singleton or normalized empty residual row also contacts
+$q$. All initiators belong to $S$, hence differ from $q$.
+At a boundary the outgoing $q$ age is $k+1$, and the outside
+responder has no $q$ copy or an older one. At a direct owner
+contact mandatory deletion removes the active $q$ copy.
+Either terminal loses a $k$ copy and creates none. Repeating
+at most $n-1$ such finite phases raises the minimum or erases
+$q$ entirely.
+
+Repeat until $q$ is absent or its minimum exceeds $B$, then
+apply the $q$-frozen reset. A surviving $q$ copy could not have
+age at most $B$, so all incoming $q$ references are erased.
+This is a finite argument with $M,B$ fixed throughout, not a
+claim about an infinite prescribed schedule or a contact-rate
+extinction estimate. Every history used stays in $\mathcal C$.
+The frozen row of $q$ now represents all its incident edges;
+its identity set is exactly $N_G(q)$ and is nonempty.
+
+\emph{Connected complement.}
+Put $W=V\setminus\{q\}$. If $G[W]$ had multiple components,
+let $u$ be an oldest head of $q$ and choose a cached neighbor
+$v$ in another component. Such neighbors exist in every
+component by connectivity of $G$. Since $L\ge2$, a legal
+$q\to u$ request can include $v$ as an extra. Protection then
+creates edge $uv$, contradicting the fixed graph $G$.
+Thus $G[W]$ is connected. This contradiction need not be executed;
+retain the frozen-source state just constructed.
+
+\emph{One source contact produces a universal zero.}
+No row in $W$ contains $q$. Its $W$-only transition rule is exactly
+that of capacity $n-2$ and length $\min(L,n-2)$ on $n-1$ peers.
+This is a conditional-on-initiator or finite controlled-path
+simulation: actual prescribed initiators still have probability
+$1/n$. At $n=L+1$ the reduced length is $L-1$, covered by the
+outer induction; otherwise the same length on a smaller population
+is covered by the inner induction.
+
+Inspect an oldest head $u$ of frozen $q$. Normalize $W$ to its
+canonical atom with root $r\ne u$, possible since $|W|\ge2$.
+All peers of $W\setminus\{r\}$ then cache $r^0$.
+The still-legal contact $q\to u$ may require $r^0$ in the reply.
+Peer $q$ receives it, and $u$ retains its old $r^0$ because there
+are no evictions and MIN cannot increase it. All other copies
+are unchanged. Thus $r^0$ is universal. The already established
+$U_L$ construction reaches the prescribed labelled $H(V,n-1)$.
+Every closed class reaches this same atom.
+
+Finally apply the independent uniform finite-age reset.
+Its finite reset-family reachability graph has terminal strongly
+connected components generating genuine closed communicating
+classes: another reset from any reachable state returns to that
+finite family, and terminality forces return into the same
+component. Each reset state therefore has a finite path to the
+common atom. Choose these finitely many paths, pad at the atom's
+empty root to a common length, and only then take their minimum
+positive probability. Composing with the initial reset gives
+uniform minorization, without presuming irreducibility or
+aperiodicity. Lemma~\ref{lem:atom}, label symmetry and relabelled
+full-cache atoms give convergence, positive availability and
+uniform conditional samples. This closes both inductions.
+\end{proof}
+
+\begin{corollary}[Uniform full-row hitting and unavoidable sparse evictions]
+\label{cor:alllengthoverflow}
+Fix $1\le L\le c\le n-1$ in the adopted model, and let
+$T,\gamma>0$ be full-capacity common-atom constants from
+Theorem~\ref{thm:fullcapacityalllengths} at the same $n,L$.
+From every weakly connected finite-age start, some peer reaches
+cache size $c$ within $T$ events with probability at least $\gamma$.
+If $c<n-1$ and $\tau$ is the first eviction event, then
+\[
+ \Pr_x(\tau>t)\le(1-\gamma)^{\lfloor t/T\rfloor},
+ \qquad \mathbb E_x\tau\le T/\gamma.
+\]
+The same bounds apply after any finite stopping time, and every
+proper-capacity run has infinitely many evictions almost surely.
+Every closed class contains a full-row state, and every
+proper-capacity closed class contains an eviction transition.
+These are existence and implicit waiting bounds, not a useful
+mixing rate or a sparse-capacity convergence theorem.
+\end{corollary}
+
+\begin{proof}
+Couple the capacity-$c$ kernel to capacity $n-1$, with the same
+length $L$, initiators, oldest ties and packet subsets until the
+first merge union exceeds $c$. Before that event neither kernel
+evicts; row contents, numerical ages and all choice probabilities
+are identical. At that event the sparse kernel evicts at least
+one eligible resident and finishes that endpoint at size $c$,
+regardless of its victim choice. The full-capacity kernel does
+not evict.
+
+A hit of $H(V,n-1)$ by the full-capacity chain at time $T$ has
+probability at least $\gamma$. If $c<n-1$, its full row of size
+$n-1$ forces such a first overflow by time $T$. Hence the sparse
+eviction probability in every $T$-event block, conditionally on
+any current state, is at least $\gamma$. Iterating the Markov
+property gives the tail bound, and summing it gives the expectation.
+Restarting after successive evictions proves that there is no last
+one almost surely. For $c=n-1$, the atom itself supplies full-row
+hitting. Closure gives the class statements. No claim is made that
+the full row occurs at a prescribed observer, or that the two
+kernels remain coupled after their first overflow.
 \end{proof}
 
 \begin{proposition}[The last zero at length three without density]

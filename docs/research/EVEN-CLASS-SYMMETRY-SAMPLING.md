@@ -28,9 +28,7 @@ Full-state convergence need not hold: different classes can retain different sta
 
 ## General sample sizes
 
-For every `b <= min(c, floor(n/2))`, the same conditional-uniform conclusion holds with no additional availability hypothesis. In particular, this covers all allowed request sizes in the sparse-capacity range `c <= floor(n/2)`.
-
-For larger `b <= c`, the conclusion holds if every closed class contains at least one state having at least `b` entries at some peer. Symmetry and the occupancy-propagation argument below then establish positive availability at every observer in every cyclic phase. This extra large-`b` class-existence condition is **not established here**.
+For every `1<=b<=c`, the same conditional-uniform conclusion now holds without an added availability hypothesis. The manuscript's `cor:alllengthoverflow` proves that every closed class contains a full-row state for every allowed capacity and length. Symmetry and the occupancy-propagation argument below transfer this to every observer and cyclic phase. This does not remove the unproved individual-class-invariance hypothesis.
 
 The observation rule is important: choose an unordered `b`-subset uniformly from the cache, then order it uniformly. The conditional conclusion is uniform on all ordered distinct `b`-tuples.
 
@@ -60,7 +58,9 @@ A weakly connected directed overlay has at least `n-1` arcs. A nonempty row has 
 
 `alpha_r >= ceil((n-1)/c)/n`.
 
-### 3a. Automatic availability up to the sparse-capacity threshold
+### 3a. Availability and propagation through phases
+
+The full-row hitting corollary now supplies a full-row state in every class, so the phase-propagation argument below applies to every b<=c. The following weaker direct occupancy argument is retained because it does not use the full-capacity convergence theorem.
 
 For a closed class `C`, let `m` be the greatest cache size appearing at any peer in any state of `C`. This maximum exists and is attained, since sizes lie in the finite set `0,...,c`.
 
@@ -74,7 +74,7 @@ A complete underlying graph requires at least `n(n-1)/2` directed descriptors. S
 
 Thus every class contains an available state for every `b` up to that bound. Even relabelling gives such a state at each chosen observer `i`.
 
-Availability also propagates to each successive cyclic phase. From a state with `|C_i|>=b`, choose any initiator different from `i`. The cache at `i` is either unchanged, or is the passive responder cache. A passive merge never decreases its size: vacancies are filled first and any evictions are matched by new insertions. Therefore a positive-probability next-phase state also has `|C_i|>=b`. Repeating this argument covers every phase. This same argument proves the stated class-existence criterion for larger `b`.
+Availability also propagates to each successive cyclic phase. From a state with `|C_i|>=b`, choose any initiator different from `i`. The cache at `i` is either unchanged, or is the passive responder cache. A passive merge never decreases its size: vacancies are filled first and any evictions are matched by new insertions. Therefore a positive-probability next-phase state also has `|C_i|>=b`. Repeating this argument covers every phase. Together with full-row hitting, this proves phase availability for every allowed b.
 
 The stationary law of an irreducible positive recurrent countable chain assigns positive mass to every state, so phase availability is positive. There are only finitely many classes and finitely many phases in each, hence these positive availabilities have a positive common minimum. No explicit numerical bound for `b>1` is claimed.
 
@@ -101,3 +101,11 @@ No such witness is proved here. Neither permutation equivariance, finite regime 
 If the number `R` of closed classes is strictly less than `n`, their permutation action automatically satisfies the even-class-invariance hypothesis. Indeed `A_n` is simple for `n >= 5`; a nontrivial homomorphism `A_n -> S_R` would be injective. This is impossible because `|A_n| = n!/2 > R!` for `R <= n-1`. Thus all even relabellings fix every class.
 
 Consequently a one-ID sampling counterexample under the finite-regime hypotheses would require at least `n` recurrent classes. This is only a necessary condition: the existing finite-reset argument gives a much larger upper bound, not `R<n`. No small-regime-count estimate is established here.
+
+
+## The stronger frozen-row route and its scope
+
+The separate [frozen maximum-row erasure argument](FROZEN-MAXIMUM-ROW-ERASURE.md) strengthens availability to every b<=c when the lower-length first-contact/common-atom hypotheses also hold. In a hypothetical below-capacity class the fixed complete underlying graph would force incoming references to a frozen maximum row, while that argument erases them. This additional conclusion retains both the induction hypotheses and individual A_n class invariance; it does not prove either of them.
+
+
+The later unconditional full-row hitting corollary supersedes the need for an extra lower-length hypothesis solely to obtain availability in this sampling criterion. The frozen-row argument remains a valid separate structural implication under its stated hypotheses. No result here establishes individual-class invariance.

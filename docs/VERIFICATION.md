@@ -169,3 +169,24 @@ The even-class symmetry note now proves automatic availability for b<=min(c,floo
 
 
 The completed positive-reset suite passed **45/45 checks in 278.92 seconds**. The subsequently added clipped-capacity growth check separately passes all 2,002 cases, including m=1 and every tested allowed shuffle length. The current registry consequently has 46 checks; this record does not describe a single 46-check full-suite run. Actual-text review verified exact transition-law inheritance and the two-event witness. The manuscript source remains unchanged.
+
+
+## Frozen-row minimum-age bookkeeping
+
+The local frozen-target checker passes 10,560 exact events, divided evenly among internal minimum preservation, higher-age boundary replies, absent-target boundary replies, and owner-terminal deletion. The target never initiates; the global minimum cannot decrease. The checker does not certify classwise maximum occupancy or lower-length accessibility. Those hypotheses and the fixed-bound finite-erasure argument are handled by a separate actual-text proof audit.
+
+
+## Full-capacity all-length induction and overflow coupling
+
+Three independent end-to-end reviews accepted the full-capacity induction; final manuscript transcription audits checked both `thm:fullcapacityalllengths` and `cor:alllengthoverflow`. The complement checker compares 11,400 exact transitions with an independent reduced kernel, plus 840 universal-zero source contacts and 840 cross-component edge insertions. The overflow checker passes 4,368 finite runs / 26,019 coupled exchanges: 21,752 identical pre-overflow steps and 4,267 first-overflow events; 101 runs reached their finite observation limit without an overflow. Those censored runs are not violations of the symbolic tail theorem, and the tests do not estimate its implicit constants.
+
+The mathematical proof, not these finite counts, establishes the induction and uniform geometric overflow tail. Proper-capacity stationary uniqueness, sampling convergence without class symmetry, and polynomial mixing remain open.
+
+Final validation for the full-capacity theorem increment: **49/49 curated
+checks passed in 267.19 seconds**. Repository checks passed with 472 local
+links, 147 TeX labels and 61 maintained Python files; the generated index
+contains 126 declarations and 54 headings. Two final TeX draft-mode
+passes completed with no undefined references or LaTeX errors. No new
+rendered PDF is claimed. Three independent end-to-end proof reviews and
+two final manuscript transcription reviews passed within the stated
+model and scope.

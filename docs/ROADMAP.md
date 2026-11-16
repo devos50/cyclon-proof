@@ -18,7 +18,8 @@ All rows refer to the adopted protected, mandatory-removal, minimum-age model wi
 | $\ell=3,c\ge n-2$ | Full convergence and conditional sampling | thm:dense3uniform |
 | $c=\ell=3$, every $n\ge4$ | Full convergence and conditional sampling; qualitative constants | thm:c3generaluniform |
 | $\ell=3$, every allowed $n,c$ | Full convergence and conditional sampling; implicit constants | thm:threegeneraluniform |
-| Fixed $\ell\ge4$ | General sampling theorem open | — |
+| $c=n-1$, every allowed $\ell$ | Full convergence and conditional sampling | thm:fullcapacityalllengths |
+| Fixed $\ell\ge4$, $c<n-1$ | General sampling theorem open; full-row hitting and repeated evictions proved | cor:alllengthoverflow |
 | Every fixed allowed $\ell\ge2$ | Finite-age recurrence, finitely many stationary regimes, continuous-time convergence to a possibly initial-dependent mixture, stationary age tails | thm:thesisgeneralreset, cor:thesisgeneralregimes |
 
 The paper retains older results for other conventions. Their scope must not be silently combined with the adopted model.
@@ -163,7 +164,7 @@ At this earlier capacity-three stage, sparse larger capacities were still open; 
 
 **Working proof integrated:** `thm:threegeneraluniform` now covers every `n>=4` and `3<=c<=n-1` at fixed `ell=3`, with the adopted protected/MIN kernel, iid initiators, initially weak connectivity, and arbitrary finite integer ages. It proves unique full-state stationarity, uniform geometric convergence with implicit constants, positive stationary availability, and conditional uniform local sampling for every request size up to capacity. The arbitrary-capacity callback, empty-owner restoration, and fixed-identity lexicographic outward potential are linked to the lower-length residual normalization and finite-reset/common-atom argument. The [full assembly](research/LENGTH-THREE-GENERAL-CONVERGENCE.md) and [sparse outward proof](research/SPARSE-LENGTH-THREE-OUTWARD-GAIN.md) state the scope and necessary controlled reply choices.
 
-This supersedes earlier continuation entries saying sparse length-three convergence remained open. Lengths four and above and polynomial/practical mixing bounds remain open. These are internally audited mathematical working proofs, not formal verification or external peer review.
+This supersedes earlier continuation entries saying sparse length-three convergence remained open. Proper-capacity convergence at lengths four and above and polynomial/practical mixing bounds remain open. These are internally audited mathematical working proofs, not formal verification or external peer review.
 
 
 ## Parameterized shuffle induction (16 November 2026)
@@ -182,7 +183,7 @@ The following independently reviewed **conditional research notes** are not new 
 - [Threshold-censored lower kernels](research/THRESHOLD-CENSORED-LOWER-KERNEL.md): the singleton-capacity threshold-clearing lemma is proved; higher-capacity searches are bounded diagnostics, including ten explicitly unresolved five-peer runs.
 - [Even-class symmetry sampling](research/EVEN-CLASS-SYMMETRY-SAMPLING.md): for n>=5, invariance of every recurrent class under even relabellings suffices for deterministic-time one-ID sampling, without unique full-state stationarity. The proof handles cyclic phases and availability. Class invariance, or the sufficient bound of fewer than n recurrent classes, remains unproved. Under the same unproved class-invariance hypothesis, availability is automatic for every b<=min(c,floor(n/2)); larger b only needs one available state in each class, since availability propagates through phases.
 
-These isolate possible reusable routes toward arbitrary lengths. The established unconditional convergence range remains lengths one through three; general owner service, outward growth, and useful polynomial rates remain open.
+These isolate possible reusable routes toward arbitrary lengths. The established unconditional convergence range is all capacities at lengths one through three, and all lengths at full capacity; general owner service, outward growth, and useful polynomial rates remain open.
 
 
 ### Shared positive-secondary internal reset
@@ -193,3 +194,15 @@ These isolate possible reusable routes toward arbitrary lengths. The established
 ### Closed-class occupancy inheritance
 
 [Clipped-capacity inheritance](research/CLIPPED-CAPACITY-OCCUPANCY.md) shows that a closed class with maximum row size m<c has exactly the kernel of capacity m and length min(L,m). Canonical accessibility for that smaller kernel contradicts the bound via two legal growth events. With the currently established lengths one through three, every closed class at any L>=4 therefore attains some row of size at least four. Assuming the full lower-length induction package gives max occupancy at least L, and hence a full row when c=L. This is not full occupancy for every proper capacity, fixed-observer availability without symmetry, or arbitrary-length convergence.
+
+
+### Frozen maximum-row erasure
+
+[The frozen-row reduction](research/FROZEN-MAXIMUM-ROW-ERASURE.md) gives a finite reference-erasure path for a peer frozen at its own classwise maximum row size below capacity, assuming the lower-length first-contact/common-atom package. A fixed numerical reset bound and minimum-age raising replace an auxiliary recurrence argument. In a no-eviction class, this forces each peer's maximum row size to equal its degree in the fixed underlying graph. Combined with the still-unproved A_n class-invariance hypothesis, it yields full-cache availability and hence conditional uniform sampling for every allowed sample size. Neither class invariance nor arbitrary-length convergence is established. The minimum-age argument does not confuse an incremented cached descriptor with a fresh zero.
+
+
+## Every length at full capacity; arbitrary-capacity overflow
+
+**Internally audited working theorem:** `thm:fullcapacityalllengths` proves uniform canonical common-atom accessibility, unique full-state stationarity/convergence, and conditional uniform sampling for every 1<=L<=n-1 at capacity c=n-1. The outer length / inner population induction stays within full-capacity kernels. Frozen-source erasure makes the complement closed; a no-eviction graph argument makes it connected; normalization and one source contact create a universal zero anchor. See [the full proof record](research/FULL-CAPACITY-ALL-LENGTHS-CANDIDATE.md).
+
+`cor:alllengthoverflow` couples any proper-capacity kernel with the full-capacity kernel until their first overflow. It gives uniform finite-horizon hitting of some full row, a geometric waiting tail for the next eviction, and infinitely many evictions almost surely, for every allowed length/capacity. Constants are implicit. This proves neither sampling uniformity nor unique stationarity at sparse capacities. It does not guarantee a full row at a prescribed observer. Every closed class nevertheless contains a full-row state, removing the additional availability hypothesis from the conditional even-class-symmetry sampling criterion. Class invariance itself remains open.
