@@ -21,6 +21,7 @@ Finite controller checks corroborate the written arbitrary-size proofs. The thre
 |---|---|---|
 | `c2_quantitative` | Quadratic controlled path to the common atom and availability gadgets | Reduced smoke coverage: `--max-n 10 --seeds 3 --availability-n 5` |
 | `c2_ready` | Exact local cases for the ordinary ready-copy cut-contact drift | Full local enumeration: 14,260 cases |
+| `c2_three_peer_order` | Exact time-zero arbitrary-age three-peer sampling certificate | Full 1306-state projection, 3918 numerical lifts, integer query powers through 56 events |
 | `c2_three_peer` | Exact arbitrary-age three-peer conditional-sampling certificate | Full 487-state operator and 974 numerical lifts |
 | `c2_refresh_obstructions` | Refresh, connected-history and old-lineage counterexamples | Exact rational certificates |
 | `c2_age_projection_obstruction` | Failure of age capping plus global ranks as an exact projection | Exact four-peer two-event query comparison |
@@ -35,6 +36,7 @@ Dependency abbreviations: **A**=`verify_thesis_anchor.py`; **S**=`verify_singlet
 |---|---|---|---|
 | `verify_thesis_c2_quantitative.py` / `c2_quantitative` | Current (c=\ell=2): complete controlled paths with a quadratic event bound, arbitrary finite ages, probability bounds and availability gadgets; finite checks support the general written proof | A, T | 1,008 complete paths through (n=30); 351,100 exchanges; 1,728 availability states |
 | `verify_c2_ready_drift.py` / `c2_ready` | Current (c=\ell=2): readiness-loss and transport cases behind the ordinary linear expected cut-contact theorem | A | 14,260 local cases, ages 0–3 |
+| `verify_c2_three_peer_order_projection.py` / `c2_three_peer_order` | Current (n=3,c=ell=2): exact within-row order projection from time zero; conditional error <10^-6 for every t>=56; no arbitrary-n rate | R, indirectly A | 1306 states; 3918 corroborating lifts; exact integer powers through 56 |
 | `verify_c2_three_peer_antisymmetric.py` / `c2_three_peer` | Current (n=3,c=\ell=2): exact positivity projection and antisymmetric contraction, including arbitrary-age burn-in; no arbitrary-(n) rate | R, indirectly A | 487 projected states; 974 unequal-age lifts; exact integer powers through 8 events |
 | `verify_c2_recurrent_mixing.py` / `c2_recurrent_mixing` | Current (n=3,c=\ell=2): exact benchmark restricted to the recurrent class; optional NumPy diagnostics are not exact certificates | A | 75 recurrent states; 50 default time steps; optional `--numerical` |
 | `verify_c2_refresh_counterexample.py` / `c2_refresh_obstructions` | Current (c=\ell=2): exact counterexamples to naive memory-erasure and refresh arguments; does not contradict convergence | G | Small exact rational examples |

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the curated CYCLON checks using only the Python standard library.
 
-Default: five focused checks for the adopted c=ell=2 model.
+Default: six focused checks for the adopted c=ell=2 model.
 --full: every curated current-model checker, at its default coverage.
 Legacy model variants and archived exploratory searches are never implicit.
 """
@@ -32,6 +32,8 @@ CHECKS = (
           'Exact ready-copy cases for ordinary cut-contact drift', quick_args=()),
     Check('c2_three_peer', 'verify_c2_three_peer_antisymmetric.py',
           'Exact 487-state arbitrary-age three-peer sampling certificate', quick_args=()),
+    Check('c2_three_peer_order', 'verify_c2_three_peer_order_projection.py',
+          'Exact 1306-state time-zero projection and 56-event sampling certificate', quick_args=()),
     Check('c2_refresh_obstructions', 'verify_c2_refresh_counterexample.py',
           'Exact obstructions to naive refresh/lineage arguments', quick_args=()),
     Check('c2_age_projection_obstruction', 'verify_c2_age_projection_obstruction.py',
@@ -85,7 +87,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     selection = parser.add_mutually_exclusive_group()
     selection.add_argument('--full', action='store_true',
-                           help='run all 26 curated current-model checks at full default coverage')
+                           help='run all 27 curated current-model checks at full default coverage')
     selection.add_argument('--check', action='append', choices=[c.name for c in CHECKS],
                            help='run this named check at full coverage; may be repeated')
     parser.add_argument('--list', action='store_true', help='list all checks without executing them')

@@ -256,3 +256,7 @@ For `ell=3`, all lower-length premises are available, but the small-cache zero-e
 - Capping absolute ages and retaining ranks fails, but that is not an impossibility theorem for every finite projection.
 - Callback lemmas with shared descriptors do not prove their hypotheses are reachable.
 - Full-state geometric convergence need not have a practical rate, and conditional uniformity does not imply independence.
+
+## Time-zero three-peer refinement (16 November 2026)
+
+`prop:c2threeorderprojection` uses the three-peer exchange geometry directly: the active cache has at most one identity and the passive cache contains fresh zero after every update. Within-row positive-age order therefore gives an exact projection without burn-in (1306 connected states). `prop:c2three56sample` combines that projection with exact integer query powers and positivity propagation, proving error below `10^-6` at every `t>=56`. It does not depend on numerical lift corroborations or imply an arbitrary-network rate. The prior 487-state general-epsilon certificate remains valid.

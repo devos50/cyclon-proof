@@ -82,14 +82,16 @@ These are genuinely finite calculations with analytic scope reductions, not arbi
 
 | Status | Result | Stable TeX label / source |
 |---|---|---|
+| PROVED | On `n=3,c=ell=2`, within-row positive-age ranks plus zero flags give an exact **1306-state time-zero projection** for all finite initial ages. | `prop:c2threeorderprojection` |
+| COMPUTER-ASSISTED PROOF | Exact integer query powers certify one-ID conditional error below `10^-6` at **every `t>=56`** from all connected finite-age starts; at `t=55` some start exceeds this tolerance. | `prop:c2three56sample` |
 | PROVED | On `n=3,c=ell=2`, each updated cache has at most one positive-age entry. After coupon-cover burn-in, collapsing every positive age to one is an **exact** Markov projection with 487 connected states. | `prop:c2threepositivity` |
 | COMPUTER-ASSISTED PROOF | Exact eight-event antisymmetric contraction `34447/69984 < 1/2`, and minimum availability `5/9` after four events, on all 487 projected states. | `prop:c2threeordinarysample` |
-| COMPUTER-ASSISTED PROOF | From **every arbitrary-age connected initial state** on three peers, sufficient one-ID error-`epsilon` horizon is `ceil(log(9/epsilon)/log(3/2)) + 8 ceil(log2(3/epsilon))`. For `epsilon=10^-6`, 216 events suffice. | `prop:c2threeordinarysample` |
+| COMPUTER-ASSISTED PROOF | From **every arbitrary-age connected initial state** on three peers, sufficient one-ID error-`epsilon` horizon is `ceil(log(9/epsilon)/log(3/2)) + 8 ceil(log2(3/epsilon))`. For `epsilon=10^-6`, 216 events suffice by this older bound; the time-zero certificate improves this to 56. | `prop:c2threeordinarysample` |
 | EXACT BENCHMARK | The family reachable from the canonical atom has 75 states, all ages at most one. Worst recurrent-start conditional error **at time 8** is `9483/1420660`; **at time 25** it is `18359438816999/23769834206568612112`. | Paper's “exact three-peer recurrent-class benchmark” paragraph |
 
 The 487-state projection does **not** say arbitrary actual numerical ages become at most one. It tracks identities and whether ages are zero or positive, which is sufficient for queries in this special three-peer invariant family. The 75-state benchmark has the narrower recurrent-start scope.
 
-Checkers: [verify_c2_three_peer_antisymmetric.py](../verification/mandatory-removal/verify_c2_three_peer_antisymmetric.py) (exact integer certificate, standard library), [verify_c2_recurrent_mixing.py](../verification/mandatory-removal/verify_c2_recurrent_mixing.py) (exact local powers; optional NumPy full-state diagnostics).
+Checkers: [verify_c2_three_peer_order_projection.py](../verification/mandatory-removal/verify_c2_three_peer_order_projection.py) (time-zero projection and 56-event certificate), [verify_c2_three_peer_antisymmetric.py](../verification/mandatory-removal/verify_c2_three_peer_antisymmetric.py) (exact integer certificate, standard library), [verify_c2_recurrent_mixing.py](../verification/mandatory-removal/verify_c2_recurrent_mixing.py) (exact local powers; optional NumPy full-state diagnostics).
 
 **Generalization obstruction:** `prop:c2caprankobstruction` proves that on four peers, any fixed cap of absolute ages, even with the complete current global age ordering/equalities, is not query-sufficient on arbitrary-age starts. Two such indistinguishable starts have two-event query laws differing by exact TV `1/32`. This does not rule out every richer finite projection or prove unbounded recurrent ages. Checker: [verify_c2_age_projection_obstruction.py](../verification/mandatory-removal/verify_c2_age_projection_obstruction.py).
 

@@ -1,6 +1,6 @@
 # Resume this research
 
-Status recorded on **20 October 2026**. This is a working mathematical draft; authorship, publication plans, and external review are not established here.
+Status updated on **16 November 2026**. This is a working mathematical draft; authorship, publication plans, and external review are not established here.
 
 All described work is saved. This handoff does not imply an active background run or scheduled research continuation.
 
@@ -53,7 +53,13 @@ A proved symmetry-set coupling also reduces the task to hitting $F_\sigma=\{z:\s
 
 **A polynomial local-contraction theorem for arbitrary $n$ remains open.**
 
-A completed special case is now available for **three peers, arbitrary finite initial ages**:
+A completed special case is available for **three peers, arbitrary finite initial ages**:
+
+- **New:** local zero/positive flags plus the order/equality of the two positive ages within each row give an exact **1306-state projection from time zero**.
+- Exact integer query powers certify error below `10^-6` at **every time at least 56 events**, improving the older 216-event sufficient horizon. At 55 events the worst error is still above `10^-6`.
+- See `prop:c2threeorderprojection`, `prop:c2three56sample`, and `verify_c2_three_peer_order_projection.py`. This remains an `n=3` result, not arbitrary-network polynomial mixing.
+
+The earlier general-epsilon certificate remains valid:
 
 - After burn-in, each cache has at most one positive-age entry.
 - Zero/positive flags form an exact 487-state Markov projection.
@@ -78,6 +84,7 @@ python3 verification/mandatory-removal/verify_thesis_c2_quantitative.py
 python3 verification/mandatory-removal/verify_c2_ready_drift.py
 python3 verification/mandatory-removal/verify_c2_refresh_counterexample.py
 python3 verification/mandatory-removal/verify_c2_three_peer_antisymmetric.py
+python3 verification/mandatory-removal/verify_c2_three_peer_order_projection.py
 python3 verification/mandatory-removal/verify_c2_age_projection_obstruction.py
 ~~~
 

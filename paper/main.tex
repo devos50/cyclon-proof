@@ -4530,6 +4530,84 @@ displayed error is at most $0.9\varepsilon<\varepsilon$.
 The same estimates apply at every later observation time.
 \end{proof}
 
+\begin{proposition}[An exact time-zero local-order projection on three peers]
+\label{prop:c2threeorderprojection}
+For $n=3,c=\ell=2$, replace the distinct positive ages within
+\emph{each cache separately} by their increasing ranks, starting
+at one, and retain age zero. This is an exact Markov projection
+from every allowed finite-age initial state, with $1306$ weakly
+connected projected states. No burn-in is required.
+\end{proposition}
+\begin{proof}
+A row has eleven possible projected forms: the empty row,
+four singleton rows (two identities, each zero or positive),
+and six two-entry rows, represented by age pairs
+$(0,0),(0,1),(1,0),(1,1),(1,2),(2,1)$.
+All these forms have numerical representatives. The projected
+state retains the oldest identities and their ties in each row.
+Incrementing all active ages leaves their order unchanged, so
+it determines the partner-choice probabilities exactly.
+All remaining subset and victim choices depend only on identities.
+
+For an exchange $p\to q$, write $r$ for the third peer.
+The updated active cache can contain only $r$, since $q$ is
+removed and received $p$ is self-filtered. The updated passive
+cache contains protected $p^0$ and at most $r$.
+Thus each updated cache has at most one positive entry.
+The positivity of each surviving value is determined by whether
+its sources were zero, whether the active increment applied,
+and whether a zero value participated in a minimum merge.
+Comparisons between two positive values can change their numerical
+minimum but cannot change the projected output row. Untouched
+rows preserve their local order. This proves that every numerical
+lift of a projected state induces the same projected transition
+law. Filtering the $11^3$ row triples by weak connectivity gives
+$1306$ states: of the $11^3$ triples, the disconnected ones
+are the all-empty state and eight states supported on each
+of the three possible sole undirected pairs, giving $25$
+exclusions. The checker below independently enumerates them.
+\end{proof}
+
+\begin{proposition}[A sharper certified three-peer sampling horizon]
+\label{prop:c2three56sample}
+For $n=3,c=\ell=2$, every allowed arbitrary finite-age initial
+state and every observer have conditional single-identifier
+sampling error strictly less than $10^{-6}$ at every integer
+time $t\ge56$. At time $55$ some allowed initial state still
+has error greater than $10^{-6}$.
+\end{proposition}
+\begin{proof}
+Fix observer $0$. On the exact projection of
+Proposition~\ref{prop:c2threeorderprojection}, let $g(z)$
+be the indicator that its cache is nonempty, and let $f(z)$
+be its output probability for label $1$ minus that for label
+$2$. Thus $f=0$ on empty and full rows and $f=\pm1$ on
+singleton rows. If $P$ is the projected kernel, the conditional
+error from $z$ is $|P^tf(z)|/(2P^tg(z))$ whenever the denominator
+is positive. All transition denominators divide six.
+The standard-library checker
+\texttt{verify\_c2\_three\_peer\_order\_projection.py}
+enumerates all $1306$ rows of $A=6P$ exactly and computes
+integer matrix--vector powers of $f$ and $g$. It certifies
+$\min_z P^2g(z)=2/9$, so availability is positive at all
+$t\ge2$, and
+\[
+ \max_z\frac{|A^{56}f(z)|}{2A^{56}g(z)}
+ =\frac{7848601085488402478052232343135075946}
+ {7882272325236504573889078691555685474884669}
+ <10^{-6}.
+\]
+At time $55$ the same exact maximum is greater than $10^{-6}$.
+The pointwise inequality $|P^{56}f|\le2\varepsilon P^{56}g$
+persists at every later time: for $s\ge0$, positivity gives
+$|P^{s+56}f|\le P^s|P^{56}f|\le2\varepsilon P^{s+56}g$.
+Use the displayed exact maximum for $\varepsilon$.
+Relabelling covers all observers. These are exhaustive
+finite integer certificates, not simulations or age truncations.
+The $3918$ additional unequal-age numerical lifts checked by the
+script corroborate, but do not replace, the analytic projection proof.
+\end{proof}
+
 The single-positive-entry argument is specific to three peers.
 For four distinct peers $p,q,r,s$, take
 $C_p=\{q^1,r^0\}$ and $C_q=\{p^0,s^1\}$.

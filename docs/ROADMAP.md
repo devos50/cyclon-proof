@@ -52,6 +52,10 @@ Readiness and source coverage provide quantitative communication tools. The miss
 
 ### The completed three-peer case
 
+The latest improvement (16 November 2026) uses an exact **1306-state local-order projection from time zero**, valid for every finite initial age. Exact query powers prove conditional error below `10^-6` at all times `t>=56`; some state still exceeds that error at `t=55`. This replaces the previous 216-event sufficient horizon at that tolerance, without changing the open arbitrary-network problem. See `prop:c2threeorderprojection`, `prop:c2three56sample`, and [the checker](../verification/mandatory-removal/verify_c2_three_peer_order_projection.py).
+
+The older general-epsilon argument is retained:
+
 After burn-in on three peers, every cache has at most one positive entry. Zero/positive flags then form an exact 487-state Markov projection. Exhaustive integer arithmetic certifies
 $$
 \max_z\|P^8(z,\cdot)-P^8(\sigma z,\cdot)\|_{\mathrm{TV}}
