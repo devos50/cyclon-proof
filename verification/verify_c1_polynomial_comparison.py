@@ -189,3 +189,26 @@ for n in range(2, args.max_n + 1):
                 steps += 1
     assert all(count == 2 for count in mult.values())
     print(n, 'root-only lift steps', steps, 'unique undirected images', len(mult), flush=True)
+
+# Numerical corroboration only: the elementary uniform-space entropy bound.
+from math import exp, log, sqrt, fsum
+
+entropy_cases = 0
+for m in range(2, 41):
+    vectors = [
+        [1.0] * m,
+        [1.0] + [0.0] * (m - 1),
+        [1.0 + (i - m / 2) * 1e-5 for i in range(m)],
+        [exp(-30.0 + 60.0 * i / (m - 1)) for i in range(m)],
+        [float(i % 3) for i in range(m)],
+        [(-1.0 if i % 2 else 1.0) * (i + 1) for i in range(m)],
+    ]
+    for values in vectors:
+        norm = sqrt(fsum(x*x for x in values) / m)
+        f = [x / norm for x in values]
+        mean = fsum(f) / m
+        variance = fsum((x - mean)**2 for x in f) / m
+        entropy = fsum(x*x*log(x*x) for x in f if x != 0.0) / m
+        assert entropy <= (log(m) + 3.0) * variance + 1e-10
+        entropy_cases += 1
+print('uniform-space entropy numerical cases', entropy_cases, 'passed', flush=True)

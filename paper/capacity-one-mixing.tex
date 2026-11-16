@@ -14,7 +14,8 @@ For the protected/MIN mandatory-removal CYCLON model at capacity and
 shuffle length one, we derive an explicit polynomial worst-case
 full-state mixing bound, including arbitrary finite initial ages and
 all weakly connected initial overlays. The bound counts global atomic
-events and is deliberately loose: $O(n^5\log(n/\varepsilon))$.
+events. A classical logarithmic Sobolev refinement gives
+$O(n^4[\log^2 n+\log(1/\varepsilon)])$; this bound remains loose.
 It also bounds conditional one-ID sampling. The proof compares tree
 rotations with the matroid down-up walk and uses a killed-chain lift
 to handle initial directed cycles. This is an internally audited
@@ -67,7 +68,10 @@ mixing time is $s+t$, where
  \quad
  t=\left\lceil G\log(3\sqrt N/(2\varepsilon))\right\rceil.
 \]
-This is $O(n^5\log(n/\varepsilon))$ global events. Conditional one-ID
+This spectral bound is $O(n^5\log(n/\varepsilon))$ global events.
+Section~\ref{sec:classical-lsi} improves it to
+$O(n^4[\log^2 n+\log(1/\varepsilon)])$, with explicit integer times.
+Conditional one-ID
 error is at most $n/(n-1)$ times the full-state error whenever defined;
 thus substitute $\varepsilon(n-1)/n$ above for a desired sample error
 $\varepsilon$. For $n=2$, worst-case full-state distance is $2^{-t}$
@@ -445,6 +449,146 @@ identity is uniform over other peers by relabelling symmetry. Applying
 the inequality proves the sample estimate. If full-state error is
 strictly below stationary availability, transient availability is
 positive automatically.
+
+\section{Classical logarithmic Sobolev refinement}
+\label{sec:classical-lsi}
+Assume $n\ge3$ and retain the already proved capacity-one constants
+\[
+ h=\lfloor n^2/4\rfloor,\quad N=n^{n-1},\quad H=n(n-1)^2/2,
+ \quad A=3n^2\min\{(n-1)h,2n-1\},\quad G=(n-1)A.
+\]
+Put
+\[
+ C=(n-1)\bigl(3+\log(nh)\bigr),\qquad \Lambda=AC.
+\]
+The new argument establishes a classical logarithmic Sobolev
+inequality $\operatorname{Ent}_\pi(f^2)\le\Lambda\mathcal E_P(f,f)$
+on zero-age rooted trees. Unlike a direct modified-log-Sobolev
+comparison, this inequality uses the squared-difference Dirichlet
+form for which the established canonical-path comparison is valid.
+
+\paragraph{Elementary uniform-space inequality.}
+On the uniform distribution $\nu$ on $m$ points,
+\[
+ \operatorname{Ent}_\nu(f^2)\le(\log m+3)\operatorname{Var}_\nu(f).
+\]
+To prove this, replace $f$ by $|f|$; entropy is unchanged and variance
+cannot increase. Scale so $\mathbb E f^2=1$, unless $f=0$ identically.
+Then $0\le f\le\sqrt m$. For $\varphi(x)=x^2\log x^2$, extended
+continuously by zero at zero, $\varphi''(x)=2\log x^2+6\le2\log m+6$.
+Taylor's upper bound about $\bar f=\mathbb E f\le1$, followed by
+averaging, gives
+\[
+ \mathbb E\varphi(f)\le\varphi(\bar f)+(\log m+3)\operatorname{Var}(f)
+ \le(\log m+3)\operatorname{Var}(f).
+\]
+The upper Taylor bound remains valid at zero by continuity, or by
+integrating the upper bound on the second derivative. This proves
+the inequality for all real $f$ by homogeneity.
+
+\paragraph{Entropy factorization for the reference chain.}
+Let $Q$ be the existing reference chain: a uniform spanning-tree
+down-up step followed by an independent uniform root refresh. It
+is a heat-bath chain with latent variable the two-component forest
+$F$ obtained by deleting a uniformly chosen tree edge. Given $F$
+with component sizes $a,b$, the conditional state is uniform among
+$nab$ completions (an edge across the cut and a root).
+
+We use the half-step entropy contraction in Cryan, Guo and Mousa,
+\emph{Modified log-Sobolev inequalities for strongly log-concave
+distributions}, Lemma 11 and equation (32),
+\url{https://arxiv.org/html/1903.06081v3}. For rank $r=n-1$, the
+entropy of a nonnegative function projected to the deleted-edge
+forest is at most $(1-1/r)$ of its original entropy.
+To apply it here, first average $f^2(T,r)$ over the root, obtaining
+$g(T)$. Root averaging cannot increase entropy; then the cited
+half-step contraction applies to $g$. Thus
+\[
+ \operatorname{Ent}_{F}\bigl(\mathbb E[f^2\mid F]\bigr)
+ \le(1-1/(n-1))\operatorname{Ent}_\pi(f^2).
+\]
+The entropy chain rule and the uniform-space bound give
+\[
+ \begin{split}
+ \operatorname{Ent}_\pi(f^2)
+ &\le(n-1)\mathbb E_F\operatorname{Ent}(f^2\mid F)\\
+ &\le(n-1)(3+\log(nh))\mathbb E_F\operatorname{Var}(f\mid F)
+ =C\mathcal E_Q(f,f).
+ \end{split}
+\]
+The last equality holds because $Q$ samples two conditionally
+independent completions of the same forest in stationarity.
+The previously proved comparison $\mathcal E_Q\le A\mathcal E_P$
+therefore establishes the claimed classical inequality with $\Lambda=AC$.
+No modified-log-Sobolev path inequality is assumed.
+
+\paragraph{Continuous-time smoothing only as an analytic tool.}
+Let $S_u=\exp(u(P-I))$. In the convention
+$\alpha=\inf\mathcal E(f,f)/\operatorname{Ent}(f^2)$, the classical
+hypercontractivity theorem gives
+$\|S_u\|_{2\to q}\le1$ for $q-1\le e^{4\alpha u}$.
+See Diaconis and Saloff-Coste, \emph{Logarithmic Sobolev inequalities
+for finite Markov chains}, Theorem 3.5(ii),
+\url{https://pi.math.cornell.edu/~lsc/papers/log-aoap.pdf}.
+Self-adjoint duality gives $\|S_u\|_{p\to2}\le1$ for
+$p=1+e^{-4u/\Lambda}$, using $\alpha\ge1/\Lambda$.
+For a point-mass initial density $f_x=N\mathbf1_{\{x\}}$, choose
+\[
+ u_0=\frac{\Lambda}4\log\log N.
+\]
+Then $p-1=1/\log N$, and
+$\|f_x\|_p=N^{1-1/p}\le e$. Thus
+$\|S_{u_0}f_x-1\|_2\le e$. The spectral gap bound $1/G$ gives
+\[
+ \|S_u f_x-1\|_2\le e\,e^{-(u-u_0)/G}\qquad(u\ge u_0).
+\]
+These are analytic estimates; no conversion of clock units is being
+used for the final discrete-event result.
+
+\paragraph{Returning rigorously to discrete events.}
+Expand $f_x-1$ in an orthonormal eigenbasis of $P$. On nonnegative
+nonconstant eigenvalues $0\le\lambda<1$, the inequality
+$\lambda^t\le e^{-t(1-\lambda)}$ shows that the discrete-time
+positive-spectrum $L^2$ norm is at most the continuous-time norm
+at $u=t$. The negative spectrum is bounded separately: the holding
+probability $1/n$ implies $|\lambda|\le1-2/n$ when $\lambda<0$.
+Since $\|f_x-1\|_2=\sqrt{N-1}$, its contribution is at most
+$\sqrt N e^{-2t/n}$. Therefore, for integer $t\ge u_0$,
+\[
+ \sup_{x\in\mathcal T}\|P^t(x,\cdot)-\pi\|_{\rm TV}
+ \le\tfrac12\left(e\,e^{-(t-u_0)/G}+\sqrt N e^{-2t/n}\right).
+\]
+For $0<\delta<1$, a sufficient rooted-class time is
+\[
+ T(\delta)=\left\lceil\max\left\{
+ \frac{\Lambda}4\log\log N+G\log(e/\delta),\quad
+ \frac n2\log(\sqrt N/\delta)\right\}\right\rceil.
+\]
+Each summand inside the TV upper bound is then at most $\delta$,
+so their half-sum is at most $\delta$.
+
+\paragraph{Arbitrary finite-age initial states.}
+For $0<\varepsilon<1$ use the already proved entrance and old-token
+bounds with
+\[
+ s=\left\lceil\max\left\{
+ H\log(4\sqrt{Nn}/\varepsilon),\quad
+ n\log(4n/\varepsilon)\right\}\right\rceil.
+\]
+Each of the two failure terms is at most $\varepsilon/4$.
+After another $T(\varepsilon/2)$ events, the full-state TV error is
+therefore at most $\varepsilon$. Since $A=O(n^3)$, $\Lambda=O(n^4\log n)$,
+$G=O(n^4)$, and $H=O(n^3)$, this yields
+\[
+ t_{\rm mix}(\varepsilon)
+ =O\!\left(n^4\left[\log^2 n+\log(1/\varepsilon)\right]\right)
+\]
+in global atomic events. For particular parameters one may take the
+smaller of this sufficient time and the earlier spectral sufficient time.
+Conditional one-ID sampling uses the same
+$n/(n-1)$ factor as before. The two-peer exact result and the
+$\Omega(n^{3/2})$ full-state lower bound are unchanged. No result for
+capacity at least two or a matching local-query lower bound follows.
 
 \section{A depth-based capacity-one lower bound}
 Work in the zero-age rooted-tree class at $c=L=1$ with uniform

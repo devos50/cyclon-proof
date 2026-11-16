@@ -14,7 +14,7 @@ For n >= 3 define N = n^(n-1) and H = n(n-1)²/2 and G = 3 n² (n-1) min{(n-1)fl
 
 `d(s+t) <= sqrt(N n) exp(-s/H) + n (1-1/n)^s + (sqrt(N)/2) exp(-t/G)`.
 
-The manuscript gives explicit integer choices of s,t ensuring error at most epsilon. Their asymptotic size is `O(n^5 log(n/epsilon))`. The same asymptotic bound covers initially rooted-tree overlays. For n=2 the exact worst-case full-state error is `2^(-t)` for t >= 1.
+The manuscript gives explicit integer choices of s,t ensuring error at most epsilon. The original spectral choices have size `O(n^5 log(n/epsilon))`. A classical logarithmic Sobolev refinement now improves the strongest upper bound to `O(n^4 [log² n + log(1/epsilon)])`, including arbitrary weakly connected finite-age initialization. The source gives the explicit smoothing and spectral-decay times, with negative eigenvalues handled separately. For specific parameters, take the smaller of the spectral and entropy sufficient times. For n=2 the exact worst-case full-state error is `2^(-t)` for t >= 1.
 
 Stationary availability of a one-ID sample is `(n-1)/n`; conditional error is at most `n/(n-1)` times full-state error. No cross-time independence follows.
 
@@ -46,3 +46,16 @@ This capacity-one result does not modify the general proof or promote its implic
 ## Root-aware refinement
 
 This refinement improves the former `O(n^9 log(n/epsilon))` upper bound to `O(n^5 log(n/epsilon))` without changing the model or lower bound. It removes overcounting in canonical-path congestion and avoids invoking whole-tree mixing merely to create an empty root. The published exponent is still a loose upper bound, not an estimate of typical runtime.
+
+## Classical logarithmic Sobolev refinement
+
+The strongest current upper bound is `O(n^4 [log² n + log(1/epsilon)])` global events, not merely the earlier spectral `O(n^5 log(n/epsilon))` bound. It remains far from the `Omega(n^(3/2))` full-state lower bound.
+
+The additional primary-source inputs are:
+
+- Cryan, Guo and Mousa, *Modified log-Sobolev inequalities for strongly log-concave distributions*, Lemma 11 / equation (32): https://arxiv.org/html/1903.06081v3 . The proof uses their **half-step entropy factorization**, not an unjustified comparison of modified logarithmic Sobolev forms along paths.
+- Diaconis and Saloff-Coste, *Logarithmic Sobolev inequalities for finite Markov chains*, Theorem 3.5(ii): https://pi.math.cornell.edu/~lsc/papers/log-aoap.pdf . The classical inequality has the convention `alpha = inf E(f,f)/Ent(f²)`, hence hypercontractivity exponent `4 alpha`.
+
+A new elementary completion-space entropy bound converts the factorization into a classical inequality, which the already audited squared-difference path comparison can transfer. Continuous-time hypercontractivity is used only to bound positive spectral components in L². Negative eigenvalues are separately controlled using holding probability `1/n`; the final result is for the original discrete-event chain, not a change of scheduler.
+
+No claim for capacity two or higher, optimality, or matching local-query lower bound is added. The checker additionally exercises the elementary uniform-space entropy inequality on deterministic test vectors; these numerical checks do not replace its analytic proof or the cited theorems.
